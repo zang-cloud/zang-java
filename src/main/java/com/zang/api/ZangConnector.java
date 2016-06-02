@@ -1,6 +1,7 @@
 package com.zang.api;
 
 import java.net.URI;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.List;
 
@@ -96,7 +97,13 @@ public class ZangConnector {
 	 */
 	public ZangConnector(ZangConfiguration conf) {
 		this.conf = conf;
-		executor = RestExecutor.createExecutor(conf);
+
+		try {
+			executor = RestExecutor.createExecutor(conf);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 		URI baseUrl = UriBuilder.fromUri(conf.getBaseUrl())
 				.path(ZangConstants.API_VERSION).build();
 		fullBaseUrl = baseUrl.toString();
