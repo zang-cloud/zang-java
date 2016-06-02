@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c73fccd-03fe-48e3-b7f5-aaf81aefd5d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zang/api/ZangConnector.java" afterPath="$PROJECT_DIR$/src/main/java/com/zang/api/ZangConnector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zang/api/configuration/ZangConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/zang/api/configuration/ZangConstants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zang/api/http/RestExecutor.java" afterPath="$PROJECT_DIR$/src/main/java/com/zang/api/http/RestExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="zang-java.iws" />
     <ignored path=".idea/workspace.xml" />

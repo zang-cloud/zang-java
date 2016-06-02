@@ -11,7 +11,15 @@ For more information about Zang, please visit: [zang.io/features](http://www.zan
 Installation
 ============
 
-To use this library, include the following dependency:
+Clone the repo, and install via [maven](http://maven.apache.org/download.html):
+```
+$ git clone git@github.com:zang-cloud/zang-java.git
+$ cd zang-java
+$ mvn install
+```
+
+To use this library, include the following dependency within pom.xml:
+
 ```
 <dependency>
   <groupId>com.zang.api</groupId>
@@ -20,12 +28,6 @@ To use this library, include the following dependency:
 </dependency>
 ```
 
-Or clone the repo, and install via [maven](http://maven.apache.org/download.html):
-```
-$ git clone git@github.com:zang-cloud/zang-java.git
-$ cd zang-java
-$ mvn install
-```
 
 Usage
 ======
