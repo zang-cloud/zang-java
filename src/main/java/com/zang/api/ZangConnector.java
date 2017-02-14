@@ -1,66 +1,25 @@
 package com.zang.api;
 
-import java.net.URI;
-import java.security.NoSuchAlgorithmException;
-import java.util.Date;
-import java.util.List;
-
-import javax.ws.rs.core.UriBuilder;
-
-import org.jboss.resteasy.client.ClientResponse;
-import org.jboss.resteasy.client.ProxyFactory;
-import org.jboss.resteasy.client.core.executors.ApacheHttpClient4Executor;
-
+import com.zang.api.configuration.BasicZangConfiguration;
 import com.zang.api.configuration.ZangConfiguration;
 import com.zang.api.configuration.ZangConstants;
-import com.zang.api.domain.Account;
-import com.zang.api.domain.Application;
-import com.zang.api.domain.Call;
-import com.zang.api.domain.Conference;
-import com.zang.api.domain.IncomingPhoneNumber;
-import com.zang.api.domain.Notification;
-import com.zang.api.domain.Participant;
-import com.zang.api.domain.Recording;
-import com.zang.api.domain.SmsMessage;
-import com.zang.api.domain.Transcription;
-import com.zang.api.domain.enums.AudioDirection;
-import com.zang.api.domain.enums.CallInterruptStatus;
-import com.zang.api.domain.enums.CallStatus;
-import com.zang.api.domain.enums.HttpMethod;
-import com.zang.api.domain.enums.Legs;
-import com.zang.api.domain.enums.LogLevel;
-import com.zang.api.domain.enums.TranscriptionStatus;
-import com.zang.api.domain.enums.TranscriptionType;
-import com.zang.api.domain.list.AccountsList;
-import com.zang.api.domain.list.ApplicationList;
-import com.zang.api.domain.list.AvailablePhoneNumberList;
-import com.zang.api.domain.list.CallList;
-import com.zang.api.domain.list.CarrierLookupList;
-import com.zang.api.domain.list.CnamDipList;
-import com.zang.api.domain.list.ConferenceList;
-import com.zang.api.domain.list.FraudList;
-import com.zang.api.domain.list.IncomingPhoneNumberList;
-import com.zang.api.domain.list.NotificationList;
-import com.zang.api.domain.list.RecordingList;
-import com.zang.api.domain.list.SmsMessageList;
-import com.zang.api.domain.list.TranscriptionList;
+import com.zang.api.domain.*;
+import com.zang.api.domain.enums.*;
+import com.zang.api.domain.list.*;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.http.RestExecutor;
 import com.zang.api.requests.ApplicationRequest;
 import com.zang.api.requests.CallRequest;
 import com.zang.api.requests.IncomingPhoneNumberRequest;
-import com.zang.api.restproxies.AccountsProxy;
-import com.zang.api.restproxies.ApplicationProxy;
-import com.zang.api.restproxies.AvailablePhoneNumberProxy;
-import com.zang.api.restproxies.CallProxy;
-import com.zang.api.restproxies.CarrierLookupProxy;
-import com.zang.api.restproxies.ConferenceProxy;
-import com.zang.api.restproxies.FraudControlProxy;
-import com.zang.api.restproxies.IncomingPhoneNumberProxy;
-import com.zang.api.restproxies.NotificationProxy;
-import com.zang.api.restproxies.RecordingProxy;
-import com.zang.api.restproxies.SmsProxy;
-import com.zang.api.restproxies.TranscriptionProxy;
+import com.zang.api.restproxies.*;
+import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.resteasy.client.ProxyFactory;
+import org.jboss.resteasy.client.core.executors.ApacheHttpClient4Executor;
+
+import javax.ws.rs.core.UriBuilder;
+import java.net.URI;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -92,7 +51,7 @@ public class ZangConnector {
 	 * @param conf
 	 *            The configuration based on which the ZangConnector will be
 	 *            created.
-	 * @see BasicZangConfiguration, PropertiesFileZangConfiguration,
+	 * @see BasicZangConfiguration , PropertiesFileZangConfiguration,
 	 *      ZangConfiguration
 	 */
 	public ZangConnector(ZangConfiguration conf) {
@@ -167,10 +126,28 @@ public class ZangConnector {
 		return viewAccount(conf.getSid());
 	}
 
-	public AccountsList viewAccounts() throws ZangException {
-		ClientResponse<AccountsList> accounts = accountsProxy.getAccounts();
-		return returnThrows(accounts);
+	/**
+	 * Updates the friendly name of an account.
+	 * @param accountSid
+	 * @param friendlyName The new friendly name for this account
+	 * @return The account with the updated friendlyName value
+	 * @throws ZangException
+	 */
+	public Account updateAccount(String accountSid, String friendlyName) throws ZangException {
+		ClientResponse<Account> acc = accountsProxy.updateAccount(accountSid, friendlyName);
+		return returnThrows(acc);
 	}
+
+	/**
+	 * @see #updateAccount(String, String)
+	 * @param friendlyName The new friendly name for this account
+	 * @return The account with the updated friendlyName value
+	 * @throws ZangException
+	 */
+	public Account updateAccount(String friendlyName) throws ZangException {
+		return updateAccount(conf.getSid(), friendlyName);
+	}
+
 
 	// SMSMESSAGE
 

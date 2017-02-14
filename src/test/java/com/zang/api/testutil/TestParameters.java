@@ -1,10 +1,10 @@
 package com.zang.api.testutil;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
-
-import org.apache.log4j.Logger;
 
 public class TestParameters extends Properties {
 	private static final long serialVersionUID = -7348144965758395514L;

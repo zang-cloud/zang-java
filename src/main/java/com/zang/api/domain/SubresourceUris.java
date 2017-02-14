@@ -1,5 +1,6 @@
 package com.zang.api.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
@@ -8,6 +9,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * messages, purchased phone numbers, etc.
  * 
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SubresourceUris {
 	@JsonProperty(value="available_phone_numbers")
 	private String availablePhoneNumbers;
@@ -24,7 +26,9 @@ public class SubresourceUris {
 	private String applications;
 	private String fraud;
 	private String cnam;
+	private String bna;
 	private String carrier;
+	private String usages;
 	
 	public String getAvailablePhoneNumbers() {
 		return availablePhoneNumbers;
@@ -105,4 +109,19 @@ public class SubresourceUris {
 		this.carrier = carrier;
 	}
 
+	public String getUsages() {
+		return usages;
+	}
+
+	public void setUsages(String usages) {
+		this.usages = usages;
+	}
+
+	public String getBna() {
+		return bna;
+	}
+
+	public void setBna(String bna) {
+		this.bna = bna;
+	}
 }

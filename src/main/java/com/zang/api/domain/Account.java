@@ -3,6 +3,7 @@ package com.zang.api.domain;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
@@ -12,6 +13,7 @@ import com.zang.api.json.JsonDateParser;
  * An account resource provides information about a single Zang account.
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Account {
 
 	private String sid;
@@ -34,11 +36,12 @@ public class Account {
 
 	private String uri;
 
+	@JsonProperty(value = "max_outbound_limit")
 	private String maxOutboundLimit;
 
 	private String type;
 
-	@JsonProperty(value = "timezone")
+	@JsonProperty(value = "time_zone")
 	private String timeZone;
 
 	@JsonProperty(value = "subresource_uris")

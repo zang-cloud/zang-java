@@ -16,3 +16,7 @@
 hs_err_pid*
 
 target/*
+.idea
+*.iml
+zang.properties
+zang.test.properties
