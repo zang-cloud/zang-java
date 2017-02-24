@@ -1,5 +1,6 @@
 package com.zang.api;
 
+import com.zang.api.connectors.AccountConnector;
 import com.zang.api.domain.Account;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,7 +10,8 @@ import com.zang.api.exceptions.ZangException;
 public class AccountTest extends BaseZangTest{
 	
 	@Test
-	public void testGetAccount() throws ZangException{
+	public void testGetAndUpdateAccount() throws ZangException{
+		AccountConnector connector = connectorFactory.getAccountsConnector();
 		connector.updateAccount(conf.getSid(), "friendlyname1");
 		Account account = connector.viewAccount(conf.getSid());
 		Assert.assertEquals("friendlyname1", account.getFriendlyName());

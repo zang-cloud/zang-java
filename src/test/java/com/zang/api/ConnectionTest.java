@@ -1,5 +1,7 @@
 package com.zang.api;
 
+import com.zang.api.connectors.AccountConnector;
+import com.zang.api.connectors.ZangConnectorFactory;
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -13,7 +15,7 @@ public class ConnectionTest {
 	@Test
 	public void testInvalidCredentials(){
 		BasicZangConfiguration conf = new BasicZangConfiguration("", "");
-		ZangConnector conn = new ZangConnector(conf);
+		AccountConnector conn = ZangConnectorFactory.getAccountsConnector(conf);
 		
 		try {
 			conn.viewAccount(new PropertiesFileZangConfiguration().getSid());

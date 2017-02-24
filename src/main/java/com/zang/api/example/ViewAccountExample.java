@@ -1,7 +1,8 @@
 package com.zang.api.example;
 
-import com.zang.api.ZangConnector;
 import com.zang.api.configuration.BasicZangConfiguration;
+import com.zang.api.connectors.AccountConnector;
+import com.zang.api.connectors.ZangConnectorFactory;
 import com.zang.api.domain.Account;
 import com.zang.api.exceptions.ZangException;
 
@@ -11,7 +12,7 @@ public class ViewAccountExample {
 		BasicZangConfiguration conf = new BasicZangConfiguration();
 		conf.setSid("{AccountSid}");
 		conf.setAuthToken("{AuthToken}");
-		ZangConnector conn = new ZangConnector(conf);
+		AccountConnector conn = new ZangConnectorFactory(conf).getAccountsConnector();
 		
 		try {
 			Account account = conn.viewAccount("{AccountSid}");

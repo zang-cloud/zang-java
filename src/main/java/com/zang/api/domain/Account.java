@@ -14,9 +14,7 @@ import com.zang.api.json.JsonDateParser;
  *
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Account {
-
-	private String sid;
+public class Account extends BaseZangObject{
 
 	@JsonProperty(value = "friendly_name")
 	private String friendlyName;
@@ -26,15 +24,6 @@ public class Account {
 	@JsonProperty(value = "account_balance")
 	private BigDecimal accountBalance;
 
-	@JsonProperty(value = "date_created")
-	@JsonDeserialize(using = JsonDateParser.class)
-	private Date dateCreated;
-
-	@JsonProperty(value = "date_updated")
-	@JsonDeserialize(using = JsonDateParser.class)
-	private Date dateUpdated;
-
-	private String uri;
 
 	@JsonProperty(value = "max_outbound_limit")
 	private String maxOutboundLimit;
@@ -46,18 +35,6 @@ public class Account {
 
 	@JsonProperty(value = "subresource_uris")
 	private SubresourceUris subresourceUris;
-
-	/**
-	 * 
-	 * @return An alphanumeric string identifying the account.
-	 */
-	public String getSid() {
-		return sid;
-	}
-
-	public void setSid(String sid) {
-		this.sid = sid;
-	}
 
 	/**
 	 * 
@@ -96,44 +73,6 @@ public class Account {
 
 	public void setAccountBalance(BigDecimal accountBalance) {
 		this.accountBalance = accountBalance;
-	}
-
-	/**
-	 * 
-	 * @return Date of account creation. Dates are returned in UTC format.
-	 */
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	/**
-	 * 
-	 * @return Date of most recent account update. Dates are returned in UTC
-	 *         format.
-	 */
-	public Date getDateUpdated() {
-		return dateUpdated;
-	}
-
-	public void setDateUpdated(Date dateUpdated) {
-		this.dateUpdated = dateUpdated;
-	}
-
-	/**
-	 * 
-	 * @return The path appended to the base Zang URL, https://api.zang.io,
-	 *         where the resource is located.
-	 */
-	public String getUri() {
-		return uri;
-	}
-
-	public void setUri(String uri) {
-		this.uri = uri;
 	}
 
 	/**
