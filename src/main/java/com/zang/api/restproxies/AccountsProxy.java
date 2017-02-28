@@ -1,11 +1,9 @@
 package com.zang.api.restproxies;
 
-import javax.ws.rs.*;
-
+import com.zang.api.domain.Account;
 import org.jboss.resteasy.client.ClientResponse;
 
-import com.zang.api.domain.Account;
-import com.zang.api.domain.list.AccountsList;
+import javax.ws.rs.*;
 
 public interface AccountsProxy {
     @GET

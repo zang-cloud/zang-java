@@ -6,12 +6,12 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.util.List;
 
-public class UsagesList extends ZangList<Usage>{
+public class UsagesList extends ZangList<Usage> {
 
-	@Override
-	@JsonProperty("usages")
-	protected void mapElements(List<Usage> elements) {
-		setElements(elements);
-	}
+    @Override
+    @JsonProperty("usages")
+    protected void mapElements(List<Usage> elements) {
+        setElements(elements);
+    }
 
 }

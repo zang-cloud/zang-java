@@ -5,56 +5,53 @@ import com.zang.api.configuration.ZangConfiguration;
 import org.jboss.resteasy.client.ClientExecutor;
 
 /**
- * 
  * The class used for all forms of communication with the Zang REST API.
- * 
  */
 public class ZangConnectorFactory {
 
-	private ZangConfiguration conf;
-	private ClientExecutor executor;
+    private ZangConfiguration conf;
+    private ClientExecutor executor;
 
-	/**
-	 * Creates a new ZangConnectorFactory based on the provided configuration.
-	 *
-	 * @param conf
-	 *            The configuration based on which the ZangConnectorFactory will be
-	 *            created.
-	 * @see BasicZangConfiguration , PropertiesFileZangConfiguration,
-	 *      ZangConfiguration
-	 */
-	public ZangConnectorFactory(ZangConfiguration conf) {
-		this.conf = conf;
-	}
+    /**
+     * Creates a new ZangConnectorFactory based on the provided configuration.
+     *
+     * @param conf The configuration based on which the ZangConnectorFactory will be
+     *             created.
+     * @see BasicZangConfiguration , PropertiesFileZangConfiguration,
+     * ZangConfiguration
+     */
+    public ZangConnectorFactory(ZangConfiguration conf) {
+        this.conf = conf;
+    }
 
     public ZangConnectorFactory(ZangConfiguration conf, ClientExecutor executor) {
         this.conf = conf;
         this.executor = executor;
     }
 
-	public AccountConnector getAccountsConnector() {
-        return new AccountConnector(this.conf, this.executor);
-	}
-
-	public static AccountConnector getAccountsConnector(ZangConfiguration conf) {
-		return new AccountConnector(conf, null);
-	}
-
-	public static AccountConnector getAccountsConnector(ZangConfiguration conf, ClientExecutor executor) {
-		return new AccountConnector(conf, executor);
-	}
-
-
-    public UsageConnector getUsageConnector() {
-        return new UsageConnector(this.conf, this.executor);
+    public AccountsConnector getAccountsConnector() {
+        return new AccountsConnector(this.conf, this.executor);
     }
 
-    public static UsageConnector getUsageConnector(ZangConfiguration conf) {
-        return new UsageConnector(conf, null);
+    public static AccountsConnector getAccountsConnector(ZangConfiguration conf) {
+        return new AccountsConnector(conf, null);
     }
 
-    public static UsageConnector getUsageConnector(ZangConfiguration conf, ClientExecutor executor) {
-        return new UsageConnector(conf, executor);
+    public static AccountsConnector getAccountsConnector(ZangConfiguration conf, ClientExecutor executor) {
+        return new AccountsConnector(conf, executor);
+    }
+
+
+    public UsagesConnector getUsagesConnector() {
+        return new UsagesConnector(this.conf, this.executor);
+    }
+
+    public static UsagesConnector getUsagesConnector(ZangConfiguration conf) {
+        return new UsagesConnector(conf, null);
+    }
+
+    public static UsagesConnector getUsagesConnector(ZangConfiguration conf, ClientExecutor executor) {
+        return new UsagesConnector(conf, executor);
     }
 
 

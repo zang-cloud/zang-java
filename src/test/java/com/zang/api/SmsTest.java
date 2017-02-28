@@ -7,24 +7,28 @@ import com.zang.api.exceptions.ZangException;
 import junit.framework.Assert;
 import org.junit.Test;
 
-import java.util.Date;
-
 
 public class SmsTest extends BaseZangTest {
 
-	@Test
-	public void testGetSmsList() throws ZangException{
-		SmsConnector connector = connectorFactory.getSmsConnector();
-		connector.listSmsMessages("1", "2", new Date(0), new Date(), 0L, 10L);
-	}
-	
-	@Test
-	public void testSendAndGetSms() throws ZangException{
+    @Test
+    public void listSms() throws ZangException {
         SmsConnector connector = connectorFactory.getSmsConnector();
-		SmsMessage msg = connector.sendSmsMessage(testParameters.getPhone1(), testParameters.getPhone2(),
+        connector.listSmsMessages(null, null, null, null, 0L, 10L);
+    }
+
+    @Test
+    public void sendSms() throws ZangException {
+        SmsConnector connector = connectorFactory.getSmsConnector();
+        SmsMessage msg = connector.sendSmsMessage(testParameters.getPhone1(), testParameters.getPhone2(),
                 "test from java", "callback.url", HttpMethod.GET, false);
-		SmsMessage receivedMessage = connector.viewSmsMessage(msg.getSid());
-		Assert.assertEquals(msg.getSid(), receivedMessage.getSid());
-	}
-	
+        SmsMessage receivedMessage = connector.viewSmsMessage(msg.getSid());
+        Assert.assertEquals(msg.getSid(), receivedMessage.getSid());
+    }
+
+    @Test
+    public void viewSms() throws ZangException {
+        SmsConnector connector = connectorFactory.getSmsConnector();
+        SmsMessage receivedMessage = connector.viewSmsMessage("SMe18890840dec1c93b68d4966b1e5ace3");
+    }
+
 }
