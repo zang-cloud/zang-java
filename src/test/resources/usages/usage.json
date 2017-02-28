@@ -7,7 +7,7 @@
   "day": "28",
   "product_id": 3,
   "total_cost": "0.061590",
-  "uri": "/v2/Accounts/TestAccountSid/Usages/AU782f4559fdc011e6bf6bd0cc8f654d53",
-  "sid": "AU782f4559fdc011e6bf6bd0cc8f654d53",
+  "uri": "/v2/Accounts/TestAccountSid/Usages/TestUsageSid",
+  "sid": "TestUsageSid",
   "quantity": 160
 }

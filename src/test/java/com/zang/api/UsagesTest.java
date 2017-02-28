@@ -22,11 +22,11 @@ public class UsagesTest extends BaseZangTest {
 
     @Test
     public void listUsages() throws ZangException, IOException {
-        createExpectation("GET", "Usages/TestUsageSid.json", null, new Parameter[]{
+        createExpectation("GET", "Usages.json", null, new Parameter[]{
                 new Parameter("Page", "0"),
                 new Parameter("PageSize", "25"),
                 new Parameter("Product", Product.OUTBOUND_SMS.toString()),
-        }, "usages\\usage.json");
+        }, "usages\\usageslist.json");
         UsagesConnector connector = connectorFactory.getUsagesConnector();
         UsagesRequest ur = new UsagesRequest();
         ur.setPage(0L);
