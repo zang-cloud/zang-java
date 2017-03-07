@@ -4,8 +4,9 @@ import com.zang.api.configuration.ZangConfiguration;
 import com.zang.api.domain.Account;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.restproxies.AccountsProxy;
-import org.jboss.resteasy.client.ClientExecutor;
-import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
+
+import javax.ws.rs.core.Response;
 
 /**
  * The class used for all forms of communication with the Accounts endpoint of the Zang REST API.
@@ -18,7 +19,7 @@ public class AccountsConnector extends BaseConnector {
      * @see BaseConnector, PropertiesFileZangConfiguration,
      * ZangConfiguration
      */
-    AccountsConnector(ZangConfiguration conf, ClientExecutor executor) {
+    AccountsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
         accountsProxy = createProxy(AccountsProxy.class);
     }
@@ -33,8 +34,8 @@ public class AccountsConnector extends BaseConnector {
      * @throws ZangException
      */
     public Account viewAccount(String accountSid) throws ZangException {
-        ClientResponse<Account> acc = accountsProxy.getAccount(accountSid);
-        return returnThrows(acc);
+        Response response = accountsProxy.getAccount(accountSid);
+        return returnThrows(response, Account.class);
     }
 
     /**
@@ -55,8 +56,8 @@ public class AccountsConnector extends BaseConnector {
      * @throws ZangException
      */
     public Account updateAccount(String accountSid, String friendlyName) throws ZangException {
-        ClientResponse<Account> acc = accountsProxy.updateAccount(accountSid, friendlyName);
-        return returnThrows(acc);
+        Response response = accountsProxy.updateAccount(accountSid, friendlyName);
+        return returnThrows(response, Account.class);
     }
 
     /**

@@ -1,16 +1,13 @@
 package com.zang.api.restproxies;
 
-import com.zang.api.domain.Usage;
-import com.zang.api.domain.list.UsagesList;
-import org.jboss.resteasy.client.ClientResponse;
-
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 public interface UsagesProxy {
     @GET
     @Path("Accounts/{AccountSid}/Usages/{UsageSid}.json")
     @Produces("application/json")
-    ClientResponse<Usage> getUsage(
+    Response getUsage(
             @PathParam("AccountSid") String accountSid,
             @PathParam("UsageSid") String usageSid
     );
@@ -18,7 +15,7 @@ public interface UsagesProxy {
     @GET
     @Path("Accounts/{AccountSid}/Usages.json")
     @Produces("application/json")
-    ClientResponse<UsagesList> listUsages(
+    Response listUsages(
             @PathParam("AccountSid") String accountSid,
             @QueryParam(value = "Day") Integer day,
             @QueryParam(value = "Month") Integer month,

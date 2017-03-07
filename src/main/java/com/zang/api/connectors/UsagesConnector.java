@@ -7,8 +7,9 @@ import com.zang.api.domain.list.UsagesList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.requests.UsagesRequest;
 import com.zang.api.restproxies.UsagesProxy;
-import org.jboss.resteasy.client.ClientExecutor;
-import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
+
+import javax.ws.rs.core.Response;
 
 /**
  * The class used for all forms of communication with the Usage endpoint of the Zang REST API.
@@ -21,14 +22,14 @@ public class UsagesConnector extends BaseConnector {
      * @see BaseConnector, PropertiesFileZangConfiguration,
      * ZangConfiguration
      */
-    UsagesConnector(ZangConfiguration conf, ClientExecutor executor) {
+    UsagesConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
         usageProxy = createProxy(UsagesProxy.class);
     }
 
     public Usage viewUsage(String accountSid, String usageSid) throws ZangException {
-        ClientResponse<Usage> usage = usageProxy.getUsage(accountSid, usageSid);
-        return returnThrows(usage);
+        Response response = usageProxy.getUsage(accountSid, usageSid);
+        return returnThrows(response, Usage.class);
     }
 
     public Usage viewUsage(String usageSid) throws ZangException {
@@ -41,9 +42,9 @@ public class UsagesConnector extends BaseConnector {
         if (product != null && product != Product.UNKNOWN) {
             productCode = Integer.parseInt(product.toString());
         }
-        ClientResponse<UsagesList> usages = usageProxy.listUsages(accountSid, day, month, year,
+        Response usages = usageProxy.listUsages(accountSid, day, month, year,
                 productCode, page, pageSize);
-        return returnThrows(usages);
+        return returnThrows(usages, UsagesList.class);
     }
 
     public UsagesList listUsages(Integer day, Integer month, Integer year,

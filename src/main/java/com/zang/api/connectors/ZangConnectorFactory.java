@@ -2,7 +2,7 @@ package com.zang.api.connectors;
 
 import com.zang.api.configuration.BasicZangConfiguration;
 import com.zang.api.configuration.ZangConfiguration;
-import org.jboss.resteasy.client.ClientExecutor;
+import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 /**
  * The class used for all forms of communication with the Zang REST API.
@@ -10,7 +10,7 @@ import org.jboss.resteasy.client.ClientExecutor;
 public class ZangConnectorFactory {
 
     private ZangConfiguration conf;
-    private ClientExecutor executor;
+    private ClientHttpEngine executor;
 
     /**
      * Creates a new ZangConnectorFactory based on the provided configuration.
@@ -24,7 +24,7 @@ public class ZangConnectorFactory {
         this.conf = conf;
     }
 
-    public ZangConnectorFactory(ZangConfiguration conf, ClientExecutor executor) {
+    public ZangConnectorFactory(ZangConfiguration conf, ClientHttpEngine executor) {
         this.conf = conf;
         this.executor = executor;
     }
@@ -37,7 +37,7 @@ public class ZangConnectorFactory {
         return new AccountsConnector(conf, null);
     }
 
-    public static AccountsConnector getAccountsConnector(ZangConfiguration conf, ClientExecutor executor) {
+    public static AccountsConnector getAccountsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new AccountsConnector(conf, executor);
     }
 
@@ -50,7 +50,7 @@ public class ZangConnectorFactory {
         return new UsagesConnector(conf, null);
     }
 
-    public static UsagesConnector getUsagesConnector(ZangConfiguration conf, ClientExecutor executor) {
+    public static UsagesConnector getUsagesConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new UsagesConnector(conf, executor);
     }
 
@@ -63,7 +63,7 @@ public class ZangConnectorFactory {
         return new SmsConnector(conf, null);
     }
 
-    public static SmsConnector getSmsConnector(ZangConfiguration conf, ClientExecutor executor) {
+    public static SmsConnector getSmsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new SmsConnector(conf, executor);
     }
 }

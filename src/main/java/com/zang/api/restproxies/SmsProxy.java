@@ -1,23 +1,21 @@
 package com.zang.api.restproxies;
 
-import com.zang.api.domain.SmsMessage;
 import com.zang.api.domain.enums.HttpMethod;
-import com.zang.api.domain.list.SmsMessageList;
-import org.jboss.resteasy.client.ClientResponse;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 public interface SmsProxy {
     @GET
     @Path("Accounts/{AccountSid}/SMS/Messages/{SMSMessageSid}.json")
     @Produces("application/json")
-    ClientResponse<SmsMessage> getSmsMessage(@PathParam("AccountSid") String accountSid,
-                                             @PathParam("SMSMessageSid") String smsMessageSid);
+    Response getSmsMessage(@PathParam("AccountSid") String accountSid,
+                           @PathParam("SMSMessageSid") String smsMessageSid);
 
     @GET
     @Path("Accounts/{AccountSid}/SMS/Messages.json")
     @Produces("application/json")
-    ClientResponse<SmsMessageList> getSmsMessageList(
+    Response getSmsMessageList(
             @PathParam("AccountSid") String accountSid,
             @QueryParam(value = "To") String to,
             @QueryParam(value = "From") String from,
@@ -30,7 +28,7 @@ public interface SmsProxy {
     @POST
     @Path("Accounts/{AccountSid}/SMS/Messages.json")
     @Produces("application/json")
-    ClientResponse<SmsMessage> sendSmsMessage(
+    Response sendSmsMessage(
             @PathParam("AccountSid") String accountSid,
             @FormParam(value = "To") String to,
             @FormParam(value = "From") String from,

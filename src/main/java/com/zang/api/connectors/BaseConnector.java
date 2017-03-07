@@ -4,11 +4,11 @@ import com.zang.api.configuration.BasicZangConfiguration;
 import com.zang.api.configuration.ZangConfiguration;
 import com.zang.api.configuration.ZangConstants;
 import com.zang.api.exceptions.ZangException;
-import com.zang.api.http.RestExecutor;
-import org.jboss.resteasy.client.ClientExecutor;
-import org.jboss.resteasy.client.ClientResponse;
-import org.jboss.resteasy.client.ProxyFactory;
+import com.zang.api.http.DefaultExecutor;
+import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 import java.util.Date;
@@ -18,7 +18,7 @@ import java.util.Date;
  */
 class BaseConnector {
 
-    private ClientExecutor executor;
+    private ClientHttpEngine executor;
     protected ZangConfiguration conf;
     private String fullBaseUrl;
 
@@ -33,13 +33,14 @@ class BaseConnector {
      * ZangConfiguration
      */
 
-    BaseConnector(ZangConfiguration conf, ClientExecutor executor) {
+    BaseConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         this.conf = conf;
         this.executor = executor;
 
         if (this.executor == null) {
             try {
-                this.executor = RestExecutor.createExecutor(conf);
+
+                this.executor = DefaultExecutor.createExecutor(conf);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -51,17 +52,20 @@ class BaseConnector {
     }
 
     <T> T createProxy(Class<T> clazz) {
-        return ProxyFactory.create(clazz, fullBaseUrl, executor);
+        return new ResteasyClientBuilder().httpEngine(this.executor)
+                .build()
+                .target(fullBaseUrl)
+                .proxy(clazz);
     }
 
-    <T> T returnThrows(ClientResponse<T> response)
+
+    <T> T returnThrows(Response response, Class<T> clazz)
             throws ZangException {
         int status = response.getStatus();
         if (status > 399) {
-            throw response
-                    .getEntity(ZangException.class);
+            throw response.readEntity(ZangException.class);
         }
-        return response.getEntity();
+        return response.readEntity(clazz);
     }
 
     protected static String getDateString(Date date) {

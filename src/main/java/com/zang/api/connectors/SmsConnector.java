@@ -6,9 +6,9 @@ import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.list.SmsMessageList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.restproxies.SmsProxy;
-import org.jboss.resteasy.client.ClientExecutor;
-import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
+import javax.ws.rs.core.Response;
 import java.util.Date;
 
 /**
@@ -22,7 +22,7 @@ public class SmsConnector extends BaseConnector {
      * @see BaseConnector, PropertiesFileZangConfiguration,
      * ZangConfiguration
      */
-    SmsConnector(ZangConfiguration conf, ClientExecutor executor) {
+    SmsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
         smsProxy = createProxy(SmsProxy.class);
     }
@@ -37,9 +37,9 @@ public class SmsConnector extends BaseConnector {
      */
     public SmsMessage viewSmsMessage(String sid, String smsMessageSid)
             throws ZangException {
-        ClientResponse<SmsMessage> sms = smsProxy.getSmsMessage(sid,
+        Response response = smsProxy.getSmsMessage(sid,
                 smsMessageSid);
-        return returnThrows(sms);
+        return returnThrows(response, SmsMessage.class);
     }
 
     /**
@@ -65,10 +65,10 @@ public class SmsConnector extends BaseConnector {
                                           String from, Date dateSentGte, Date dateSentLt, Long page,
                                           Long pageSize) throws ZangException {
 
-        ClientResponse<SmsMessageList> smsList = smsProxy.getSmsMessageList(
+        Response response = smsProxy.getSmsMessageList(
                 accountSid, to, from, getDateString(dateSentGte),
                 getDateString(dateSentLt), page, pageSize);
-        return returnThrows(smsList);
+        return returnThrows(response, SmsMessageList.class);
     }
 
     /**
@@ -110,9 +110,9 @@ public class SmsConnector extends BaseConnector {
     public SmsMessage sendSmsMessage(String accountSid, String to, String from,
                                      String body, String statusCallback, HttpMethod statusCallbackMethod,
                                      Boolean allowMultiple) throws ZangException {
-        ClientResponse<SmsMessage> smsMessage = smsProxy.sendSmsMessage(
+        Response response = smsProxy.sendSmsMessage(
                 accountSid, to, from, body, statusCallback, statusCallbackMethod, allowMultiple);
-        return returnThrows(smsMessage);
+        return returnThrows(response, SmsMessage.class);
     }
 
     /**
