@@ -1,13 +1,12 @@
 package com.zang.api.inboundxml;
 
+import com.zang.api.inboundxml.elements.Response;
+import com.zang.api.inboundxml.elements.ResponseBuilder;
+
 public class ZangInboundXml {
 
-    public static DraftResponse create() {
-        return new DraftResponse();
-    }
-
-    public static DraftDial createDial() {
-        return new DraftDial();
+    public static ResponseBuilder builder() {
+        return Response.builder();
     }
 
 }

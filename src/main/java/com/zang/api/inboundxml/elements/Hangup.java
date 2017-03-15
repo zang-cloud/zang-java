@@ -1,116 +1,50 @@
-
 package com.zang.api.inboundxml.elements;
 
-import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
+import com.zang.api.inboundxml.elements.enums.RejectReason;
+
+import javax.xml.bind.annotation.*;
 
 
-/**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;attribute name="schedule" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *       &lt;attribute name="reason" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
- */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "content"
-})
+@XmlType(name = "", propOrder = {})
 @XmlRootElement(name = "Hangup")
-public class Hangup {
+public class Hangup implements ResponseElement {
 
-    @XmlValue
-    protected String content;
     @XmlAttribute(name = "schedule")
-    protected BigInteger schedule;
+    protected Integer schedule;
     @XmlAttribute(name = "reason")
-    protected String reason;
+    protected RejectReason reason;
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getContent() {
-        return content;
+    public static HangupBuilder builder() {
+        return new HangupBuilder();
     }
 
-    /**
-     * Sets the value of the content property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setContent(String value) {
-        this.content = value;
+
+    public Hangup() {
     }
 
-    /**
-     * Gets the value of the schedule property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getSchedule() {
+    public Hangup(Integer schedule, RejectReason reason) {
+        this.schedule = schedule;
+        this.reason = reason;
+    }
+
+
+    public Integer getSchedule() {
         return schedule;
     }
 
-    /**
-     * Sets the value of the schedule property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setSchedule(BigInteger value) {
+
+    public void setSchedule(Integer value) {
         this.schedule = value;
     }
 
-    /**
-     * Gets the value of the reason property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getReason() {
+
+    public RejectReason getReason() {
         return reason;
     }
 
-    /**
-     * Sets the value of the reason property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setReason(String value) {
+
+    public void setReason(RejectReason value) {
         this.reason = value;
     }
 

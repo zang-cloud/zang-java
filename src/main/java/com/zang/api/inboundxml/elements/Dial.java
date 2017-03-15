@@ -1,98 +1,45 @@
-
 package com.zang.api.inboundxml.elements;
 
-import java.math.BigInteger;
+import com.zang.api.domain.enums.AudioDirection;
+import com.zang.api.domain.enums.HttpMethod;
+import com.zang.api.inboundxml.elements.enums.IfMachine;
+import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
+
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlElementRefs;
-import javax.xml.bind.annotation.XmlMixed;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 
 
-/**
- * <p>Java class for anonymous complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
- * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;choice maxOccurs="unbounded" minOccurs="0">
- *         &lt;element ref="{}Conference"/>
- *         &lt;element ref="{}Number"/>
- *         &lt;element ref="{}Sip"/>
- *         &lt;element ref="{}User"/>
- *       &lt;/choice>
- *       &lt;attribute name="action" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
- *       &lt;attribute name="method" type="{}http_methods" />
- *       &lt;attribute name="timeout" type="{}positive_integer" />
- *       &lt;attribute name="hangupOnStar" type="{}booleans" />
- *       &lt;attribute name="timeLimit" type="{http://www.w3.org/2001/XMLSchema}integer" />
- *       &lt;attribute name="callerId" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="hideCallerId" type="{}booleans" />
- *       &lt;attribute name="callerName" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="dialMusic" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
- *       &lt;attribute name="callbackUrl" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
- *       &lt;attribute name="callbackMethod" type="{}http_methods" />
- *       &lt;attribute name="confirmSound" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="digitsMatch" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="straightToVm" type="{}boolean_or_positive_integer" />
- *       &lt;attribute name="heartbeatUrl" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
- *       &lt;attribute name="heartbeatMethod" type="{}http_methods" />
- *       &lt;attribute name="forwardedFrom" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="record" type="{}booleans" />
- *       &lt;attribute name="recordDirection" type="{}zangDirection" />
- *       &lt;attribute name="recordCallbackUrl" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
- *       &lt;attribute name="recordLifetime" type="{}positive_integer" />
- *       &lt;attribute name="recordFormat" type="{http://www.w3.org/2001/XMLSchema}string" />
- *       &lt;attribute name="ifMachine" type="{}if_machine" />
- *       &lt;attribute name="ifMachineUrl" type="{http://www.w3.org/2001/XMLSchema}anyURI" />
- *       &lt;attribute name="ifMachineMethod" type="{}http_methods" />
- *       &lt;attribute name="outboundAction" type="{}booleans" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
- * </pre>
- * 
- * 
- */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "content"
+        "content"
 })
 @XmlRootElement(name = "Dial")
-public class Dial {
+public class Dial implements ResponseElement {
 
     @XmlElementRefs({
-        @XmlElementRef(name = "User", type = User.class, required = false),
-        @XmlElementRef(name = "Sip", type = Sip.class, required = false),
-        @XmlElementRef(name = "Conference", type = Conference.class, required = false),
-        @XmlElementRef(name = "Number", type = Number.class, required = false)
+            @XmlElementRef(name = "User", type = User.class, required = false),
+            @XmlElementRef(name = "Sip", type = Sip.class, required = false),
+            @XmlElementRef(name = "Conference", type = Conference.class, required = false),
+            @XmlElementRef(name = "Number", type = Number.class, required = false)
     })
     @XmlMixed
-    protected List<Object> content;
+    protected List<DialElement> content;
     @XmlAttribute(name = "action")
     @XmlSchemaType(name = "anyURI")
     protected String action;
     @XmlAttribute(name = "method")
-    protected String method;
+    protected HttpMethod method;
     @XmlAttribute(name = "timeout")
-    protected BigInteger timeout;
+    protected Integer timeout;
     @XmlAttribute(name = "hangupOnStar")
-    protected String hangupOnStar;
+    protected Boolean hangupOnStar;
     @XmlAttribute(name = "timeLimit")
-    protected BigInteger timeLimit;
+    protected Integer timeLimit;
     @XmlAttribute(name = "callerId")
     protected String callerId;
     @XmlAttribute(name = "hideCallerId")
-    protected String hideCallerId;
+    protected Boolean hideCallerId;
     @XmlAttribute(name = "callerName")
     protected String callerName;
     @XmlAttribute(name = "dialMusic")
@@ -102,694 +49,342 @@ public class Dial {
     @XmlSchemaType(name = "anyURI")
     protected String callbackUrl;
     @XmlAttribute(name = "callbackMethod")
-    protected String callbackMethod;
+    protected HttpMethod callbackMethod;
     @XmlAttribute(name = "confirmSound")
     protected String confirmSound;
     @XmlAttribute(name = "digitsMatch")
     protected String digitsMatch;
     @XmlAttribute(name = "straightToVm")
-    protected String straightToVm;
+    protected Boolean straightToVm;
     @XmlAttribute(name = "heartbeatUrl")
     @XmlSchemaType(name = "anyURI")
     protected String heartbeatUrl;
     @XmlAttribute(name = "heartbeatMethod")
-    protected String heartbeatMethod;
+    protected HttpMethod heartbeatMethod;
     @XmlAttribute(name = "forwardedFrom")
     protected String forwardedFrom;
     @XmlAttribute(name = "record")
-    protected String record;
+    protected Boolean record;
     @XmlAttribute(name = "recordDirection")
-    protected String recordDirection;
+    protected AudioDirection recordDirection;
     @XmlAttribute(name = "recordCallbackUrl")
     @XmlSchemaType(name = "anyURI")
     protected String recordCallbackUrl;
     @XmlAttribute(name = "recordLifetime")
-    protected BigInteger recordLifetime;
+    protected Integer recordLifetime;
     @XmlAttribute(name = "recordFormat")
-    protected String recordFormat;
+    protected RecordingFileFormat recordFormat;
     @XmlAttribute(name = "ifMachine")
-    protected String ifMachine;
+    protected IfMachine ifMachine;
     @XmlAttribute(name = "ifMachineUrl")
     @XmlSchemaType(name = "anyURI")
     protected String ifMachineUrl;
     @XmlAttribute(name = "ifMachineMethod")
-    protected String ifMachineMethod;
+    protected HttpMethod ifMachineMethod;
     @XmlAttribute(name = "outboundAction")
     protected String outboundAction;
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Sip }
-     * {@link String }
-     * {@link User }
-     * {@link Conference }
-     * {@link Number }
-     * 
-     * 
-     */
-    public List<Object> getContent() {
+    public static DialBuilder builder() {
+        return new DialBuilder();
+    }
+
+    public Dial() {
+    }
+
+    public Dial(List<DialElement> content, String action, HttpMethod method, Integer timeout, Boolean hangupOnStar, Integer timeLimit, String callerId, Boolean hideCallerId, String callerName, String dialMusic, String callbackUrl, HttpMethod callbackMethod, String confirmSound, String digitsMatch, Boolean straightToVm, String heartbeatUrl, HttpMethod heartbeatMethod, String forwardedFrom, Boolean record, AudioDirection recordDirection, String recordCallbackUrl, Integer recordLifetime, RecordingFileFormat recordFormat, IfMachine ifMachine, String ifMachineUrl, HttpMethod ifMachineMethod, String outboundAction) {
+        this.content = content;
+        this.action = action;
+        this.method = method;
+        this.timeout = timeout;
+        this.hangupOnStar = hangupOnStar;
+        this.timeLimit = timeLimit;
+        this.callerId = callerId;
+        this.hideCallerId = hideCallerId;
+        this.callerName = callerName;
+        this.dialMusic = dialMusic;
+        this.callbackUrl = callbackUrl;
+        this.callbackMethod = callbackMethod;
+        this.confirmSound = confirmSound;
+        this.digitsMatch = digitsMatch;
+        this.straightToVm = straightToVm;
+        this.heartbeatUrl = heartbeatUrl;
+        this.heartbeatMethod = heartbeatMethod;
+        this.forwardedFrom = forwardedFrom;
+        this.record = record;
+        this.recordDirection = recordDirection;
+        this.recordCallbackUrl = recordCallbackUrl;
+        this.recordLifetime = recordLifetime;
+        this.recordFormat = recordFormat;
+        this.ifMachine = ifMachine;
+        this.ifMachineUrl = ifMachineUrl;
+        this.ifMachineMethod = ifMachineMethod;
+        this.outboundAction = outboundAction;
+    }
+
+
+    public List<DialElement> getContent() {
         if (content == null) {
-            content = new ArrayList<Object>();
+            content = new ArrayList<DialElement>();
         }
         return this.content;
     }
 
-    /**
-     * Gets the value of the action property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getAction() {
         return action;
     }
 
-    /**
-     * Sets the value of the action property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setAction(String value) {
         this.action = value;
     }
 
-    /**
-     * Gets the value of the method property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMethod() {
+
+    public HttpMethod getMethod() {
         return method;
     }
 
-    /**
-     * Sets the value of the method property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMethod(String value) {
+
+    public void setMethod(HttpMethod value) {
         this.method = value;
     }
 
-    /**
-     * Gets the value of the timeout property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getTimeout() {
+
+    public Integer getTimeout() {
         return timeout;
     }
 
-    /**
-     * Sets the value of the timeout property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setTimeout(BigInteger value) {
+
+    public void setTimeout(Integer value) {
         this.timeout = value;
     }
 
-    /**
-     * Gets the value of the hangupOnStar property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHangupOnStar() {
+
+    public Boolean getHangupOnStar() {
         return hangupOnStar;
     }
 
-    /**
-     * Sets the value of the hangupOnStar property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHangupOnStar(String value) {
+
+    public void setHangupOnStar(Boolean value) {
         this.hangupOnStar = value;
     }
 
-    /**
-     * Gets the value of the timeLimit property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getTimeLimit() {
+
+    public Integer getTimeLimit() {
         return timeLimit;
     }
 
-    /**
-     * Sets the value of the timeLimit property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setTimeLimit(BigInteger value) {
+
+    public void setTimeLimit(Integer value) {
         this.timeLimit = value;
     }
 
-    /**
-     * Gets the value of the callerId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getCallerId() {
         return callerId;
     }
 
-    /**
-     * Sets the value of the callerId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setCallerId(String value) {
         this.callerId = value;
     }
 
-    /**
-     * Gets the value of the hideCallerId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHideCallerId() {
+
+    public Boolean getHideCallerId() {
         return hideCallerId;
     }
 
-    /**
-     * Sets the value of the hideCallerId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHideCallerId(String value) {
+
+    public void setHideCallerId(Boolean value) {
         this.hideCallerId = value;
     }
 
-    /**
-     * Gets the value of the callerName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getCallerName() {
         return callerName;
     }
 
-    /**
-     * Sets the value of the callerName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setCallerName(String value) {
         this.callerName = value;
     }
 
-    /**
-     * Gets the value of the dialMusic property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getDialMusic() {
         return dialMusic;
     }
 
-    /**
-     * Sets the value of the dialMusic property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setDialMusic(String value) {
         this.dialMusic = value;
     }
 
-    /**
-     * Gets the value of the callbackUrl property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getCallbackUrl() {
         return callbackUrl;
     }
 
-    /**
-     * Sets the value of the callbackUrl property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setCallbackUrl(String value) {
         this.callbackUrl = value;
     }
 
-    /**
-     * Gets the value of the callbackMethod property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCallbackMethod() {
+
+    public HttpMethod getCallbackMethod() {
         return callbackMethod;
     }
 
-    /**
-     * Sets the value of the callbackMethod property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCallbackMethod(String value) {
+
+    public void setCallbackMethod(HttpMethod value) {
         this.callbackMethod = value;
     }
 
-    /**
-     * Gets the value of the confirmSound property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getConfirmSound() {
         return confirmSound;
     }
 
-    /**
-     * Sets the value of the confirmSound property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setConfirmSound(String value) {
         this.confirmSound = value;
     }
 
-    /**
-     * Gets the value of the digitsMatch property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getDigitsMatch() {
         return digitsMatch;
     }
 
-    /**
-     * Sets the value of the digitsMatch property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setDigitsMatch(String value) {
         this.digitsMatch = value;
     }
 
-    /**
-     * Gets the value of the straightToVm property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStraightToVm() {
+
+    public Boolean getStraightToVm() {
         return straightToVm;
     }
 
-    /**
-     * Sets the value of the straightToVm property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStraightToVm(String value) {
+
+    public void setStraightToVm(Boolean value) {
         this.straightToVm = value;
     }
 
-    /**
-     * Gets the value of the heartbeatUrl property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getHeartbeatUrl() {
         return heartbeatUrl;
     }
 
-    /**
-     * Sets the value of the heartbeatUrl property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setHeartbeatUrl(String value) {
         this.heartbeatUrl = value;
     }
 
-    /**
-     * Gets the value of the heartbeatMethod property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getHeartbeatMethod() {
+
+    public HttpMethod getHeartbeatMethod() {
         return heartbeatMethod;
     }
 
-    /**
-     * Sets the value of the heartbeatMethod property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setHeartbeatMethod(String value) {
+
+    public void setHeartbeatMethod(HttpMethod value) {
         this.heartbeatMethod = value;
     }
 
-    /**
-     * Gets the value of the forwardedFrom property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getForwardedFrom() {
         return forwardedFrom;
     }
 
-    /**
-     * Sets the value of the forwardedFrom property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setForwardedFrom(String value) {
         this.forwardedFrom = value;
     }
 
-    /**
-     * Gets the value of the record property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRecord() {
+
+    public Boolean getRecord() {
         return record;
     }
 
-    /**
-     * Sets the value of the record property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRecord(String value) {
+
+    public void setRecord(Boolean value) {
         this.record = value;
     }
 
-    /**
-     * Gets the value of the recordDirection property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRecordDirection() {
+
+    public AudioDirection getRecordDirection() {
         return recordDirection;
     }
 
-    /**
-     * Sets the value of the recordDirection property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRecordDirection(String value) {
+
+    public void setRecordDirection(AudioDirection value) {
         this.recordDirection = value;
     }
 
-    /**
-     * Gets the value of the recordCallbackUrl property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getRecordCallbackUrl() {
         return recordCallbackUrl;
     }
 
-    /**
-     * Sets the value of the recordCallbackUrl property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setRecordCallbackUrl(String value) {
         this.recordCallbackUrl = value;
     }
 
-    /**
-     * Gets the value of the recordLifetime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getRecordLifetime() {
+
+    public Integer getRecordLifetime() {
         return recordLifetime;
     }
 
-    /**
-     * Sets the value of the recordLifetime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setRecordLifetime(BigInteger value) {
+
+    public void setRecordLifetime(Integer value) {
         this.recordLifetime = value;
     }
 
-    /**
-     * Gets the value of the recordFormat property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRecordFormat() {
+
+    public RecordingFileFormat getRecordFormat() {
         return recordFormat;
     }
 
-    /**
-     * Sets the value of the recordFormat property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRecordFormat(String value) {
+
+    public void setRecordFormat(RecordingFileFormat value) {
         this.recordFormat = value;
     }
 
-    /**
-     * Gets the value of the ifMachine property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIfMachine() {
+
+    public IfMachine getIfMachine() {
         return ifMachine;
     }
 
-    /**
-     * Sets the value of the ifMachine property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIfMachine(String value) {
+
+    public void setIfMachine(IfMachine value) {
         this.ifMachine = value;
     }
 
-    /**
-     * Gets the value of the ifMachineUrl property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getIfMachineUrl() {
         return ifMachineUrl;
     }
 
-    /**
-     * Sets the value of the ifMachineUrl property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setIfMachineUrl(String value) {
         this.ifMachineUrl = value;
     }
 
-    /**
-     * Gets the value of the ifMachineMethod property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIfMachineMethod() {
+
+    public HttpMethod getIfMachineMethod() {
         return ifMachineMethod;
     }
 
-    /**
-     * Sets the value of the ifMachineMethod property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIfMachineMethod(String value) {
+
+    public void setIfMachineMethod(HttpMethod value) {
         this.ifMachineMethod = value;
     }
 
-    /**
-     * Gets the value of the outboundAction property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
+
     public String getOutboundAction() {
         return outboundAction;
     }
 
-    /**
-     * Sets the value of the outboundAction property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
+
     public void setOutboundAction(String value) {
         this.outboundAction = value;
     }
