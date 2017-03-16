@@ -56,7 +56,7 @@ public class BaseZangObjectWithMethods extends BaseZangObject {
     }
 
     /**
-     * @return The HTTP method used when making requests to the SmsUrl. Either GET or POST.
+     * @return The HTTP method used when making params to the SmsUrl. Either GET or POST.
      */
     public HttpMethod getSmsMethod() {
         return smsMethod;

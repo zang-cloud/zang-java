@@ -5,7 +5,7 @@ import com.zang.api.domain.Usage;
 import com.zang.api.domain.enums.Product;
 import com.zang.api.domain.list.UsagesList;
 import com.zang.api.exceptions.ZangException;
-import com.zang.api.requests.UsagesRequest;
+import com.zang.api.params.ListUsagesParams;
 import com.zang.api.restproxies.UsagesProxy;
 import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
@@ -52,11 +52,9 @@ public class UsagesConnector extends BaseConnector {
         return listUsages(conf.getSid(), day, month, year, product, page, pageSize);
     }
 
-    public UsagesList listUsages(UsagesRequest usagesRequest) throws ZangException {
-        String accountSid = usagesRequest.getAccountSid();
-        if (accountSid == null) accountSid = conf.getSid();
-        return listUsages(accountSid, usagesRequest.getDay(), usagesRequest.getMonth(), usagesRequest.getYear(),
-                usagesRequest.getProduct(), usagesRequest.getPage(), usagesRequest.getPageSize());
+    public UsagesList listUsages(ListUsagesParams listUsagesParams) throws ZangException {
+        return listUsages(listUsagesParams.getAccountSid() != null ? listUsagesParams.getAccountSid() : conf.getSid(), listUsagesParams.getDay(), listUsagesParams.getMonth(), listUsagesParams.getYear(),
+                listUsagesParams.getProduct(), listUsagesParams.getPage(), listUsagesParams.getPageSize());
     }
 
 }

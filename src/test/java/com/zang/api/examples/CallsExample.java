@@ -10,7 +10,7 @@ import com.zang.api.domain.enums.IfMachine;
 import com.zang.api.domain.enums.RecordingAudioDirection;
 import com.zang.api.domain.list.CallsList;
 import com.zang.api.exceptions.ZangException;
-import com.zang.api.requests.CallRequest;
+import com.zang.api.params.MakeCallParams;
 
 public class CallsExample {
 
@@ -21,7 +21,7 @@ public class CallsExample {
         CallsConnector conn = ZangConnectorFactory.getCallsConnector(conf);
 
         try {
-            Call newCall = conn.makeCall(CallRequest.builder()
+            Call newCall = conn.makeCall(MakeCallParams.builder()
                     .setTo("(XXX) XXX-XXXX")
                     .setFrom("(XXX) XXX-XXXX")
                     .setUrl("http://mydomain.com/inboundxml.xml")

@@ -1,9 +1,9 @@
-package com.zang.api.requests;
+package com.zang.api.params;
 
 import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.IfMachine;
 
-public class CallRequestBuilder {
+public class MakeCallParamsBuilder {
     private String accountSid;
     private String to;
     private String from;
@@ -31,140 +31,140 @@ public class CallRequestBuilder {
     private String sipAuthUsername;
     private String sipAuthPassword;
 
-    CallRequestBuilder() {
+    MakeCallParamsBuilder() {
     }
 
-    public CallRequestBuilder setAccountSid(String accountSid) {
+    public MakeCallParamsBuilder setAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;
     }
 
-    public CallRequestBuilder setTo(String to) {
+    public MakeCallParamsBuilder setTo(String to) {
         this.to = to;
         return this;
     }
 
-    public CallRequestBuilder setFrom(String from) {
+    public MakeCallParamsBuilder setFrom(String from) {
         this.from = from;
         return this;
     }
 
-    public CallRequestBuilder setUrl(String url) {
+    public MakeCallParamsBuilder setUrl(String url) {
         this.url = url;
         return this;
     }
 
-    public CallRequestBuilder setMethod(HttpMethod method) {
+    public MakeCallParamsBuilder setMethod(HttpMethod method) {
         this.method = method;
         return this;
     }
 
-    public CallRequestBuilder setFallbackUrl(String fallbackUrl) {
+    public MakeCallParamsBuilder setFallbackUrl(String fallbackUrl) {
         this.fallbackUrl = fallbackUrl;
         return this;
     }
 
-    public CallRequestBuilder setFallbackMethod(HttpMethod fallbackMethod) {
+    public MakeCallParamsBuilder setFallbackMethod(HttpMethod fallbackMethod) {
         this.fallbackMethod = fallbackMethod;
         return this;
     }
 
-    public CallRequestBuilder setStatusCallback(String statusCallback) {
+    public MakeCallParamsBuilder setStatusCallback(String statusCallback) {
         this.statusCallback = statusCallback;
         return this;
     }
 
-    public CallRequestBuilder setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
+    public MakeCallParamsBuilder setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
         this.statusCallbackMethod = statusCallbackMethod;
         return this;
     }
 
-    public CallRequestBuilder setHeartbeatUrl(String heartbeatUrl) {
+    public MakeCallParamsBuilder setHeartbeatUrl(String heartbeatUrl) {
         this.heartbeatUrl = heartbeatUrl;
         return this;
     }
 
-    public CallRequestBuilder setHeartbeatMethod(HttpMethod heartbeatMethod) {
+    public MakeCallParamsBuilder setHeartbeatMethod(HttpMethod heartbeatMethod) {
         this.heartbeatMethod = heartbeatMethod;
         return this;
     }
 
-    public CallRequestBuilder setForwardedFrom(String forwardedFrom) {
+    public MakeCallParamsBuilder setForwardedFrom(String forwardedFrom) {
         this.forwardedFrom = forwardedFrom;
         return this;
     }
 
-    public CallRequestBuilder setPlayDtmf(String playDtmf) {
+    public MakeCallParamsBuilder setPlayDtmf(String playDtmf) {
         this.playDtmf = playDtmf;
         return this;
     }
 
-    public CallRequestBuilder setTimeout(Integer timeout) {
+    public MakeCallParamsBuilder setTimeout(Integer timeout) {
         this.timeout = timeout;
         return this;
     }
 
-    public CallRequestBuilder setHideCallerId(Boolean hideCallerId) {
+    public MakeCallParamsBuilder setHideCallerId(Boolean hideCallerId) {
         this.hideCallerId = hideCallerId;
         return this;
     }
 
-    public CallRequestBuilder setRecord(Boolean record) {
+    public MakeCallParamsBuilder setRecord(Boolean record) {
         this.record = record;
         return this;
     }
 
-    public CallRequestBuilder setRecordCallback(String recordCallback) {
+    public MakeCallParamsBuilder setRecordCallback(String recordCallback) {
         this.recordCallback = recordCallback;
         return this;
     }
 
-    public CallRequestBuilder setRecordCallbackMethod(HttpMethod recordCallbackMethod) {
+    public MakeCallParamsBuilder setRecordCallbackMethod(HttpMethod recordCallbackMethod) {
         this.recordCallbackMethod = recordCallbackMethod;
         return this;
     }
 
-    public CallRequestBuilder setTranscribe(Boolean transcribe) {
+    public MakeCallParamsBuilder setTranscribe(Boolean transcribe) {
         this.transcribe = transcribe;
         return this;
     }
 
-    public CallRequestBuilder setTranscribeCallback(String transcribeCallback) {
+    public MakeCallParamsBuilder setTranscribeCallback(String transcribeCallback) {
         this.transcribeCallback = transcribeCallback;
         return this;
     }
 
-    public CallRequestBuilder setStraightToVoicemail(Boolean straightToVoicemail) {
+    public MakeCallParamsBuilder setStraightToVoicemail(Boolean straightToVoicemail) {
         this.straightToVoicemail = straightToVoicemail;
         return this;
     }
 
-    public CallRequestBuilder setIfMachine(IfMachine ifMachine) {
+    public MakeCallParamsBuilder setIfMachine(IfMachine ifMachine) {
         this.ifMachine = ifMachine;
         return this;
     }
 
-    public CallRequestBuilder setIfMachineUrl(String ifMachineUrl) {
+    public MakeCallParamsBuilder setIfMachineUrl(String ifMachineUrl) {
         this.ifMachineUrl = ifMachineUrl;
         return this;
     }
 
-    public CallRequestBuilder setIfMachineMethod(HttpMethod ifMachineMethod) {
+    public MakeCallParamsBuilder setIfMachineMethod(HttpMethod ifMachineMethod) {
         this.ifMachineMethod = ifMachineMethod;
         return this;
     }
 
-    public CallRequestBuilder setSipAuthUsername(String sipAuthUsername) {
+    public MakeCallParamsBuilder setSipAuthUsername(String sipAuthUsername) {
         this.sipAuthUsername = sipAuthUsername;
         return this;
     }
 
-    public CallRequestBuilder setSipAuthPassword(String sipAuthPassword) {
+    public MakeCallParamsBuilder setSipAuthPassword(String sipAuthPassword) {
         this.sipAuthPassword = sipAuthPassword;
         return this;
     }
 
-    public CallRequest build() {
-        return new CallRequest(accountSid, to, from, url, method, fallbackUrl, fallbackMethod, statusCallback, statusCallbackMethod, heartbeatUrl, heartbeatMethod, forwardedFrom, playDtmf, timeout, hideCallerId, record, recordCallback, recordCallbackMethod, transcribe, transcribeCallback, straightToVoicemail, ifMachine, ifMachineUrl, ifMachineMethod, sipAuthUsername, sipAuthPassword);
+    public MakeCallParams build() {
+        return new MakeCallParams(accountSid, to, from, url, method, fallbackUrl, fallbackMethod, statusCallback, statusCallbackMethod, heartbeatUrl, heartbeatMethod, forwardedFrom, playDtmf, timeout, hideCallerId, record, recordCallback, recordCallbackMethod, transcribe, transcribeCallback, straightToVoicemail, ifMachine, ifMachineUrl, ifMachineMethod, sipAuthUsername, sipAuthPassword);
     }
 }

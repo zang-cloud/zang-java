@@ -1,9 +1,9 @@
-package com.zang.api.requests;
+package com.zang.api.params;
 
 import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.IfMachine;
 
-public class CallRequest {
+public class MakeCallParams {
 
     private String accountSid;
     private String to;
@@ -32,14 +32,14 @@ public class CallRequest {
     private String sipAuthUsername;
     private String sipAuthPassword;
 
-    public static CallRequestBuilder builder() {
-        return new CallRequestBuilder();
+    public static MakeCallParamsBuilder builder() {
+        return new MakeCallParamsBuilder();
     }
 
-    public CallRequest() {
+    public MakeCallParams() {
     }
 
-    public CallRequest(String accountSid, String to, String from, String url, HttpMethod method, String fallbackUrl, HttpMethod fallbackMethod, String statusCallback, HttpMethod statusCallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String forwardedFrom, String playDtmf, Integer timeout, Boolean hideCallerId, Boolean record, String recordCallback, HttpMethod recordCallbackMethod, Boolean transcribe, String transcribeCallback, Boolean straightToVoicemail, IfMachine ifMachine, String ifMachineUrl, HttpMethod ifMachineMethod, String sipAuthUsername, String sipAuthPassword) {
+    public MakeCallParams(String accountSid, String to, String from, String url, HttpMethod method, String fallbackUrl, HttpMethod fallbackMethod, String statusCallback, HttpMethod statusCallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String forwardedFrom, String playDtmf, Integer timeout, Boolean hideCallerId, Boolean record, String recordCallback, HttpMethod recordCallbackMethod, Boolean transcribe, String transcribeCallback, Boolean straightToVoicemail, IfMachine ifMachine, String ifMachineUrl, HttpMethod ifMachineMethod, String sipAuthUsername, String sipAuthPassword) {
         this.accountSid = accountSid;
         this.to = to;
         this.from = from;

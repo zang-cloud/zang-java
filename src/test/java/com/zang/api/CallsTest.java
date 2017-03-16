@@ -6,7 +6,7 @@ import com.zang.api.domain.enums.*;
 import com.zang.api.domain.list.CallsList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
-import com.zang.api.requests.CallRequest;
+import com.zang.api.params.MakeCallParams;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.mockserver.model.Parameter;
@@ -82,7 +82,7 @@ public class CallsTest extends BaseZangTest {
                 }, null,
                 "/calls/call.json");
         CallsConnector connector = connectorFactory.getCallsConnector();
-        Call call = connector.makeCall(CallRequest.builder()
+        Call call = connector.makeCall(MakeCallParams.builder()
                 .setTo("+123456")
                 .setFrom("+654321")
                 .setUrl("TestUrl")

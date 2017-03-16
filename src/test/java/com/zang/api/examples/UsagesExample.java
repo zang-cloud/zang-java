@@ -8,7 +8,7 @@ import com.zang.api.domain.Usage;
 import com.zang.api.domain.enums.Product;
 import com.zang.api.domain.list.UsagesList;
 import com.zang.api.exceptions.ZangException;
-import com.zang.api.requests.UsagesRequest;
+import com.zang.api.params.ListUsagesParams;
 
 import java.math.BigDecimal;
 
@@ -24,11 +24,12 @@ public class UsagesExample extends BaseZangTest {
             //get a specific usage
             conn.viewUsage("{UsageSid}");
 
-            UsagesRequest usagesRequest = new UsagesRequest();
-            usagesRequest.setProduct(Product.OUTBOUND_SMS);
-            usagesRequest.setYear(2017);
-            usagesRequest.setMonth(2);
-            usagesRequest.setPageSize(100);
+            ListUsagesParams usagesRequest = ListUsagesParams.builder()
+                    .setProduct(Product.OUTBOUND_SMS)
+                    .setYear(2017)
+                    .setMonth(2)
+                    .setPageSize(100)
+                    .build();
 
             //get a list of usages
             UsagesList usagesList = conn.listUsages(usagesRequest);

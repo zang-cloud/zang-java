@@ -1,8 +1,8 @@
-package com.zang.api.requests;
+package com.zang.api.params;
 
 import com.zang.api.domain.enums.Product;
 
-public class UsagesRequest {
+public class ListUsagesParams {
     private String accountSid;
     private Integer day;
     private Integer month;
@@ -10,6 +10,23 @@ public class UsagesRequest {
     private Product product;
     private Integer page;
     private Integer pageSize;
+
+    public static ListUsagesParamsBuilder builder() {
+        return new ListUsagesParamsBuilder();
+    }
+
+    public ListUsagesParams() {
+    }
+
+    public ListUsagesParams(String accountSid, Integer day, Integer month, Integer year, Product product, Integer page, Integer pageSize) {
+        this.accountSid = accountSid;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.product = product;
+        this.page = page;
+        this.pageSize = pageSize;
+    }
 
     public String getAccountSid() {
         return accountSid;

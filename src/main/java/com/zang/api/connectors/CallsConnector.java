@@ -6,7 +6,7 @@ import com.zang.api.domain.enums.*;
 import com.zang.api.domain.list.CallsList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
-import com.zang.api.requests.CallRequest;
+import com.zang.api.params.MakeCallParams;
 import com.zang.api.restproxies.CallsProxy;
 import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
@@ -54,8 +54,8 @@ public class CallsConnector extends BaseConnector {
         return returnThrows(response, Call.class);
     }
 
-    public Call makeCall(CallRequest callRequest) throws ZangException {
-        return makeCall(callRequest.getAccountSid() != null ? callRequest.getAccountSid() : conf.getSid(), callRequest.getTo(), callRequest.getFrom(), callRequest.getUrl(), callRequest.getMethod(), callRequest.getFallbackUrl(), callRequest.getFallbackMethod(), callRequest.getStatusCallback(), callRequest.getStatusCallbackMethod(), callRequest.getHeartbeatUrl(), callRequest.getHeartbeatMethod(), callRequest.getForwardedFrom(), callRequest.getPlayDtmf(), callRequest.getTimeout(), callRequest.getHideCallerId(), callRequest.getRecord(), callRequest.getRecordCallback(), callRequest.getRecordCallbackMethod(), callRequest.getTranscribe(), callRequest.getTranscribeCallback(), callRequest.getStraightToVoicemail(), callRequest.getIfMachine(), callRequest.getIfMachineUrl(), callRequest.getIfMachineMethod(), callRequest.getSipAuthUsername(), callRequest.getSipAuthPassword());
+    public Call makeCall(MakeCallParams callParams) throws ZangException {
+        return makeCall(callParams.getAccountSid() != null ? callParams.getAccountSid() : conf.getSid(), callParams.getTo(), callParams.getFrom(), callParams.getUrl(), callParams.getMethod(), callParams.getFallbackUrl(), callParams.getFallbackMethod(), callParams.getStatusCallback(), callParams.getStatusCallbackMethod(), callParams.getHeartbeatUrl(), callParams.getHeartbeatMethod(), callParams.getForwardedFrom(), callParams.getPlayDtmf(), callParams.getTimeout(), callParams.getHideCallerId(), callParams.getRecord(), callParams.getRecordCallback(), callParams.getRecordCallbackMethod(), callParams.getTranscribe(), callParams.getTranscribeCallback(), callParams.getStraightToVoicemail(), callParams.getIfMachine(), callParams.getIfMachineUrl(), callParams.getIfMachineMethod(), callParams.getSipAuthUsername(), callParams.getSipAuthPassword());
     }
 
     public Call interruptLiveCall(String accountSid, String callSid, String url, HttpMethod method, EndCallStatus status) throws ZangException {
