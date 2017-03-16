@@ -1,9 +1,9 @@
 package com.zang.api.inboundxml.elements;
 
 import com.zang.api.domain.enums.HttpMethod;
-import com.zang.api.inboundxml.elements.enums.RecordingAudioDirection;
+import com.zang.api.domain.enums.RecordingAudioDirection;
+import com.zang.api.domain.enums.TranscribeQuality;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
-import com.zang.api.inboundxml.elements.enums.TranscribeQuality;
 
 import javax.xml.bind.annotation.*;
 

@@ -66,4 +66,16 @@ public class ZangConnectorFactory {
     public static SmsConnector getSmsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new SmsConnector(conf, executor);
     }
+
+    public CallsConnector getCallsConnector() {
+        return new CallsConnector(this.conf, this.executor);
+    }
+
+    public static CallsConnector getCallsConnector(ZangConfiguration conf) {
+        return new CallsConnector(conf, null);
+    }
+
+    public static CallsConnector getCallsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new CallsConnector(conf, executor);
+    }
 }

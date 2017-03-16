@@ -59,11 +59,11 @@ public class SmsConnector extends BaseConnector {
      * @param accountSid The account sid (required).
      * @return A list of SmsMessage resources.
      * @throws ZangException
-     * @see #listSmsMessages(String, String, Date, Date, Long, Long)
+     * @see #listSmsMessages(String, String, Date, Date, Integer, Integer)
      */
     public SmsMessageList listSmsMessages(String accountSid, String to,
-                                          String from, Date dateSentGte, Date dateSentLt, Long page,
-                                          Long pageSize) throws ZangException {
+                                          String from, Date dateSentGte, Date dateSentLt, Integer page,
+                                          Integer pageSize) throws ZangException {
 
         Response response = smsProxy.getSmsMessageList(
                 accountSid, to, from, getDateString(dateSentGte),
@@ -85,7 +85,7 @@ public class SmsConnector extends BaseConnector {
      * @throws ZangException
      */
     public SmsMessageList listSmsMessages(String to, String from,
-                                          Date dateSentGte, Date dateSentLt, Long page, Long pageSize)
+                                          Date dateSentGte, Date dateSentLt, Integer page, Integer pageSize)
             throws ZangException {
         return listSmsMessages(conf.getSid(), to, from, dateSentGte,
                 dateSentLt, page, pageSize);

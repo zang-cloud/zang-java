@@ -37,7 +37,7 @@ public class UsagesConnector extends BaseConnector {
     }
 
     public UsagesList listUsages(String accountSid, Integer day, Integer month, Integer year,
-                                 Product product, Long page, Long pageSize) throws ZangException {
+                                 Product product, Integer page, Integer pageSize) throws ZangException {
         Integer productCode = null;
         if (product != null && product != Product.UNKNOWN) {
             productCode = Integer.parseInt(product.toString());
@@ -48,7 +48,7 @@ public class UsagesConnector extends BaseConnector {
     }
 
     public UsagesList listUsages(Integer day, Integer month, Integer year,
-                                 Product product, Long page, Long pageSize) throws ZangException {
+                                 Product product, Integer page, Integer pageSize) throws ZangException {
         return listUsages(conf.getSid(), day, month, year, product, page, pageSize);
     }
 

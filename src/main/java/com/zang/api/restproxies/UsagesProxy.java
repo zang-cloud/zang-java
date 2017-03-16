@@ -21,8 +21,8 @@ public interface UsagesProxy {
             @QueryParam(value = "Month") Integer month,
             @QueryParam(value = "Year") Integer year,
             @QueryParam(value = "Product") Integer product,
-            @QueryParam(value = "Page") Long page,
-            @QueryParam(value = "PageSize") Long pageSize
+            @QueryParam(value = "Page") Integer page,
+            @QueryParam(value = "PageSize") Integer pageSize
     );
 
 

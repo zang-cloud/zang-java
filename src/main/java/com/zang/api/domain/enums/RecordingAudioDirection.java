@@ -1,4 +1,4 @@
-package com.zang.api.inboundxml.elements.enums;
+package com.zang.api.domain.enums;
 
 import com.zang.api.domain.enums.util.EnumUtil;
 import org.codehaus.jackson.annotate.JsonCreator;

@@ -28,7 +28,7 @@ public class UsagesExample extends BaseZangTest {
             usagesRequest.setProduct(Product.OUTBOUND_SMS);
             usagesRequest.setYear(2017);
             usagesRequest.setMonth(2);
-            usagesRequest.setPageSize(100L);
+            usagesRequest.setPageSize(100);
 
             //get a list of usages
             UsagesList usagesList = conn.listUsages(usagesRequest);

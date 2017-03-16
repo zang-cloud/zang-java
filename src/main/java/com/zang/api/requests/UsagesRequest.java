@@ -8,8 +8,8 @@ public class UsagesRequest {
     private Integer month;
     private Integer year;
     private Product product;
-    private Long page;
-    private Long pageSize;
+    private Integer page;
+    private Integer pageSize;
 
     public String getAccountSid() {
         return accountSid;
@@ -51,19 +51,19 @@ public class UsagesRequest {
         this.product = product;
     }
 
-    public Long getPage() {
+    public Integer getPage() {
         return page;
     }
 
-    public void setPage(Long page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
-    public Long getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public void setPageSize(Long pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 }

@@ -2,7 +2,7 @@ package com.zang.api.inboundxml.elements;
 
 import com.zang.api.domain.enums.AudioDirection;
 import com.zang.api.domain.enums.HttpMethod;
-import com.zang.api.inboundxml.elements.enums.IfMachine;
+import com.zang.api.domain.enums.IfMachine;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 
 import javax.xml.bind.annotation.*;

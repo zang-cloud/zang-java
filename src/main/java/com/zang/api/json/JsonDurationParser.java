@@ -7,19 +7,19 @@ import org.codehaus.jackson.map.JsonDeserializer;
 
 import java.io.IOException;
 
-public class JsonDurationParser extends JsonDeserializer<Long> {
+public class JsonDurationParser extends JsonDeserializer<Integer> {
     @Override
-    public Long deserialize(JsonParser jsonparser,
+    public Integer deserialize(JsonParser jsonparser,
                             DeserializationContext deserializationcontext) throws IOException,
             JsonProcessingException {
-        String date = jsonparser.getText();
-        if (date == null)
+        String text = jsonparser.getText();
+        if (text == null)
             return null;
         try {
-            Long retVal = new Long(date);
+            Integer retVal = new Integer(text);
             return retVal;
         } catch (NumberFormatException e) {
-            return 0L;
+            return 0;
         }
 
     }

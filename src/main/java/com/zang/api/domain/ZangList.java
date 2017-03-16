@@ -7,14 +7,14 @@ import java.util.List;
 
 public abstract class ZangList<T> implements Iterable<T> {
 
-    Long page;
+    Integer page;
     @JsonProperty(value = "num_pages")
-    Long numpages;
+    Integer numpages;
     @JsonProperty(value = "page_size")
-    Long pagesize;
-    Long total;
-    Long start;
-    Long end;
+    Integer pagesize;
+    Integer total;
+    Integer start;
+    Integer end;
     String uri;
     @JsonProperty(value = "first_page_uri")
     String firstPageUri;
@@ -27,51 +27,51 @@ public abstract class ZangList<T> implements Iterable<T> {
 
     List<T> elements;
 
-    public Long getPage() {
+    public Integer getPage() {
         return page;
     }
 
-    public void setPage(Long page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
-    public Long getNumpages() {
+    public Integer getNumpages() {
         return numpages;
     }
 
-    public void setNumpages(Long numpages) {
+    public void setNumpages(Integer numpages) {
         this.numpages = numpages;
     }
 
-    public Long getPagesize() {
+    public Integer getPagesize() {
         return pagesize;
     }
 
-    public void setPagesize(Long pagesize) {
+    public void setPagesize(Integer pagesize) {
         this.pagesize = pagesize;
     }
 
-    public Long getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(Long total) {
+    public void setTotal(Integer total) {
         this.total = total;
     }
 
-    public Long getStart() {
+    public Integer getStart() {
         return start;
     }
 
-    public void setStart(Long start) {
+    public void setStart(Integer start) {
         this.start = start;
     }
 
-    public Long getEnd() {
+    public Integer getEnd() {
         return end;
     }
 
-    public void setEnd(Long end) {
+    public void setEnd(Integer end) {
         this.end = end;
     }
 

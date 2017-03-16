@@ -36,7 +36,7 @@ public class SmsTest extends BaseZangTest {
                 },
                 "/sms/smslist.json");
         SmsConnector connector = connectorFactory.getSmsConnector();
-        SmsMessageList smsMessages = connector.listSmsMessages("+123456", null, null, null, 0L, 10L);
+        SmsMessageList smsMessages = connector.listSmsMessages("+123456", null, null, null, 0, 10);
         int cnt = 0;
         Iterator<SmsMessage> it = smsMessages.iterator();
         SmsMessage fromList = null;

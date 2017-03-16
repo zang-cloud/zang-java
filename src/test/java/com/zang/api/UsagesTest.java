@@ -29,8 +29,8 @@ public class UsagesTest extends BaseZangTest {
         }, "/usages/usageslist.json");
         UsagesConnector connector = connectorFactory.getUsagesConnector();
         UsagesRequest ur = new UsagesRequest();
-        ur.setPage(0L);
-        ur.setPageSize(25L);
+        ur.setPage(0);
+        ur.setPageSize(25);
         ur.setProduct(Product.OUTBOUND_SMS);
         connector.listUsages(ur);
 

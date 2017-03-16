@@ -21,8 +21,8 @@ public interface SmsProxy {
             @QueryParam(value = "From") String from,
             @QueryParam(value = "DateSent>") String dateSentGte,
             @QueryParam(value = "DateSent<") String dateSentLt,
-            @QueryParam(value = "Page") Long page,
-            @QueryParam(value = "PageSize") Long pageSize
+            @QueryParam(value = "Page") Integer page,
+            @QueryParam(value = "PageSize") Integer pageSize
     );
 
     @POST

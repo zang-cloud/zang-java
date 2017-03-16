@@ -1,6 +1,7 @@
-package com.zang.api.inboundxml.elements.enums;
+package com.zang.api.domain.enums;
 
 import com.zang.api.domain.enums.util.EnumUtil;
+import org.codehaus.jackson.annotate.JsonCreator;
 
 import javax.xml.bind.annotation.XmlEnumValue;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ public enum IfMachine {
         map.put(HANGUP, "hangup");
     }
 
+    @JsonCreator
     public static IfMachine forValue(String s) {
         return EnumUtil.getValue(s, map, null);
     }
