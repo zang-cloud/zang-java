@@ -1,62 +1,77 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.inboundxml.elements.enums.Language;
+import com.zang.api.inboundxml.elements.enums.Voice;
+
 import javax.xml.bind.annotation.*;
-import java.math.BigInteger;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "content"
+        "text"
 })
 @XmlRootElement(name = "Say")
 public class Say implements ResponseElement, GatherElement, GetSpeechElement {
 
     @XmlValue
-    protected String content;
+    protected String text;
     @XmlAttribute(name = "loop")
-    protected BigInteger loop;
+    protected Integer loop;
     @XmlAttribute(name = "voice")
-    protected SayVoice voice;
+    protected Voice voice;
     @XmlAttribute(name = "language")
-    protected TtsLanguages language;
+    protected Language language;
 
+    public static SayBuilder builder() {
+        return new SayBuilder();
+    }
 
-    public String getContent() {
-        return content;
+    public Say() {
+    }
+
+    public Say(String text, Integer loop, Voice voice, Language language) {
+        this.text = text;
+        this.loop = loop;
+        this.voice = voice;
+        this.language = language;
+    }
+
+    public String getText() {
+        return text;
     }
 
 
-    public void setContent(String value) {
-        this.content = value;
+    public void setText(String text) {
+        this.text = text;
     }
 
 
-    public BigInteger getLoop() {
+    public Integer getLoop() {
         return loop;
     }
 
 
-    public void setLoop(BigInteger value) {
+    public void setLoop(Integer value) {
         this.loop = value;
     }
 
 
-    public SayVoice getVoice() {
+    public Voice getVoice() {
         return voice;
     }
 
 
-    public void setVoice(SayVoice value) {
+    public void setVoice(Voice value) {
         this.voice = value;
     }
 
 
-    public TtsLanguages getLanguage() {
+    public Language getLanguage() {
         return language;
     }
 
 
-    public void setLanguage(TtsLanguages value) {
+    public void setLanguage(Language value) {
         this.language = value;
     }
 

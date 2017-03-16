@@ -1,37 +1,35 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.inboundxml.elements.enums.RejectReason;
+
 import javax.xml.bind.annotation.*;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-        "content"
-})
+@XmlType(name = "", propOrder = {})
 @XmlRootElement(name = "Reject")
 public class Reject implements ResponseElement {
 
-    @XmlValue
-    protected String content;
     @XmlAttribute(name = "reason")
-    protected RejectModes reason;
+    protected RejectReason reason;
 
-
-    public String getContent() {
-        return content;
+    public static RejectBuilder builder() {
+        return new RejectBuilder();
     }
 
-
-    public void setContent(String value) {
-        this.content = value;
+    public Reject() {
     }
 
+    public Reject(RejectReason reason) {
+        this.reason = reason;
+    }
 
-    public RejectModes getReason() {
+    public RejectReason getReason() {
         return reason;
     }
 
 
-    public void setReason(RejectModes value) {
+    public void setReason(RejectReason value) {
         this.reason = value;
     }
 

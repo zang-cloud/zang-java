@@ -1,4 +1,4 @@
-package com.zang.api.inboundxml.elements;
+package com.zang.api.inboundxml.elements.enums;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name = "tts_languages")
 @XmlEnum
-public enum TtsLanguages {
+public enum Language {
 
     @XmlEnumValue("en")
     EN("en"),
@@ -23,7 +23,7 @@ public enum TtsLanguages {
     DE("de");
     private final String value;
 
-    TtsLanguages(String v) {
+    Language(String v) {
         value = v;
     }
 
@@ -31,8 +31,8 @@ public enum TtsLanguages {
         return value;
     }
 
-    public static TtsLanguages fromValue(String v) {
-        for (TtsLanguages c : TtsLanguages.values()) {
+    public static Language fromValue(String v) {
+        for (Language c : Language.values()) {
             if (c.value.equals(v)) {
                 return c;
             }

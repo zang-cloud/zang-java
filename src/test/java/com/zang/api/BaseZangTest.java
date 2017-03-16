@@ -69,7 +69,8 @@ public abstract class BaseZangTest {
         }
         if (bodyParams == null) bodyParams = new Parameter[]{};
         if (queryParams == null) queryParams = new Parameter[]{};
-        String responseBody = Resources.toString(Resources.getResource(responseFile), Charsets.UTF_8);
+        System.out.println(BaseZangTest.class.getResource(responseFile));
+        String responseBody = Resources.toString(BaseZangTest.class.getResource(responseFile), Charsets.UTF_8);
         mockServer.when(HttpRequest
                 .request()
                 .withMethod(method)

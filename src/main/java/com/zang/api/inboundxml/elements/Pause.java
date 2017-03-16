@@ -4,27 +4,23 @@ import javax.xml.bind.annotation.*;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-        "content"
-})
+@XmlType(name = "", propOrder = {})
 @XmlRootElement(name = "Pause")
 public class Pause implements ResponseElement, GatherElement, GetSpeechElement {
 
-    @XmlValue
-    protected String content;
     @XmlAttribute(name = "length")
     protected Integer length;
 
-
-    public String getContent() {
-        return content;
+    public static PauseBuilder builder() {
+        return new PauseBuilder();
     }
 
-
-    public void setContent(String value) {
-        this.content = value;
+    public Pause() {
     }
 
+    public Pause(Integer length) {
+        this.length = length;
+    }
 
     public Integer getLength() {
         return length;

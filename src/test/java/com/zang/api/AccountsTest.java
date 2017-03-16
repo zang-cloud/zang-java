@@ -14,7 +14,7 @@ public class AccountsTest extends BaseZangTest {
     @Test
     public void testViewAccount() throws ZangException, IOException {
         createExpectation("GET", "Accounts", null, null,
-                "accounts\\account.json");
+                "/accounts/account.json");
         AccountsConnector connector = connectorFactory.getAccountsConnector();
         Account account = connector.viewAccount(conf.getSid());
         Assert.assertEquals("friendlyname1", account.getFriendlyName());
@@ -25,7 +25,7 @@ public class AccountsTest extends BaseZangTest {
         createExpectation("POST", "Accounts",
                 new Parameter[]{
                         new Parameter("FriendlyName", "friendlyname1")
-                }, null, "accounts\\account.json");
+                }, null, "/accounts/account.json");
         AccountsConnector connector = connectorFactory.getAccountsConnector();
         connector.updateAccount("friendlyname1");
     }

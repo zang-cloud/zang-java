@@ -6,21 +6,21 @@ import javax.xml.bind.annotation.XmlEnumValue;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum RecordingFileFormat {
-    @XmlEnumValue("mp3")
-    MP3,
-    @XmlEnumValue("wav")
-    WAV;
+public enum TranscribeQuality {
+    @XmlEnumValue("auto")
+    AUTO,
+    @XmlEnumValue("hybrid")
+    HYBRID;
 
-    private static Map<RecordingFileFormat, String> map;
+    private static Map<TranscribeQuality, String> map;
 
     static {
-        map = new HashMap<RecordingFileFormat, String>();
-        map.put(MP3, "mp3");
-        map.put(WAV, "wav");
+        map = new HashMap<TranscribeQuality, String>();
+        map.put(AUTO, "auto");
+        map.put(HYBRID, "hybrid");
     }
 
-    public static RecordingFileFormat forValue(String s) {
+    public static TranscribeQuality forValue(String s) {
         return EnumUtil.getValue(s, map, null);
     }
 

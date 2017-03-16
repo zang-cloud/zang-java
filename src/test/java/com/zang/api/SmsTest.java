@@ -20,7 +20,7 @@ public class SmsTest extends BaseZangTest {
     @Test
     public void viewSms() throws ZangException, IOException {
         createExpectation("GET", "SMS/Messages/TestSmsSid.json", null, null,
-                "sms\\sms.json");
+                "/sms/sms.json");
         SmsConnector connector = connectorFactory.getSmsConnector();
         SmsMessage smsMessage = connector.viewSmsMessage("TestSmsSid");
         checkMessage(smsMessage);
@@ -34,7 +34,7 @@ public class SmsTest extends BaseZangTest {
                         new Parameter("Page", "0"),
                         new Parameter("PageSize", "10")
                 },
-                "sms\\smslist.json");
+                "/sms/smslist.json");
         SmsConnector connector = connectorFactory.getSmsConnector();
         SmsMessageList smsMessages = connector.listSmsMessages("+123456", null, null, null, 0L, 10L);
         int cnt = 0;
@@ -61,7 +61,7 @@ public class SmsTest extends BaseZangTest {
                         new Parameter("StatusCallbackMethod", "GET"),
                         new Parameter("AllowMultiple", "False")
                 }, null,
-                "sms\\sms.json");
+                "/sms/sms.json");
 
         SmsConnector connector = connectorFactory.getSmsConnector();
         SmsMessage smsMessage = connector.sendSmsMessage(testParameters.getPhone1(), testParameters.getPhone2(),

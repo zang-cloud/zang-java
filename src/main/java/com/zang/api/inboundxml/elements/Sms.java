@@ -1,17 +1,19 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.domain.enums.HttpMethod;
+
 import javax.xml.bind.annotation.*;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "content"
+        "text"
 })
 @XmlRootElement(name = "Sms")
 public class Sms implements ResponseElement {
 
     @XmlValue
-    protected String content;
+    protected String text;
     @XmlAttribute(name = "to", required = true)
     protected String to;
     @XmlAttribute(name = "from", required = true)
@@ -20,20 +22,36 @@ public class Sms implements ResponseElement {
     @XmlSchemaType(name = "anyURI")
     protected String action;
     @XmlAttribute(name = "method")
-    protected String method;
+    protected HttpMethod method;
     @XmlAttribute(name = "statusCallback")
     @XmlSchemaType(name = "anyURI")
     protected String statusCallback;
     @XmlAttribute(name = "statusCallbackMethod")
-    protected String statusCallbackMethod;
+    protected HttpMethod statusCallbackMethod;
 
-
-    public String getContent() {
-        return content;
+    public static SmsBuilder builder() {
+        return new SmsBuilder();
     }
 
-    public void setContent(String value) {
-        this.content = value;
+    public Sms() {
+    }
+
+    public Sms(String text, String to, String from, String action, HttpMethod method, String statusCallback, HttpMethod statusCallbackMethod) {
+        this.text = text;
+        this.to = to;
+        this.from = from;
+        this.action = action;
+        this.method = method;
+        this.statusCallback = statusCallback;
+        this.statusCallbackMethod = statusCallbackMethod;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
 
@@ -67,12 +85,12 @@ public class Sms implements ResponseElement {
     }
 
 
-    public String getMethod() {
+    public HttpMethod getMethod() {
         return method;
     }
 
 
-    public void setMethod(String value) {
+    public void setMethod(HttpMethod value) {
         this.method = value;
     }
 
@@ -87,12 +105,12 @@ public class Sms implements ResponseElement {
     }
 
 
-    public String getStatusCallbackMethod() {
+    public HttpMethod getStatusCallbackMethod() {
         return statusCallbackMethod;
     }
 
 
-    public void setStatusCallbackMethod(String value) {
+    public void setStatusCallbackMethod(HttpMethod value) {
         this.statusCallbackMethod = value;
     }
 

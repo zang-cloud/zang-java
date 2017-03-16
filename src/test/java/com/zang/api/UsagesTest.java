@@ -14,7 +14,7 @@ public class UsagesTest extends BaseZangTest {
     @Test
     public void viewUsage() throws ZangException, IOException {
         createExpectation("GET", "Usages/TestUsageSid.json", null, null,
-                "usages\\usage.json");
+                "/usages/usage.json");
         UsagesConnector connector = connectorFactory.getUsagesConnector();
         connector.viewUsage("TestUsageSid");
 
@@ -26,7 +26,7 @@ public class UsagesTest extends BaseZangTest {
                 new Parameter("Page", "0"),
                 new Parameter("PageSize", "25"),
                 new Parameter("Product", Product.OUTBOUND_SMS.toString()),
-        }, "usages\\usageslist.json");
+        }, "/usages/usageslist.json");
         UsagesConnector connector = connectorFactory.getUsagesConnector();
         UsagesRequest ur = new UsagesRequest();
         ur.setPage(0L);

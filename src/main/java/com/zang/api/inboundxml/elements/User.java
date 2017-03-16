@@ -17,6 +17,18 @@ public class User implements DialElement {
     @XmlAttribute(name = "params")
     protected String params;
 
+    public UserBuilder builder() {
+        return new UserBuilder();
+    }
+
+    public User() {
+    }
+
+    public User(String content, String sendDigits, String params) {
+        this.content = content;
+        this.sendDigits = sendDigits;
+        this.params = params;
+    }
 
     public String getContent() {
         return content;

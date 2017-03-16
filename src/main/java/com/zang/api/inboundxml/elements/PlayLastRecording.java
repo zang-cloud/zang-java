@@ -11,4 +11,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "PlayLastRecording")
 public class PlayLastRecording implements ResponseElement, GatherElement, GetSpeechElement {
 
+    public static PlayLastRecordingBuilder builder() {
+        return new PlayLastRecordingBuilder();
+    }
+
+    public PlayLastRecording() {
+    }
 }

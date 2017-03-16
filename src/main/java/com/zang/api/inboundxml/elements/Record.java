@@ -1,67 +1,84 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.domain.enums.HttpMethod;
+import com.zang.api.inboundxml.elements.enums.RecordingAudioDirection;
+import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
+import com.zang.api.inboundxml.elements.enums.TranscribeQuality;
+
 import javax.xml.bind.annotation.*;
-import java.math.BigInteger;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-        "content"
-})
+@XmlType(name = "", propOrder = {})
 @XmlRootElement(name = "Record")
 public class Record implements ResponseElement {
 
-    @XmlValue
-    protected String content;
     @XmlAttribute(name = "action")
     @XmlSchemaType(name = "anyURI")
     protected String action;
     @XmlAttribute(name = "method")
-    protected String method;
+    protected HttpMethod method;
     @XmlAttribute(name = "timeout")
-    protected BigInteger timeout;
+    protected Integer timeout;
     @XmlAttribute(name = "finishOnKey")
     protected String finishOnKey;
     @XmlAttribute(name = "maxLength")
-    protected BigInteger maxLength;
+    protected Integer maxLength;
     @XmlAttribute(name = "transcribe")
-    protected String transcribe;
+    protected Boolean transcribe;
     @XmlAttribute(name = "transcribeCallback")
     @XmlSchemaType(name = "anyURI")
     protected String transcribeCallback;
     @XmlAttribute(name = "transcribeQuality")
-    protected String transcribeQuality;
+    protected TranscribeQuality transcribeQuality;
     @XmlAttribute(name = "sliceStart")
-    protected BigInteger sliceStart;
+    protected Integer sliceStart;
     @XmlAttribute(name = "sliceDuration")
-    protected BigInteger sliceDuration;
+    protected Integer sliceDuration;
     @XmlAttribute(name = "playBeep")
-    protected String playBeep;
+    protected Boolean playBeep;
     @XmlAttribute(name = "bothLegs")
-    protected String bothLegs;
+    protected Boolean bothLegs;
     @XmlAttribute(name = "fileFormat")
-    protected String fileFormat;
+    protected RecordingFileFormat fileFormat;
     @XmlAttribute(name = "direction")
-    protected String direction;
+    protected RecordingAudioDirection direction;
     @XmlAttribute(name = "background")
-    protected String background;
+    protected Boolean background;
     @XmlAttribute(name = "sampleRate")
-    protected BigInteger sampleRate;
+    protected Integer sampleRate;
     @XmlAttribute(name = "trimSilence")
-    protected String trimSilence;
+    protected Boolean trimSilence;
     @XmlAttribute(name = "lifetime")
-    protected BigInteger lifetime;
+    protected Integer lifetime;
 
-
-    public String getContent() {
-        return content;
+    public static RecordBuilder builder() {
+        return new RecordBuilder();
     }
 
-
-    public void setContent(String value) {
-        this.content = value;
+    public Record() {
     }
 
+    public Record(String action, HttpMethod method, Integer timeout, String finishOnKey, Integer maxLength, Boolean transcribe, String transcribeCallback, TranscribeQuality transcribeQuality, Integer sliceStart, Integer sliceDuration, Boolean playBeep, Boolean bothLegs, RecordingFileFormat fileFormat, RecordingAudioDirection direction, Boolean background, Integer sampleRate, Boolean trimSilence, Integer lifetime) {
+        this.action = action;
+        this.method = method;
+        this.timeout = timeout;
+        this.finishOnKey = finishOnKey;
+        this.maxLength = maxLength;
+        this.transcribe = transcribe;
+        this.transcribeCallback = transcribeCallback;
+        this.transcribeQuality = transcribeQuality;
+        this.sliceStart = sliceStart;
+        this.sliceDuration = sliceDuration;
+        this.playBeep = playBeep;
+        this.bothLegs = bothLegs;
+        this.fileFormat = fileFormat;
+        this.direction = direction;
+        this.background = background;
+        this.sampleRate = sampleRate;
+        this.trimSilence = trimSilence;
+        this.lifetime = lifetime;
+    }
 
     public String getAction() {
         return action;
@@ -73,22 +90,22 @@ public class Record implements ResponseElement {
     }
 
 
-    public String getMethod() {
+    public HttpMethod getMethod() {
         return method;
     }
 
 
-    public void setMethod(String value) {
+    public void setMethod(HttpMethod value) {
         this.method = value;
     }
 
 
-    public BigInteger getTimeout() {
+    public Integer getTimeout() {
         return timeout;
     }
 
 
-    public void setTimeout(BigInteger value) {
+    public void setTimeout(Integer value) {
         this.timeout = value;
     }
 
@@ -103,22 +120,22 @@ public class Record implements ResponseElement {
     }
 
 
-    public BigInteger getMaxLength() {
+    public Integer getMaxLength() {
         return maxLength;
     }
 
 
-    public void setMaxLength(BigInteger value) {
+    public void setMaxLength(Integer value) {
         this.maxLength = value;
     }
 
 
-    public String getTranscribe() {
+    public Boolean getTranscribe() {
         return transcribe;
     }
 
 
-    public void setTranscribe(String value) {
+    public void setTranscribe(Boolean value) {
         this.transcribe = value;
     }
 
@@ -133,112 +150,112 @@ public class Record implements ResponseElement {
     }
 
 
-    public String getTranscribeQuality() {
+    public TranscribeQuality getTranscribeQuality() {
         return transcribeQuality;
     }
 
 
-    public void setTranscribeQuality(String value) {
+    public void setTranscribeQuality(TranscribeQuality value) {
         this.transcribeQuality = value;
     }
 
 
-    public BigInteger getSliceStart() {
+    public Integer getSliceStart() {
         return sliceStart;
     }
 
 
-    public void setSliceStart(BigInteger value) {
+    public void setSliceStart(Integer value) {
         this.sliceStart = value;
     }
 
 
-    public BigInteger getSliceDuration() {
+    public Integer getSliceDuration() {
         return sliceDuration;
     }
 
 
-    public void setSliceDuration(BigInteger value) {
+    public void setSliceDuration(Integer value) {
         this.sliceDuration = value;
     }
 
 
-    public String getPlayBeep() {
+    public Boolean getPlayBeep() {
         return playBeep;
     }
 
 
-    public void setPlayBeep(String value) {
+    public void setPlayBeep(Boolean value) {
         this.playBeep = value;
     }
 
 
-    public String getBothLegs() {
+    public Boolean getBothLegs() {
         return bothLegs;
     }
 
 
-    public void setBothLegs(String value) {
+    public void setBothLegs(Boolean value) {
         this.bothLegs = value;
     }
 
 
-    public String getFileFormat() {
+    public RecordingFileFormat getFileFormat() {
         return fileFormat;
     }
 
 
-    public void setFileFormat(String value) {
+    public void setFileFormat(RecordingFileFormat value) {
         this.fileFormat = value;
     }
 
 
-    public String getDirection() {
+    public RecordingAudioDirection getDirection() {
         return direction;
     }
 
 
-    public void setDirection(String value) {
+    public void setDirection(RecordingAudioDirection value) {
         this.direction = value;
     }
 
 
-    public String getBackground() {
+    public Boolean getBackground() {
         return background;
     }
 
 
-    public void setBackground(String value) {
+    public void setBackground(Boolean value) {
         this.background = value;
     }
 
 
-    public BigInteger getSampleRate() {
+    public Integer getSampleRate() {
         return sampleRate;
     }
 
 
-    public void setSampleRate(BigInteger value) {
+    public void setSampleRate(Integer value) {
         this.sampleRate = value;
     }
 
 
-    public String getTrimSilence() {
+    public Boolean getTrimSilence() {
         return trimSilence;
     }
 
 
-    public void setTrimSilence(String value) {
+    public void setTrimSilence(Boolean value) {
         this.trimSilence = value;
     }
 
 
-    public BigInteger getLifetime() {
+    public Integer getLifetime() {
         return lifetime;
     }
 
 
-    public void setLifetime(BigInteger value) {
+    public void setLifetime(Integer value) {
         this.lifetime = value;
     }
 

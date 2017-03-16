@@ -2,11 +2,17 @@ package com.zang.api.inboundxml.elements.enums;
 
 import com.zang.api.domain.enums.util.EnumUtil;
 
+import javax.xml.bind.annotation.XmlEnumValue;
 import java.util.HashMap;
 import java.util.Map;
 
 public enum IfMachine {
-    CONTINUE, REDIRECT, HANGUP;
+    @XmlEnumValue("continue")
+    CONTINUE,
+    @XmlEnumValue("redirect")
+    REDIRECT,
+    @XmlEnumValue("hangup")
+    HANGUP;
 
     private static Map<IfMachine, String> map;
 

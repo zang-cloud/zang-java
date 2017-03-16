@@ -1,22 +1,24 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.domain.enums.HttpMethod;
+
 import javax.xml.bind.annotation.*;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "content"
+        "sipAddress"
 })
 @XmlRootElement(name = "Sip")
 public class Sip implements DialElement {
 
     @XmlValue
-    protected String content;
+    protected String sipAddress;
     @XmlAttribute(name = "action")
     @XmlSchemaType(name = "anyURI")
     protected String action;
     @XmlAttribute(name = "method")
-    protected String method;
+    protected HttpMethod method;
     @XmlAttribute(name = "username")
     protected String username;
     @XmlAttribute(name = "password")
@@ -24,14 +26,29 @@ public class Sip implements DialElement {
     @XmlAttribute(name = "sendDigits")
     protected String sendDigits;
 
+    public static SipBuilder builder() {
+        return new SipBuilder();
+    }
 
-    public String getContent() {
-        return content;
+    public Sip() {
+    }
+
+    public Sip(String sipAddress, String action, HttpMethod method, String username, String password, String sendDigits) {
+        this.sipAddress = sipAddress;
+        this.action = action;
+        this.method = method;
+        this.username = username;
+        this.password = password;
+        this.sendDigits = sendDigits;
+    }
+
+    public String getSipAddress() {
+        return sipAddress;
     }
 
 
-    public void setContent(String value) {
-        this.content = value;
+    public void setSipAddress(String sipAddress) {
+        this.sipAddress = sipAddress;
     }
 
 
@@ -45,12 +62,12 @@ public class Sip implements DialElement {
     }
 
 
-    public String getMethod() {
+    public HttpMethod getMethod() {
         return method;
     }
 
 
-    public void setMethod(String value) {
+    public void setMethod(HttpMethod value) {
         this.method = value;
     }
 

@@ -1,30 +1,44 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.domain.enums.HttpMethod;
+
 import javax.xml.bind.annotation.*;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-        "content"
+        "url"
 })
 @XmlRootElement(name = "Play")
 public class Play implements ResponseElement, GatherElement, GetSpeechElement {
 
     @XmlValue
-    protected String content;
+    protected String url;
     @XmlAttribute(name = "loop")
     protected Integer loop;
     @XmlAttribute(name = "method")
-    protected String method;
+    protected HttpMethod method;
 
+    public static PlayBuilder builder() {
+        return new PlayBuilder();
+    }
 
-    public String getContent() {
-        return content;
+    public Play() {
+    }
+
+    public Play(String url, Integer loop, HttpMethod method) {
+        this.url = url;
+        this.loop = loop;
+        this.method = method;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
 
-    public void setContent(String value) {
-        this.content = value;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 
@@ -38,12 +52,12 @@ public class Play implements ResponseElement, GatherElement, GetSpeechElement {
     }
 
 
-    public String getMethod() {
+    public HttpMethod getMethod() {
         return method;
     }
 
 
-    public void setMethod(String value) {
+    public void setMethod(HttpMethod value) {
         this.method = value;
     }
 
