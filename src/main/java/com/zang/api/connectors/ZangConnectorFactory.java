@@ -102,4 +102,16 @@ public class ZangConnectorFactory {
     public static ApplicationsConnector getApplicationsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new ApplicationsConnector(conf, executor);
     }
+
+    public ApplicationClientsConnector getApplicationClientsConnector() {
+        return new ApplicationClientsConnector(this.conf, this.executor);
+    }
+
+    public static ApplicationClientsConnector getApplicationClientsConnector(ZangConfiguration conf) {
+        return new ApplicationClientsConnector(conf, null);
+    }
+
+    public static ApplicationClientsConnector getApplicationClientsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new ApplicationClientsConnector(conf, executor);
+    }
 }
