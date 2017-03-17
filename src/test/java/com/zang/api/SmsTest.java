@@ -45,7 +45,7 @@ public class SmsTest extends BaseZangTest {
             fromList = it.next();
         }
         Assert.assertEquals(2, cnt);
-        Assert.assertEquals(new Long(1), smsMessages.getNumpages());
+        Assert.assertEquals(1, (int)smsMessages.getNumpages());
         checkMessage(fromList);
 
     }
