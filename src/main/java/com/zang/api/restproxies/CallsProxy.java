@@ -11,8 +11,10 @@ public interface CallsProxy {
     @GET
     @Path("Accounts/{AccountSid}/Calls/{CallSid}.json")
     @Produces("application/json")
-    Response getCall(@PathParam("AccountSid") String accountSid,
-                           @PathParam("CallSid") String callSid);
+    Response getCall(
+            @PathParam("AccountSid") String accountSid,
+            @PathParam("CallSid") String callSid
+    );
 
     @GET
     @Path("Accounts/{AccountSid}/Calls.json")
@@ -69,7 +71,7 @@ public interface CallsProxy {
             @FormParam("Url") String url,
             @FormParam("Method") HttpMethod method,
             @FormParam("Status") EndCallStatus status
-            );
+    );
 
     @POST
     @Path("Accounts/{AccountSid}/Calls/{CallSid}.json")

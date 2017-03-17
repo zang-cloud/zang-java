@@ -13,6 +13,7 @@ import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Calendar;
 
 
 public class CallsTest extends BaseZangTest {
@@ -39,12 +40,16 @@ public class CallsTest extends BaseZangTest {
                 },
                 "/calls/callslist.json");
         CallsConnector connector = connectorFactory.getCallsConnector();
+        Calendar from = Calendar.getInstance();
+        from.set(2000, Calendar.JANUARY, 22);
+        Calendar to = Calendar.getInstance();
+        to.set(2017, Calendar.MARCH, 20);
         CallsList callsList = connector.listCalls(
                 "+123456",
                 "+654321",
                 CallStatus.COMPLETED,
-                "2000-01-22",
-                "2017-03-20",
+                from.getTime(),
+                to.getTime(),
                 0,
                 10);
         Assert.assertEquals(1, (int) callsList.getTotal());

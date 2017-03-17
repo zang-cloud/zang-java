@@ -11,6 +11,7 @@ import com.zang.api.restproxies.CallsProxy;
 import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 import javax.ws.rs.core.Response;
+import java.util.Date;
 
 
 public class CallsConnector extends BaseConnector {
@@ -36,12 +37,12 @@ public class CallsConnector extends BaseConnector {
     }
 
 
-    public CallsList listCalls(String accountSid, String to, String from, CallStatus status, String startTimeGte, String startTimeLt, Integer page, Integer pageSize) throws ZangException {
-        Response response = callsProxy.getCallsList(accountSid, to, from, status, startTimeGte, startTimeLt, page, pageSize);
+    public CallsList listCalls(String accountSid, String to, String from, CallStatus status, Date startTimeGte, Date startTimeLt, Integer page, Integer pageSize) throws ZangException {
+        Response response = callsProxy.getCallsList(accountSid, to, from, status, getDateString(startTimeGte), getDateString(startTimeLt), page, pageSize);
         return returnThrows(response, CallsList.class);
     }
 
-    public CallsList listCalls(String to, String from, CallStatus status, String startTimeGte, String startTimeLt, Integer page, Integer pageSize) throws ZangException {
+    public CallsList listCalls(String to, String from, CallStatus status, Date startTimeGte, Date startTimeLt, Integer page, Integer pageSize) throws ZangException {
         return listCalls(conf.getSid(), to, from, status, startTimeGte, startTimeLt, page, pageSize);
     }
 
