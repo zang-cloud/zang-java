@@ -72,103 +72,207 @@ public class MakeCallParams {
         return accountSid;
     }
 
+    public void setAccountSid(String accountSid) {
+        this.accountSid = accountSid;
+    }
+
     public String getTo() {
         return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
     }
 
     public String getFrom() {
         return from;
     }
 
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
     public String getUrl() {
         return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public HttpMethod getMethod() {
         return method;
     }
 
+    public void setMethod(HttpMethod method) {
+        this.method = method;
+    }
+
     public String getFallbackUrl() {
         return fallbackUrl;
+    }
+
+    public void setFallbackUrl(String fallbackUrl) {
+        this.fallbackUrl = fallbackUrl;
     }
 
     public HttpMethod getFallbackMethod() {
         return fallbackMethod;
     }
 
+    public void setFallbackMethod(HttpMethod fallbackMethod) {
+        this.fallbackMethod = fallbackMethod;
+    }
+
     public String getStatusCallback() {
         return statusCallback;
+    }
+
+    public void setStatusCallback(String statusCallback) {
+        this.statusCallback = statusCallback;
     }
 
     public HttpMethod getStatusCallbackMethod() {
         return statusCallbackMethod;
     }
 
+    public void setStatusCallbackMethod(HttpMethod statusCallbackMethod) {
+        this.statusCallbackMethod = statusCallbackMethod;
+    }
+
     public String getHeartbeatUrl() {
         return heartbeatUrl;
+    }
+
+    public void setHeartbeatUrl(String heartbeatUrl) {
+        this.heartbeatUrl = heartbeatUrl;
     }
 
     public HttpMethod getHeartbeatMethod() {
         return heartbeatMethod;
     }
 
+    public void setHeartbeatMethod(HttpMethod heartbeatMethod) {
+        this.heartbeatMethod = heartbeatMethod;
+    }
+
     public String getForwardedFrom() {
         return forwardedFrom;
+    }
+
+    public void setForwardedFrom(String forwardedFrom) {
+        this.forwardedFrom = forwardedFrom;
     }
 
     public String getPlayDtmf() {
         return playDtmf;
     }
 
+    public void setPlayDtmf(String playDtmf) {
+        this.playDtmf = playDtmf;
+    }
+
     public Integer getTimeout() {
         return timeout;
+    }
+
+    public void setTimeout(Integer timeout) {
+        this.timeout = timeout;
     }
 
     public Boolean getHideCallerId() {
         return hideCallerId;
     }
 
+    public void setHideCallerId(Boolean hideCallerId) {
+        this.hideCallerId = hideCallerId;
+    }
+
     public Boolean getRecord() {
         return record;
+    }
+
+    public void setRecord(Boolean record) {
+        this.record = record;
     }
 
     public String getRecordCallback() {
         return recordCallback;
     }
 
+    public void setRecordCallback(String recordCallback) {
+        this.recordCallback = recordCallback;
+    }
+
     public HttpMethod getRecordCallbackMethod() {
         return recordCallbackMethod;
+    }
+
+    public void setRecordCallbackMethod(HttpMethod recordCallbackMethod) {
+        this.recordCallbackMethod = recordCallbackMethod;
     }
 
     public Boolean getTranscribe() {
         return transcribe;
     }
 
+    public void setTranscribe(Boolean transcribe) {
+        this.transcribe = transcribe;
+    }
+
     public String getTranscribeCallback() {
         return transcribeCallback;
+    }
+
+    public void setTranscribeCallback(String transcribeCallback) {
+        this.transcribeCallback = transcribeCallback;
     }
 
     public Boolean getStraightToVoicemail() {
         return straightToVoicemail;
     }
 
+    public void setStraightToVoicemail(Boolean straightToVoicemail) {
+        this.straightToVoicemail = straightToVoicemail;
+    }
+
     public IfMachine getIfMachine() {
         return ifMachine;
+    }
+
+    public void setIfMachine(IfMachine ifMachine) {
+        this.ifMachine = ifMachine;
     }
 
     public String getIfMachineUrl() {
         return ifMachineUrl;
     }
 
+    public void setIfMachineUrl(String ifMachineUrl) {
+        this.ifMachineUrl = ifMachineUrl;
+    }
+
     public HttpMethod getIfMachineMethod() {
         return ifMachineMethod;
+    }
+
+    public void setIfMachineMethod(HttpMethod ifMachineMethod) {
+        this.ifMachineMethod = ifMachineMethod;
     }
 
     public String getSipAuthUsername() {
         return sipAuthUsername;
     }
 
+    public void setSipAuthUsername(String sipAuthUsername) {
+        this.sipAuthUsername = sipAuthUsername;
+    }
+
     public String getSipAuthPassword() {
         return sipAuthPassword;
+    }
+
+    public void setSipAuthPassword(String sipAuthPassword) {
+        this.sipAuthPassword = sipAuthPassword;
     }
 }

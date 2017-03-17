@@ -90,4 +90,16 @@ public class ZangConnectorFactory {
     public static ConferencesConnector getConferencesConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new ConferencesConnector(conf, executor);
     }
+
+    public ApplicationsConnector getApplicationsConnector() {
+        return new ApplicationsConnector(this.conf, this.executor);
+    }
+
+    public static ApplicationsConnector getApplicationsConnector(ZangConfiguration conf) {
+        return new ApplicationsConnector(conf, null);
+    }
+
+    public static ApplicationsConnector getApplicationsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new ApplicationsConnector(conf, executor);
+    }
 }
