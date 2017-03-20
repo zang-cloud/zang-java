@@ -1,6 +1,5 @@
 package com.zang.api.domain;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
@@ -8,7 +7,6 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * subresources are things like calls that occurred through the account, sms
  * messages, purchased phone numbers, etc.
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class SubresourceUris {
     @JsonProperty(value = "available_phone_numbers")
     private String availablePhoneNumbers;

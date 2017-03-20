@@ -11,6 +11,7 @@ import java.util.Date;
 /**
  * Text messages sent to and from Zang phone numbers are represented with the Sms resource.
  */
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class SmsMessage extends BaseZangObject {
     @JsonDeserialize(using = JsonDateParser.class)
     @JsonProperty(value = "date_sent")

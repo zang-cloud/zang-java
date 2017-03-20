@@ -1,0 +1,23 @@
+{
+  "auth_type": "no_traffic",
+  "voice_status_callback_method": "POST",
+  "voice_heartbeat_callback": null,
+  "subresource_uris": {
+    "ip_access_control_list_mappings": "/v2/Accounts/TestAccountSid/SIP/Domains/TestDomainSid/IpAccessControlListMappings",
+    "credential_list_mappings": "/v2/Accounts/TestAccountSid/SIP/Domains/TestDomainSid/CredentialListMappings"
+  },
+  "domain_sip_url": "mydomain.com.sip.zang.io",
+  "date_updated": "Mon, 20 Mar 2017 13:36:02 -0000",
+  "voice_status_callback_url": "VoiceStatusCallback",
+  "uri": "/v2/Accounts/TestAccountSid/SIP/Domains/TestDomainSid",
+  "friendly_name": "MYDomain",
+  "domain_name": "mydomain.com",
+  "account_sid": "TestAccountSid",
+  "voice_url": "VoiceUrl",
+  "voice_heartbeat_callback_method": "POST",
+  "sid": "TestDomainSid",
+  "date_created": "Mon, 20 Mar 2017 13:36:02 -0000",
+  "voice_fallback_method": "GET",
+  "voice_method": "POST",
+  "voice_fallback_url": "VoiceFallbackUrl"
+}

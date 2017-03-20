@@ -8,6 +8,7 @@ import com.zang.api.http.DefaultExecutor;
 import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 
+import javax.ws.rs.ProcessingException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
@@ -63,7 +64,11 @@ class BaseConnector {
             throws ZangException {
         int status = response.getStatus();
         if (status > 399) {
-            throw response.readEntity(ZangException.class);
+            try {
+                throw response.readEntity(ZangException.class);
+            } catch(ProcessingException ex) {
+                throw new ZangException(ex.getMessage(), ex);
+            }
         }
         return response.readEntity(clazz);
     }

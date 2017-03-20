@@ -10,9 +10,15 @@ public class ZangException extends Exception {
     private String code;
     @JsonProperty(value = "more_info")
     private String moreInfo;
+    private Exception inner;
 
     public ZangException() {
 
+    }
+
+    public ZangException(String message, Exception ex) {
+        super(message);
+        this.inner = ex;
     }
 
     public ZangException(String message) {

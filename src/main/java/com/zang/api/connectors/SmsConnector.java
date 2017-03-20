@@ -102,11 +102,6 @@ public class SmsConnector extends BaseConnector {
                 null);
     }
 
-    /**
-     * @param accountSid The account sid (required).
-     * @throws ZangException
-     * @see #sendSmsMessage(String, String, String, String)
-     */
     public SmsMessage sendSmsMessage(String accountSid, String to, String from,
                                      String body, String statusCallback, HttpMethod statusCallbackMethod,
                                      Boolean allowMultiple) throws ZangException {
