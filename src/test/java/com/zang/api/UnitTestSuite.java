@@ -13,7 +13,8 @@ import org.junit.runners.Suite;
         InboundXmlTest.class,
         SipDomainsTest.class,
         SmsTest.class,
-        UsagesTest.class
+        UsagesTest.class,
+        SipCredentialsTest.class
 })
 public class UnitTestSuite {
 

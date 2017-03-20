@@ -119,11 +119,23 @@ public class ZangConnectorFactory {
         return new SipDomainsConnector(this.conf, this.executor);
     }
 
-    public SipDomainsConnector getSipDomainsConnector(ZangConfiguration conf) {
+    public static SipDomainsConnector getSipDomainsConnector(ZangConfiguration conf) {
         return new SipDomainsConnector(conf, null);
     }
 
-    public SipDomainsConnector getSipDomainsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+    public static SipDomainsConnector getSipDomainsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new SipDomainsConnector(conf, executor);
+    }
+
+    public SipCredentialsConnector getSipCredentialsConnector() {
+        return new SipCredentialsConnector(this.conf, this.executor);
+    }
+
+    public static SipCredentialsConnector getSipCredentialsConnector(ZangConfiguration conf) {
+        return new SipCredentialsConnector(conf, null);
+    }
+
+    public static SipCredentialsConnector getSipCredentialsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new SipCredentialsConnector(conf, executor);
     }
 }

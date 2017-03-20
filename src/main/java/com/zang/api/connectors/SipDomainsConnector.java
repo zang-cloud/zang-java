@@ -89,7 +89,7 @@ public class SipDomainsConnector extends BaseConnector {
     }
 
     public CredentialsList mapCredentialsLists(String domainSid, String credentialListSid) throws ZangException {
-        return mapCredentialsLists(conf.getSid(), credentialListSid);
+        return mapCredentialsLists(conf.getSid(), domainSid, credentialListSid);
     }
 
     public CredentialsList deleteMappedCredentialsList(String accountSid, String domainSid, String credentialsListSid) throws ZangException {
@@ -97,7 +97,7 @@ public class SipDomainsConnector extends BaseConnector {
     }
 
     public CredentialsList deleteMappedCredentialsList(String domainSid, String credentialsListSid) throws ZangException {
-        return deleteMappedCredentialsList(conf.getSid(), credentialsListSid);
+        return deleteMappedCredentialsList(conf.getSid(), domainSid, credentialsListSid);
     }
     
     public AccessControlListsList listMappedIpAccessControlLists(String accountSid, String domainSid) throws ZangException {
@@ -121,6 +121,6 @@ public class SipDomainsConnector extends BaseConnector {
     }
 
     public AccessControlList deleteMappedIpAccessControlList(String domainSid, String accessControlListSid) throws ZangException {
-        return deleteMappedIpAccessControlList(conf.getSid(), accessControlListSid);
+        return deleteMappedIpAccessControlList(conf.getSid(), domainSid, accessControlListSid);
     }
 }

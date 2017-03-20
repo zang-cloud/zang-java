@@ -1,8 +1,12 @@
 package com.zang.api;
 
 import com.zang.api.connectors.SipDomainsConnector;
+import com.zang.api.domain.AccessControlList;
+import com.zang.api.domain.CredentialsList;
 import com.zang.api.domain.Domain;
 import com.zang.api.domain.enums.HttpMethod;
+import com.zang.api.domain.list.AccessControlListsList;
+import com.zang.api.domain.list.CredentialsListsList;
 import com.zang.api.domain.list.DomainsList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.params.DomainParams;
@@ -115,36 +119,76 @@ public class SipDomainsTest extends BaseZangTest {
 
     @Test
     public void listMappedCredentialsList() throws ZangException, IOException {
-        throw new ZangException("Not implemented");
+        createExpectation("GET", "SIP/Domains/TestDomainSid/CredentialListMappings.json", null, null,
+                "/sipdomains/credentialslistlist.json");
+
+        CredentialsListsList credentialsListsList = connector.listMappedCredentialsLists("TestDomainSid");
+
+        Assert.assertEquals(1, (int) credentialsListsList.getTotal());
+        checkCl(credentialsListsList.iterator().next());
     }
 
     @Test
     public void mapCredentialsList() throws ZangException, IOException {
-        throw new ZangException("Not implemented");
+        createExpectation("POST", "SIP/Domains/TestDomainSid/CredentialListMappings.json", new Parameter[]{
+                new Parameter("CredentialListSid", "TestCredentialsListSid")
+                }, null,
+                "/sipdomains/credentialslist.json");
+
+        CredentialsList credentialsList = connector.mapCredentialsLists("TestDomainSid", "TestCredentialsListSid");
+        checkCl(credentialsList);
     }
 
     @Test
     public void deleteMappedCredentialsList() throws ZangException, IOException {
-        throw new ZangException("Not implemented");
+        createExpectation("DELETE", "SIP/Domains/TestDomainSid/CredentialListMappings/TestCredentialsListSid.json", null, null,
+                "/sipdomains/credentialslist.json");
+
+        CredentialsList credentialsList = connector.deleteMappedCredentialsList("TestDomainSid", "TestCredentialsListSid");
+        checkCl(credentialsList);
     }
 
     @Test
     public void listMappedIpAcls() throws ZangException, IOException {
-        throw new ZangException("Not implemented");
+        createExpectation("GET", "SIP/Domains/TestDomainSid/IpAccessControlListMappings.json", null, null,
+                "/sipdomains/ipacllist.json");
+
+        AccessControlListsList aclListList = connector.listMappedIpAccessControlLists("TestDomainSid");
+
+        Assert.assertEquals(1, (int) aclListList.getTotal());
+        checkIpAcl(aclListList.iterator().next());
     }
 
     @Test
     public void mapIpAcl() throws ZangException, IOException {
-        throw new ZangException("Not implemented");
+        createExpectation("POST", "SIP/Domains/TestDomainSid/IpAccessControlListMappings.json", new Parameter[]{
+                        new Parameter("IpAccessControlListSid", "TestIpAccessControlListSid")
+                }, null,
+                "/sipdomains/ipacl.json");
+
+        AccessControlList aclList = connector.mapIpAccessControlList("TestDomainSid", "TestIpAccessControlListSid");
+        checkIpAcl(aclList);
     }
 
     @Test
     public void deleteIpAcl() throws ZangException, IOException {
-        throw new ZangException("Not implemented");
+        createExpectation("DELETE", "SIP/Domains/TestDomainSid/IpAccessControlListMappings/TestIpAccessControlListSid.json", null, null,
+                "/sipdomains/ipacl.json");
+
+        AccessControlList aclList = connector.deleteMappedIpAccessControlList("TestDomainSid", "TestIpAccessControlListSid");
+        checkIpAcl(aclList);
     }
 
 
     private void checkDomain(Domain domain) {
+
+    }
+
+    private void checkCl(CredentialsList list) {
+
+    }
+
+    private void checkIpAcl(AccessControlList list) {
 
     }
 
