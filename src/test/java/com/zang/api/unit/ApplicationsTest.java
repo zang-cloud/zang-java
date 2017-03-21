@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.zang.api.connectors.ApplicationsConnector;
 import com.zang.api.domain.Application;
@@ -14,7 +14,7 @@ import org.mockserver.model.Parameter;
 import java.io.IOException;
 
 
-public class ApplicationsTest extends BaseZangTest {
+public class ApplicationsTest extends BaseUnitTest {
 
     private ApplicationsConnector connector;
 

@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.zang.api.connectors.UsagesConnector;
 import com.zang.api.domain.enums.Product;
@@ -9,7 +9,7 @@ import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
-public class UsagesTest extends BaseZangTest {
+public class UsagesTest extends BaseUnitTest {
 
     @Test
     public void viewUsage() throws ZangException, IOException {

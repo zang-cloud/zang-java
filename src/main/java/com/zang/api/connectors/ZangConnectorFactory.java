@@ -150,4 +150,16 @@ public class ZangConnectorFactory {
     public static SipIpAccessControlListsConnector getSipIpAccessControlListsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new SipIpAccessControlListsConnector(conf, executor);
     }
+
+    public IncomingPhoneNumbersConnector getIncomingPhoneNumbersConnector() {
+        return new IncomingPhoneNumbersConnector(this.conf, this.executor);
+    }
+
+    public static IncomingPhoneNumbersConnector getIncomingPhoneNumbersConnector(ZangConfiguration conf) {
+        return new IncomingPhoneNumbersConnector(conf, null);
+    }
+
+    public static IncomingPhoneNumbersConnector getIncomingPhoneNumbersConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new IncomingPhoneNumbersConnector(conf, executor);
+    }
 }

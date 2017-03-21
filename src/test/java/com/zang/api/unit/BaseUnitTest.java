@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
@@ -6,7 +6,6 @@ import com.zang.api.configuration.ZangConfiguration;
 import com.zang.api.configuration.ZangConstants;
 import com.zang.api.connectors.ZangConnectorFactory;
 import com.zang.api.testutil.MockConfiguration;
-import com.zang.api.testutil.TestParameters;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,10 +17,9 @@ import org.mockserver.socket.PortFactory;
 
 import java.io.IOException;
 
-public abstract class BaseZangTest {
+public abstract class BaseUnitTest {
 
     ZangConfiguration conf;
-    TestParameters testParameters;
     ZangConnectorFactory connectorFactory;
 
     static ClientAndProxy proxy;
@@ -30,10 +28,8 @@ public abstract class BaseZangTest {
     private int serverPort = 41123;
 
 
-    public BaseZangTest() {
-        this.testParameters = new TestParameters();
+    public BaseUnitTest() {
         conf = new MockConfiguration(serverPort);
-        //conf = new PropertiesFileZangConfiguration();
         connectorFactory = new ZangConnectorFactory(conf);
 
     }
@@ -69,8 +65,8 @@ public abstract class BaseZangTest {
         }
         if (bodyParams == null) bodyParams = new Parameter[]{};
         if (queryParams == null) queryParams = new Parameter[]{};
-        System.out.println(BaseZangTest.class.getResource(responseFile));
-        String responseBody = Resources.toString(BaseZangTest.class.getResource(responseFile), Charsets.UTF_8);
+        System.out.println(BaseUnitTest.class.getResource(responseFile));
+        String responseBody = Resources.toString(BaseUnitTest.class.getResource(responseFile), Charsets.UTF_8);
         mockServer.when(HttpRequest
                 .request()
                 .withMethod(method)

@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.zang.api.connectors.SipCredentialsConnector;
 import com.zang.api.domain.Credential;
@@ -11,7 +11,7 @@ import org.mockserver.model.Parameter;
 import java.io.IOException;
 
 
-public class SipCredentialsTest extends BaseZangTest {
+public class SipCredentialsTest extends BaseUnitTest {
 
     private SipCredentialsConnector connector;
 

@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.zang.api.connectors.AccountsConnector;
 import com.zang.api.domain.Account;
@@ -9,7 +9,7 @@ import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
-public class AccountsTest extends BaseZangTest {
+public class AccountsTest extends BaseUnitTest {
 
     @Test
     public void testViewAccount() throws ZangException, IOException {

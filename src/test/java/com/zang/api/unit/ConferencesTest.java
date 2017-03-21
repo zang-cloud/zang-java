@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.zang.api.connectors.ConferencesConnector;
 import com.zang.api.domain.Conference;
@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.Calendar;
 
 
-public class ConferencesTest extends BaseZangTest {
+public class ConferencesTest extends BaseUnitTest {
 
     @Test
     public void viewConference() throws ZangException, IOException {

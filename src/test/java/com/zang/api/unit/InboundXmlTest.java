@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.exceptions.ZangException;

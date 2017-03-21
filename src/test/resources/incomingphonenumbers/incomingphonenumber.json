@@ -1,0 +1,31 @@
+{
+  "date_updated": "Mon, 13 Oct 2014 15:38:43 -0000",
+  "voice_url": "http://telapi.com/ivr/welcome/call",
+  "voice_fallback_method": "POST",
+  "capabilities": {
+    "voice": "true",
+    "sms": "false"
+  },
+  "sid": "{IncomingPhoneNumberSid}",
+  "heartbeat_method": "POST",
+  "type": "local",
+  "status_callback_method": "POST",
+  "voice_fallback_url": "",
+  "phone_number": "{FilteredE164}",
+  "hangup_callback": null,
+  "hangup_callback_method": "POST",
+  "heartbeat_url": null,
+  "sms_url": "http://telapi.com/ivr/welcome/sms",
+  "voice_method": "POST",
+  "voice_caller_id_lookup": "false",
+  "friendly_name": "{FilteredE164}",
+  "uri": "/v2/Accounts/{AccountSid}/IncomingPhoneNumbers/{IncomingPhoneNumberSid}",
+  "sms_fallback_url": "",
+  "account_sid": "{AccountSid}",
+  "sms_method": "POST",
+  "api_version": "v2",
+  "sms_fallback_method": "POST",
+  "next_renewal_date": "Wed, 12 Nov 2014 15:38:43 -0000",
+  "date_created": "Mon, 13 Oct 2014 15:38:42 -0000",
+  "status_callback": null
+}

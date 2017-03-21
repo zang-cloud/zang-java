@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.zang.api.connectors.CallsConnector;
 import com.zang.api.domain.Call;
@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 
 
-public class CallsTest extends BaseZangTest {
+public class CallsTest extends BaseUnitTest {
 
     @Test
     public void viewCall() throws ZangException, IOException {

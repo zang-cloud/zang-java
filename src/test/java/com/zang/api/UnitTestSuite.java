@@ -1,5 +1,6 @@
 package com.zang.api;
 
+import com.zang.api.unit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -15,7 +16,8 @@ import org.junit.runners.Suite;
         SmsTest.class,
         UsagesTest.class,
         SipCredentialsTest.class,
-        SipAclTest.class
+        SipAclTest.class,
+        IncomingPhoneNumbersTest.class
 })
 public class UnitTestSuite {
 

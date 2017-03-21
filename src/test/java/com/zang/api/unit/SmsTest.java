@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.zang.api.connectors.SmsConnector;
 import com.zang.api.domain.SmsMessage;
@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 import java.util.Iterator;
 
 
-public class SmsTest extends BaseZangTest {
+public class SmsTest extends BaseUnitTest {
 
     @Test
     public void viewSms() throws ZangException, IOException {
@@ -55,8 +55,8 @@ public class SmsTest extends BaseZangTest {
 
         createExpectation("POST", "SMS/Messages.json",
                 new Parameter[]{
-                        new Parameter("To", testParameters.getPhone1()),
-                        new Parameter("From", testParameters.getPhone2()),
+                        new Parameter("To", "+123456"),
+                        new Parameter("From", "+654321"),
                         new Parameter("Body", "test from java"),
                         new Parameter("StatusCallbackMethod", "GET"),
                         new Parameter("AllowMultiple", "False")
@@ -64,7 +64,7 @@ public class SmsTest extends BaseZangTest {
                 "/sms/sms.json");
 
         SmsConnector connector = connectorFactory.getSmsConnector();
-        SmsMessage smsMessage = connector.sendSmsMessage(testParameters.getPhone1(), testParameters.getPhone2(),
+        SmsMessage smsMessage = connector.sendSmsMessage("+123456", "+654321",
                 "test from java", "callback.url", HttpMethod.GET, false);
         checkMessage(smsMessage);
 

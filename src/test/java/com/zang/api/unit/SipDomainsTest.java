@@ -1,4 +1,4 @@
-package com.zang.api;
+package com.zang.api.unit;
 
 import com.zang.api.connectors.SipDomainsConnector;
 import com.zang.api.domain.AccessControlList;
@@ -18,7 +18,7 @@ import org.mockserver.model.Parameter;
 import java.io.IOException;
 
 
-public class SipDomainsTest extends BaseZangTest {
+public class SipDomainsTest extends BaseUnitTest {
 
     private SipDomainsConnector connector;
 

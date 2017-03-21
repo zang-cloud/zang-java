@@ -1,6 +1,5 @@
 package com.zang.api.examples;
 
-import com.zang.api.BaseZangTest;
 import com.zang.api.configuration.BasicZangConfiguration;
 import com.zang.api.connectors.UsagesConnector;
 import com.zang.api.connectors.ZangConnectorFactory;
@@ -9,10 +8,11 @@ import com.zang.api.domain.enums.Product;
 import com.zang.api.domain.list.UsagesList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.params.ListUsagesParams;
+import com.zang.api.unit.BaseUnitTest;
 
 import java.math.BigDecimal;
 
-public class UsagesExample extends BaseZangTest {
+public class UsagesExample extends BaseUnitTest {
 
     public static void main(String[] args) {
         BasicZangConfiguration conf = new BasicZangConfiguration();
