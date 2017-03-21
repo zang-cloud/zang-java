@@ -48,7 +48,9 @@ public class SipCredentialsTest extends BaseZangTest {
 
     @Test
     public void updateCredentialsList() throws ZangException, IOException {
-        createExpectation("POST", "SIP/CredentialLists/TestCredentialsListSid.json", null, null,
+        createExpectation("POST", "SIP/CredentialLists/TestCredentialsListSid.json", new Parameter[]{
+                new Parameter("FriendlyName", "NewCredentialsList")
+                }, null,
                 "/sipdomains/credentialslist.json");
         checkCredentialsList(connector.updateCredentialsList("TestCredentialsListSid", "NewCredentialsList"));
     }

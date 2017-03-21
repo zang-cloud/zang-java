@@ -138,4 +138,16 @@ public class ZangConnectorFactory {
     public static SipCredentialsConnector getSipCredentialsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new SipCredentialsConnector(conf, executor);
     }
+
+    public SipIpAccessControlListsConnector getSipIpAccessControlListsConnector() {
+        return new SipIpAccessControlListsConnector(this.conf, this.executor);
+    }
+
+    public static SipIpAccessControlListsConnector getSipIpAccessControlListsConnector(ZangConfiguration conf) {
+        return new SipIpAccessControlListsConnector(conf, null);
+    }
+
+    public static SipIpAccessControlListsConnector getSipIpAccessControlListsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new SipIpAccessControlListsConnector(conf, executor);
+    }
 }

@@ -14,7 +14,8 @@ import org.junit.runners.Suite;
         SipDomainsTest.class,
         SmsTest.class,
         UsagesTest.class,
-        SipCredentialsTest.class
+        SipCredentialsTest.class,
+        SipAclTest.class
 })
 public class UnitTestSuite {
 

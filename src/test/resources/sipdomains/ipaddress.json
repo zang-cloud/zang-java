@@ -1,0 +1,10 @@
+{
+  "date_created": "Thu, 30 Oct 2014 02:54:17 -0000",
+  "subresource_uris": {},
+  "sid": "TestIpAddressSid",
+  "date_updated": "Thu, 30 Oct 2014 02:54:17 -0000",
+  "ip_address": "127.0.0.1",
+  "friendly_name": "Test IP 1",
+  "uri": "/v2/Accounts/TestAccountSid/SIP/IpAccessControlLists/TestIpAccessControlListSid/IpAddresses/TestIpAddressSid",
+  "account_sid": "TestAccountSid"
+}
