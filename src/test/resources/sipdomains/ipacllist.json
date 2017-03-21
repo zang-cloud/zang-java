@@ -1,0 +1,30 @@
+{
+  "first_page_uri": "/v2/Accounts/TestAccountSid/SIP/Domains/TestDomainSid/IpAccessControlListMappings.json?Page=0&amp;PageSize=50",
+  "end": 0,
+  "total": 1,
+  "previous_page_uri": "",
+  "num_pages": 1,
+  "uri": "/v2/Accounts/v/SIP/Domains/TestDomainSid/IpAccessControlListMappings.json",
+  "page_size": 50,
+  "start": 0,
+  "next_page_uri": "",
+  "last_page_uri": "/v2/Accounts/TestAccountSid/SIP/Domains/TestDomainSid/IpAccessControlListMappings.json?Page=0&PageSize=50",
+  "page": 0,
+  "ip_access_control": [
+
+    {
+      "ip_addresses_count": 0,
+      "subresource_uris": {
+        "credentials":
+        "/v2/Accounts/TestAccountSid/SIP/IpAccessControlLists/TestAccessControlListSid/IpAddresses"
+      },
+      "sid": "TestAccessControlListSid",
+      "date_updated": "Thu, 30 Oct 2014 02:04:19 -0000",
+      "date_created": "Thu, 30 Oct 2014 02:04:19 -0000",
+      "friendly_name": "Test ACL 999",
+      "uri": "/v2/Accounts/TestAccountSid/SIP/IpAccessControlLists/TestAccessControlListSid",
+      "account_sid": "TestAccountSid"
+    }
+
+  ]
+}

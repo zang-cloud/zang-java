@@ -1,0 +1,13 @@
+{
+  "ip_addresses_count": 0,
+  "subresource_uris": {
+    "credentials":
+    "/v2/Accounts/TestAccountSid/SIP/IpAccessControlLists/TestAccessControlListSid/IpAddresses"
+  },
+  "sid": "TestAccessControlListSid",
+  "date_updated": "Thu, 30 Oct 2014 02:04:19 -0000",
+  "date_created": "Thu, 30 Oct 2014 02:04:19 -0000",
+  "friendly_name": "Test ACL 999",
+  "uri": "/v2/Accounts/TestAccountSid/SIP/IpAccessControlLists/TestAccessControlListSid",
+  "account_sid": "TestAccountSid"
+}

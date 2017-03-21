@@ -20,3 +20,5 @@ target/*
 *.iml
 zang.properties
 zang.test.properties
+zang-java.zip
+coverage.ec
