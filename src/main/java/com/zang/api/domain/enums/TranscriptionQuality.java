@@ -6,20 +6,21 @@ import org.codehaus.jackson.annotate.JsonCreator;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum AuthType {
-    IP_ACL,
-    CREDENTIAL_LIST;
+public enum TranscriptionQuality {
+    AUTO, HYBRID, KEYWORDS;
 
-    private static Map<AuthType, String> map;
+    private static Map<TranscriptionQuality, String> map;
 
     static {
-        map = new HashMap<AuthType, String>();
-        map.put(IP_ACL, "LOCAL");
-        map.put(CREDENTIAL_LIST, "TOLLFREE");
+        map = new HashMap<TranscriptionQuality, String>();
+        map.put(AUTO, "auto");
+        map.put(HYBRID, "hybrid");
+        map.put(KEYWORDS, "keywords");
+
     }
 
     @JsonCreator
-    public static AuthType forValue(String s) {
+    public static TranscriptionQuality forValue(String s) {
         return EnumUtil.getValue(s, map, null);
     }
 

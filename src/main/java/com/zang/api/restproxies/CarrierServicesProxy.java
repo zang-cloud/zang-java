@@ -16,8 +16,8 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response authorizeDestination(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("Page") Integer page,
-            @FormParam("PageSize") Integer pageSize
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
     );
 
     @POST
@@ -25,7 +25,7 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response cnamLookup(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("PhoneNumber") String phoneNumber
+            @FormParam("AvailableNumberType") String phoneNumber
     );
 
     @GET
@@ -33,8 +33,8 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response cnamLookupList(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("Page") Integer page,
-            @FormParam("PageSize") Integer pageSize
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
     );
 
     @POST
@@ -42,7 +42,7 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response bnaLookup(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("PhoneNumber") String phoneNumber
+            @FormParam("AvailableNumberType") String phoneNumber
     );
 
     @GET
@@ -50,7 +50,7 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response bnaLookupList(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("Page") Integer page,
-            @FormParam("PageSize") Integer pageSize
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
     );
 }
