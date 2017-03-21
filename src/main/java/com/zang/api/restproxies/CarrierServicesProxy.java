@@ -25,7 +25,7 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response cnamLookup(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("PhoneNumber") String phoneNumber
+            @FormParam("AvailableNumberType") String phoneNumber
     );
 
     @GET
@@ -42,7 +42,7 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response bnaLookup(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("PhoneNumber") String phoneNumber
+            @FormParam("AvailableNumberType") String phoneNumber
     );
 
     @GET
