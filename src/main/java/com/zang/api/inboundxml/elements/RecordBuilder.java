@@ -2,7 +2,7 @@ package com.zang.api.inboundxml.elements;
 
 import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.RecordingAudioDirection;
-import com.zang.api.domain.enums.TranscribeQuality;
+import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 
 public class RecordBuilder {
@@ -13,7 +13,7 @@ public class RecordBuilder {
     private Integer maxLength;
     private Boolean transcribe;
     private String transcribeCallback;
-    private TranscribeQuality transcribeQuality;
+    private TranscriptionQuality transcriptionQuality;
     private Integer sliceStart;
     private Integer sliceDuration;
     private Boolean playBeep;
@@ -63,8 +63,8 @@ public class RecordBuilder {
         return this;
     }
 
-    public RecordBuilder setTranscribeQuality(TranscribeQuality transcribeQuality) {
-        this.transcribeQuality = transcribeQuality;
+    public RecordBuilder setTranscriptionQuality(TranscriptionQuality transcriptionQuality) {
+        this.transcriptionQuality = transcriptionQuality;
         return this;
     }
 
@@ -119,6 +119,6 @@ public class RecordBuilder {
     }
 
     public Record build() {
-        return new Record(action, method, timeout, finishOnKey, maxLength, transcribe, transcribeCallback, transcribeQuality, sliceStart, sliceDuration, playBeep, bothLegs, fileFormat, direction, background, sampleRate, trimSilence, lifetime);
+        return new Record(action, method, timeout, finishOnKey, maxLength, transcribe, transcribeCallback, transcriptionQuality, sliceStart, sliceDuration, playBeep, bothLegs, fileFormat, direction, background, sampleRate, trimSilence, lifetime);
     }
 }

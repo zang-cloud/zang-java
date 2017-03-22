@@ -2,7 +2,7 @@ package com.zang.api.inboundxml.elements;
 
 import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.RecordingAudioDirection;
-import com.zang.api.domain.enums.TranscribeQuality;
+import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 
 import javax.xml.bind.annotation.*;
@@ -30,7 +30,7 @@ public class Record implements ResponseElement {
     @XmlSchemaType(name = "anyURI")
     protected String transcribeCallback;
     @XmlAttribute(name = "transcribeQuality")
-    protected TranscribeQuality transcribeQuality;
+    protected TranscriptionQuality transcriptionQuality;
     @XmlAttribute(name = "sliceStart")
     protected Integer sliceStart;
     @XmlAttribute(name = "sliceDuration")
@@ -59,7 +59,7 @@ public class Record implements ResponseElement {
     public Record() {
     }
 
-    public Record(String action, HttpMethod method, Integer timeout, String finishOnKey, Integer maxLength, Boolean transcribe, String transcribeCallback, TranscribeQuality transcribeQuality, Integer sliceStart, Integer sliceDuration, Boolean playBeep, Boolean bothLegs, RecordingFileFormat fileFormat, RecordingAudioDirection direction, Boolean background, Integer sampleRate, Boolean trimSilence, Integer lifetime) {
+    public Record(String action, HttpMethod method, Integer timeout, String finishOnKey, Integer maxLength, Boolean transcribe, String transcribeCallback, TranscriptionQuality transcriptionQuality, Integer sliceStart, Integer sliceDuration, Boolean playBeep, Boolean bothLegs, RecordingFileFormat fileFormat, RecordingAudioDirection direction, Boolean background, Integer sampleRate, Boolean trimSilence, Integer lifetime) {
         this.action = action;
         this.method = method;
         this.timeout = timeout;
@@ -67,7 +67,7 @@ public class Record implements ResponseElement {
         this.maxLength = maxLength;
         this.transcribe = transcribe;
         this.transcribeCallback = transcribeCallback;
-        this.transcribeQuality = transcribeQuality;
+        this.transcriptionQuality = transcriptionQuality;
         this.sliceStart = sliceStart;
         this.sliceDuration = sliceDuration;
         this.playBeep = playBeep;
@@ -150,13 +150,13 @@ public class Record implements ResponseElement {
     }
 
 
-    public TranscribeQuality getTranscribeQuality() {
-        return transcribeQuality;
+    public TranscriptionQuality getTranscriptionQuality() {
+        return transcriptionQuality;
     }
 
 
-    public void setTranscribeQuality(TranscribeQuality value) {
-        this.transcribeQuality = value;
+    public void setTranscriptionQuality(TranscriptionQuality value) {
+        this.transcriptionQuality = value;
     }
 
 

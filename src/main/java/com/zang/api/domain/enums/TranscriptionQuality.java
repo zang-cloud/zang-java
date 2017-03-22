@@ -3,11 +3,17 @@ package com.zang.api.domain.enums;
 import com.zang.api.domain.enums.util.EnumUtil;
 import org.codehaus.jackson.annotate.JsonCreator;
 
+import javax.xml.bind.annotation.XmlEnumValue;
 import java.util.HashMap;
 import java.util.Map;
 
 public enum TranscriptionQuality {
-    AUTO, HYBRID, KEYWORDS;
+    @XmlEnumValue("auto")
+    AUTO,
+    @XmlEnumValue("hybrid")
+    HYBRID,
+    @XmlEnumValue("keywords")
+    KEYWORDS;
 
     private static Map<TranscriptionQuality, String> map;
 
@@ -16,7 +22,6 @@ public enum TranscriptionQuality {
         map.put(AUTO, "auto");
         map.put(HYBRID, "hybrid");
         map.put(KEYWORDS, "keywords");
-
     }
 
     @JsonCreator

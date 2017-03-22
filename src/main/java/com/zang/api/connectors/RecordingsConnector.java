@@ -3,7 +3,7 @@ package com.zang.api.connectors;
 import com.zang.api.configuration.ZangConfiguration;
 import com.zang.api.domain.Recording;
 import com.zang.api.domain.enums.RecordingAudioDirection;
-import com.zang.api.domain.enums.TranscribeQuality;
+import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.domain.list.RecordingsList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
@@ -40,16 +40,16 @@ public class RecordingsConnector extends BaseConnector {
         return listRecordings(conf.getSid(), callSid, dateCreatedGte, dateCreatedLt, page, pageSize);
     }
 
-    public Recording recordCall(String accountSid, String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscribeQuality transcribeQuality, String transcribeCallback) throws ZangException {
-        return returnThrows(proxy.recordCall(accountSid, callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, transcribe, transcribeQuality, transcribeCallback), Recording.class);
+    public Recording recordCall(String accountSid, String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscriptionQuality transcriptionQuality, String transcribeCallback) throws ZangException {
+        return returnThrows(proxy.recordCall(accountSid, callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, transcribe, transcriptionQuality, transcribeCallback), Recording.class);
     }
 
-    public Recording recordCall(String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscribeQuality transcribeQuality, String transcribeCallback) throws ZangException {
-        return recordCall(conf.getSid(), callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, transcribe, transcribeQuality, transcribeCallback);
+    public Recording recordCall(String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscriptionQuality transcriptionQuality, String transcribeCallback) throws ZangException {
+        return recordCall(conf.getSid(), callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, transcribe, transcriptionQuality, transcribeCallback);
     }
 
     public Recording recordCall(RecordCallParams params) throws ZangException {
-        return recordCall(params.getAccountSid() != null ? params.getAccountSid() : conf.getSid(), params.getCallSid(), params.getRecord(), params.getDirection(), params.getTimeLimit(), params.getCallbackUrl(), params.getFileFormat(), params.getTrimSilence(), params.getTranscribe(), params.getTranscribeQuality(), params.getTranscribeCallback());
+        return recordCall(params.getAccountSid() != null ? params.getAccountSid() : conf.getSid(), params.getCallSid(), params.getRecord(), params.getDirection(), params.getTimeLimit(), params.getCallbackUrl(), params.getFileFormat(), params.getTrimSilence(), params.getTranscribe(), params.getTranscriptionQuality(), params.getTranscribeCallback());
     }
 
     public Recording deleteRecording(String accountSid, String recordingSid) throws ZangException {

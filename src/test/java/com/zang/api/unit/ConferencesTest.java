@@ -31,9 +31,9 @@ public class ConferencesTest extends BaseUnitTest {
         createExpectation("GET", "Conferences.json", null, new Parameter[]{
                 new Parameter("FriendlyName", "TestConference"),
                         new Parameter("Status", "completed"),
-                        new Parameter("DateCreated>", "2000-12-12"),
+                        new Parameter("DateCreated>", "2016-12-12"),
                         new Parameter("DateCreated<", "2017-03-19"),
-                        new Parameter("DateUpdated>", "2000-12-12"),
+                        new Parameter("DateUpdated>", "2016-12-12"),
                         new Parameter("DateUpdated<", "2017-03-19"),
                         new Parameter("Page", "0"),
                         new Parameter("PageSize", "10"),

@@ -3,7 +3,7 @@ package com.zang.api.unit;
 import com.zang.api.connectors.RecordingsConnector;
 import com.zang.api.domain.Recording;
 import com.zang.api.domain.enums.RecordingAudioDirection;
-import com.zang.api.domain.enums.TranscribeQuality;
+import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 import com.zang.api.params.RecordCallParams;
@@ -69,7 +69,7 @@ public class RecordingsTest extends BaseUnitTest {
                 .setFileFormat(RecordingFileFormat.WAV)
                 .setTrimSilence(true)
                 .setTranscribe(true)
-                .setTranscribeQuality(TranscribeQuality.HYBRID)
+                .setTranscriptionQuality(TranscriptionQuality.HYBRID)
                 .setTranscribeCallback("TranscribeCallback")
                 .build()));
     }

@@ -17,7 +17,11 @@ import org.junit.runners.Suite;
         UsagesTest.class,
         SipCredentialsTest.class,
         SipAclTest.class,
-        IncomingPhoneNumbersTest.class
+        IncomingPhoneNumbersTest.class,
+        RecordingsTest.class,
+        NotificationsTest.class,
+        AvailablePhoneNumbersTest.class,
+        TranscriptionsTest.class
 })
 public class UnitTestSuite {
 

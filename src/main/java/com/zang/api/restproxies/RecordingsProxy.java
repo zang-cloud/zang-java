@@ -1,7 +1,7 @@
 package com.zang.api.restproxies;
 
 import com.zang.api.domain.enums.RecordingAudioDirection;
-import com.zang.api.domain.enums.TranscribeQuality;
+import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 
 import javax.ws.rs.*;
@@ -42,7 +42,7 @@ public interface RecordingsProxy {
             @FormParam("FileFormat") RecordingFileFormat fileFormat,
             @FormParam("TrimSilence") Boolean trimSilence,
             @FormParam("Transcribe") Boolean transcribe,
-            @FormParam("TranscribeQuality") TranscribeQuality transcribeQuality,
+            @FormParam("TranscribeQuality") TranscriptionQuality transcriptionQuality,
             @FormParam("TranscribeCallback") String transcribeCallback
     );
 

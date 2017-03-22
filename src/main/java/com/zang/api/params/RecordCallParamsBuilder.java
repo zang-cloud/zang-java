@@ -1,7 +1,7 @@
 package com.zang.api.params;
 
 import com.zang.api.domain.enums.RecordingAudioDirection;
-import com.zang.api.domain.enums.TranscribeQuality;
+import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 
 public class RecordCallParamsBuilder {
@@ -14,7 +14,7 @@ public class RecordCallParamsBuilder {
     private RecordingFileFormat fileFormat;
     private Boolean trimSilence;
     private Boolean transcribe;
-    private TranscribeQuality transcribeQuality;
+    private TranscriptionQuality transcriptionQuality;
     private String transcribeCallback;
 
     RecordCallParamsBuilder() {
@@ -65,8 +65,8 @@ public class RecordCallParamsBuilder {
         return this;
     }
 
-    public RecordCallParamsBuilder setTranscribeQuality(TranscribeQuality transcribeQuality) {
-        this.transcribeQuality = transcribeQuality;
+    public RecordCallParamsBuilder setTranscriptionQuality(TranscriptionQuality transcriptionQuality) {
+        this.transcriptionQuality = transcriptionQuality;
         return this;
     }
 
@@ -76,6 +76,6 @@ public class RecordCallParamsBuilder {
     }
 
     public RecordCallParams build() {
-        return new RecordCallParams(accountSid, callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, transcribe, transcribeQuality, transcribeCallback);
+        return new RecordCallParams(accountSid, callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, transcribe, transcriptionQuality, transcribeCallback);
     }
 }

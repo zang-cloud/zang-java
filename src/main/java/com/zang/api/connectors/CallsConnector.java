@@ -77,13 +77,13 @@ public class CallsConnector extends BaseConnector {
         return sendDigitsToLiveCall(conf.getSid(), callSid, playDtmf, playDtmfDirection);
     }
 
-    public Call recordLiveCall(String accountSid, String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscribeQuality transcribeQuality, String transcribeCallback) throws ZangException {
-        Response response = proxy.recordLiveCall(accountSid, callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, true, transcribeQuality, transcribeCallback);
+    public Call recordLiveCall(String accountSid, String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscriptionQuality transcriptionQuality, String transcribeCallback) throws ZangException {
+        Response response = proxy.recordLiveCall(accountSid, callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, true, transcriptionQuality, transcribeCallback);
         return returnThrows(response, Call.class);
     }
 
-    public Call recordLiveCall(String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscribeQuality transcribeQuality, String transcribeCallback) throws ZangException {
-        return recordLiveCall(conf.getSid(), callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, true, transcribeQuality, transcribeCallback);
+    public Call recordLiveCall(String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscriptionQuality transcriptionQuality, String transcribeCallback) throws ZangException {
+        return recordLiveCall(conf.getSid(), callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, true, transcriptionQuality, transcribeCallback);
     }
 
     public Call playAudioToLiveCall(String accountSid, String callSid, String audioUrl, RecordingAudioDirection direction, Boolean loop) throws ZangException {

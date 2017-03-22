@@ -1,7 +1,7 @@
 package com.zang.api.params;
 
 import com.zang.api.domain.enums.RecordingAudioDirection;
-import com.zang.api.domain.enums.TranscribeQuality;
+import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 
 public class RecordCallParams {
@@ -14,7 +14,7 @@ public class RecordCallParams {
     private  RecordingFileFormat fileFormat;
     private  Boolean trimSilence;
     private  Boolean transcribe;
-    private  TranscribeQuality transcribeQuality;
+    private TranscriptionQuality transcriptionQuality;
     private  String transcribeCallback;
 
     public static RecordCallParamsBuilder builder() {
@@ -24,7 +24,7 @@ public class RecordCallParams {
     public RecordCallParams() {
     }
 
-    public RecordCallParams(String accountSid, String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscribeQuality transcribeQuality, String transcribeCallback) {
+    public RecordCallParams(String accountSid, String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscriptionQuality transcriptionQuality, String transcribeCallback) {
         this.accountSid = accountSid;
         this.callSid = callSid;
         this.record = record;
@@ -34,7 +34,7 @@ public class RecordCallParams {
         this.fileFormat = fileFormat;
         this.trimSilence = trimSilence;
         this.transcribe = transcribe;
-        this.transcribeQuality = transcribeQuality;
+        this.transcriptionQuality = transcriptionQuality;
         this.transcribeCallback = transcribeCallback;
     }
 
@@ -110,12 +110,12 @@ public class RecordCallParams {
         this.transcribe = transcribe;
     }
 
-    public TranscribeQuality getTranscribeQuality() {
-        return transcribeQuality;
+    public TranscriptionQuality getTranscriptionQuality() {
+        return transcriptionQuality;
     }
 
-    public void setTranscribeQuality(TranscribeQuality transcribeQuality) {
-        this.transcribeQuality = transcribeQuality;
+    public void setTranscriptionQuality(TranscriptionQuality transcriptionQuality) {
+        this.transcriptionQuality = transcriptionQuality;
     }
 
     public String getTranscribeCallback() {

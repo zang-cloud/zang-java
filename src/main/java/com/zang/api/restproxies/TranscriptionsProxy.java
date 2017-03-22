@@ -1,5 +1,6 @@
 package com.zang.api.restproxies;
 
+import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.domain.enums.TranscriptionStatus;
 
@@ -17,13 +18,13 @@ public interface TranscriptionsProxy {
     );
 
     @GET
-    @Path("Accounts/{AccountSid}/Transcriptions/{TranscriptionSid}.json")
+    @Path("Accounts/{AccountSid}/Transcriptions.json")
     @Produces("application/json")
     Response listTranscriptions(
             @PathParam("AccountSid") String accountSid,
             @QueryParam("Status") TranscriptionStatus status,
-            @QueryParam("DateTranscribed>=") String dateSentGte,
-            @QueryParam("DateTranscribed<=") String dateSentLt,
+            @QueryParam("DateTranscribed>") String dateSentGte,
+            @QueryParam("DateTranscribed<") String dateSentLt,
             @QueryParam("Page") Integer page,
             @QueryParam("PageSize") Integer pageSize
     );
@@ -38,7 +39,7 @@ public interface TranscriptionsProxy {
             @FormParam("CallbackMethod") HttpMethod callbackMethod,
             @FormParam("SliceStart") Integer sliceStart,
             @FormParam("SliceDuration") Integer sliceDuration,
-            @FormParam("Quality")TranscriptionQuality quality
+            @FormParam("Quality") TranscriptionQuality quality
     );
 
     @POST
@@ -51,6 +52,6 @@ public interface TranscriptionsProxy {
             @FormParam("CallbackMethod") HttpMethod callbackMethod,
             @FormParam("SliceStart") Integer sliceStart,
             @FormParam("SliceDuration") Integer sliceDuration,
-            @FormParam("Quality")TranscriptionQuality quality
+            @FormParam("Quality") TranscriptionQuality quality
     );
 }

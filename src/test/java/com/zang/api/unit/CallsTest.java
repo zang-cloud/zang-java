@@ -154,7 +154,7 @@ public class CallsTest extends BaseUnitTest {
                 }, null,
                 "/calls/call.json");
         CallsConnector connector = connectorFactory.getCallsConnector();
-        Call call = connector.recordLiveCall("TestCallSid", true, RecordingAudioDirection.BOTH, 15, "TestUrl", RecordingFileFormat.MP3, true, true, TranscribeQuality.HYBRID, "TestTranscribeUrl");
+        Call call = connector.recordLiveCall("TestCallSid", true, RecordingAudioDirection.BOTH, 15, "TestUrl", RecordingFileFormat.MP3, true, true, TranscriptionQuality.HYBRID, "TestTranscribeUrl");
         checkCall(call);
     }
 

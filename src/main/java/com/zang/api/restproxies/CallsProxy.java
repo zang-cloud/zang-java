@@ -97,7 +97,7 @@ public interface CallsProxy {
             @FormParam("FileFormat") RecordingFileFormat fileFormat,
             @FormParam("TrimSilence") Boolean trimSilence,
             @FormParam("Transcribe") Boolean transcribe,
-            @FormParam("TranscribeQuality") TranscribeQuality transcribeQuality,
+            @FormParam("TranscribeQuality") TranscriptionQuality transcriptionQuality,
             @FormParam("TranscribeCallback") String transcribeCallback
     );
 

@@ -198,4 +198,16 @@ public class ZangConnectorFactory {
     public static AvailablePhoneNumbersConnector getAvailablePhoneNumbersConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new AvailablePhoneNumbersConnector(conf, executor);
     }
+
+    public TranscriptionsConnector getTranscriptionsConnector() {
+        return new TranscriptionsConnector(this.conf, this.executor);
+    }
+
+    public static TranscriptionsConnector getTranscriptionsConnector(ZangConfiguration conf) {
+        return new TranscriptionsConnector(conf, null);
+    }
+
+    public static TranscriptionsConnector getTranscriptionsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new TranscriptionsConnector(conf, executor);
+    }
 }
