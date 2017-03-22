@@ -1,0 +1,13 @@
+{
+  "phone_number": "{E.164}",
+  "sid": "{BnaLookupSid}",
+  "date_updated": "Thu, 30 Oct 2014 08:35:27 -0000",
+  "date_created": "Thu, 30 Oct 2014 08:35:26 -0000",
+  "price": "0.00",
+  "uri": "/v2/Accounts/{AccountSid}/BNA/{BnaLookupSid}",
+  "api_version": "v2",
+  "account_sid": "{AccountSid}",
+  "city": "VIRGINIA",
+  "state": "VA",
+  "country_code": "US"
+}

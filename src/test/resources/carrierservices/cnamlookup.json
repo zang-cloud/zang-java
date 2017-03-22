@@ -1,0 +1,11 @@
+{
+  "phone_number": "[E.164}",
+  "body": "VIRGINIA CALL",
+  "sid": "{CnamLookupSid}",
+  "date_updated": "Thu, 30 Oct 2014 08:25:46 -0000",
+  "date_created": "Thu, 30 Oct 2014 08:25:46 -0000",
+  "price": "0.01",
+  "uri": "/v2/Accounts/{AccountSid}/CNAM/{CnamLookupSid}",
+  "api_version": "v2",
+  "account_sid": "{AccountSid}"
+}

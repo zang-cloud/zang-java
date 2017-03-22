@@ -8,13 +8,14 @@ public interface CarrierServicesProxy {
     @Path("Accounts/{AccountSid}/Lookups/Carrier.json")
     @Produces("application/json")
     Response carrierLookup(
-            @PathParam("AccountSid") String accountSid
+            @PathParam("AccountSid") String accountSid,
+            @FormParam("PhoneNumber") String phoneNumber
     );
 
     @GET
     @Path("Accounts/{AccountSid}/Lookups/Carrier.json")
     @Produces("application/json")
-    Response authorizeDestination(
+    Response listCarrierLookups(
             @PathParam("AccountSid") String accountSid,
             @QueryParam("Page") Integer page,
             @QueryParam("PageSize") Integer pageSize
@@ -25,13 +26,13 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response cnamLookup(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("AvailableNumberType") String phoneNumber
+            @FormParam("PhoneNumber") String phoneNumber
     );
 
     @GET
     @Path("Accounts/{AccountSid}/Lookups/Cnam.json")
     @Produces("application/json")
-    Response cnamLookupList(
+    Response listCnamLookups(
             @PathParam("AccountSid") String accountSid,
             @QueryParam("Page") Integer page,
             @QueryParam("PageSize") Integer pageSize
@@ -42,13 +43,13 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response bnaLookup(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("AvailableNumberType") String phoneNumber
+            @FormParam("PhoneNumber") String phoneNumber
     );
 
     @GET
     @Path("Accounts/{AccountSid}/Lookups/Bna.json")
     @Produces("application/json")
-    Response bnaLookupList(
+    Response listBnaLookups(
             @PathParam("AccountSid") String accountSid,
             @QueryParam("Page") Integer page,
             @QueryParam("PageSize") Integer pageSize

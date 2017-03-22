@@ -210,4 +210,16 @@ public class ZangConnectorFactory {
     public static TranscriptionsConnector getTranscriptionsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new TranscriptionsConnector(conf, executor);
     }
+
+    public CarrierServicesConnector getCarrierServicesConnector() {
+        return new CarrierServicesConnector(this.conf, this.executor);
+    }
+
+    public static CarrierServicesConnector getCarrierServicesConnector(ZangConfiguration conf) {
+        return new CarrierServicesConnector(conf, null);
+    }
+
+    public static CarrierServicesConnector getCarrierServicesConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new CarrierServicesConnector(conf, executor);
+    }
 }

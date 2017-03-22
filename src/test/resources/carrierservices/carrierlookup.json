@@ -1,0 +1,16 @@
+{
+  "phone_number": "{E.164}",
+  "date_updated": "Thu, 30 Oct 2014 07:56:12 -0000",
+  "price": "0.01",
+  "mcc": 219,
+  "carrier_id": 26156,
+  "country_code": "HR",
+  "mnc": "10",
+  "network": "{NetworkName}",
+  "mobile": "true",
+  "uri": "/v2/Accounts/{AccountSid}/Carrier/{CarrierLookupSid}",
+  "account_sid": "{AccountSid}",
+  "sid": "{CarrierLookupSid}",
+  "date_created": "Thu, 30 Oct 2014 07:56:11 -0000",
+  "api_version": "v2"
+}
