@@ -12,16 +12,16 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 public class ApplicationsConnector extends BaseConnector {
 
-    private ApplicationsProxy applicationsProxy;
+    private ApplicationsProxy proxy;
 
     ApplicationsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
-        applicationsProxy = createProxy(ApplicationsProxy.class);
+        proxy = createProxy(ApplicationsProxy.class);
     }
 
     public Application viewApplication(String accountSid, String applicationSid)
             throws ZangException {
-        return returnThrows(applicationsProxy.viewApplication(accountSid,
+        return returnThrows(proxy.viewApplication(accountSid,
                 applicationSid), Application.class);
     }
 
@@ -31,7 +31,7 @@ public class ApplicationsConnector extends BaseConnector {
     }
 
     public ApplicationsList listApplications(String accountSid, String friendlyName, Integer page, Integer pageSize) throws ZangException {
-        return returnThrows(applicationsProxy.listApplications(accountSid, friendlyName, page, pageSize), ApplicationsList.class);
+        return returnThrows(proxy.listApplications(accountSid, friendlyName, page, pageSize), ApplicationsList.class);
     }
 
     public ApplicationsList listApplications(String friendlyName, Integer page, Integer pageSize) throws ZangException {
@@ -42,7 +42,7 @@ public class ApplicationsConnector extends BaseConnector {
     }
 
     public Application createApplication(String accountSid, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, boolean voiceCallerIdLookup, String smsUrl, HttpMethod smsMethod, String smsFallbackUrl, HttpMethod smsFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String statusCallback, HttpMethod statusCallbackMethod, String hangupCallback, HttpMethod hangupCallbackMethod) throws ZangException {
-        return returnThrows(applicationsProxy.createApplication(accountSid, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, voiceCallerIdLookup, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, heartbeatUrl, heartbeatMethod, statusCallback, statusCallbackMethod, hangupCallback, hangupCallbackMethod), Application.class);
+        return returnThrows(proxy.createApplication(accountSid, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, voiceCallerIdLookup, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, heartbeatUrl, heartbeatMethod, statusCallback, statusCallbackMethod, hangupCallback, hangupCallbackMethod), Application.class);
     }
 
     public Application createApplication(ApplicationParams applicationParams) throws ZangException {
@@ -50,7 +50,7 @@ public class ApplicationsConnector extends BaseConnector {
     }
 
     public Application updateApplication(String accountSid, String applicationSid, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, boolean voiceCallerIdLookup, String smsUrl, HttpMethod smsMethod, String smsFallbackUrl, HttpMethod smsFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String statusCallback, HttpMethod statusCallbackMethod, String hangupCallback, HttpMethod hangupCallbackMethod) throws ZangException {
-        return returnThrows(applicationsProxy.updateApplication(accountSid, applicationSid, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, voiceCallerIdLookup, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, heartbeatUrl, heartbeatMethod, statusCallback, statusCallbackMethod, hangupCallback, hangupCallbackMethod), Application.class);
+        return returnThrows(proxy.updateApplication(accountSid, applicationSid, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, voiceCallerIdLookup, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, heartbeatUrl, heartbeatMethod, statusCallback, statusCallbackMethod, hangupCallback, hangupCallbackMethod), Application.class);
     }
 
     public Application updateApplication(String applicationSid, ApplicationParams applicationParams) throws ZangException {
@@ -59,7 +59,7 @@ public class ApplicationsConnector extends BaseConnector {
 
 
     public Application deleteApplication(String accountSid, String applicationSid) throws ZangException {
-        return returnThrows(applicationsProxy.deleteApplication(accountSid, applicationSid), Application.class);
+        return returnThrows(proxy.deleteApplication(accountSid, applicationSid), Application.class);
     }
 
     public Application deleteApplication(String applicationSid) throws ZangException {

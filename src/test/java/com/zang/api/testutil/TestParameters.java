@@ -4,11 +4,25 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
 public class TestParameters extends Properties {
     private static final long serialVersionUID = -7348144965758395514L;
     Logger logger = Logger.getLogger(TestParameters.class);
+
+    private static Date fromDate;
+    private static Date toDate;
+
+    static {
+        Calendar from = Calendar.getInstance();
+        from.set(2016, Calendar.DECEMBER, 12);
+        fromDate = from.getTime();
+        Calendar to = Calendar.getInstance();
+        to.set(2017, Calendar.MARCH, 19);
+        toDate = to.getTime();
+    }
 
     public TestParameters() {
         this("zang.test.properties");
@@ -44,4 +58,11 @@ public class TestParameters extends Properties {
         return getProperty("mp3url");
     }
 
+    public static Date getFromDate() {
+        return fromDate;
+    }
+
+    public static Date getToDate() {
+        return toDate;
+    }
 }

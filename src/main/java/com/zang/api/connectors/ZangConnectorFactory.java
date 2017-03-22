@@ -162,4 +162,16 @@ public class ZangConnectorFactory {
     public static IncomingPhoneNumbersConnector getIncomingPhoneNumbersConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new IncomingPhoneNumbersConnector(conf, executor);
     }
+
+    public RecordingsConnector getRecordingsConnector() {
+        return new RecordingsConnector(this.conf, this.executor);
+    }
+
+    public static RecordingsConnector getRecordingsConnector(ZangConfiguration conf) {
+        return new RecordingsConnector(conf, null);
+    }
+
+    public static RecordingsConnector getRecordingsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new RecordingsConnector(conf, executor);
+    }
 }

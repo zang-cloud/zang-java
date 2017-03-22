@@ -16,7 +16,7 @@ import java.util.Date;
 
 public class CallsConnector extends BaseConnector {
 
-    private CallsProxy callsProxy;
+    private CallsProxy proxy;
 
     /**
      * @see BaseConnector, PropertiesFileZangConfiguration,
@@ -24,11 +24,11 @@ public class CallsConnector extends BaseConnector {
      */
     CallsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
-        callsProxy = createProxy(CallsProxy.class);
+        proxy = createProxy(CallsProxy.class);
     }
 
     public Call viewCall(String accountSid, String callSid) throws ZangException {
-        Response response = callsProxy.getCall(accountSid, callSid);
+        Response response = proxy.getCall(accountSid, callSid);
         return returnThrows(response, Call.class);
     }
 
@@ -38,7 +38,7 @@ public class CallsConnector extends BaseConnector {
 
 
     public CallsList listCalls(String accountSid, String to, String from, CallStatus status, Date startTimeGte, Date startTimeLt, Integer page, Integer pageSize) throws ZangException {
-        Response response = callsProxy.getCallsList(accountSid, to, from, status, getDateString(startTimeGte), getDateString(startTimeLt), page, pageSize);
+        Response response = proxy.getCallsList(accountSid, to, from, status, getDateString(startTimeGte), getDateString(startTimeLt), page, pageSize);
         return returnThrows(response, CallsList.class);
     }
 
@@ -51,7 +51,7 @@ public class CallsConnector extends BaseConnector {
     }
 
     public Call makeCall(String accountSid, String to, String from, String url, HttpMethod method, String fallbackUrl, HttpMethod fallbackMethod, String statusCallback, HttpMethod statusCallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String forwardedFrom, String playDtmf, Integer timeout, Boolean hideCallerId, Boolean record, String recordCallback, HttpMethod recordCallbackMethod, Boolean transcribe, String transcribeCallback, Boolean straightToVoicemail, IfMachine ifMachine, String ifMachineUrl, HttpMethod ifMachineMethod, String sipAuthUsername, String sipAuthPassword) throws ZangException {
-        Response response = callsProxy.makeCall(accountSid, to, from, url, method, fallbackUrl, fallbackMethod, statusCallback, statusCallbackMethod, heartbeatUrl, heartbeatMethod, forwardedFrom, playDtmf, timeout, hideCallerId, record, recordCallback, recordCallbackMethod, transcribe, transcribeCallback, straightToVoicemail, ifMachine, ifMachineUrl, ifMachineMethod, sipAuthUsername, sipAuthPassword);
+        Response response = proxy.makeCall(accountSid, to, from, url, method, fallbackUrl, fallbackMethod, statusCallback, statusCallbackMethod, heartbeatUrl, heartbeatMethod, forwardedFrom, playDtmf, timeout, hideCallerId, record, recordCallback, recordCallbackMethod, transcribe, transcribeCallback, straightToVoicemail, ifMachine, ifMachineUrl, ifMachineMethod, sipAuthUsername, sipAuthPassword);
         return returnThrows(response, Call.class);
     }
 
@@ -60,7 +60,7 @@ public class CallsConnector extends BaseConnector {
     }
 
     public Call interruptLiveCall(String accountSid, String callSid, String url, HttpMethod method, EndCallStatus status) throws ZangException {
-        Response response = callsProxy.interruptLiveCall(accountSid, callSid, url, method, status);
+        Response response = proxy.interruptLiveCall(accountSid, callSid, url, method, status);
         return returnThrows(response, Call.class);
     }
 
@@ -69,7 +69,7 @@ public class CallsConnector extends BaseConnector {
     }
 
     public Call sendDigitsToLiveCall(String accountSid, String callSid, String playDtmf, AudioDirection playDtmfDirection) throws ZangException {
-        Response response = callsProxy.sendDigitsToLiveCall(accountSid, callSid, playDtmf, playDtmfDirection);
+        Response response = proxy.sendDigitsToLiveCall(accountSid, callSid, playDtmf, playDtmfDirection);
         return returnThrows(response, Call.class);
     }
 
@@ -78,7 +78,7 @@ public class CallsConnector extends BaseConnector {
     }
 
     public Call recordLiveCall(String accountSid, String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscribeQuality transcribeQuality, String transcribeCallback) throws ZangException {
-        Response response = callsProxy.recordLiveCall(accountSid, callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, true, transcribeQuality, transcribeCallback);
+        Response response = proxy.recordLiveCall(accountSid, callSid, record, direction, timeLimit, callbackUrl, fileFormat, trimSilence, true, transcribeQuality, transcribeCallback);
         return returnThrows(response, Call.class);
     }
 
@@ -87,7 +87,7 @@ public class CallsConnector extends BaseConnector {
     }
 
     public Call playAudioToLiveCall(String accountSid, String callSid, String audioUrl, RecordingAudioDirection direction, Boolean loop) throws ZangException {
-        Response response = callsProxy.playAudioToLiveCall(accountSid, callSid, audioUrl, direction, loop);
+        Response response = proxy.playAudioToLiveCall(accountSid, callSid, audioUrl, direction, loop);
         return returnThrows(response, Call.class);
     }
 
@@ -96,7 +96,7 @@ public class CallsConnector extends BaseConnector {
     }
 
     public Call applyVoiceEffect(String accountSid, String callSid, AudioDirection direction, Integer pitch, Integer pitchSemiTones, Integer pitchOctaves, Integer rate, Integer tempo) throws ZangException {
-        Response response = callsProxy.applyVoiceEffect(accountSid, callSid, direction, pitch, pitchSemiTones, pitchOctaves, rate, tempo);
+        Response response = proxy.applyVoiceEffect(accountSid, callSid, direction, pitch, pitchSemiTones, pitchOctaves, rate, tempo);
         return returnThrows(response, Call.class);
     }
 

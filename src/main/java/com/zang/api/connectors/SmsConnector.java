@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class SmsConnector extends BaseConnector {
 
-    private SmsProxy smsProxy;
+    private SmsProxy proxy;
 
     /**
      * @see BaseConnector, PropertiesFileZangConfiguration,
@@ -24,7 +24,7 @@ public class SmsConnector extends BaseConnector {
      */
     SmsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
-        smsProxy = createProxy(SmsProxy.class);
+        proxy = createProxy(SmsProxy.class);
     }
 
     /**
@@ -37,7 +37,7 @@ public class SmsConnector extends BaseConnector {
      */
     public SmsMessage viewSmsMessage(String sid, String smsMessageSid)
             throws ZangException {
-        Response response = smsProxy.getSmsMessage(sid,
+        Response response = proxy.getSmsMessage(sid,
                 smsMessageSid);
         return returnThrows(response, SmsMessage.class);
     }
@@ -65,7 +65,7 @@ public class SmsConnector extends BaseConnector {
                                           String from, Date dateSentGte, Date dateSentLt, Integer page,
                                           Integer pageSize) throws ZangException {
 
-        Response response = smsProxy.getSmsMessageList(
+        Response response = proxy.getSmsMessageList(
                 accountSid, to, from, getDateString(dateSentGte),
                 getDateString(dateSentLt), page, pageSize);
         return returnThrows(response, SmsMessageList.class);
@@ -105,7 +105,7 @@ public class SmsConnector extends BaseConnector {
     public SmsMessage sendSmsMessage(String accountSid, String to, String from,
                                      String body, String statusCallback, HttpMethod statusCallbackMethod,
                                      Boolean allowMultiple) throws ZangException {
-        Response response = smsProxy.sendSmsMessage(
+        Response response = proxy.sendSmsMessage(
                 accountSid, to, from, body, statusCallback, statusCallbackMethod, allowMultiple);
         return returnThrows(response, SmsMessage.class);
     }

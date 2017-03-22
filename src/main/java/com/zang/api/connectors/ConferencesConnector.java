@@ -15,17 +15,17 @@ import java.util.Date;
 
 public class ConferencesConnector extends BaseConnector {
 
-    private ConferencesProxy conferencesProxy;
+    private ConferencesProxy proxy;
 
     ConferencesConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
-        conferencesProxy = createProxy(ConferencesProxy.class);
+        proxy = createProxy(ConferencesProxy.class);
     }
 
 
     public Conference viewConference(String accountSid, String conferenceSid)
             throws ZangException {
-        return returnThrows(conferencesProxy.viewConference(accountSid,
+        return returnThrows(proxy.viewConference(accountSid,
                 conferenceSid), Conference.class);
     }
 
@@ -39,7 +39,7 @@ public class ConferencesConnector extends BaseConnector {
                                            String friendlyName, ConferenceStatus status, Date dateCreatedGte,
                                            Date dateCreatedLt, Date dateUpdatedGte, Date dateUpdatedLt,
                                            Integer page, Integer pageSize) throws ZangException {
-        return returnThrows(conferencesProxy.listConferences(accountSid,
+        return returnThrows(proxy.listConferences(accountSid,
                 friendlyName, status, getDateString(dateCreatedGte),
                 getDateString(dateCreatedLt), getDateString(dateUpdatedGte),
                 getDateString(dateUpdatedLt), page, pageSize), ConferencesList.class);
@@ -61,14 +61,14 @@ public class ConferencesConnector extends BaseConnector {
 
     public Participant viewParticipant(String accountSid, String conferenceSid,
                                        String participantSid) throws ZangException {
-        return returnThrows(conferencesProxy.viewParticipant(accountSid,
+        return returnThrows(proxy.viewParticipant(accountSid,
                 conferenceSid, participantSid), Participant.class);
     }
 
 
     public Participant viewParticipant(String conferenceSid, String participantSid)
             throws ZangException {
-        return returnThrows(conferencesProxy.viewParticipant(conf.getSid(),
+        return returnThrows(proxy.viewParticipant(conf.getSid(),
                 conferenceSid, participantSid), Participant.class);
     }
 
@@ -76,7 +76,7 @@ public class ConferencesConnector extends BaseConnector {
     public ParticipantsList listParticipants(String accountSid,
                                              String conferenceSid, Boolean muted, Boolean deaf, Integer page,
                                              Integer pageSize) throws ZangException {
-        return returnThrows(conferencesProxy.listParticipants(accountSid,
+        return returnThrows(proxy.listParticipants(accountSid,
                 conferenceSid, muted, deaf, page, pageSize), ParticipantsList.class);
     }
 
@@ -94,24 +94,24 @@ public class ConferencesConnector extends BaseConnector {
 
 
     public Participant deafOrMuteParticipant(String accountSid, String conferenceSid, String participantSid, Boolean muted, Boolean deaf) throws ZangException {
-        return returnThrows(conferencesProxy.muteDeafParticipant(accountSid, conferenceSid, participantSid, muted, deaf), Participant.class);
+        return returnThrows(proxy.muteDeafParticipant(accountSid, conferenceSid, participantSid, muted, deaf), Participant.class);
     }
 
 
     public Participant deafOrMuteParticipant(String conferenceSid, String participantSid, Boolean muted, Boolean deaf) throws ZangException {
-        return returnThrows(conferencesProxy.muteDeafParticipant(conf.getSid(), conferenceSid, participantSid, muted, deaf), Participant.class);
+        return returnThrows(proxy.muteDeafParticipant(conf.getSid(), conferenceSid, participantSid, muted, deaf), Participant.class);
     }
 
 
     public Participant hangupParticipant(String accountSid, String conferenceSid,
                                          String participantSid) throws ZangException {
-        return returnThrows(conferencesProxy.hangupParticipant(accountSid, conferenceSid, participantSid), Participant.class);
+        return returnThrows(proxy.hangupParticipant(accountSid, conferenceSid, participantSid), Participant.class);
     }
 
 
     public Participant hangupParticipant(String conferenceSid, String participantSid)
             throws ZangException {
-        return returnThrows(conferencesProxy.hangupParticipant(conf.getSid(),
+        return returnThrows(proxy.hangupParticipant(conf.getSid(),
                 conferenceSid, participantSid), Participant.class);
     }
 
@@ -119,7 +119,7 @@ public class ConferencesConnector extends BaseConnector {
     public Participant playAudioToParticipant(String accountSid,
                                               String conferenceSid, String participantSid, String url)
             throws ZangException {
-        return returnThrows(conferencesProxy.playAudioToParticipant(accountSid,
+        return returnThrows(proxy.playAudioToParticipant(accountSid,
                 conferenceSid, participantSid, url), Participant.class);
     }
 

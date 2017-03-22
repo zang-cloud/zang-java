@@ -16,15 +16,15 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 public class SipDomainsConnector extends BaseConnector {
 
-    private SipDomainsProxy sipDomainsProxy;
+    private SipDomainsProxy proxy;
 
     SipDomainsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
-        sipDomainsProxy = createProxy(SipDomainsProxy.class);
+        proxy = createProxy(SipDomainsProxy.class);
     }
     
     public Domain viewDomain(String accountSid, String domainSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.viewDomain(accountSid, domainSid), Domain.class);
+        return returnThrows(proxy.viewDomain(accountSid, domainSid), Domain.class);
     }
 
     public Domain viewDomain(String domainSid) throws ZangException {
@@ -33,7 +33,7 @@ public class SipDomainsConnector extends BaseConnector {
 
     
     public DomainsList listDomains(String accountSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.listDomains(accountSid), DomainsList.class);
+        return returnThrows(proxy.listDomains(accountSid), DomainsList.class);
     }
 
     public DomainsList listDomains() throws ZangException {
@@ -41,7 +41,7 @@ public class SipDomainsConnector extends BaseConnector {
     }
     
     public Domain createDomain(String accountSid, String domainName, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String voiceStatusCallback, HttpMethod voiceStatusMethod) throws ZangException {
-        return returnThrows(sipDomainsProxy.createDomain(accountSid, domainName, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, heartbeatUrl, heartbeatMethod, voiceStatusCallback, voiceStatusMethod), Domain.class);
+        return returnThrows(proxy.createDomain(accountSid, domainName, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, heartbeatUrl, heartbeatMethod, voiceStatusCallback, voiceStatusMethod), Domain.class);
     }
 
     public Domain createDomain(String domainName, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String voiceStatusCallback, HttpMethod voiceStatusMethod) throws ZangException {
@@ -54,7 +54,7 @@ public class SipDomainsConnector extends BaseConnector {
 
     
     public Domain updateDomain(String accountSid, String domainSid, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String voiceStatusCallback, HttpMethod voiceStatusMethod) throws ZangException {
-        return returnThrows(sipDomainsProxy.updateDomain(accountSid, domainSid, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, heartbeatUrl, heartbeatMethod, voiceStatusCallback, voiceStatusMethod), Domain.class);
+        return returnThrows(proxy.updateDomain(accountSid, domainSid, friendlyName, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, heartbeatUrl, heartbeatMethod, voiceStatusCallback, voiceStatusMethod), Domain.class);
     }
 
     public Domain updateDomain(String domainSid, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String voiceStatusCallback, HttpMethod voiceStatusMethod) throws ZangException {
@@ -67,7 +67,7 @@ public class SipDomainsConnector extends BaseConnector {
 
     
     public Domain deleteDomain(String accountSid, String domainSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.deleteDomain(accountSid, domainSid), Domain.class);
+        return returnThrows(proxy.deleteDomain(accountSid, domainSid), Domain.class);
     }
 
     public Domain deleteDomain(String domainSid) throws ZangException {
@@ -76,16 +76,16 @@ public class SipDomainsConnector extends BaseConnector {
 
     
     public CredentialsListsList listMappedCredentialsLists(String accountSid, String domainSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.listMappedCredentialsLists(accountSid, domainSid), CredentialsListsList.class);
+        return returnThrows(proxy.listMappedCredentialsLists(accountSid, domainSid), CredentialsListsList.class);
     }
 
     public CredentialsListsList listMappedCredentialsLists(String domainSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.listMappedCredentialsLists(conf.getSid(), domainSid), CredentialsListsList.class);
+        return returnThrows(proxy.listMappedCredentialsLists(conf.getSid(), domainSid), CredentialsListsList.class);
     }
 
     
     public CredentialsList mapCredentialsLists(String accountSid, String domainSid, String credentialListSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.mapCredentialsLists(accountSid, domainSid, credentialListSid), CredentialsList.class);
+        return returnThrows(proxy.mapCredentialsLists(accountSid, domainSid, credentialListSid), CredentialsList.class);
     }
 
     public CredentialsList mapCredentialsLists(String domainSid, String credentialListSid) throws ZangException {
@@ -93,7 +93,7 @@ public class SipDomainsConnector extends BaseConnector {
     }
 
     public CredentialsList deleteMappedCredentialsList(String accountSid, String domainSid, String credentialsListSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.deleteMappedCredentialsList(accountSid, domainSid, credentialsListSid), CredentialsList.class);
+        return returnThrows(proxy.deleteMappedCredentialsList(accountSid, domainSid, credentialsListSid), CredentialsList.class);
     }
 
     public CredentialsList deleteMappedCredentialsList(String domainSid, String credentialsListSid) throws ZangException {
@@ -101,7 +101,7 @@ public class SipDomainsConnector extends BaseConnector {
     }
     
     public AccessControlListsList listMappedIpAccessControlLists(String accountSid, String domainSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.listMappedIpAccessControlLists(accountSid, domainSid), AccessControlListsList.class);
+        return returnThrows(proxy.listMappedIpAccessControlLists(accountSid, domainSid), AccessControlListsList.class);
     }
 
     public AccessControlListsList listMappedIpAccessControlLists(String domainSid) throws ZangException {
@@ -109,7 +109,7 @@ public class SipDomainsConnector extends BaseConnector {
     }
 
     public AccessControlList mapIpAccessControlList(String accountSid, String domainSid, String ipAccessControlListSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.mapIpAccessControlList(accountSid, domainSid, ipAccessControlListSid), AccessControlList.class);
+        return returnThrows(proxy.mapIpAccessControlList(accountSid, domainSid, ipAccessControlListSid), AccessControlList.class);
     }
 
     public AccessControlList mapIpAccessControlList(String domainSid, String ipAccessControlListSid) throws ZangException {
@@ -117,7 +117,7 @@ public class SipDomainsConnector extends BaseConnector {
     }
     
     public AccessControlList deleteMappedIpAccessControlList(String accountSid, String domainSid, String accessControlListSid) throws ZangException {
-        return returnThrows(sipDomainsProxy.deleteMappedIpAccessControlList(accountSid, domainSid, accessControlListSid), AccessControlList.class);
+        return returnThrows(proxy.deleteMappedIpAccessControlList(accountSid, domainSid, accessControlListSid), AccessControlList.class);
     }
 
     public AccessControlList deleteMappedIpAccessControlList(String domainSid, String accessControlListSid) throws ZangException {

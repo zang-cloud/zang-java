@@ -12,17 +12,17 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 public class SipIpAccessControlListsConnector extends BaseConnector {
 
-    private SipIpAccessControlListsProxy sipIpAccessControlListsProxy;
+    private SipIpAccessControlListsProxy proxy;
 
     SipIpAccessControlListsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
-        sipIpAccessControlListsProxy = createProxy(SipIpAccessControlListsProxy.class);
+        proxy = createProxy(SipIpAccessControlListsProxy.class);
     }
 
 
     
     public AccessControlList viewIpAccessControlList(String accountSid, String ipAccessControlListSid) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.viewIpAccessControlList(accountSid, ipAccessControlListSid), AccessControlList.class);
+        return returnThrows(proxy.viewIpAccessControlList(accountSid, ipAccessControlListSid), AccessControlList.class);
     }
 
     public AccessControlList viewIpAccessControlList(String ipAccessControlListSid) throws ZangException {
@@ -31,7 +31,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
 
     
     public AccessControlListsList listIpAccessControlLists(String accountSid, Integer page, Integer pageSize) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.listIpAccessControlLists(accountSid, page, pageSize), AccessControlListsList.class);
+        return returnThrows(proxy.listIpAccessControlLists(accountSid, page, pageSize), AccessControlListsList.class);
     }
 
     public AccessControlListsList listIpAccessControlLists(Integer page, Integer pageSize) throws ZangException {
@@ -40,7 +40,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
 
     
     public AccessControlList createIpAccessControlList(String accountSid,  String friendlyName) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.createIpAccessControlList(accountSid, friendlyName), AccessControlList.class);
+        return returnThrows(proxy.createIpAccessControlList(accountSid, friendlyName), AccessControlList.class);
     }
 
     public AccessControlList createIpAccessControlList(String friendlyName) throws ZangException {
@@ -49,7 +49,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
 
     
     public AccessControlList updateIpAccessControlList(String accountSid, String ipAccessControlListSid,  String friendlyName) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.updateIpAccessControlList(accountSid, ipAccessControlListSid, friendlyName), AccessControlList.class);
+        return returnThrows(proxy.updateIpAccessControlList(accountSid, ipAccessControlListSid, friendlyName), AccessControlList.class);
     }
 
     public AccessControlList updateIpAccessControlList(String ipAccessControlListSid,  String friendlyName) throws ZangException {
@@ -58,7 +58,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
 
     
     public AccessControlList deleteIpAccessControlList(String accountSid, String ipAccessControlListSid) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.deleteIpAccessControlList(accountSid, ipAccessControlListSid), AccessControlList.class);
+        return returnThrows(proxy.deleteIpAccessControlList(accountSid, ipAccessControlListSid), AccessControlList.class);
     }
 
     public AccessControlList deleteIpAccessControlList(String ipAccessControlListSid) throws ZangException {
@@ -67,7 +67,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
 
     
     public IpAddress viewAccessControlListIp(String accountSid, String ipAccessControlListSid, String ipSid) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.viewAccessControlListIp(accountSid, ipAccessControlListSid, ipSid), IpAddress.class);
+        return returnThrows(proxy.viewAccessControlListIp(accountSid, ipAccessControlListSid, ipSid), IpAddress.class);
     }
 
     public IpAddress viewAccessControlListIp(String ipAccessControlListSid, String ipSid) throws ZangException {
@@ -76,7 +76,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
 
     
     public IpAddressesList listAccessControlListIps(String accountSid, String ipAccessControlListSid) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.listAccessControlListIps(accountSid, ipAccessControlListSid), IpAddressesList.class);
+        return returnThrows(proxy.listAccessControlListIps(accountSid, ipAccessControlListSid), IpAddressesList.class);
     }
 
     public IpAddressesList listAccessControlListIps(String ipAccessControlListSid) throws ZangException {
@@ -85,7 +85,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
 
     
     public IpAddress addAccessControlListIp(String accountSid, String ipAccessControlListSid,  String friendlyName,  String ipAddress) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.addAccessControlListIp(accountSid, ipAccessControlListSid, friendlyName, ipAddress), IpAddress.class);
+        return returnThrows(proxy.addAccessControlListIp(accountSid, ipAccessControlListSid, friendlyName, ipAddress), IpAddress.class);
     }
 
     public IpAddress addAccessControlListIp(String ipAccessControlListSid,  String friendlyName,  String ipAddress) throws ZangException {
@@ -94,7 +94,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
 
     
     public IpAddress updateAccessControlListIp(String accountSid, String ipAccessControlListSid, String ipSid,  String friendlyName,  String ipAddress) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.updateAccessControlListIp(accountSid, ipAccessControlListSid, ipSid, friendlyName, ipAddress), IpAddress.class);
+        return returnThrows(proxy.updateAccessControlListIp(accountSid, ipAccessControlListSid, ipSid, friendlyName, ipAddress), IpAddress.class);
     }
 
     public IpAddress updateAccessControlListIp(String ipAccessControlListSid, String ipSid,  String friendlyName,  String ipAddress) throws ZangException {
@@ -103,7 +103,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
 
     
     public IpAddress deleteAccessControlListIp(String accountSid, String ipAccessControlListSid, String ipSid) throws ZangException {
-        return returnThrows(sipIpAccessControlListsProxy.deleteAccessControlListIp(accountSid, ipAccessControlListSid, ipSid), IpAddress.class);
+        return returnThrows(proxy.deleteAccessControlListIp(accountSid, ipAccessControlListSid, ipSid), IpAddress.class);
     }
 
     public IpAddress deleteAccessControlListIp(String ipAccessControlListSid, String ipSid) throws ZangException {

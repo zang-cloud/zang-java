@@ -29,6 +29,9 @@ public class PurchaseIncomingNumberParams {
         return new PurchaseIncomingNumberParamsBuilder();
     }
 
+    public PurchaseIncomingNumberParams() {
+    }
+
     public PurchaseIncomingNumberParams(String accountSid, String friendlyName, String phoneNumber, String areaCode, Boolean voiceCallerIdLookup, String voiceApplicationSid, String smsApplicationSid, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String smsUrl, HttpMethod smsMethod, String smsFallbackUrl, HttpMethod smsFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String statusCallback, HttpMethod statusCallbackMethod, String hangupCallback, HttpMethod hangupCallbackMethod) {
         this.accountSid = accountSid;
         this.friendlyName = friendlyName;

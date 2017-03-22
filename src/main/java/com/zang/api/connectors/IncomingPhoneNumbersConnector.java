@@ -13,16 +13,16 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 public class IncomingPhoneNumbersConnector extends BaseConnector {
 
-    private IncomingPhoneNumbersProxy incomingPhoneNumbersProxy;
+    private IncomingPhoneNumbersProxy proxy;
 
     IncomingPhoneNumbersConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
-        incomingPhoneNumbersProxy = createProxy(IncomingPhoneNumbersProxy.class);
+        proxy = createProxy(IncomingPhoneNumbersProxy.class);
     }
 
 
     public IncomingPhoneNumber viewIncomingNumber(String accountSid, String incomingPhoneNumberSid) throws ZangException {
-        return returnThrows(incomingPhoneNumbersProxy.viewIncomingNumber(accountSid, incomingPhoneNumberSid), IncomingPhoneNumber.class);
+        return returnThrows(proxy.viewIncomingNumber(accountSid, incomingPhoneNumberSid), IncomingPhoneNumber.class);
     }
 
     public IncomingPhoneNumber viewIncomingNumber(String incomingPhoneNumberSid) throws ZangException {
@@ -31,7 +31,7 @@ public class IncomingPhoneNumbersConnector extends BaseConnector {
 
 
     public IncomingPhoneNumbersList listIncomingNumbers(String accountSid, String contains, String friendlyName, Integer page, Integer pageSize) throws ZangException {
-        return returnThrows(incomingPhoneNumbersProxy.listIncomingNumbers(accountSid, contains, friendlyName, page, pageSize), IncomingPhoneNumbersList.class);
+        return returnThrows(proxy.listIncomingNumbers(accountSid, contains, friendlyName, page, pageSize), IncomingPhoneNumbersList.class);
     }
 
     public IncomingPhoneNumbersList listIncomingNumbers(String contains, String friendlyName, Integer page, Integer pageSize) throws ZangException {
@@ -40,7 +40,7 @@ public class IncomingPhoneNumbersConnector extends BaseConnector {
 
 
     public IncomingPhoneNumber purchaseIncomingNumber(String accountSid, String friendlyName, String phoneNumber, String areaCode, Boolean voiceCallerIdLookup, String voiceApplicationSid, String smsApplicationSid, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String smsUrl, HttpMethod smsMethod, String smsFallbackUrl, HttpMethod smsFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String statusCallback, HttpMethod statusCallbackMethod, String hangupCallback, HttpMethod hangupCallbackMethod) throws ZangException {
-        return returnThrows(incomingPhoneNumbersProxy.purchaseIncomingNumber(accountSid, friendlyName, phoneNumber, areaCode, voiceCallerIdLookup, voiceApplicationSid, smsApplicationSid, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, heartbeatUrl, heartbeatMethod, statusCallback, statusCallbackMethod, hangupCallback, hangupCallbackMethod), IncomingPhoneNumber.class);
+        return returnThrows(proxy.purchaseIncomingNumber(accountSid, friendlyName, phoneNumber, areaCode, voiceCallerIdLookup, voiceApplicationSid, smsApplicationSid, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, heartbeatUrl, heartbeatMethod, statusCallback, statusCallbackMethod, hangupCallback, hangupCallbackMethod), IncomingPhoneNumber.class);
     }
 
     public IncomingPhoneNumber purchaseIncomingNumber(String friendlyName, String phoneNumber, String areaCode, Boolean voiceCallerIdLookup, String voiceApplicationSid, String smsApplicationSid, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String smsUrl, HttpMethod smsMethod, String smsFallbackUrl, HttpMethod smsFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String statusCallback, HttpMethod statusCallbackMethod, String hangupCallback, HttpMethod hangupCallbackMethod) throws ZangException {
@@ -53,7 +53,7 @@ public class IncomingPhoneNumbersConnector extends BaseConnector {
 
 
     public IncomingPhoneNumber updateIncomingNumber(String accountSid, String incomingPhoneNumberSid, String friendlyName, Boolean voiceCallerIdLookup, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String smsUrl, HttpMethod smsMethod, String smsFallbackUrl, HttpMethod smsFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String statusCallback, HttpMethod statusCallbackMethod, String hangupCallback, HttpMethod hangupCallbackMethod) throws ZangException {
-        return returnThrows(incomingPhoneNumbersProxy.updateIncomingNumber(accountSid, incomingPhoneNumberSid, friendlyName, voiceCallerIdLookup, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, heartbeatUrl, heartbeatMethod, statusCallback, statusCallbackMethod, hangupCallback, hangupCallbackMethod), IncomingPhoneNumber.class);
+        return returnThrows(proxy.updateIncomingNumber(accountSid, incomingPhoneNumberSid, friendlyName, voiceCallerIdLookup, voiceUrl, voiceMethod, voiceFallbackUrl, voiceFallbackMethod, smsUrl, smsMethod, smsFallbackUrl, smsFallbackMethod, heartbeatUrl, heartbeatMethod, statusCallback, statusCallbackMethod, hangupCallback, hangupCallbackMethod), IncomingPhoneNumber.class);
     }
 
     public IncomingPhoneNumber updateIncomingNumber(String incomingPhoneNumberSid, String friendlyName, Boolean voiceCallerIdLookup, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String smsUrl, HttpMethod smsMethod, String smsFallbackUrl, HttpMethod smsFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String statusCallback, HttpMethod statusCallbackMethod, String hangupCallback, HttpMethod hangupCallbackMethod) throws ZangException {
@@ -65,7 +65,7 @@ public class IncomingPhoneNumbersConnector extends BaseConnector {
     }
 
     public IncomingPhoneNumber deleteIncomingNumber(String accountSid, String incomingPhoneNumberSid) throws ZangException {
-        return returnThrows(incomingPhoneNumbersProxy.deleteIncomingNumber(accountSid, incomingPhoneNumberSid), IncomingPhoneNumber.class);
+        return returnThrows(proxy.deleteIncomingNumber(accountSid, incomingPhoneNumberSid), IncomingPhoneNumber.class);
     }
 
     public IncomingPhoneNumber deleteIncomingNumber(String incomingPhoneNumberSid) throws ZangException {

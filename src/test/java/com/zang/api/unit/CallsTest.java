@@ -7,13 +7,13 @@ import com.zang.api.domain.list.CallsList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 import com.zang.api.params.MakeCallParams;
+import com.zang.api.testutil.TestParameters;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Calendar;
 
 
 public class CallsTest extends BaseUnitTest {
@@ -33,23 +33,20 @@ public class CallsTest extends BaseUnitTest {
                         new Parameter("To", "+123456"),
                         new Parameter("From", "+654321"),
                         new Parameter("Status", "completed"),
-                        new Parameter("StartTime>", "2000-01-22"),
-                        new Parameter("StartTime<", "2017-03-20"),
+                        new Parameter("StartTime>", "2016-12-12"),
+                        new Parameter("StartTime<", "2017-03-19"),
                         new Parameter("Page", "0"),
                         new Parameter("PageSize", "10")
                 },
                 "/calls/callslist.json");
         CallsConnector connector = connectorFactory.getCallsConnector();
-        Calendar from = Calendar.getInstance();
-        from.set(2000, Calendar.JANUARY, 22);
-        Calendar to = Calendar.getInstance();
-        to.set(2017, Calendar.MARCH, 20);
+
         CallsList callsList = connector.listCalls(
                 "+123456",
                 "+654321",
                 CallStatus.COMPLETED,
-                from.getTime(),
-                to.getTime(),
+                TestParameters.getFromDate(),
+                TestParameters.getToDate(),
                 0,
                 10);
         Assert.assertEquals(1, (int) callsList.getTotal());

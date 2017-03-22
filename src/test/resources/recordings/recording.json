@@ -1,0 +1,11 @@
+{
+  "sid": "TestRecordingSid",
+  "account_sid": "TestAccountSid",
+  "call_sid": "TestCallSid",
+  "duration": "6",
+  "date_created": "Fri, 27 Jul 2012 14:54:44 +0000",
+  "api_version": "v2",
+  "date_updated": "Fri, 27 Jul 2012 14:54:52 +0000",
+  "recording_url": "http://recordings.telapi.com/{RecordingBucket}/TestRecordingSid.mp3",
+  "uri": "/v2/Accounts/TestAccountSid/Recordings/TestRecordingSid.json"
+}

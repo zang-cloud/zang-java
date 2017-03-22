@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
  */
 public class AccountsConnector extends BaseConnector {
 
-    private AccountsProxy accountsProxy;
+    private AccountsProxy proxy;
 
     /**
      * @see BaseConnector, PropertiesFileZangConfiguration,
@@ -21,7 +21,7 @@ public class AccountsConnector extends BaseConnector {
      */
     AccountsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
-        accountsProxy = createProxy(AccountsProxy.class);
+        proxy = createProxy(AccountsProxy.class);
     }
 
 
@@ -34,7 +34,7 @@ public class AccountsConnector extends BaseConnector {
      * @throws ZangException
      */
     public Account viewAccount(String accountSid) throws ZangException {
-        Response response = accountsProxy.getAccount(accountSid);
+        Response response = proxy.getAccount(accountSid);
         return returnThrows(response, Account.class);
     }
 
@@ -56,7 +56,7 @@ public class AccountsConnector extends BaseConnector {
      * @throws ZangException
      */
     public Account updateAccount(String accountSid, String friendlyName) throws ZangException {
-        Response response = accountsProxy.updateAccount(accountSid, friendlyName);
+        Response response = proxy.updateAccount(accountSid, friendlyName);
         return returnThrows(response, Account.class);
     }
 

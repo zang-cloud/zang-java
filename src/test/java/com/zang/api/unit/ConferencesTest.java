@@ -7,12 +7,12 @@ import com.zang.api.domain.enums.ConferenceStatus;
 import com.zang.api.domain.list.ConferencesList;
 import com.zang.api.domain.list.ParticipantsList;
 import com.zang.api.exceptions.ZangException;
+import com.zang.api.testutil.TestParameters;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.mockserver.model.Parameter;
 
 import java.io.IOException;
-import java.util.Calendar;
 
 
 public class ConferencesTest extends BaseUnitTest {
@@ -40,12 +40,9 @@ public class ConferencesTest extends BaseUnitTest {
                 },
                 "/conferences/conferenceslist.json");
         ConferencesConnector connector = connectorFactory.getConferencesConnector();
-        Calendar from = Calendar.getInstance();
-        from.set(2000, Calendar.DECEMBER, 12);
-        Calendar to = Calendar.getInstance();
-        to.set(2017, Calendar.MARCH, 19);
+
         ConferencesList conferences = connector.listConferences("TestConference", ConferenceStatus.COMPLETED,
-                from.getTime(), to.getTime(), from.getTime(), to.getTime(), 0, 10);
+                TestParameters.getFromDate(), TestParameters.getToDate(), TestParameters.getFromDate(), TestParameters.getToDate(), 0, 10);
 
         Assert.assertEquals(2, (int) conferences.getTotal());
         checkConference(conferences.iterator().next());

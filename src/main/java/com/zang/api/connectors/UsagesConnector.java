@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
  */
 public class UsagesConnector extends BaseConnector {
 
-    private UsagesProxy usageProxy;
+    private UsagesProxy proxy;
 
     /**
      * @see BaseConnector, PropertiesFileZangConfiguration,
@@ -24,11 +24,11 @@ public class UsagesConnector extends BaseConnector {
      */
     UsagesConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
-        usageProxy = createProxy(UsagesProxy.class);
+        proxy = createProxy(UsagesProxy.class);
     }
 
     public Usage viewUsage(String accountSid, String usageSid) throws ZangException {
-        Response response = usageProxy.getUsage(accountSid, usageSid);
+        Response response = proxy.getUsage(accountSid, usageSid);
         return returnThrows(response, Usage.class);
     }
 
@@ -42,7 +42,7 @@ public class UsagesConnector extends BaseConnector {
         if (product != null && product != Product.UNKNOWN) {
             productCode = Integer.parseInt(product.toString());
         }
-        Response usages = usageProxy.listUsages(accountSid, day, month, year,
+        Response usages = proxy.listUsages(accountSid, day, month, year,
                 productCode, page, pageSize);
         return returnThrows(usages, UsagesList.class);
     }
