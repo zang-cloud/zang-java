@@ -174,4 +174,16 @@ public class ZangConnectorFactory {
     public static RecordingsConnector getRecordingsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new RecordingsConnector(conf, executor);
     }
+
+    public NotificationsConnector getNotificationsConnector() {
+        return new NotificationsConnector(this.conf, this.executor);
+    }
+
+    public static NotificationsConnector getNotificationsConnector(ZangConfiguration conf) {
+        return new NotificationsConnector(conf, null);
+    }
+
+    public static NotificationsConnector getNotificationsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new NotificationsConnector(conf, executor);
+    }
 }

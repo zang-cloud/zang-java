@@ -1,0 +1,19 @@
+{
+  "sid": "TestNotificationSid",
+  "account_sid": "TestAccountSid",
+  "call_sid": "",
+  "api_version": "v2",
+  "date_created": "Fri, 27 Jul 2012 16:00:58 +0000",
+  "date_updated": "Fri, 27 Jul 2012 16:00:58 +0000",
+  "log": "1",
+  "error_code": 10010,
+  "more_info": "http://telapi.com/docs/api/rest/overview/errors/10010",
+  "message_text": "",
+  "message_date": "Fri, 27 Jul 2012 16:00:58 +0000",
+  "response_body": "",
+  "request_method": "GET",
+  "request_url": "https://api.telapi.com/v2/...",
+  "request_variables": "",
+  "response_headers": "",
+  "uri": "/v2/Accounts/TestAccountSid/Notifications/TestNotificationSid.json"
+}
