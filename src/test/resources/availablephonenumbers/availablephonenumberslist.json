@@ -1,0 +1,42 @@
+{
+  "first_page_uri": "/v2/Accounts/TestAccountSid/AvailablePhoneNumbers/US/Local.json?Page=0&amp;PageSize=50",
+  "end": 49,
+  "total": 487,
+  "previous_page_uri": "",
+  "num_pages": 10,
+  "uri": "/v2/Accounts/TestAccountSid/AvailablePhoneNumbers/US/Local.json",
+  "page_size": 50,
+  "start": 0,
+  "next_page_uri": "/v2/Accounts/TestAccountSid/AvailablePhoneNumbers/US/Local.json?Page=1&amp;PageSize=50",
+  "last_page_uri": "/v2/Accounts/TestAccountSid/AvailablePhoneNumbers/US/Local.json?Page=9&PageSize=50",
+  "page": 0,
+  "available_phone_numbers": [
+    {
+      "phone_number": "+1234",
+      "unblock_support": "false",
+      "friendly_name": "MyPhoneNumber",
+      "iso_country": "US",
+      "monthly_cost": "1.00",
+      "voice_enabled": "true",
+      "country_code": "+1",
+      "setup_cost": "1.00",
+      "supports_forwarded_from": "false",
+      "type": "local",
+      "sms_enabled": "true",
+      "per_minute_cost": "1.00"
+    },
+    {
+      "phone_number": "+1234",
+      "unblock_support": "false",
+      "friendly_name": "MyPhoneNumber",
+      "iso_country": "US",
+      "monthly_cost": "1.00",
+      "voice_enabled": "true",
+      "country_code": "+49",
+      "supports_forwarded_from": "true",
+      "type": "local",
+      "sms_enabled": "false",
+      "per_minute_cost": "0.01"
+    }
+  ]
+}

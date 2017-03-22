@@ -186,4 +186,16 @@ public class ZangConnectorFactory {
     public static NotificationsConnector getNotificationsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new NotificationsConnector(conf, executor);
     }
+
+    public AvailablePhoneNumbersConnector getAvailablePhoneNumbersConnector() {
+        return new AvailablePhoneNumbersConnector(this.conf, this.executor);
+    }
+
+    public static AvailablePhoneNumbersConnector getAvailablePhoneNumbersConnector(ZangConfiguration conf) {
+        return new AvailablePhoneNumbersConnector(conf, null);
+    }
+
+    public static AvailablePhoneNumbersConnector getAvailablePhoneNumbersConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new AvailablePhoneNumbersConnector(conf, executor);
+    }
 }

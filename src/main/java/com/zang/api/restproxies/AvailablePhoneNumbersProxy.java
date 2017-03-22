@@ -13,14 +13,13 @@ public interface AvailablePhoneNumbersProxy {
             @PathParam("AccountSid") String accountSid,
             @PathParam("Country") String country,
             @PathParam("Type") AvailableNumberType type,
-
-            @QueryParam("Page") Integer page,
-            @QueryParam("PageSize") Integer pageSize,
             @QueryParam("Contains") String contains,
             @QueryParam("AreaCode") String areaCode,
             @QueryParam("InRegion") String inRegion,
-            @QueryParam("InPostalCode") String inPostalCode
-            );
+            @QueryParam("InPostalCode") String inPostalCode,
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
+    );
 
 }
 
