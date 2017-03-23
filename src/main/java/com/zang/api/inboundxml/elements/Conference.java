@@ -51,7 +51,7 @@ public class Conference implements DialElement {
     @XmlAttribute(name = "stayAlone")
     protected Boolean stayAlone;
     @XmlAttribute(name = "record")
-    protected String record;
+    protected Boolean record;
     @XmlAttribute(name = "recordFileFormat")
     protected RecordingFileFormat recordFileFormat;
     @XmlAttribute(name = "recordCallbackUrl")
@@ -67,7 +67,7 @@ public class Conference implements DialElement {
     public Conference() {
     }
 
-    public Conference(String name, Boolean muted, Boolean beep, Boolean startConferenceOnEnter, Boolean endConferenceOnExit, Integer maxParticipants, Integer timeLimit, String waitUrl, HttpMethod waitMethod, Boolean hangupOnStar, String callbackUrl, HttpMethod callbackMethod, HttpMethod method, String waitSound, HttpMethod waitSoundMethod, String digitsMatch, Boolean stayAlone, String record, RecordingFileFormat recordFileFormat, String recordCallbackUrl, HttpMethod recordCallbackMethod) {
+    public Conference(String name, Boolean muted, Boolean beep, Boolean startConferenceOnEnter, Boolean endConferenceOnExit, Integer maxParticipants, Integer timeLimit, String waitUrl, HttpMethod waitMethod, Boolean hangupOnStar, String callbackUrl, HttpMethod callbackMethod, HttpMethod method, String waitSound, HttpMethod waitSoundMethod, String digitsMatch, Boolean stayAlone, Boolean record, RecordingFileFormat recordFileFormat, String recordCallbackUrl, HttpMethod recordCallbackMethod) {
         this.name = name;
         this.muted = muted;
         this.beep = beep;
@@ -261,12 +261,12 @@ public class Conference implements DialElement {
     }
 
 
-    public String getRecord() {
+    public Boolean getRecord() {
         return record;
     }
 
 
-    public void setRecord(String value) {
+    public void setRecord(Boolean value) {
         this.record = value;
     }
 

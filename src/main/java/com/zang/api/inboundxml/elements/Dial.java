@@ -1,8 +1,8 @@
 package com.zang.api.inboundxml.elements;
 
-import com.zang.api.domain.enums.AudioDirection;
 import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.IfMachine;
+import com.zang.api.domain.enums.RecordingAudioDirection;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 
 import javax.xml.bind.annotation.*;
@@ -66,7 +66,7 @@ public class Dial implements ResponseElement {
     @XmlAttribute(name = "record")
     protected Boolean record;
     @XmlAttribute(name = "recordDirection")
-    protected AudioDirection recordDirection;
+    protected RecordingAudioDirection recordDirection;
     @XmlAttribute(name = "recordCallbackUrl")
     @XmlSchemaType(name = "anyURI")
     protected String recordCallbackUrl;
@@ -82,7 +82,7 @@ public class Dial implements ResponseElement {
     @XmlAttribute(name = "ifMachineMethod")
     protected HttpMethod ifMachineMethod;
     @XmlAttribute(name = "outboundAction")
-    protected String outboundAction;
+    protected Boolean outboundAction;
 
     public static DialBuilder builder() {
         return new DialBuilder();
@@ -91,7 +91,7 @@ public class Dial implements ResponseElement {
     public Dial() {
     }
 
-    public Dial(List<DialElement> content, String action, HttpMethod method, Integer timeout, Boolean hangupOnStar, Integer timeLimit, String callerId, Boolean hideCallerId, String callerName, String dialMusic, String callbackUrl, HttpMethod callbackMethod, String confirmSound, String digitsMatch, Boolean straightToVm, String heartbeatUrl, HttpMethod heartbeatMethod, String forwardedFrom, Boolean record, AudioDirection recordDirection, String recordCallbackUrl, Integer recordLifetime, RecordingFileFormat recordFormat, IfMachine ifMachine, String ifMachineUrl, HttpMethod ifMachineMethod, String outboundAction) {
+    public Dial(List<DialElement> content, String action, HttpMethod method, Integer timeout, Boolean hangupOnStar, Integer timeLimit, String callerId, Boolean hideCallerId, String callerName, String dialMusic, String callbackUrl, HttpMethod callbackMethod, String confirmSound, String digitsMatch, Boolean straightToVm, String heartbeatUrl, HttpMethod heartbeatMethod, String forwardedFrom, Boolean record, RecordingAudioDirection recordDirection, String recordCallbackUrl, Integer recordLifetime, RecordingFileFormat recordFormat, IfMachine ifMachine, String ifMachineUrl, HttpMethod ifMachineMethod, Boolean outboundAction) {
         this.content = content;
         this.action = action;
         this.method = method;
@@ -129,6 +129,9 @@ public class Dial implements ResponseElement {
         return this.content;
     }
 
+    public void setContent(List<DialElement> content) {
+        this.content = content;
+    }
 
     public String getAction() {
         return action;
@@ -310,12 +313,12 @@ public class Dial implements ResponseElement {
     }
 
 
-    public AudioDirection getRecordDirection() {
+    public RecordingAudioDirection getRecordDirection() {
         return recordDirection;
     }
 
 
-    public void setRecordDirection(AudioDirection value) {
+    public void setRecordDirection(RecordingAudioDirection value) {
         this.recordDirection = value;
     }
 
@@ -380,12 +383,12 @@ public class Dial implements ResponseElement {
     }
 
 
-    public String getOutboundAction() {
+    public Boolean getOutboundAction() {
         return outboundAction;
     }
 
 
-    public void setOutboundAction(String value) {
+    public void setOutboundAction(Boolean value) {
         this.outboundAction = value;
     }
 

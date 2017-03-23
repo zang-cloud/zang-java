@@ -50,7 +50,7 @@ public class DefaultExecutor {
 
     }
 
-    private DefaultExecutor() {
+    DefaultExecutor() {
     }
 
 }

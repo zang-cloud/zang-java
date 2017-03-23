@@ -11,6 +11,9 @@ import org.junit.Test;
 public class ItSip extends BaseIntegrationTest {
 
 
+    public ItSip() throws ZangException {
+    }
+
     private void deleteCredentials() throws ZangException {
 
         SipCredentialsConnector scc = connectorFactory.getSipCredentialsConnector();

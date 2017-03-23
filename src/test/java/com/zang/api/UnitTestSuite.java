@@ -6,22 +6,27 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AccountsTest.class,
-        ApplicationClientsTest.class,
-        ApplicationsTest.class,
-        CallsTest.class,
-        ConferencesTest.class,
         InboundXmlTest.class,
-        SipDomainsTest.class,
+        CallsTest.class,
         SmsTest.class,
         UsagesTest.class,
+        AccountsTest.class,
+        ConferencesTest.class,
+        ApplicationsTest.class,
+        ApplicationClientsTest.class,
+        SipDomainsTest.class,
         SipCredentialsTest.class,
         SipAclTest.class,
         IncomingPhoneNumbersTest.class,
         RecordingsTest.class,
         NotificationsTest.class,
         AvailablePhoneNumbersTest.class,
-        TranscriptionsTest.class
+        TranscriptionsTest.class,
+        CarrierServicesTest.class,
+        FraudControlTest.class,
+        UtilsTest.class,
+        ErrorTest.class,
+        PojoTest.class
 })
 public class UnitTestSuite {
 

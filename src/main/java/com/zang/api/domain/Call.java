@@ -190,7 +190,7 @@ public class Call extends BaseZangObject{
      *
      * @return Specifies whether the caller ID of the inbound phone number was blocked.
      */
-    public int getRecordingsCount() {
+    public Integer getRecordingsCount() {
         return recordingsCount;
     }
     public void setRecordingsCount(Integer recordingsCount) {
@@ -223,10 +223,10 @@ public class Call extends BaseZangObject{
      *
      * @return List of a calls various subresources and their URI path. Examples of call subresources are notifications, recordings, etc.
      */
-    public CallSubresourceUris getCallSubresourceUris() {
+    public CallSubresourceUris getSubresourceUris() {
         return subresourceUris;
     }
-    public void setCallSubresourceUris(CallSubresourceUris subresourceUris) {
+    public void setSubresourceUris(CallSubresourceUris subresourceUris) {
         this.subresourceUris = subresourceUris;
     }
 

@@ -1,8 +1,8 @@
 package com.zang.api.inboundxml.elements;
 
-import com.zang.api.domain.enums.AudioDirection;
 import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.IfMachine;
+import com.zang.api.domain.enums.RecordingAudioDirection;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 
 import java.util.ArrayList;
@@ -28,14 +28,14 @@ public class DialBuilder {
     private HttpMethod heartbeatMethod;
     private String forwardedFrom;
     private Boolean record;
-    private AudioDirection recordDirection;
+    private RecordingAudioDirection recordDirection;
     private String recordCallbackUrl;
     private Integer recordLifetime;
     private RecordingFileFormat recordFormat;
     private IfMachine ifMachine;
     private String ifMachineUrl;
     private HttpMethod ifMachineMethod;
-    private String outboundAction;
+    private Boolean outboundAction;
 
     DialBuilder() {
         this.content = new ArrayList<DialElement>();
@@ -156,7 +156,7 @@ public class DialBuilder {
         return this;
     }
 
-    public DialBuilder setRecordDirection(AudioDirection recordDirection) {
+    public DialBuilder setRecordDirection(RecordingAudioDirection recordDirection) {
         this.recordDirection = recordDirection;
         return this;
     }
@@ -191,7 +191,7 @@ public class DialBuilder {
         return this;
     }
 
-    public DialBuilder setOutboundAction(String outboundAction) {
+    public DialBuilder setOutboundAction(Boolean outboundAction) {
         this.outboundAction = outboundAction;
         return this;
     }

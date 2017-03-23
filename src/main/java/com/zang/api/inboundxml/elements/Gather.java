@@ -59,6 +59,9 @@ public class Gather implements ResponseElement {
         return this.content;
     }
 
+    public void setContent(List<GatherElement> content) {
+        this.content = content;
+    }
 
     public String getAction() {
         return action;

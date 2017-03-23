@@ -60,6 +60,9 @@ public class GetSpeech implements ResponseElement {
         return this.content;
     }
 
+    public void setContent(List<GetSpeechElement> content) {
+        this.content = content;
+    }
 
     public String getAction() {
         return action;

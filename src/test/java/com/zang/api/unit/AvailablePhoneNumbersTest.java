@@ -28,7 +28,9 @@ public class AvailablePhoneNumbersTest extends BaseUnitTest {
                         new Parameter("Contains", "123"),
                         new Parameter("AreaCode", "052"),
                         new Parameter("InRegion", "Istria"),
-                        new Parameter("InPostalCode", "52210")
+                        new Parameter("InPostalCode", "52210"),
+                        new Parameter("Page", "0"),
+                        new Parameter("PageSize", "20")
                 },
                 "/availablephonenumbers/availablephonenumberslist.json");
         checkAvailablePhoneNumber(connector.listAvailableNumbers(ListAvailableNumbersParams.builder()
@@ -38,6 +40,8 @@ public class AvailablePhoneNumbersTest extends BaseUnitTest {
                 .setAreaCode("052")
                 .setInRegion("Istria")
                 .setInPostalCode("52210")
+                .setPage(0)
+                .setPageSize(20)
                 .build()).iterator().next());
     }
 

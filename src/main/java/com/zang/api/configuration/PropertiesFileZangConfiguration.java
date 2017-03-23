@@ -1,6 +1,6 @@
 package com.zang.api.configuration;
 
-import org.apache.log4j.Logger;
+import com.zang.api.exceptions.ZangException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,12 +14,11 @@ import java.util.Properties;
  */
 public class PropertiesFileZangConfiguration extends Properties implements ZangConfiguration {
     private static final long serialVersionUID = -7348144965758395514L;
-    Logger logger = Logger.getLogger(PropertiesFileZangConfiguration.class);
 
     /**
      * Creates a ZangConfiguration from a file called "zang.properties" which must be on the classpath.
      */
-    public PropertiesFileZangConfiguration() {
+    public PropertiesFileZangConfiguration() throws ZangException {
         this("zang.properties");
     }
 
@@ -28,13 +27,13 @@ public class PropertiesFileZangConfiguration extends Properties implements ZangC
      *
      * @param propFileName The fileName of the properties file.
      */
-    public PropertiesFileZangConfiguration(String propFileName) {
+    public PropertiesFileZangConfiguration(String propFileName) throws ZangException {
         URL url = ClassLoader.getSystemResource(propFileName);
+        if (url == null) throw new ZangException("Cannot find properties file");
         try {
             load(url.openStream());
         } catch (IOException e) {
-            logger.error("Cannot load or find Zang properties file on classpath: "
-                    + propFileName, e);
+            throw new ZangException("Properties file not found.", e);
         }
     }
 
@@ -43,11 +42,11 @@ public class PropertiesFileZangConfiguration extends Properties implements ZangC
      *
      * @param is The FileInputStream from which to load the configuration.
      */
-    public PropertiesFileZangConfiguration(FileInputStream is) {
+    public PropertiesFileZangConfiguration(FileInputStream is) throws ZangException {
         try {
             load(is);
         } catch (IOException e) {
-            logger.error("Cannot load the specified Zang properties file.");
+            throw new ZangException("Cannot load the specified properties file.", e);
         }
     }
 

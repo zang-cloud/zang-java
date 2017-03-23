@@ -21,7 +21,7 @@ public class ConferenceBuilder {
     private HttpMethod waitSoundMethod;
     private String digitsMatch;
     private Boolean stayAlone;
-    private String record;
+    private Boolean record;
     private RecordingFileFormat recordFileFormat;
     private String recordCallbackUrl;
     private HttpMethod recordCallbackMethod;
@@ -114,7 +114,7 @@ public class ConferenceBuilder {
         return this;
     }
 
-    public ConferenceBuilder setRecord(String record) {
+    public ConferenceBuilder setRecord(Boolean record) {
         this.record = record;
         return this;
     }

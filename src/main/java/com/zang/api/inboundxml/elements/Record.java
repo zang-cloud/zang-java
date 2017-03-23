@@ -4,9 +4,9 @@ import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.RecordingAudioDirection;
 import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
+import com.zang.api.inboundxml.elements.enums.SamplingRate;
 
 import javax.xml.bind.annotation.*;
-
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {})
@@ -46,7 +46,7 @@ public class Record implements ResponseElement {
     @XmlAttribute(name = "background")
     protected Boolean background;
     @XmlAttribute(name = "sampleRate")
-    protected Integer sampleRate;
+    protected SamplingRate sampleRate;
     @XmlAttribute(name = "trimSilence")
     protected Boolean trimSilence;
     @XmlAttribute(name = "lifetime")
@@ -59,7 +59,7 @@ public class Record implements ResponseElement {
     public Record() {
     }
 
-    public Record(String action, HttpMethod method, Integer timeout, String finishOnKey, Integer maxLength, Boolean transcribe, String transcribeCallback, TranscriptionQuality transcriptionQuality, Integer sliceStart, Integer sliceDuration, Boolean playBeep, Boolean bothLegs, RecordingFileFormat fileFormat, RecordingAudioDirection direction, Boolean background, Integer sampleRate, Boolean trimSilence, Integer lifetime) {
+    public Record(String action, HttpMethod method, Integer timeout, String finishOnKey, Integer maxLength, Boolean transcribe, String transcribeCallback, TranscriptionQuality transcriptionQuality, Integer sliceStart, Integer sliceDuration, Boolean playBeep, Boolean bothLegs, RecordingFileFormat fileFormat, RecordingAudioDirection direction, Boolean background, SamplingRate sampleRate, Boolean trimSilence, Integer lifetime) {
         this.action = action;
         this.method = method;
         this.timeout = timeout;
@@ -230,12 +230,12 @@ public class Record implements ResponseElement {
     }
 
 
-    public Integer getSampleRate() {
+    public SamplingRate getSampleRate() {
         return sampleRate;
     }
 
 
-    public void setSampleRate(Integer value) {
+    public void setSampleRate(SamplingRate value) {
         this.sampleRate = value;
     }
 

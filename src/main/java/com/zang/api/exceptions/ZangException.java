@@ -6,45 +6,41 @@ public class ZangException extends Exception {
 
     private static final long serialVersionUID = -5937845116814343506L;
 
-    private Long status;
-    private String code;
+    private Integer status;
+    private Integer code;
     @JsonProperty(value = "more_info")
     private String moreInfo;
-    private Exception inner;
-
-    public ZangException() {
-
-    }
+    private Exception innerException;
 
     public ZangException(String message, Exception ex) {
         super(message);
-        this.inner = ex;
+        this.innerException = ex;
     }
 
     public ZangException(String message) {
         super(message);
     }
 
-    public ZangException(Long status, String message, String code, String moreInfo) {
+    public ZangException(Integer status, String message, Integer code, String moreInfo) {
         super(message);
         this.status = status;
         this.code = code;
         this.moreInfo = moreInfo;
     }
 
-    public Long getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(Long status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
@@ -54,5 +50,13 @@ public class ZangException extends Exception {
 
     public void setMoreInfo(String moreInfo) {
         this.moreInfo = moreInfo;
+    }
+
+    public Exception getInnerException() {
+        return innerException;
+    }
+
+    public void setInnerException(Exception innerException) {
+        this.innerException = innerException;
     }
 }

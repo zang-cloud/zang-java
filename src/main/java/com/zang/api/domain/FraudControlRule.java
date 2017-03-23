@@ -35,11 +35,11 @@ public class FraudControlRule extends BaseZangObject {
         this.type = type;
     }
 
-    public Boolean getLock() {
+    public Boolean getIsLock() {
         return isLock;
     }
 
-    public void setLock(Boolean lock) {
+    public void setIsLock(Boolean lock) {
         isLock = lock;
     }
 
@@ -89,5 +89,13 @@ public class FraudControlRule extends BaseZangObject {
 
     public void setCountryPrefix(String countryPrefix) {
         this.countryPrefix = countryPrefix;
+    }
+
+    public Date getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(Date expirationDate) {
+        this.expirationDate = expirationDate;
     }
 }

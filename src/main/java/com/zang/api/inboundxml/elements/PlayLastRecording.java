@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {})
+@XmlType(name = "")
 @XmlRootElement(name = "PlayLastRecording")
 public class PlayLastRecording implements ResponseElement, GatherElement, GetSpeechElement {
 

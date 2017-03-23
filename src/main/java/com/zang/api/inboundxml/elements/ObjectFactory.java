@@ -101,6 +101,10 @@ public class ObjectFactory {
         return new GetSpeech();
     }
 
+    public PlayLastRecording createPlayLastRecording() {
+        return new PlayLastRecording();
+    }
+
 
     @XmlElementDecl(namespace = "", name = "Answer")
     public JAXBElement<Object> createAnswer(Object value) {

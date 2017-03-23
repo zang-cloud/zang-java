@@ -4,6 +4,7 @@ import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.RecordingAudioDirection;
 import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
+import com.zang.api.inboundxml.elements.enums.SamplingRate;
 
 public class RecordBuilder {
     private String action;
@@ -21,7 +22,7 @@ public class RecordBuilder {
     private RecordingFileFormat fileFormat;
     private RecordingAudioDirection direction;
     private Boolean background;
-    private Integer sampleRate;
+    private SamplingRate sampleRate;
     private Boolean trimSilence;
     private Integer lifetime;
 
@@ -103,7 +104,7 @@ public class RecordBuilder {
         return this;
     }
 
-    public RecordBuilder setSampleRate(Integer sampleRate) {
+    public RecordBuilder setSampleRate(SamplingRate sampleRate) {
         this.sampleRate = sampleRate;
         return this;
     }

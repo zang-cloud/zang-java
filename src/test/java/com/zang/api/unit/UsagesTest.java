@@ -25,6 +25,9 @@ public class UsagesTest extends BaseUnitTest {
         createExpectation("GET", "Usages.json", null, new Parameter[]{
                 new Parameter("Page", "0"),
                 new Parameter("PageSize", "25"),
+                new Parameter("Day", "12"),
+                new Parameter("Month", "12"),
+                new Parameter("Year", "2016"),
                 new Parameter("Product", Product.OUTBOUND_SMS.toString()),
         }, "/usages/usageslist.json");
         UsagesConnector connector = connectorFactory.getUsagesConnector();
@@ -32,6 +35,9 @@ public class UsagesTest extends BaseUnitTest {
                 .setPage(0)
                 .setPageSize(25)
                 .setProduct(Product.OUTBOUND_SMS)
+                .setDay(12)
+                .setMonth(12)
+                .setYear(2016)
                 .build();
         connector.listUsages(ur);
 
