@@ -222,4 +222,16 @@ public class ZangConnectorFactory {
     public static CarrierServicesConnector getCarrierServicesConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         return new CarrierServicesConnector(conf, executor);
     }
+
+    public FraudControlConnector getFraudControlConnector() {
+        return new FraudControlConnector(this.conf, this.executor);
+    }
+
+    public static FraudControlConnector getFraudControlConnector(ZangConfiguration conf) {
+        return new FraudControlConnector(conf, null);
+    }
+
+    public static FraudControlConnector getFraudControlConnector(ZangConfiguration conf, ClientHttpEngine executor) {
+        return new FraudControlConnector(conf, executor);
+    }
 }

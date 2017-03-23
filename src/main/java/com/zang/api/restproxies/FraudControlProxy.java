@@ -40,15 +40,16 @@ public interface FraudControlProxy {
     Response whitelistDestination(
             @PathParam("AccountSid") String accountSid,
             @PathParam("CountryCode") String countryCode,
-            @QueryParam("MobileEnabled") Boolean mobileEnabled,
-            @QueryParam("LandlineEnabled") Boolean landlineEnabled,
-            @QueryParam("SmsEnabled") Boolean smsEnabled
+            @FormParam("MobileEnabled") Boolean mobileEnabled,
+            @FormParam("LandlineEnabled") Boolean landlineEnabled,
+            @FormParam("SmsEnabled") Boolean smsEnabled
     );
 
     @GET
     @Path("Accounts/{AccountSid}/Fraud.json")
     @Produces("application/json")
     Response listFraudControlResources(
+            @PathParam("AccountSid") String accountSid,
             @QueryParam("Page") Integer page,
             @QueryParam("PageSize") Integer pageSize
     );
