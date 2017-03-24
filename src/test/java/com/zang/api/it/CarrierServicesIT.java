@@ -4,12 +4,12 @@ import com.zang.api.connectors.CarrierServicesConnector;
 import com.zang.api.exceptions.ZangException;
 import org.junit.Test;
 
-public class ItCarrierServices extends BaseIntegrationTest {
+public class CarrierServicesIT extends BaseIntegrationTest {
 
 
     private final CarrierServicesConnector conn;
 
-    public ItCarrierServices() throws ZangException {
+    public CarrierServicesIT() throws ZangException {
         conn = connectorFactory.getCarrierServicesConnector();
     }
 

@@ -49,7 +49,7 @@ public class DefaultExecutor {
         String finalCreads = new String(bcreds, Charset.forName("UTF8"));
         headers.add(new BasicHeader("Authorization", "Basic " + finalCreads));
         HttpClient client = HttpClientBuilder.create().setDefaultHeaders(headers)
-                .addInterceptorLast(logResponseInterceptor)
+                //.addInterceptorLast(logResponseInterceptor)
                 .build();
         ApacheHttpClient4Engine engine = new ApacheHttpClient4Engine(client);
         return engine;

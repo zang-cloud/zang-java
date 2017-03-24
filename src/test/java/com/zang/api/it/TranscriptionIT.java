@@ -7,10 +7,10 @@ import com.zang.api.domain.list.TranscriptionsList;
 import com.zang.api.exceptions.ZangException;
 import org.junit.Test;
 
-public class ItTranscription extends BaseIntegrationTest {
+public class TranscriptionIT extends BaseIntegrationTest {
 
 
-    public ItTranscription() throws ZangException {
+    public TranscriptionIT() throws ZangException {
     }
 
     @Test

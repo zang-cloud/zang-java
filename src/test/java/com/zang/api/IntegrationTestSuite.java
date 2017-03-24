@@ -6,14 +6,14 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        ItCalls.class,
-        ItCarrierServices.class,
-        ItNotifications.class,
-        ItPhoneNumbers.class,
-        ItRecordings.class,
-        ItSip.class,
-        ItTranscription.class,
-        ItUsage.class
+        CallsIT.class,
+        CarrierServicesIT.class,
+        NotificationsIT.class,
+        PhoneNumbersIT.class,
+        RecordingsIT.class,
+        SipIT.class,
+        TranscriptionIT.class,
+        UsageIT.class
 })
 public class IntegrationTestSuite {
 

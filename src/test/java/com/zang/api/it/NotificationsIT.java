@@ -5,10 +5,10 @@ import com.zang.api.domain.list.NotificationsList;
 import com.zang.api.exceptions.ZangException;
 import org.junit.Test;
 
-public class ItNotifications extends BaseIntegrationTest {
+public class NotificationsIT extends BaseIntegrationTest {
 
 
-    public ItNotifications() throws ZangException {
+    public NotificationsIT() throws ZangException {
     }
 
     @Test

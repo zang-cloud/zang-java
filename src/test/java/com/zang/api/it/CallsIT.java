@@ -5,12 +5,12 @@ import com.zang.api.exceptions.ZangException;
 import com.zang.api.params.MakeCallParams;
 import org.junit.Test;
 
-public class ItCalls extends BaseIntegrationTest {
+public class CallsIT extends BaseIntegrationTest {
 
 
     private final CallsConnector conn;
 
-    public ItCalls() throws ZangException {
+    public CallsIT() throws ZangException {
         conn = connectorFactory.getCallsConnector();
     }
 

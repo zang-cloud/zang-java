@@ -14,10 +14,10 @@ import com.zang.api.params.DomainParams;
 import junit.framework.Assert;
 import org.junit.Test;
 
-public class ItSip extends BaseIntegrationTest {
+public class SipIT extends BaseIntegrationTest {
 
 
-    public ItSip() throws ZangException {
+    public SipIT() throws ZangException {
     }
 
     private void deleteCredentials() throws ZangException {

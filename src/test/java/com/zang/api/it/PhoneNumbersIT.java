@@ -9,10 +9,10 @@ import com.zang.api.exceptions.ZangException;
 import com.zang.api.params.ListAvailableNumbersParams;
 import org.junit.Test;
 
-public class ItPhoneNumbers extends BaseIntegrationTest {
+public class PhoneNumbersIT extends BaseIntegrationTest {
 
 
-    public ItPhoneNumbers() throws ZangException {
+    public PhoneNumbersIT() throws ZangException {
     }
 
     @Test

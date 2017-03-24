@@ -5,10 +5,10 @@ import com.zang.api.domain.list.UsagesList;
 import com.zang.api.exceptions.ZangException;
 import org.junit.Test;
 
-public class ItUsage extends BaseIntegrationTest {
+public class UsageIT extends BaseIntegrationTest {
 
 
-    public ItUsage() throws ZangException {
+    public UsageIT() throws ZangException {
     }
 
     @Test

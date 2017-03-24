@@ -6,12 +6,12 @@ import com.zang.api.domain.list.CallsList;
 import com.zang.api.exceptions.ZangException;
 import org.junit.Test;
 
-public class ItRecordings extends BaseIntegrationTest {
+public class RecordingsIT extends BaseIntegrationTest {
 
 
     private final RecordingsConnector conn;
 
-    public ItRecordings() throws ZangException {
+    public RecordingsIT() throws ZangException {
         conn = connectorFactory.getRecordingsConnector();
     }
 
