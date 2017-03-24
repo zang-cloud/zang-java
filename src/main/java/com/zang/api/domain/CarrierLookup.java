@@ -9,11 +9,19 @@ public class CarrierLookup extends BaseZangObject {
     @JsonProperty(value = "phone_number")
     private String phoneNumber;
     private String network;
+    @JsonProperty(value = "sponsor_network")
+    private String sponsorNetwork;
     private Boolean mobile;
+    @JsonProperty(value = "sponsor_mobile")
+    private Boolean sponsorMobile;
     @JsonProperty(value = "carrier_id")
-    private String carrierId;
+    private Integer carrierId;
+    @JsonProperty(value = "sponsor_carrier_id")
+    private Integer sponsorCarrierId;
     @JsonProperty(value = "country_code")
     private String countryCode;
+    @JsonProperty(value = "sponsor_country_code")
+    private String sponsorCountryCode;
     private String mnc;
     private String mcc;
     private BigDecimal price;
@@ -42,11 +50,11 @@ public class CarrierLookup extends BaseZangObject {
         this.mobile = mobile;
     }
 
-    public String getCarrierId() {
+    public Integer getCarrierId() {
         return carrierId;
     }
 
-    public void setCarrierId(String carrierId) {
+    public void setCarrierId(Integer carrierId) {
         this.carrierId = carrierId;
     }
 
@@ -80,5 +88,37 @@ public class CarrierLookup extends BaseZangObject {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public String getSponsorNetwork() {
+        return sponsorNetwork;
+    }
+
+    public void setSponsorNetwork(String sponsorNetwork) {
+        this.sponsorNetwork = sponsorNetwork;
+    }
+
+    public Boolean getSponsorMobile() {
+        return sponsorMobile;
+    }
+
+    public void setSponsorMobile(Boolean sponsorMobile) {
+        this.sponsorMobile = sponsorMobile;
+    }
+
+    public Integer getSponsorCarrierId() {
+        return sponsorCarrierId;
+    }
+
+    public void setSponsorCarrierId(Integer sponsorCarrierId) {
+        this.sponsorCarrierId = sponsorCarrierId;
+    }
+
+    public String getSponsorCountryCode() {
+        return sponsorCountryCode;
+    }
+
+    public void setSponsorCountryCode(String sponsorCountryCode) {
+        this.sponsorCountryCode = sponsorCountryCode;
     }
 }

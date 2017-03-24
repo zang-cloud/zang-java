@@ -47,7 +47,7 @@ public class AvailablePhoneNumbersTest extends BaseUnitTest {
 
 
     private void checkAvailablePhoneNumber(AvailablePhoneNumber availablePhoneNumber) {
-        Assert.assertEquals("US", availablePhoneNumber.getIsoCountry());
+        Assert.assertEquals("HR", availablePhoneNumber.getIsoCountry());
 
     }
 

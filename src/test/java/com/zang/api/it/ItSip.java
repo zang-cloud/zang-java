@@ -1,10 +1,16 @@
 package com.zang.api.it;
 
 import com.zang.api.connectors.SipCredentialsConnector;
-import com.zang.api.domain.Credential;
-import com.zang.api.domain.CredentialsList;
+import com.zang.api.connectors.SipDomainsConnector;
+import com.zang.api.connectors.SipIpAccessControlListsConnector;
+import com.zang.api.domain.*;
+import com.zang.api.domain.enums.HttpMethod;
+import com.zang.api.domain.list.AccessControlListsList;
 import com.zang.api.domain.list.CredentialsListsList;
+import com.zang.api.domain.list.DomainsList;
+import com.zang.api.domain.list.IpAddressesList;
 import com.zang.api.exceptions.ZangException;
+import com.zang.api.params.DomainParams;
 import junit.framework.Assert;
 import org.junit.Test;
 
@@ -33,6 +39,7 @@ public class ItSip extends BaseIntegrationTest {
 
         CredentialsList cl = scc.createCredentialsList("MyCredentialsList");
         Credential cr = scc.createCredential(cl.getSid(), "testuser123", "34AS3!#$asfe");
+        sleep();
         CredentialsList cl2 = scc.viewCredentialsList(cl.getSid());
         Credential cr2 = scc.viewCredential(cl.getSid(), cr.getSid());
 
@@ -42,6 +49,7 @@ public class ItSip extends BaseIntegrationTest {
         Assert.assertEquals("MyCredentialsList", cl2.getFriendlyName());
 
         scc.updateCredentialsList(cl.getSid(), "MyCredentialsList2");
+        sleep();
         CredentialsList cl3 = scc.viewCredentialsList(cl.getSid());
         Assert.assertEquals("MyCredentialsList2", cl3.getFriendlyName());
 
@@ -60,6 +68,104 @@ public class ItSip extends BaseIntegrationTest {
                 Assert.fail();
             }
         }
+
+    }
+
+    @Test
+    public void testSipAcls() throws ZangException {
+        SipIpAccessControlListsConnector conn = connectorFactory.getSipIpAccessControlListsConnector();
+
+        deleteAcls();
+        AccessControlList acl = conn.createIpAccessControlList("MyAclList");
+        sleep();
+        conn.updateIpAccessControlList(acl.getSid(), "MyAclList2");
+        sleep();
+        acl = conn.viewIpAccessControlList(acl.getSid());
+        Assert.assertEquals("MyAclList2", acl.getFriendlyName());
+
+        IpAddress ip = conn.addAccessControlListIp(acl.getSid(), "MyIpAddress", "192.168.12.12");
+        conn.updateAccessControlListIp(acl.getSid(), ip.getSid(), "MyIpAddress2", null);
+        sleep();
+        ip = conn.viewAccessControlListIp(acl.getSid(), ip.getSid());
+        Assert.assertEquals("MyIpAddress2", ip.getFriendlyName());
+        Assert.assertEquals("192.168.12.12", ip.getIpAddress());
+
+        IpAddressesList ipList = conn.listAccessControlListIps(acl.getSid());
+        Assert.assertEquals(1, (int)ipList.getTotal());
+        Assert.assertEquals(ip.getSid(), ipList.iterator().next().getSid());
+
+        deleteAcls();
+
+    }
+
+    private void deleteAcls() throws ZangException {
+        SipIpAccessControlListsConnector conn = connectorFactory.getSipIpAccessControlListsConnector();
+        AccessControlListsList acls = conn.listIpAccessControlLists(0, 100);
+        for(AccessControlList acl : acls) {
+            if (acl.getFriendlyName().startsWith("MyAclList")) {
+                conn.deleteIpAccessControlList(acl.getSid());
+            }
+        }
+    }
+
+    private void deleteDomains() throws ZangException {
+        SipDomainsConnector conn = connectorFactory.getSipDomainsConnector();
+        DomainsList domains = conn.listDomains();
+        for(Domain domain : domains) {
+            if (domain.getFriendlyName().startsWith("MyDomain")) {
+                conn.deleteDomain(domain.getSid());
+            }
+        }
+    }
+
+    @Test
+    public void testDomains() throws ZangException{
+        SipDomainsConnector conn = connectorFactory.getSipDomainsConnector();
+
+        deleteDomains();
+        deleteAcls();
+        deleteCredentials();
+
+        Domain domain = conn.createDomain(DomainParams.builder()
+                .setDomainName("mytestdomain.com")
+                .setFriendlyName("MyDomain")
+                .setHeartbeatUrl("http://heartbeat.com")
+                .setHeartbeatMethod(HttpMethod.GET)
+                .build());
+
+        sleep();
+        conn.updateDomain(DomainParams.builder()
+                .setDomainSid(domain.getSid())
+                .setFriendlyName("MyDomain2")
+                .build());
+        sleep();
+        domain = conn.viewDomain(domain.getSid());
+        sleep();
+        Assert.assertEquals("MyDomain2", domain.getFriendlyName());
+        SipCredentialsConnector scc = connectorFactory.getSipCredentialsConnector();
+
+        CredentialsList cl = scc.createCredentialsList("MyCredentialsList");
+        Credential cr = scc.createCredential(cl.getSid(), "testuser123", "34AS3!#$asfe");
+        sleep();
+        conn.mapCredentialsLists(domain.getSid(), cl.getSid());
+
+        SipIpAccessControlListsConnector sipc = connectorFactory.getSipIpAccessControlListsConnector();
+        AccessControlList acl = sipc.createIpAccessControlList("MyAclList");
+        IpAddress ip = sipc.addAccessControlListIp(acl.getSid(), "MyIpAddress", "192.168.12.12");
+        conn.mapIpAccessControlList(domain.getSid(), acl.getSid());
+        sleep();
+        domain = conn.viewDomain(domain.getSid());
+        CredentialsListsList mappedcls = conn.listMappedCredentialsLists(domain.getSid());
+        Assert.assertEquals(1, (int)mappedcls.getTotal());
+        AccessControlListsList mappedacls = conn.listMappedIpAccessControlLists(domain.getSid());
+        Assert.assertEquals(1, (int)mappedacls.getTotal());
+
+        Assert.assertEquals(1, (int)mappedacls.iterator().next().getIpAddressesCount());
+        Assert.assertEquals(1, (int)mappedcls.iterator().next().getCredentialsCount());
+
+        deleteDomains();
+        deleteAcls();
+        deleteCredentials();
 
     }
 }

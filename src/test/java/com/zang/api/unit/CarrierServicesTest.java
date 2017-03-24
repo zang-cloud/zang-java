@@ -26,8 +26,8 @@ public class CarrierServicesTest extends BaseUnitTest {
         createExpectation("POST", "Lookups/Carrier.json", new Parameter[]{
                         new Parameter("PhoneNumber", "+1234")
                 }, null,
-                "/carrierservices/carrierlookup.json");
-        checkCarrierLookup(connector.carrierLookup("+1234"));
+                "/carrierservices/carrierlookupslist.json");
+        checkCarrierLookup(connector.carrierLookup("+1234").iterator().next());
     }
 
     @Test
@@ -45,8 +45,8 @@ public class CarrierServicesTest extends BaseUnitTest {
         createExpectation("POST", "Lookups/Cnam.json", new Parameter[]{
                         new Parameter("PhoneNumber", "+1234")
                 }, null,
-                "/carrierservices/cnamlookup.json");
-        checkCnamLookup(connector.cnamLookup("+1234"));
+                "/carrierservices/cnamlookupslist.json");
+        checkCnamLookup(connector.cnamLookup("+1234").iterator().next());
     }
 
     @Test
@@ -64,8 +64,8 @@ public class CarrierServicesTest extends BaseUnitTest {
         createExpectation("POST", "Lookups/Bna.json", new Parameter[]{
                         new Parameter("PhoneNumber", "+1234")
                 }, null,
-                "/carrierservices/bnalookup.json");
-        checkBnaLookup(connector.bnaLookup("+1234"));
+                "/carrierservices/bnalookupslist.json");
+        checkBnaLookup(connector.bnaLookup("+1234").iterator().next());
     }
 
     @Test

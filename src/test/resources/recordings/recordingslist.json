@@ -1,42 +1,26 @@
 {
-  "page": 0,
-  "num_pages": 1,
-  "page_size": 50,
-  "total": 60,
-  "start": 0,
-  "end": 49,
-
-  "uri": "/v2/Accounts/TestAccountSid/Recordings.json",
-  "first_page_uri": "/v2/Accounts/TestAccountSid/Recordings.json?Page=0&PageSize=50",
-  "previous_page_uri": null,
-  "next_page_uri": null,
-  "last_page_uri": "/v2/Accounts/TestAccountSid/Recordings.json?Page=0&PageSize=50",
-
+  "first_page_uri": "/v2/Accounts/ACe1889084056167d57a944486a50ceb46/Recordings.json?Page=0&amp;PageSize=50",
   "recordings": [
-
     {
-      "sid": "TestRecordingSid",
-      "account_sid": "TestAccountSid",
-      "call_sid": "TestCallSid",
-      "duration": "6",
-      "date_created": "Fri, 27 Jul 2012 14:54:44 +0000",
+      "duration": 15,
+      "call_sid": "CA4288908428ae2061275a412e80bf1929",
+      "sid": "RE4288908463cd614b41084509ad8893a7",
+      "date_updated": "Fri, 24 Mar 2017 16:07:01 -0000",
+      "date_created": "Fri, 24 Mar 2017 16:06:32 -0000",
+      "price": "0.00",
+      "recording_url": "http://recordings.telapi.com/RBfcc94a3e2b5d4e4c89f7017d6387ffb8/RE4288908463cd614b41084509ad8893a7.mp3",
       "api_version": "v2",
-      "date_updated": "Fri, 27 Jul 2012 14:54:52 +0000",
-      "recording_url": "http://recordings.telapi.com/{RecordingBucket}/TestRecordingSid.mp3",
-      "uri": "/v2/Accounts/TestAccountSid/Recordings/TestRecordingSid.json"
-    },
-
-    {
-      "sid": "TestRecordingSid",
-      "account_sid": "TestAccountSid",
-      "call_sid": "TestCallSid",
-      "duration": "10",
-      "date_created": "Fri, 27 Jul 2012 14:52:53 +0000",
-      "api_version": "v2",
-      "date_updated": "Fri, 27 Jul 2012 14:53:06 +0000",
-      "recording_url": "http://recordings.telapi.com/{RecordingBucket}/TestRecordingSid.mp3",
-      "uri": "/v2/Accounts/TestAccountSid/Recordings/TestRecordingSid.json"
+      "uri": "/v2/Accounts/ACe1889084056167d57a944486a50ceb46/Recordings/RE4288908463cd614b41084509ad8893a7"
     }
-
-  ]
+  ],
+  "end": 0,
+  "total": 1,
+  "previous_page_uri": "",
+  "num_pages": 1,
+  "uri": "/v2/Accounts/ACe1889084056167d57a944486a50ceb46/Recordings.json",
+  "page_size": 50,
+  "start": 0,
+  "next_page_uri": "",
+  "last_page_uri": "/v2/Accounts/ACe1889084056167d57a944486a50ceb46/Recordings.json?Page=0&PageSize=50",
+  "page": 0
 }

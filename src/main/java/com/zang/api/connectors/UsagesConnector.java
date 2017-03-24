@@ -52,6 +52,10 @@ public class UsagesConnector extends BaseConnector {
         return listUsages(conf.getSid(), day, month, year, product, page, pageSize);
     }
 
+    public UsagesList listUsages() throws ZangException {
+        return listUsages(conf.getSid(), null, null, null, null, null, null);
+    }
+
     public UsagesList listUsages(ListUsagesParams listUsagesParams) throws ZangException {
         return listUsages(listUsagesParams.getAccountSid() != null ? listUsagesParams.getAccountSid() : conf.getSid(), listUsagesParams.getDay(), listUsagesParams.getMonth(), listUsagesParams.getYear(),
                 listUsagesParams.getProduct(), listUsagesParams.getPage(), listUsagesParams.getPageSize());

@@ -15,9 +15,15 @@ public abstract class BaseIntegrationTest {
     public BaseIntegrationTest() throws ZangException {
         this.testParameters = new TestParameters();
         conf = new PropertiesFileZangConfiguration();
-        System.out.println(conf.getSid());
-        System.out.println(conf.getAuthToken());
         connectorFactory = new ZangConnectorFactory(conf);
 
+    }
+
+    protected void sleep() {
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+
+        }
     }
 }

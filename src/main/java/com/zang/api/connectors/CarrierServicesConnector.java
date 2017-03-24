@@ -1,15 +1,15 @@
 package com.zang.api.connectors;
 
 import com.zang.api.configuration.ZangConfiguration;
-import com.zang.api.domain.BnaLookup;
-import com.zang.api.domain.CarrierLookup;
-import com.zang.api.domain.CnamLookup;
 import com.zang.api.domain.list.BnaLookupsList;
 import com.zang.api.domain.list.CarrierLookupsList;
 import com.zang.api.domain.list.CnamLookupsList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.restproxies.CarrierServicesProxy;
 import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 public class CarrierServicesConnector extends BaseConnector {
@@ -21,12 +21,12 @@ public class CarrierServicesConnector extends BaseConnector {
         proxy = createProxy(CarrierServicesProxy.class);
     }
 
-    public CarrierLookup carrierLookup(String accountSid, String phoneNumber) throws ZangException {
-        return returnThrows(proxy.carrierLookup(accountSid, phoneNumber), CarrierLookup.class);
+    public CarrierLookupsList carrierLookup(String accountSid, List<String> phoneNumbers) throws ZangException {
+        return returnThrows(proxy.carrierLookup(accountSid, phoneNumbers), CarrierLookupsList.class);
     }
 
-    public CarrierLookup carrierLookup(String phoneNumber) throws ZangException {
-        return carrierLookup(conf.getSid(), phoneNumber);
+    public CarrierLookupsList carrierLookup(String...phoneNumbers) throws ZangException {
+        return carrierLookup(conf.getSid(), Arrays.asList(phoneNumbers));
     }
 
     public CarrierLookupsList listCarrierLookups(String accountSid, Integer page, Integer pageSize) throws ZangException {
@@ -37,12 +37,12 @@ public class CarrierServicesConnector extends BaseConnector {
         return listCarrierLookups(conf.getSid(), page, pageSize);
     }
 
-    public CnamLookup cnamLookup(String accountSid, String phoneNumber) throws ZangException {
-        return returnThrows(proxy.cnamLookup(accountSid, phoneNumber), CnamLookup.class);
+    public CnamLookupsList cnamLookup(String accountSid, List<String> phoneNumbers) throws ZangException {
+        return returnThrows(proxy.cnamLookup(accountSid, phoneNumbers), CnamLookupsList.class);
     }
 
-    public CnamLookup cnamLookup(String phoneNumber) throws ZangException {
-        return cnamLookup(conf.getSid(), phoneNumber);
+    public CnamLookupsList cnamLookup(String... phoneNumbers) throws ZangException {
+        return cnamLookup(conf.getSid(), Arrays.asList(phoneNumbers));
     }
 
     public CnamLookupsList listCnamLookups(String accountSid, Integer page, Integer pageSize) throws ZangException {
@@ -53,12 +53,12 @@ public class CarrierServicesConnector extends BaseConnector {
         return listCnamLookups(conf.getSid(), page, pageSize);
     }
 
-    public BnaLookup bnaLookup(String accountSid, String phoneNumber) throws ZangException {
-        return returnThrows(proxy.bnaLookup(accountSid, phoneNumber), BnaLookup.class);
+    public BnaLookupsList bnaLookup(String accountSid, List<String> phoneNumbers) throws ZangException {
+        return returnThrows(proxy.bnaLookup(accountSid, phoneNumbers), BnaLookupsList.class);
     }
 
-    public BnaLookup bnaLookup(String phoneNumber) throws ZangException {
-        return bnaLookup(conf.getSid(), phoneNumber);
+    public BnaLookupsList bnaLookup(String... phoneNumbers) throws ZangException {
+        return bnaLookup(conf.getSid(), Arrays.asList(phoneNumbers));
     }
 
     public BnaLookupsList listBnaLookups(String accountSid, Integer page, Integer pageSize) throws ZangException {

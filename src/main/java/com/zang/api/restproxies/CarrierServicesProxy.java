@@ -2,6 +2,7 @@ package com.zang.api.restproxies;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 public interface CarrierServicesProxy {
     @POST
@@ -9,7 +10,7 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response carrierLookup(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("PhoneNumber") String phoneNumber
+            @FormParam("PhoneNumber") List<String> phoneNumbers
     );
 
     @GET
@@ -26,7 +27,7 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response cnamLookup(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("PhoneNumber") String phoneNumber
+            @FormParam("PhoneNumber") List<String> phoneNumbers
     );
 
     @GET
@@ -43,7 +44,7 @@ public interface CarrierServicesProxy {
     @Produces("application/json")
     Response bnaLookup(
             @PathParam("AccountSid") String accountSid,
-            @FormParam("PhoneNumber") String phoneNumber
+            @FormParam("PhoneNumber") List<String> phoneNumbers
     );
 
     @GET

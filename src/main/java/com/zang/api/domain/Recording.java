@@ -4,6 +4,8 @@ import com.zang.api.json.JsonDurationParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
+import java.math.BigDecimal;
+
 /**
  * Recorded calls can be viewed using the REST API. All
  * recordings are represented as the same type of resource, regardless of
@@ -14,6 +16,7 @@ public class Recording extends BaseZangObject {
     private String callSid;
     @JsonDeserialize(using = JsonDurationParser.class)
     private Integer duration;
+    private BigDecimal price;
     @JsonProperty("recording_url")
     private String recordingUrl;
 
@@ -51,4 +54,11 @@ public class Recording extends BaseZangObject {
         this.recordingUrl = recordingUrl;
     }
 
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 }

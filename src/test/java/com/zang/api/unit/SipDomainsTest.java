@@ -42,7 +42,7 @@ public class SipDomainsTest extends BaseUnitTest {
 
         DomainsList domains = connector.listDomains();
 
-        Assert.assertEquals(1, (int) domains.getTotal());
+        Assert.assertEquals(2, (int) domains.getTotal());
         checkDomain(domains.iterator().next());
     }
 

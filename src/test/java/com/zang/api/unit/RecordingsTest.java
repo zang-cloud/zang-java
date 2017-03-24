@@ -83,7 +83,7 @@ public class RecordingsTest extends BaseUnitTest {
 
 
     private void checkRecording(Recording recording) {
-        Assert.assertEquals("http://recordings.telapi.com/{RecordingBucket}/TestRecordingSid.mp3", recording.getRecordingUrl());
+        Assert.assertEquals("http://recordings.telapi.com/RBfcc94a3e2b5d4e4c89f7017d6387ffb8/RE4288908463cd614b41084509ad8893a7.mp3", recording.getRecordingUrl());
     }
 
 }

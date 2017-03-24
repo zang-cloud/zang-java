@@ -58,6 +58,8 @@ public class TestParameters extends Properties {
         return getProperty("mp3url");
     }
 
+    public String getInboundXmlUrl() { return getProperty("inboundxmlurl"); }
+
     public static Date getFromDate() {
         return fromDate;
     }
