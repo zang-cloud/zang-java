@@ -52,7 +52,7 @@ public class ApplicationsConnector extends BaseConnector {
      * @param accountSid Account SID
      * @param friendlyName Filters by application friendly name
      * @param page Page to return
-     * @param pageSize Number of items to return
+     * @param pageSize Number of items to return per page
      * @return A list of available applicatoins
      * @throws ZangException
      */

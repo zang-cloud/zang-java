@@ -32,7 +32,7 @@ public class AvailablePhoneNumbersConnector extends BaseConnector {
      * @param inRegion Filter by region
      * @param inPostalCode Filter by postal code
      * @param page Page to return
-     * @param pageSize Number of items to return
+     * @param pageSize Number of items to return per page
      * @return List of phone numbers available for purchasing
      * @throws ZangException
      */
@@ -49,7 +49,7 @@ public class AvailablePhoneNumbersConnector extends BaseConnector {
      * @param inRegion Filter by region
      * @param inPostalCode Filter by postal code
      * @param page Page to return
-     * @param pageSize Number of items to return
+     * @param pageSize Number of items to return per page
      * @return List of phone numbers available for purchasing
      * @throws ZangException
      */
