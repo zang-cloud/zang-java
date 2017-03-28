@@ -25,9 +25,15 @@ public class DomainParams {
         return new DomainParamsBuilder();
     }
 
+    /**
+     * @see DomainParamsBuilder
+     */
     public DomainParams() {
     }
 
+    /**
+     * @see DomainParamsBuilder
+     */
     public DomainParams(String accountSid, String domainSid, String domainName, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String voiceStatusCallback, HttpMethod voiceStatusMethod) {
         this.accountSid = accountSid;
         this.domainSid = domainSid;

@@ -31,9 +31,15 @@ public class UpdateIncomingNumberParams {
         return new UpdateIncomingNumberParamsBuilder();
     }
 
+    /**
+     * @see UpdateIncomingNumberParamsBuilder
+     */
     public UpdateIncomingNumberParams() {
     }
 
+    /**
+     * @see UpdateIncomingNumberParamsBuilder
+     */
     public UpdateIncomingNumberParams(String accountSid, String incomingPhoneNumberSid, String friendlyName, Boolean voiceCallerIdLookup, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String smsUrl, HttpMethod smsMethod, String smsFallbackUrl, HttpMethod smsFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String statusCallback, HttpMethod statusCallbackMethod, String hangupCallback, HttpMethod hangupCallbackMethod) {
         this.accountSid = accountSid;
         this.incomingPhoneNumberSid = incomingPhoneNumberSid;

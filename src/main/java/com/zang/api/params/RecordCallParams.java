@@ -26,9 +26,15 @@ public class RecordCallParams {
         return new RecordCallParamsBuilder();
     }
 
+    /**
+     * @see RecordCallParamsBuilder
+     */
     public RecordCallParams() {
     }
 
+    /**
+     * @see RecordCallParamsBuilder
+     */
     public RecordCallParams(String accountSid, String callSid, Boolean record, RecordingAudioDirection direction, Integer timeLimit, String callbackUrl, RecordingFileFormat fileFormat, Boolean trimSilence, Boolean transcribe, TranscriptionQuality transcriptionQuality, String transcribeCallback) {
         this.accountSid = accountSid;
         this.callSid = callSid;

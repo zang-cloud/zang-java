@@ -19,6 +19,11 @@ public class ListUsagesParamsBuilder {
     ListUsagesParamsBuilder() {
     }
 
+    /**
+     * Sets accountSid. If left blank the one from the Connector configuration will be used.
+     * @param accountSid
+     * @return
+     */
     public ListUsagesParamsBuilder setAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;

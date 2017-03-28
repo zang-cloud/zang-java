@@ -26,6 +26,18 @@ public class FraudControlConnector extends BaseConnector {
     }
 
 
+    /**
+     * Restricts outbound calls and sms messages to some destination.
+     * @param accountSid Account SID
+     * @param countryCode Country code of destination which you want to restrict.
+     * @param mobileEnabled Mobile status for the destination. If false, all mobile call activity will be rejected
+     *                      or disabled.
+     * @param landlineEnabled Landline status for the destination. If false, all landline call activity will be
+     *                        rejected or disabled.
+     * @param smsEnabled SMS status for the destination. If false, all SMS activity will be rejected or disabled.
+     * @return The created Fraud control rule
+     * @throws ZangException
+     */
     public FraudControlRule blockDestination(String accountSid, String countryCode, Boolean mobileEnabled, Boolean landlineEnabled, Boolean smsEnabled) throws ZangException {
         FraudControlRuleElement element = returnThrows(proxy.blockDestination(accountSid, countryCode, mobileEnabled, landlineEnabled, smsEnabled), FraudControlRuleElement.class);
         if (element.getBlocked() == null) return null;
@@ -33,11 +45,34 @@ public class FraudControlConnector extends BaseConnector {
         return element.getBlocked();
     }
 
+    /**
+     * Restricts outbound calls and sms messages to some destination.
+     * @param countryCode Country code of destination which you want to restrict.
+     * @param mobileEnabled Mobile status for the destination. If false, all mobile call activity will be rejected
+     *                      or disabled.
+     * @param landlineEnabled Landline status for the destination. If false, all landline call activity will be
+     *                        rejected or disabled.
+     * @param smsEnabled SMS status for the destination. If false, all SMS activity will be rejected or disabled.
+     * @return The created Fraud control rule
+     * @throws ZangException
+     */
     public FraudControlRule blockDestination(String countryCode, Boolean mobileEnabled, Boolean landlineEnabled, Boolean smsEnabled) throws ZangException {
         return blockDestination(conf.getSid(), countryCode, mobileEnabled, landlineEnabled, smsEnabled);
     }
 
 
+    /**
+     * Authorizes previously blocked destination for outbound calls and sms messages.
+     * @param accountSid Account SID
+     * @param countryCode Country code of destination which you want to authorize.
+     * @param mobileEnabled Mobile status for the destination. If false, all mobile call activity will be rejected
+     *                      or disabled.
+     * @param landlineEnabled Landline status for the destination. If false, all landline call activity will be
+     *                        rejected or disabled.
+     * @param smsEnabled SMS status for the destination. If false, all SMS activity will be rejected or disabled.
+     * @return The created Fraud control rule
+     * @throws ZangException
+     */
     public FraudControlRule authorizeDestination(String accountSid, String countryCode, Boolean mobileEnabled, Boolean landlineEnabled, Boolean smsEnabled) throws ZangException {
         FraudControlRuleElement element = returnThrows(proxy.authorizeDestination(accountSid, countryCode, mobileEnabled, landlineEnabled, smsEnabled), FraudControlRuleElement.class);
         if (element.getAuthorized() == null) return null;
@@ -45,11 +80,29 @@ public class FraudControlConnector extends BaseConnector {
         return element.getAuthorized();
     }
 
+    /**
+     * Authorizes previously blocked destination for outbound calls and sms messages.
+     * @param countryCode Country code of destination which you want to authorize.
+     * @param mobileEnabled Mobile status for the destination. If false, all mobile call activity will be rejected
+     *                      or disabled.
+     * @param landlineEnabled Landline status for the destination. If false, all landline call activity will be
+     *                        rejected or disabled.
+     * @param smsEnabled SMS status for the destination. If false, all SMS activity will be rejected or disabled.
+     * @return The created Fraud control rule
+     * @throws ZangException
+     */
     public FraudControlRule authorizeDestination(String countryCode, Boolean mobileEnabled, Boolean landlineEnabled, Boolean smsEnabled) throws ZangException {
         return authorizeDestination(conf.getSid(), countryCode, mobileEnabled, landlineEnabled, smsEnabled);
     }
 
 
+    /**
+     * Extends a destinations authorization expiration by 30 days
+     * @param accountSid Account SID
+     * @param countryCode Country code of destination for which you want to extend authorization.
+     * @return The created Fraud control rule
+     * @throws ZangException
+     */
     public FraudControlRule extendDestinationAuthorization(String accountSid, String countryCode) throws ZangException {
         FraudControlRuleElement element = returnThrows(proxy.extendDestinationAuthorization(accountSid, countryCode), FraudControlRuleElement.class);
         if (element.getAuthorized() == null) return null;
@@ -57,11 +110,29 @@ public class FraudControlConnector extends BaseConnector {
         return element.getAuthorized();
     }
 
+    /**
+     * Extends a destinations authorization expiration by 30 days
+     * @param countryCode Country code of destination for which you want to extend authorization.
+     * @return The created Fraud control rule
+     * @throws ZangException
+     */
     public FraudControlRule extendDestinationAuthorization(String countryCode) throws ZangException {
         return extendDestinationAuthorization(conf.getSid(), countryCode);
     }
 
 
+    /**
+     * Permanently authorizes destination that may have been blocked by the automated fraud detection system
+     * @param accountSid Account SID
+     * @param countryCode Country code of destination which you want to authorize.
+     * @param mobileEnabled Mobile status for the destination. If false, all mobile call activity will be rejected
+     *                      or disabled.
+     * @param landlineEnabled Landline status for the destination. If false, all landline call activity will be
+     *                        rejected or disabled.
+     * @param smsEnabled SMS status for the destination. If false, all SMS activity will be rejected or disabled.
+     * @return The created Fraud control rule
+     * @throws ZangException
+     */
     public FraudControlRule whitelistDestination(String accountSid, String countryCode, Boolean mobileEnabled, Boolean landlineEnabled, Boolean smsEnabled) throws ZangException {
         FraudControlRuleElement element = returnThrows(proxy.whitelistDestination(accountSid, countryCode, mobileEnabled, landlineEnabled, smsEnabled), FraudControlRuleElement.class);
         if (element.getWhitelisted() == null) return null;
@@ -69,11 +140,30 @@ public class FraudControlConnector extends BaseConnector {
         return element.getWhitelisted();
     }
 
+    /**
+     * Permanently authorizes destination that may have been blocked by the automated fraud detection system
+     * @param countryCode Country code of destination which you want to authorize.
+     * @param mobileEnabled Mobile status for the destination. If false, all mobile call activity will be rejected
+     *                      or disabled.
+     * @param landlineEnabled Landline status for the destination. If false, all landline call activity will be
+     *                        rejected or disabled.
+     * @param smsEnabled SMS status for the destination. If false, all SMS activity will be rejected or disabled.
+     * @return The created Fraud control rule
+     * @throws ZangException
+     */
     public FraudControlRule whitelistDestination(String countryCode, Boolean mobileEnabled, Boolean landlineEnabled, Boolean smsEnabled) throws ZangException {
         return whitelistDestination(conf.getSid(), countryCode, mobileEnabled, landlineEnabled, smsEnabled);
     }
 
 
+    /**
+     * Shows information on all fraud control resources associated with an account.
+     * @param accountSid Account SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
+     * @return List of Fraud Control rules.
+     * @throws ZangException
+     */
     public FraudControlRulesList listFraudControlResources(String accountSid, Integer page, Integer pageSize) throws ZangException {
         FraudControlRulesList rules = returnThrows(proxy.listFraudControlResources(accountSid, page, pageSize), FraudControlRulesList.class);
         if (rules == null) return null;
@@ -98,6 +188,13 @@ public class FraudControlConnector extends BaseConnector {
         return rules;
     }
 
+    /**
+     * Shows information on all fraud control resources associated with your account.
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
+     * @return List of Fraud Control rules.
+     * @throws ZangException
+     */
     public FraudControlRulesList listFraudControlResources(Integer page, Integer pageSize) throws ZangException {
         return listFraudControlResources(conf.getSid(), page, pageSize);
     }

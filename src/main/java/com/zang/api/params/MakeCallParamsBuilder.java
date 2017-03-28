@@ -39,6 +39,11 @@ public class MakeCallParamsBuilder {
     MakeCallParamsBuilder() {
     }
 
+    /**
+     * Sets accountSid. If left blank the one from the Connector configuration will be used.
+     * @param accountSid
+     * @return
+     */
     public MakeCallParamsBuilder setAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;

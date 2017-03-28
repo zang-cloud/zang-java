@@ -30,6 +30,11 @@ public class UpdateIncomingNumberParamsBuilder {
     UpdateIncomingNumberParamsBuilder() {
     }
 
+    /**
+     * Sets accountSid. If left blank the one from the Connector configuration will be used.
+     * @param accountSid
+     * @return
+     */
     public UpdateIncomingNumberParamsBuilder setAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;

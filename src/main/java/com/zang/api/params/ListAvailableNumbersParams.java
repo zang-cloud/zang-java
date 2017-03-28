@@ -22,9 +22,15 @@ public class ListAvailableNumbersParams {
         return new ListAvailableNumbersParamsBuilder();
     }
 
+    /**
+     * @see ListAvailableNumbersParamsBuilder
+     */
     public ListAvailableNumbersParams() {
     }
 
+    /**
+     * @see ListAvailableNumbersParamsBuilder
+     */
     public ListAvailableNumbersParams(String accountSid, String country, AvailableNumberType type, String contains, String areaCode, String inRegion, String inPostalCode, Integer page, Integer pageSize) {
         this.accountSid = accountSid;
         this.country = country;

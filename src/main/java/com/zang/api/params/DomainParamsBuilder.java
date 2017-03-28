@@ -25,6 +25,11 @@ public class DomainParamsBuilder {
 
     }
 
+    /**
+     * Sets accountSid. If left blank the one from the Connector configuration will be used.
+     * @param accountSid
+     * @return
+     */
     public DomainParamsBuilder setAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;

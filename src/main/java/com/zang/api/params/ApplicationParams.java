@@ -34,9 +34,15 @@ public class ApplicationParams {
         return new ApplicationParamsBuilder();
     }
 
+    /**
+     * @see ApplicationParamsBuilder
+     */
     public ApplicationParams() {
     }
 
+    /**
+     * @see ApplicationParamsBuilder
+     */
     public ApplicationParams(String accountSid, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, boolean voiceCallerIdLookup, String smsUrl, HttpMethod smsMethod, String smsFallbackUrl, HttpMethod smsFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String statusCallback, HttpMethod statusCallbackMethod, String hangupCallback, HttpMethod hangupCallbackMethod) {
         this.accountSid = accountSid;
         this.friendlyName = friendlyName;

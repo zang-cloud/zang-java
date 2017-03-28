@@ -20,9 +20,15 @@ public class ListUsagesParams {
         return new ListUsagesParamsBuilder();
     }
 
+    /**
+     * @see ListUsagesParamsBuilder
+     */
     public ListUsagesParams() {
     }
 
+    /**
+     * @see ListUsagesParamsBuilder
+     */
     public ListUsagesParams(String accountSid, Integer day, Integer month, Integer year, Product product, Integer page, Integer pageSize) {
         this.accountSid = accountSid;
         this.day = day;

@@ -41,9 +41,15 @@ public class MakeCallParams {
         return new MakeCallParamsBuilder();
     }
 
+    /**
+     * @see MakeCallParamsBuilder
+     */
     public MakeCallParams() {
     }
 
+    /**
+     * @see MakeCallParamsBuilder
+     */
     public MakeCallParams(String accountSid, String to, String from, String url, HttpMethod method, String fallbackUrl, HttpMethod fallbackMethod, String statusCallback, HttpMethod statusCallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String forwardedFrom, String playDtmf, Integer timeout, Boolean hideCallerId, Boolean record, String recordCallback, HttpMethod recordCallbackMethod, Boolean transcribe, String transcribeCallback, Boolean straightToVoicemail, IfMachine ifMachine, String ifMachineUrl, HttpMethod ifMachineMethod, String sipAuthUsername, String sipAuthPassword) {
         this.accountSid = accountSid;
         this.to = to;

@@ -25,6 +25,11 @@ public class RecordCallParamsBuilder {
     RecordCallParamsBuilder() {
     }
 
+    /**
+     * Sets accountSid. If left blank the one from the Connector configuration will be used.
+     * @param accountSid
+     * @return
+     */
     public RecordCallParamsBuilder setAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;

@@ -33,6 +33,11 @@ public class PurchaseIncomingNumberParamsBuilder {
     PurchaseIncomingNumberParamsBuilder() {
     }
 
+    /**
+     * Sets accountSid. If left blank the one from the Connector configuration will be used.
+     * @param accountSid
+     * @return
+     */
     public PurchaseIncomingNumberParamsBuilder setAccountSid(String accountSid) {
         this.accountSid = accountSid;
         return this;
