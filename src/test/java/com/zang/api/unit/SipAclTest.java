@@ -6,7 +6,6 @@ import com.zang.api.domain.IpAddress;
 import com.zang.api.exceptions.ZangException;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
@@ -23,91 +22,69 @@ public class SipAclTest extends BaseUnitTest {
 
     @Test
     public void viewIpAcl() throws ZangException, IOException {
-        createExpectation("GET", "SIP/IpAccessControlLists/TestIpAccessControlListSid.json", null, null,
-                "/sipdomains/ipacl.json");
+        createExpectation("SipAclTest", "viewIpAcl");
         checkAcl(connector.viewIpAccessControlList("TestIpAccessControlListSid"));
     }
 
     @Test
     public void listIpAcls() throws ZangException, IOException {
-        createExpectation("GET", "SIP/IpAccessControlLists.json", null, new Parameter[]{
-                        new Parameter("Page", "0"),
-                        new Parameter("PageSize", "50")
-                },
-                "/sipdomains/ipacllist.json");
+        createExpectation("SipAclTest", "listIpAcls");
         connector.listIpAccessControlLists(0, 50);
     }
 
 
     @Test
     public void createIpAcl() throws ZangException, IOException {
-        createExpectation("POST", "SIP/IpAccessControlLists.json", new Parameter[]{
-                        new Parameter("FriendlyName", "MyIpAclList")
-                }, null,
-                "/sipdomains/ipacl.json");
+        createExpectation("SipAclTest", "createIpAcl");
         checkAcl(connector.createIpAccessControlList("MyIpAclList"));
     }
 
 
     @Test
     public void updateIpAcl() throws ZangException, IOException {
-        createExpectation("POST", "SIP/IpAccessControlLists/TestIpAccessControlListSid.json", new Parameter[]{
-                        new Parameter("FriendlyName", "NewIpAclList")
-                }, null,
-                "/sipdomains/ipacl.json");
+        createExpectation("SipAclTest", "updateIpAcl");
         checkAcl(connector.updateIpAccessControlList("TestIpAccessControlListSid", "NewIpAclList"));
     }
 
 
     @Test
     public void deleteIpAcl() throws ZangException, IOException {
-        createExpectation("DELETE", "SIP/IpAccessControlLists/TestIpAccessControlListSid.json", null, null,
-                "/sipdomains/ipacl.json");
+        createExpectation("SipAclTest", "deleteIpAcl");
         checkAcl(connector.deleteIpAccessControlList("TestIpAccessControlListSid"));
     }
 
 
     @Test
     public void viewAclIp() throws ZangException, IOException {
-        createExpectation("GET", "SIP/IpAccessControlLists/TestIpAccessControlListSid/IpAddresses/TestIpAddressSid.json", null, null,
-                "/sipdomains/ipaddress.json");
+        createExpectation("SipAclTest", "viewAclIp");
         checkIp(connector.viewAccessControlListIp("TestIpAccessControlListSid", "TestIpAddressSid"));
     }
 
 
     @Test
     public void listAclIps() throws ZangException, IOException {
-        createExpectation("GET", "SIP/IpAccessControlLists/TestIpAccessControlListSid/IpAddresses.json", null, null,
-                "/sipdomains/ipaddresslist.json");
+        createExpectation("SipAclTest", "listAclIps");
         connector.listAccessControlListIps("TestIpAccessControlListSid");
     }
 
 
     @Test
     public void addAclIp() throws ZangException, IOException {
-        createExpectation("POST", "SIP/IpAccessControlLists/TestIpAccessControlListSid/IpAddresses.json", new Parameter[]{
-                        new Parameter("FriendlyName", "MyIpAddress"),
-                        new Parameter("IpAddress", "10.0.0.1")
-                }, null,
-                "/sipdomains/ipaddress.json");
+        createExpectation("SipAclTest", "addAclIp");
         checkIp(connector.addAccessControlListIp("TestIpAccessControlListSid", "MyIpAddress", "10.0.0.1"));
     }
 
 
     @Test
     public void updateAclIp() throws ZangException, IOException {
-        createExpectation("POST", "SIP/IpAccessControlLists/TestIpAccessControlListSid/IpAddresses/TestIpAddressSid.json", new Parameter[]{
-                new Parameter("FriendlyName", "NewIpAddress"),
-                new Parameter("IpAddress", "10.0.0.2")
-        }, null, "/sipdomains/ipaddress.json");
+        createExpectation("SipAclTest", "updateAclIp");
         checkIp(connector.updateAccessControlListIp("TestIpAccessControlListSid", "TestIpAddressSid", "NewIpAddress", "10.0.0.2"));
     }
 
 
     @Test
     public void deleteAclIp() throws ZangException, IOException {
-        createExpectation("DELETE", "SIP/IpAccessControlLists/TestIpAccessControlListSid/IpAddresses/TestIpAddressSid.json", null, null,
-                "/sipdomains/ipaddress.json");
+        createExpectation("SipAclTest", "deleteAclIp");
         checkIp(connector.deleteAccessControlListIp("TestIpAccessControlListSid", "TestIpAddressSid"));
     }
 

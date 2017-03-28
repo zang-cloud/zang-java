@@ -5,27 +5,22 @@ import com.zang.api.domain.Account;
 import com.zang.api.exceptions.ZangException;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
 public class AccountsTest extends BaseUnitTest {
 
     @Test
-    public void testViewAccount() throws ZangException, IOException {
-        createExpectation("GET", "Accounts", null, null,
-                "/accounts/account.json");
+    public void viewAccount() throws ZangException, IOException {
+        createExpectation("AccountsTest", "viewAccount");
         AccountsConnector connector = connectorFactory.getAccountsConnector();
         Account account = connector.viewAccount(conf.getSid());
         Assert.assertEquals("friendlyname1", account.getFriendlyName());
     }
 
     @Test
-    public void testUpdateAccount() throws ZangException, IOException {
-        createExpectation("POST", "Accounts",
-                new Parameter[]{
-                        new Parameter("FriendlyName", "friendlyname1")
-                }, null, "/accounts/account.json");
+    public void updateAccount() throws ZangException, IOException {
+        createExpectation("AccountsTest", "updateAccount");
         AccountsConnector connector = connectorFactory.getAccountsConnector();
         connector.updateAccount("friendlyname1");
     }

@@ -10,7 +10,6 @@ import com.zang.api.params.MakeCallParams;
 import com.zang.api.testutil.TestParameters;
 import junit.framework.Assert;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -20,8 +19,7 @@ public class CallsTest extends BaseUnitTest {
 
     @Test
     public void viewCall() throws ZangException, IOException {
-        createExpectation("GET", "Calls/TestCallSid.json", null, null,
-                "/calls/call.json");
+        createExpectation("CallsTest", "viewCall");
         CallsConnector connector = connectorFactory.getCallsConnector();
         Call call = connector.viewCall("TestCallSid");
         checkCall(call);
@@ -29,16 +27,7 @@ public class CallsTest extends BaseUnitTest {
 
     @Test
     public void listCalls() throws ZangException, IOException {
-        createExpectation("GET", "Calls.json", null, new Parameter[]{
-                        new Parameter("To", "+123456"),
-                        new Parameter("From", "+654321"),
-                        new Parameter("Status", "completed"),
-                        new Parameter("StartTime>", "2016-12-12"),
-                        new Parameter("StartTime<", "2017-03-19"),
-                        new Parameter("Page", "0"),
-                        new Parameter("PageSize", "10")
-                },
-                "/calls/callslist.json");
+        createExpectation("CallsTest", "listCalls");
         CallsConnector connector = connectorFactory.getCallsConnector();
 
         CallsList callsList = connector.listCalls(
@@ -55,34 +44,7 @@ public class CallsTest extends BaseUnitTest {
 
     @Test
     public void makeCall() throws ZangException, IOException {
-        createExpectation("POST", "Calls.json", new Parameter[]{
-                        new Parameter("To", "+123456"),
-                        new Parameter("From", "+654321"),
-                        new Parameter("Url", "TestUrl"),
-                        new Parameter("Method", "GET"),
-                        new Parameter("FallbackUrl", "FallbackUrl"),
-                        new Parameter("FallbackMethod", "POST"),
-                        new Parameter("StatusCallback", "StatusCallback"),
-                        new Parameter("StatusCallbackMethod", "GET"),
-                        new Parameter("HeartbeatUrl", "HeartbeatUrl"),
-                        new Parameter("HeartbeatMethod", "GET"),
-                        new Parameter("ForwardedFrom", "1234"),
-                        new Parameter("PlayDtmf", "123#"),
-                        new Parameter("Timeout", "122"),
-                        new Parameter("HideCallerId", "true"),
-                        new Parameter("Record", "true"),
-                        new Parameter("RecordCallback", "RecordCallback"),
-                        new Parameter("RecordCallbackMethod", "GET"),
-                        new Parameter("Transcribe", "true"),
-                        new Parameter("TranscribeCallback", "TranscribeCallback"),
-                        new Parameter("StraightToVoicemail", "true"),
-                        new Parameter("IfMachine", "redirect"),
-                        new Parameter("IfMachineUrl", "IfMachineUrl"),
-                        new Parameter("IfMachineMethod", "GET"),
-                        new Parameter("SipAuthUsername", "username"),
-                        new Parameter("SipAuthPassword", "password")
-                }, null,
-                "/calls/call.json");
+        createExpectation("CallsTest", "makeCall");
         CallsConnector connector = connectorFactory.getCallsConnector();
         Call call = connector.makeCall(MakeCallParams.builder()
                 .setTo("+123456")
@@ -116,12 +78,7 @@ public class CallsTest extends BaseUnitTest {
 
     @Test
     public void interruptLiveCall() throws ZangException, IOException {
-        createExpectation("POST", "Calls/TestCallSid.json", new Parameter[]{
-                        new Parameter("Url", "TestUrl"),
-                        new Parameter("Method", "GET"),
-                        new Parameter("Status", "canceled"),
-                }, null,
-                "/calls/call.json");
+        createExpectation("CallsTest", "interruptLiveCall");
         CallsConnector connector = connectorFactory.getCallsConnector();
         Call call = connector.interruptLiveCall("TestCallSid", "TestUrl", HttpMethod.GET, EndCallStatus.CANCELED);
         checkCall(call);
@@ -129,11 +86,7 @@ public class CallsTest extends BaseUnitTest {
 
     @Test
     public void sendDigitsToLiveCall() throws ZangException, IOException {
-        createExpectation("POST", "Calls/TestCallSid.json", new Parameter[]{
-                        new Parameter("PlayDtmf", "0123#"),
-                        new Parameter("PlayDtmfDirection", "out")
-                }, null,
-                "/calls/call.json");
+        createExpectation("CallsTest", "sendDigitsToLiveCall");
         CallsConnector connector = connectorFactory.getCallsConnector();
         Call call = connector.sendDigitsToLiveCall("TestCallSid", "0123#", AudioDirection.OUT);
         checkCall(call);
@@ -141,18 +94,7 @@ public class CallsTest extends BaseUnitTest {
 
     @Test
     public void recordLiveCall() throws ZangException, IOException {
-        createExpectation("POST", "Calls/TestCallSid/Recordings.json", new Parameter[]{
-                        new Parameter("Record", "true"),
-                        new Parameter("Direction", "both"),
-                        new Parameter("TimeLimit", "15"),
-                        new Parameter("CallbackUrl", "TestUrl"),
-                        new Parameter("FileFormat", "mp3"),
-                        new Parameter("TrimSilence", "true"),
-                        new Parameter("Transcribe", "true"),
-                        new Parameter("TranscribeQuality", "hybrid"),
-                        new Parameter("TranscribeCallback", "TestTranscribeUrl"),
-                }, null,
-                "/calls/call.json");
+        createExpectation("CallsTest", "recordLiveCall");
         CallsConnector connector = connectorFactory.getCallsConnector();
         Call call = connector.recordLiveCall("TestCallSid", true, RecordingAudioDirection.BOTH, 15, "TestUrl", RecordingFileFormat.MP3, true, true, TranscriptionQuality.HYBRID, "TestTranscribeUrl");
         checkCall(call);
@@ -160,12 +102,7 @@ public class CallsTest extends BaseUnitTest {
 
     @Test
     public void playAudioToLiveCall() throws ZangException, IOException {
-        createExpectation("POST", "Calls/TestCallSid/Play.json", new Parameter[]{
-                new Parameter("AudioUrl", "AudioUrl"),
-                new Parameter("Direction", "both"),
-                new Parameter("Loop", "true")
-                }, null,
-                "/calls/call.json");
+        createExpectation("CallsTest", "playAudioToLiveCall");
         CallsConnector connector = connectorFactory.getCallsConnector();
         Call call = connector.playAudioToLiveCall("TestCallSid", "AudioUrl", RecordingAudioDirection.BOTH, true);
         checkCall(call);
@@ -173,15 +110,7 @@ public class CallsTest extends BaseUnitTest {
 
     @Test
     public void applyVoiceEffect() throws ZangException, IOException {
-        createExpectation("POST", "Calls/TestCallSid/Effect.json", new Parameter[]{
-                new Parameter("AudioDirection", "out"),
-                        new Parameter("Pitch", "5"),
-                        new Parameter("PitchSemiTones", "4"),
-                        new Parameter("PitchOctaves", "3"),
-                        new Parameter("Rate", "2"),
-                        new Parameter("Tempo", "1"),
-                }, null,
-                "/calls/call.json");
+        createExpectation("CallsTest", "applyVoiceEffect");
         CallsConnector connector = connectorFactory.getCallsConnector();
         Call call = connector.applyVoiceEffect("TestCallSid", AudioDirection.OUT, 5, 4, 3, 2, 1);
         checkCall(call);

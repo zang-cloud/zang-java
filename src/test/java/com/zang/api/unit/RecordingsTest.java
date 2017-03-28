@@ -11,7 +11,6 @@ import com.zang.api.testutil.TestParameters;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
@@ -27,39 +26,19 @@ public class RecordingsTest extends BaseUnitTest {
 
     @Test
     public void viewRecording() throws ZangException, IOException {
-        createExpectation("GET", "Recordings/TestRecordingSid.json", null, null,
-                "/recordings/recording.json");
+        createExpectation("RecordingsTest", "viewRecording");
         checkRecording(connector.viewRecording("TestRecordingSid"));
     }
 
     @Test
     public void listRecordings() throws ZangException, IOException {
-        createExpectation("GET", "Recordings.json", null, new Parameter[]{
-                        new Parameter("CallSid", "TestCallSid"),
-                        new Parameter("DateCreated>", "2016-12-12"),
-                        new Parameter("DateCreated<", "2017-03-19"),
-                        new Parameter("Page", "0"),
-                        new Parameter("PageSize", "33"),
-                },
-                "/recordings/recordingslist.json");
+        createExpectation("RecordingsTest", "listRecordings");
         connector.listRecordings("TestCallSid", TestParameters.getFromDate(), TestParameters.getToDate(), 0, 33);
     }
 
     @Test
     public void recordCall() throws ZangException, IOException {
-        createExpectation("POST", "Calls/TestCallSid/Recordings.json", new Parameter[]{
-                        new Parameter("", ""),
-                        new Parameter("Record", "true"),
-                        new Parameter("Direction", "out"),
-                        new Parameter("TimeLimit", "1337"),
-                        new Parameter("CallbackUrl", "CallbackUrl"),
-                        new Parameter("FileFormat", "wav"),
-                        new Parameter("TrimSilence", "true"),
-                        new Parameter("Transcribe", "true"),
-                        new Parameter("TranscribeQuality", "hybrid"),
-                        new Parameter("TranscribeCallback", "TranscribeCallback")
-                }, null,
-                "/recordings/recording.json");
+        createExpectation("RecordingsTest", "recordCall");
         checkRecording(connector.recordCall(RecordCallParams.builder()
                 .setCallSid("TestCallSid")
                 .setRecord(true)
@@ -76,8 +55,7 @@ public class RecordingsTest extends BaseUnitTest {
 
     @Test
     public void deleteRecording() throws ZangException, IOException {
-        createExpectation("DELETE", "Recordings/TestRecordingSid.json", null, null,
-                "/recordings/recording.json");
+        createExpectation("RecordingsTest", "deleteRecording");
         checkRecording(connector.deleteRecording("TestRecordingSid"));
     }
 

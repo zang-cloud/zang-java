@@ -8,7 +8,6 @@ import com.zang.api.params.PurchaseIncomingNumberParams;
 import com.zang.api.params.UpdateIncomingNumberParams;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
@@ -24,20 +23,13 @@ public class IncomingPhoneNumbersTest extends BaseUnitTest {
 
     @Test
     public void viewIncomingPhoneNumber() throws ZangException, IOException {
-        createExpectation("GET", "IncomingPhoneNumbers/TestIncomingPhoneNumberSid.json", null, null,
-                "/incomingphonenumbers/incomingphonenumber.json");
+        createExpectation("IncomingPhoneNumbersTest", "viewIncomingPhoneNumber");
         check(connector.viewIncomingNumber("TestIncomingPhoneNumberSid"));
     }
 
     @Test
     public void listIncomingPhoneNumbers() throws ZangException, IOException {
-        createExpectation("GET", "IncomingPhoneNumbers.json", null, new Parameter[]{
-                new Parameter("Contains", "123"),
-                new Parameter("FriendlyName", "MyNumber"),
-                new Parameter("Page", "0"),
-                new Parameter("PageSize", "25")
-        }, "/incomingphonenumbers/incomingphonenumberslist.json");
-
+        createExpectation("IncomingPhoneNumbersTest", "listIncomingPhoneNumbers");
         check(connector.listIncomingNumbers("123", "MyNumber", 0, 25)
                 .iterator().next());
 
@@ -45,30 +37,7 @@ public class IncomingPhoneNumbersTest extends BaseUnitTest {
 
     @Test
     public void purchaseIncomingPhoneNumber() throws ZangException, IOException {
-        createExpectation("POST", "IncomingPhoneNumbers.json", new Parameter[]{
-                        new Parameter("FriendlyName", "MyNumber"),
-                        new Parameter("PhoneNumber", "+1234"),
-                        new Parameter("AreaCode", "123"),
-                        new Parameter("VoiceCallerIdLookup", "true"),
-                        new Parameter("VoiceApplicationSid", "VoiceApplicationSid"),
-                        new Parameter("SmsApplicationSid", "SmsApplicationSid"),
-                        new Parameter("VoiceUrl", "VoiceUrl"),
-                        new Parameter("VoiceMethod", "GET"),
-                        new Parameter("VoiceFallbackUrl", "VoiceFallbackUrl"),
-                        new Parameter("VoiceFallbackMethod", "GET"),
-                        new Parameter("SmsUrl", "SmsUrl"),
-                        new Parameter("SmsMethod", "GET"),
-                        new Parameter("SmsFallbackUrl", "SmsFallbackUrl"),
-                        new Parameter("SmsFallbackMethod", "POST"),
-                        new Parameter("HeartbeatUrl", "HeartbeatUrl"),
-                        new Parameter("HeartbeatMethod", "POST"),
-                        new Parameter("StatusCallback", "StatusCallback"),
-                        new Parameter("StatusCallbackMethod", "POST"),
-                        new Parameter("HangupCallback", "HangupCallback"),
-                        new Parameter("HangupCallbackMethod", "POST")
-                }, null,
-                "/incomingphonenumbers/incomingphonenumber.json");
-
+        createExpectation("IncomingPhoneNumbersTest", "purchaseIncomingPhoneNumber");
         check(connector.purchaseIncomingNumber(PurchaseIncomingNumberParams.builder()
                 .setFriendlyName("MyNumber")
                 .setPhoneNumber("+1234")
@@ -95,25 +64,7 @@ public class IncomingPhoneNumbersTest extends BaseUnitTest {
 
     @Test
     public void updateIncomingPhoneNumber() throws ZangException, IOException {
-        createExpectation("POST", "IncomingPhoneNumbers/TestIncomingPhoneNumberSid.json", new Parameter[]{
-                        new Parameter("FriendlyName", "MyNumber"),
-                        new Parameter("VoiceCallerIdLookup", "true"),
-                        new Parameter("VoiceUrl", "VoiceUrl"),
-                        new Parameter("VoiceMethod", "GET"),
-                        new Parameter("VoiceFallbackUrl", "VoiceFallbackUrl"),
-                        new Parameter("VoiceFallbackMethod", "GET"),
-                        new Parameter("SmsUrl", "SmsUrl"),
-                        new Parameter("SmsMethod", "GET"),
-                        new Parameter("SmsFallbackUrl", "SmsFallbackUrl"),
-                        new Parameter("SmsFallbackMethod", "POST"),
-                        new Parameter("HeartbeatUrl", "HeartbeatUrl"),
-                        new Parameter("HeartbeatMethod", "POST"),
-                        new Parameter("StatusCallback", "StatusCallback"),
-                        new Parameter("StatusCallbackMethod", "POST"),
-                        new Parameter("HangupCallback", "HangupCallback"),
-                        new Parameter("HangupCallbackMethod", "POST")
-                }, null,
-                "/incomingphonenumbers/incomingphonenumber.json");
+        createExpectation("IncomingPhoneNumbersTest", "updateIncomingPhoneNumber");
 
         check(connector.updateIncomingNumber(UpdateIncomingNumberParams.builder()
                 .setIncomingPhoneNumberSid("TestIncomingPhoneNumberSid")
@@ -138,8 +89,7 @@ public class IncomingPhoneNumbersTest extends BaseUnitTest {
 
     @Test
     public void deleteIncomingPhoneNumber() throws ZangException, IOException {
-        createExpectation("DELETE", "IncomingPhoneNumbers/TestIncomingPhoneNumberSid.json", null, null,
-                "/incomingphonenumbers/incomingphonenumber.json");
+        createExpectation("IncomingPhoneNumbersTest", "deleteIncomingPhoneNumber");
         check(connector.deleteIncomingNumber("TestIncomingPhoneNumberSid"));
     }
 

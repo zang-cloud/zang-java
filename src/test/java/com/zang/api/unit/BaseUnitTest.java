@@ -6,6 +6,10 @@ import com.zang.api.configuration.ZangConfiguration;
 import com.zang.api.configuration.ZangConstants;
 import com.zang.api.connectors.ZangConnectorFactory;
 import com.zang.api.testutil.MockConfiguration;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -27,6 +31,20 @@ public abstract class BaseUnitTest {
 
     private int serverPort = 41123;
 
+    protected static JSONObject testData;
+
+    static {
+        try {
+            String tests = Resources.toString(BaseUnitTest.class.getResource("/unittests.json"), Charsets.UTF_8);
+            JSONParser parser = new JSONParser();
+            testData = (JSONObject) parser.parse(tests);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     public BaseUnitTest() {
         conf = new MockConfiguration(serverPort);
@@ -55,6 +73,25 @@ public abstract class BaseUnitTest {
         mockServer.stop();
     }
 
+    protected void createExpectation(String group, String test) throws IOException {
+        JSONObject groupData = (JSONObject) testData.get(group);
+        JSONObject testData = (JSONObject)groupData.get(test);
+        String method = (String)testData.get("method");
+        String path = (String)testData.get("path");
+        Parameter[] queryParams = parseParams((JSONArray)testData.get("queryParams"));
+        Parameter[] bodyParams = parseParams((JSONArray)testData.get("bodyParams"));
+        String responseFile = (String)testData.get("response");
+        createExpectation(method, path, bodyParams, queryParams, responseFile);
+    }
+    private Parameter[] parseParams(JSONArray jsonParams) {
+        if (jsonParams == null) return null;
+        Parameter[] params = new Parameter[jsonParams.size()];
+        for(int i = 0; i < jsonParams.size(); i++) {
+            params[i] = new Parameter((String) ((JSONObject)jsonParams.get(i)).get("name"),
+                    (String) ((JSONObject)jsonParams.get(i)).get("value"));
+        }
+        return params;
+    }
     protected void createExpectation(String method, String path,
                                      Parameter[] bodyParams, Parameter[] queryParams,
                                      String responseFile) throws IOException {
@@ -65,7 +102,6 @@ public abstract class BaseUnitTest {
         }
         if (bodyParams == null) bodyParams = new Parameter[]{};
         if (queryParams == null) queryParams = new Parameter[]{};
-        System.out.println(BaseUnitTest.class.getResource(responseFile));
         String responseBody = Resources.toString(BaseUnitTest.class.getResource(responseFile), Charsets.UTF_8);
         mockServer.when(HttpRequest
                 .request()

@@ -10,7 +10,6 @@ import com.zang.api.exceptions.ZangException;
 import com.zang.api.testutil.TestParameters;
 import junit.framework.Assert;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
@@ -19,8 +18,7 @@ public class ConferencesTest extends BaseUnitTest {
 
     @Test
     public void viewConference() throws ZangException, IOException {
-        createExpectation("GET", "Conferences/TestConferenceSid.json", null, null,
-                "/conferences/conference.json");
+        createExpectation("ConferencesTest", "viewConference");
         ConferencesConnector connector = connectorFactory.getConferencesConnector();
         Conference conference = connector.viewConference("TestConferenceSid");
         checkConference(conference);
@@ -28,17 +26,7 @@ public class ConferencesTest extends BaseUnitTest {
 
     @Test
     public void listConferences() throws ZangException, IOException {
-        createExpectation("GET", "Conferences.json", null, new Parameter[]{
-                new Parameter("FriendlyName", "TestConference"),
-                        new Parameter("Status", "completed"),
-                        new Parameter("DateCreated>", "2016-12-12"),
-                        new Parameter("DateCreated<", "2017-03-19"),
-                        new Parameter("DateUpdated>", "2016-12-12"),
-                        new Parameter("DateUpdated<", "2017-03-19"),
-                        new Parameter("Page", "0"),
-                        new Parameter("PageSize", "10"),
-                },
-                "/conferences/conferenceslist.json");
+        createExpectation("ConferencesTest", "listConferences");
         ConferencesConnector connector = connectorFactory.getConferencesConnector();
 
         ConferencesList conferences = connector.listConferences("TestConference", ConferenceStatus.COMPLETED,
@@ -50,8 +38,7 @@ public class ConferencesTest extends BaseUnitTest {
 
     @Test
     public void viewParticipant() throws ZangException, IOException {
-        createExpectation("GET", "Conferences/TestConferenceSid/Participants/TestParticipantSid.json", null, null,
-                "/conferences/participant.json");
+        createExpectation("ConferencesTest", "viewParticipant");
         ConferencesConnector connector = connectorFactory.getConferencesConnector();
         Participant participant = connector.viewParticipant("TestConferenceSid", "TestParticipantSid");
         checkParticipant(participant);
@@ -59,13 +46,7 @@ public class ConferencesTest extends BaseUnitTest {
 
     @Test
     public void listParticipants() throws ZangException, IOException {
-        createExpectation("GET", "Conferences/TestConferenceSid/Participants.json", null, new Parameter[]{
-                        new Parameter("Muted", "false"),
-                        new Parameter("Deaf", "false"),
-                        new Parameter("Page", "0"),
-                        new Parameter("PageSize", "10"),
-                },
-                "/conferences/participantslist.json");
+        createExpectation("ConferencesTest", "listParticipants");
         ConferencesConnector connector = connectorFactory.getConferencesConnector();
         ParticipantsList participants = connector.listParticipants("TestConferenceSid", false, false, 0, 10);
         Assert.assertEquals(1, (int) participants.getTotal());
@@ -74,11 +55,7 @@ public class ConferencesTest extends BaseUnitTest {
 
     @Test
     public void muteDeafParticipant() throws ZangException, IOException {
-        createExpectation("POST", "Conferences/TestConferenceSid/Participants/TestParticipantSid.json", new Parameter[]{
-                        new Parameter("Muted", "true"),
-                        new Parameter("Deaf", "true")
-                }, null,
-                "/conferences/participant.json");
+        createExpectation("ConferencesTest", "muteDeafParticipant");
         ConferencesConnector connector = connectorFactory.getConferencesConnector();
         Participant participant = connector.deafOrMuteParticipant("TestConferenceSid", "TestParticipantSid", true, true);
         checkParticipant(participant);
@@ -86,10 +63,7 @@ public class ConferencesTest extends BaseUnitTest {
 
     @Test
     public void playAudioToParticipant() throws ZangException, IOException {
-        createExpectation("POST", "Conferences/TestConferenceSid/Participants/TestParticipantSid/Play.json", new Parameter[]{
-                        new Parameter("AudioUrl", "http://mydomain.com/audio.mp3")
-                }, null,
-                "/conferences/participant.json");
+        createExpectation("ConferencesTest", "playAudioToParticipant");
         ConferencesConnector connector = connectorFactory.getConferencesConnector();
         Participant participant = connector.playAudioToParticipant("TestConferenceSid", "TestParticipantSid", "http://mydomain.com/audio.mp3");
         checkParticipant(participant);
@@ -97,8 +71,7 @@ public class ConferencesTest extends BaseUnitTest {
 
     @Test
     public void hangupParticipant() throws ZangException, IOException {
-        createExpectation("DELETE", "Conferences/TestConferenceSid/Participants/TestParticipantSid.json", null, null,
-                "/conferences/participant.json");
+        createExpectation("ConferencesTest", "hangupParticipant");
         ConferencesConnector connector = connectorFactory.getConferencesConnector();
         Participant participant = connector.hangupParticipant("TestConferenceSid", "TestParticipantSid");
         checkParticipant(participant);

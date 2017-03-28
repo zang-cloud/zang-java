@@ -8,7 +8,6 @@ import com.zang.api.params.ListAvailableNumbersParams;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
@@ -24,15 +23,7 @@ public class AvailablePhoneNumbersTest extends BaseUnitTest {
 
     @Test
     public void listAvailablePhoneNumbers() throws ZangException, IOException {
-        createExpectation("GET", "AvailablePhoneNumbers/HR/Tollfree.json", null, new Parameter[]{
-                        new Parameter("Contains", "123"),
-                        new Parameter("AreaCode", "052"),
-                        new Parameter("InRegion", "Istria"),
-                        new Parameter("InPostalCode", "52210"),
-                        new Parameter("Page", "0"),
-                        new Parameter("PageSize", "20")
-                },
-                "/availablephonenumbers/availablephonenumberslist.json");
+        createExpectation("AvailablePhoneNumbersTest", "listAvailablePhoneNumbers");
         checkAvailablePhoneNumber(connector.listAvailableNumbers(ListAvailableNumbersParams.builder()
                 .setCountry("HR")
                 .setType(AvailableNumberType.TOLLFREE)

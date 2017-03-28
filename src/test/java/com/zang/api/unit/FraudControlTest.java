@@ -7,7 +7,6 @@ import com.zang.api.exceptions.ZangException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
@@ -23,11 +22,7 @@ public class FraudControlTest extends BaseUnitTest {
 
     @Test
     public void listFraudControlResources() throws ZangException, IOException {
-        createExpectation("GET", "Fraud.json", null, new Parameter[]{
-                        new Parameter("Page", "0"),
-                        new Parameter("PageSize", "22")
-                },
-                "/fraudcontrol/list.json");
+        createExpectation("FraudControlTest", "listFraudControlResources");
         FraudControlRulesList result = connector.listFraudControlResources(0, 22);
         Assert.assertEquals(2, result.getAuthorized().size());
         Assert.assertEquals("FR", result.getAuthorized().get(1).getCountryCode());
@@ -35,44 +30,28 @@ public class FraudControlTest extends BaseUnitTest {
 
     @Test
     public void blockDestination() throws ZangException, IOException {
-        createExpectation("POST", "Fraud/Block/HR.json", new Parameter[]{
-                        new Parameter("MobileEnabled", "false"),
-                        new Parameter("LandlineEnabled", "true"),
-                        new Parameter("SmsEnabled", "false")
-                }, null,
-                "/fraudcontrol/blocked.json");
+        createExpectation("FraudControlTest", "blockDestination");
         FraudControlRule rule = connector.blockDestination("HR", false, true, false);
         checkRule(rule);
     }
 
     @Test
     public void authorizeDestination() throws ZangException, IOException {
-        createExpectation("POST", "Fraud/Authorize/HR.json", new Parameter[]{
-                        new Parameter("MobileEnabled", "false"),
-                        new Parameter("LandlineEnabled", "true"),
-                        new Parameter("SmsEnabled", "false")
-                }, null,
-                "/fraudcontrol/authorized.json");
+        createExpectation("FraudControlTest", "authorizeDestination");
         FraudControlRule rule = connector.authorizeDestination("HR", false, true, false);
         checkRule(rule);
     }
 
     @Test
     public void extendDestinationAuthorization() throws ZangException, IOException {
-        createExpectation("POST", "Fraud/Extend/HR.json", null, null,
-                "/fraudcontrol/authorized.json");
+        createExpectation("FraudControlTest", "extendDestinationAuthorization");
         FraudControlRule rule = connector.extendDestinationAuthorization("HR");
         checkRule(rule);
     }
 
     @Test
     public void whitelistDestination() throws ZangException, IOException {
-        createExpectation("POST", "Fraud/Whitelist/HR.json", new Parameter[]{
-                        new Parameter("MobileEnabled", "false"),
-                        new Parameter("LandlineEnabled", "true"),
-                        new Parameter("SmsEnabled", "false")
-                }, null,
-                "/fraudcontrol/whitelisted.json");
+        createExpectation("FraudControlTest", "whitelistDestination");
         FraudControlRule rule = connector.whitelistDestination("HR", false, true, false);
         checkRule(rule);
     }

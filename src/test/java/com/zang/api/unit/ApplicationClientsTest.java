@@ -8,7 +8,6 @@ import com.zang.api.exceptions.ZangException;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
@@ -24,16 +23,14 @@ public class ApplicationClientsTest extends BaseUnitTest {
 
     @Test
     public void viewApplicationClient() throws ZangException, IOException {
-        createExpectation("GET", "Applications/TestApplicationSid/Clients/TestApplicationClientSid.json", null, null,
-                "/applicationclients/applicationclient.json");
+        createExpectation("ApplicationClientsTest", "viewApplicationClient");
         ApplicationClient applicationClient = connector.viewApplicationClient("TestApplicationSid", "TestApplicationClientSid");
         checkApplicationClient(applicationClient);
     }
 
     @Test
     public void listApplicationClients() throws ZangException, IOException {
-        createExpectation("GET", "Applications/TestApplicationSid/Clients.json", null, null,
-                "/applicationclients/applicationclientslist.json");
+        createExpectation("ApplicationClientsTest", "listApplicationClients");
 
         ApplicationClientsList applicationClients = connector.listApplicationClients("TestAccountSid", "TestApplicationSid");
 
@@ -43,9 +40,7 @@ public class ApplicationClientsTest extends BaseUnitTest {
 
     @Test
     public void createApplicationClient() throws ZangException, IOException {
-        createExpectation("POST", "Applications/TestApplicationSid/Clients/Tokens.json", new Parameter[]{
-                new Parameter("Nickname", "MyApplicationClient")
-        }, null, "/applicationclients/applicationclient.json");
+        createExpectation("ApplicationClientsTest", "createApplicationClient");
         ApplicationClient applicationClient = connector.createApplicationClient("TestApplicationSid", "MyApplicationClient");
         checkApplicationClient(applicationClient);
     }

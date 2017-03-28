@@ -13,7 +13,6 @@ import com.zang.api.params.DomainParams;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 
@@ -29,16 +28,14 @@ public class SipDomainsTest extends BaseUnitTest {
 
     @Test
     public void viewDomain() throws ZangException, IOException {
-        createExpectation("GET", "SIP/Domains/TestDomainSid.json", null, null,
-                "/sipdomains/domain.json");
+        createExpectation("SipDomainsTest", "viewDomain");
         Domain domain = connector.viewDomain("TestDomainSid");
         checkDomain(domain);
     }
 
     @Test
     public void listDomains() throws ZangException, IOException {
-        createExpectation("GET", "SIP/Domains.json", null, null,
-                "/sipdomains/domainslist.json");
+        createExpectation("SipDomainsTest", "listDomains");
 
         DomainsList domains = connector.listDomains();
 
@@ -48,18 +45,7 @@ public class SipDomainsTest extends BaseUnitTest {
 
     @Test
     public void createDomain() throws ZangException, IOException {
-        createExpectation("POST", "SIP/Domains.json", new Parameter[]{
-                new Parameter("DomainName",  "mydomain.com"),
-                new Parameter("FriendlyName",  "MyDomain"),
-                new Parameter("VoiceUrl",  "VoiceUrl"),
-                new Parameter("VoiceMethod",  "POST"),
-                new Parameter("VoiceFallbackUrl",  "VoiceFallbackUrl"),
-                new Parameter("VoiceFallbackMethod",  "GET"),
-                new Parameter("HeartbeatUrl",  "HeartbeatUrl"),
-                new Parameter("HeartbeatMethod",  "POST"),
-                new Parameter("VoiceStatusCallback",  "VoiceStatusCallback"),
-                new Parameter("VoiceStatusMethod",  "GET")
-        }, null, "/sipdomains/domain.json");
+        createExpectation("SipDomainsTest", "createDomain");
 
         Domain domain = connector.createDomain(DomainParams.builder()
                 .setAccountSid("TestAccountSid")
@@ -80,17 +66,7 @@ public class SipDomainsTest extends BaseUnitTest {
 
     @Test
     public void updateDomain() throws ZangException, IOException {
-        createExpectation("POST", "SIP/Domains/TestDomainSid.json", new Parameter[]{
-                new Parameter("FriendlyName",  "MyDomain"),
-                new Parameter("VoiceUrl",  "VoiceUrl"),
-                new Parameter("VoiceMethod",  "POST"),
-                new Parameter("VoiceFallbackUrl",  "VoiceFallbackUrl"),
-                new Parameter("VoiceFallbackMethod",  "GET"),
-                new Parameter("HeartbeatUrl",  "HeartbeatUrl"),
-                new Parameter("HeartbeatMethod",  "POST"),
-                new Parameter("VoiceStatusCallback",  "VoiceStatusCallback"),
-                new Parameter("VoiceStatusMethod",  "GET")
-        }, null, "/sipdomains/domain.json");
+        createExpectation("SipDomainsTest", "updateDomain");
 
         Domain domain = connector.updateDomain(DomainParams.builder()
                 .setAccountSid("TestAccountSid")
@@ -111,16 +87,14 @@ public class SipDomainsTest extends BaseUnitTest {
 
     @Test
     public void deleteDomain() throws ZangException, IOException {
-        createExpectation("DELETE", "SIP/Domains/TestDomainSid.json", null, null,
-                "/sipdomains/domain.json");
+        createExpectation("SipDomainsTest", "deleteDomain");
         Domain domain = connector.deleteDomain("TestDomainSid");
         checkDomain(domain);
     }
 
     @Test
     public void listMappedCredentialsList() throws ZangException, IOException {
-        createExpectation("GET", "SIP/Domains/TestDomainSid/CredentialListMappings.json", null, null,
-                "/sipdomains/credentialslistlist.json");
+        createExpectation("SipDomainsTest", "listMappedCredentialsList");
 
         CredentialsListsList credentialsListsList = connector.listMappedCredentialsLists("TestDomainSid");
 
@@ -130,10 +104,7 @@ public class SipDomainsTest extends BaseUnitTest {
 
     @Test
     public void mapCredentialsList() throws ZangException, IOException {
-        createExpectation("POST", "SIP/Domains/TestDomainSid/CredentialListMappings.json", new Parameter[]{
-                new Parameter("CredentialListSid", "TestCredentialsListSid")
-                }, null,
-                "/sipdomains/credentialslist.json");
+        createExpectation("SipDomainsTest", "mapCredentialsList");
 
         CredentialsList credentialsList = connector.mapCredentialsLists("TestDomainSid", "TestCredentialsListSid");
         checkCl(credentialsList);
@@ -141,8 +112,7 @@ public class SipDomainsTest extends BaseUnitTest {
 
     @Test
     public void deleteMappedCredentialsList() throws ZangException, IOException {
-        createExpectation("DELETE", "SIP/Domains/TestDomainSid/CredentialListMappings/TestCredentialsListSid.json", null, null,
-                "/sipdomains/credentialslist.json");
+        createExpectation("SipDomainsTest", "deleteMappedCredentialsList");
 
         CredentialsList credentialsList = connector.deleteMappedCredentialsList("TestDomainSid", "TestCredentialsListSid");
         checkCl(credentialsList);
@@ -150,8 +120,7 @@ public class SipDomainsTest extends BaseUnitTest {
 
     @Test
     public void listMappedIpAcls() throws ZangException, IOException {
-        createExpectation("GET", "SIP/Domains/TestDomainSid/IpAccessControlListMappings.json", null, null,
-                "/sipdomains/ipacllist.json");
+        createExpectation("SipDomainsTest", "listMappedIpAcls");
 
         AccessControlListsList aclListList = connector.listMappedIpAccessControlLists("TestDomainSid");
 
@@ -161,10 +130,7 @@ public class SipDomainsTest extends BaseUnitTest {
 
     @Test
     public void mapIpAcl() throws ZangException, IOException {
-        createExpectation("POST", "SIP/Domains/TestDomainSid/IpAccessControlListMappings.json", new Parameter[]{
-                        new Parameter("IpAccessControlListSid", "TestIpAccessControlListSid")
-                }, null,
-                "/sipdomains/ipacl.json");
+        createExpectation("SipDomainsTest", "mapIpAcl");
 
         AccessControlList aclList = connector.mapIpAccessControlList("TestDomainSid", "TestIpAccessControlListSid");
         checkIpAcl(aclList);
@@ -172,8 +138,7 @@ public class SipDomainsTest extends BaseUnitTest {
 
     @Test
     public void deleteIpAcl() throws ZangException, IOException {
-        createExpectation("DELETE", "SIP/Domains/TestDomainSid/IpAccessControlListMappings/TestIpAccessControlListSid.json", null, null,
-                "/sipdomains/ipacl.json");
+        createExpectation("SipDomainsTest", "deleteIpAcl");
 
         AccessControlList aclList = connector.deleteMappedIpAccessControlList("TestDomainSid", "TestIpAccessControlListSid");
         checkIpAcl(aclList);

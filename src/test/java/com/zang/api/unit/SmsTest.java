@@ -8,7 +8,6 @@ import com.zang.api.domain.list.SmsMessageList;
 import com.zang.api.exceptions.ZangException;
 import junit.framework.Assert;
 import org.junit.Test;
-import org.mockserver.model.Parameter;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -19,8 +18,7 @@ public class SmsTest extends BaseUnitTest {
 
     @Test
     public void viewSms() throws ZangException, IOException {
-        createExpectation("GET", "SMS/Messages/TestSmsSid.json", null, null,
-                "/sms/sms.json");
+        createExpectation("SmsTest", "viewSms");
         SmsConnector connector = connectorFactory.getSmsConnector();
         SmsMessage smsMessage = connector.viewSmsMessage("TestSmsSid");
         checkMessage(smsMessage);
@@ -28,13 +26,7 @@ public class SmsTest extends BaseUnitTest {
 
     @Test
     public void listSms() throws ZangException, IOException {
-        createExpectation("GET", "SMS/Messages.json", null,
-                new Parameter[]{
-                    new Parameter("To", "+123456"),
-                        new Parameter("Page", "0"),
-                        new Parameter("PageSize", "10")
-                },
-                "/sms/smslist.json");
+        createExpectation("SmsTest", "listSms");
         SmsConnector connector = connectorFactory.getSmsConnector();
         SmsMessageList smsMessages = connector.listSmsMessages("+123456", null, null, null, 0, 10);
         int cnt = 0;
@@ -52,16 +44,7 @@ public class SmsTest extends BaseUnitTest {
 
     @Test
     public void sendSms() throws ZangException, IOException {
-
-        createExpectation("POST", "SMS/Messages.json",
-                new Parameter[]{
-                        new Parameter("To", "+123456"),
-                        new Parameter("From", "+654321"),
-                        new Parameter("Body", "test from java"),
-                        new Parameter("StatusCallbackMethod", "GET"),
-                        new Parameter("AllowMultiple", "False")
-                }, null,
-                "/sms/sms.json");
+        createExpectation("SmsTest", "sendSms");
 
         SmsConnector connector = connectorFactory.getSmsConnector();
         SmsMessage smsMessage = connector.sendSmsMessage("+123456", "+654321",
