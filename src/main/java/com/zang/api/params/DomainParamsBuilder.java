@@ -2,6 +2,11 @@ package com.zang.api.params;
 
 import com.zang.api.domain.enums.HttpMethod;
 
+/**
+ * Utility class for communicating with the Sip Domains endpoint.
+ * @see com.zang.api.connectors.SipDomainsConnector
+ * @see DomainParams
+ */
 public class DomainParamsBuilder {
     private String accountSid;
     private String domainSid;

@@ -2,6 +2,11 @@ package com.zang.api.params;
 
 import com.zang.api.domain.enums.AvailableNumberType;
 
+/**
+ * Utility class for executing the List Available Numbers request.
+ * @see com.zang.api.connectors.AvailablePhoneNumbersConnector
+ * @see ListAvailableNumbersParams
+ */
 public class ListAvailableNumbersParamsBuilder {
     private String accountSid;
     private String country;

@@ -4,6 +4,11 @@ import com.zang.api.domain.enums.RecordingAudioDirection;
 import com.zang.api.domain.enums.TranscriptionQuality;
 import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
 
+/**
+ * Utility class for executing the Record Call request
+ * @see com.zang.api.connectors.RecordingsConnector
+ * @see RecordCallParams
+ */
 public class RecordCallParamsBuilder {
     private String accountSid;
     private String callSid;

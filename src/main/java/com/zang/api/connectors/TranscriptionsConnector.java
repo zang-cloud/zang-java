@@ -13,6 +13,10 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 import java.util.Date;
 
 
+/**
+ * Used for all forms of communication with the Transcriptions endpoint of the Zang REST API.
+ * @see ZangConnectorFactory
+ */
 public class TranscriptionsConnector extends BaseConnector {
 
     private TranscriptionsProxy proxy;

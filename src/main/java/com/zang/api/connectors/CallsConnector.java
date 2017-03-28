@@ -14,6 +14,10 @@ import javax.ws.rs.core.Response;
 import java.util.Date;
 
 
+/**
+ * Used for all forms of communication with the Calls endpoint of the Zang REST API.
+ * @see ZangConnectorFactory
+ */
 public class CallsConnector extends BaseConnector {
 
     private CallsProxy proxy;

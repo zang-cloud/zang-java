@@ -30,6 +30,13 @@ import java.util.ArrayList;
 
 public class DefaultExecutor {
 
+    /**
+     * Creates a default http executor
+     * @param conf Configuration based on which to create the executor
+     * @return ApacheHttpClient4Engine executor
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
     public static ApacheHttpClient4Engine createExecutor(ZangConfiguration conf) throws NoSuchAlgorithmException, KeyManagementException {
         CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         credentialsProvider.setCredentials(new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT),
@@ -48,9 +55,15 @@ public class DefaultExecutor {
         bcreds = Base64.encodeBase64(bcreds);
         String finalCreads = new String(bcreds, Charset.forName("UTF8"));
         headers.add(new BasicHeader("Authorization", "Basic " + finalCreads));
-        HttpClient client = HttpClientBuilder.create().setDefaultHeaders(headers)
-                //.addInterceptorLast(logResponseInterceptor)
-                .build();
+
+        HttpClientBuilder httpClientBuilder = HttpClientBuilder.create().setDefaultHeaders(headers);
+        if (conf.getProxyHost() != null && conf.getProxyHost().trim().length() > 0) {
+            httpClientBuilder.setProxy(new HttpHost(conf.getProxyHost(),
+                    Integer.parseInt(conf.getProxyPort()),
+                    conf.getProxyProtocol()));
+        }
+        //httpClientBuilder.addInterceptorLast(logResponseInterceptor);
+        HttpClient client = httpClientBuilder.build();
         ApacheHttpClient4Engine engine = new ApacheHttpClient4Engine(client);
         return engine;
 

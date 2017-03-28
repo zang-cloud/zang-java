@@ -9,16 +9,13 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 import javax.ws.rs.core.Response;
 
 /**
- * The class used for all forms of communication with the Accounts endpoint of the Zang REST API.
+ * Used for all forms of communication with the Accounts endpoint of the Zang REST API.
+ * @see ZangConnectorFactory
  */
 public class AccountsConnector extends BaseConnector {
 
     private AccountsProxy proxy;
 
-    /**
-     * @see BaseConnector, PropertiesFileZangConfiguration,
-     * ZangConfiguration
-     */
     AccountsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
         proxy = createProxy(AccountsProxy.class);
@@ -26,8 +23,7 @@ public class AccountsConnector extends BaseConnector {
 
 
     /**
-     * An account resource provides information about a single Zang account.
-     * This methods gets the info of the account with the provided Sid.
+     * See all the information associated with an account
      *
      * @param accountSid The sid for the account to be retrieved.
      * @return Account object
@@ -39,20 +35,21 @@ public class AccountsConnector extends BaseConnector {
     }
 
     /**
-     * @return The account with the Sid defined in the configuration.
+     * See all the information associated with your account
+     *
+     * @return Account object
      * @throws ZangException
-     * @see #viewAccount(String)
      */
     public Account viewAccount() throws ZangException {
         return viewAccount(conf.getSid());
     }
 
     /**
-     * Updates the friendly name of an account.
+     * Updates a specific account's information.
      *
      * @param accountSid   Sid of account to update
      * @param friendlyName The new friendly name for this account
-     * @return The account with the updated friendlyName value
+     * @return Updated account
      * @throws ZangException
      */
     public Account updateAccount(String accountSid, String friendlyName) throws ZangException {
@@ -61,10 +58,11 @@ public class AccountsConnector extends BaseConnector {
     }
 
     /**
+     * Updates account information.
+     *
      * @param friendlyName The new friendly name for this account
-     * @return The account with the updated friendlyName value
+     * @return Updated account
      * @throws ZangException
-     * @see #updateAccount(String, String)
      */
     public Account updateAccount(String friendlyName) throws ZangException {
         return updateAccount(conf.getSid(), friendlyName);

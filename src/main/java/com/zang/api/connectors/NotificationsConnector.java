@@ -9,6 +9,10 @@ import com.zang.api.restproxies.NotificationsProxy;
 import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 
+/**
+ * Used for all forms of communication with the Notifications endpoint of the Zang REST API.
+ * @see ZangConnectorFactory
+ */
 public class NotificationsConnector extends BaseConnector {
 
     private NotificationsProxy proxy;

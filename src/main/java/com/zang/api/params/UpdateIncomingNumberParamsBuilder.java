@@ -2,6 +2,11 @@ package com.zang.api.params;
 
 import com.zang.api.domain.enums.HttpMethod;
 
+/**
+ * Utility class for executing the Update Incoming Number request
+ * @see com.zang.api.connectors.IncomingPhoneNumbersConnector
+ * @see UpdateIncomingNumberParams
+ */
 public class UpdateIncomingNumberParamsBuilder {
     private String accountSid;
     private String incomingPhoneNumberSid;

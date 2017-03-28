@@ -14,6 +14,10 @@ import com.zang.api.restproxies.SipDomainsProxy;
 import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 
+/**
+ * Used for all forms of communication with the Sip Domains endpoint of the Zang REST API.
+ * @see ZangConnectorFactory
+ */
 public class SipDomainsConnector extends BaseConnector {
 
     private SipDomainsProxy proxy;

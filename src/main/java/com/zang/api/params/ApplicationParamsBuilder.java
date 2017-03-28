@@ -2,6 +2,11 @@ package com.zang.api.params;
 
 import com.zang.api.domain.enums.HttpMethod;
 
+/**
+ * Utility class for communicating with the Applications endpoint.
+ * @see com.zang.api.connectors.ApplicationsConnector
+ * @see ApplicationParams
+ */
 public class ApplicationParamsBuilder {
     private String accountSid;
     private String friendlyName;

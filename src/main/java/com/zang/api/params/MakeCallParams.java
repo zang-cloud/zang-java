@@ -3,6 +3,11 @@ package com.zang.api.params;
 import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.domain.enums.IfMachine;
 
+/**
+ * Utility class for executing the Make Call request.
+ * @see com.zang.api.connectors.CallsConnector
+ * @see MakeCallParamsBuilder
+ */
 public class MakeCallParams {
 
     private String accountSid;

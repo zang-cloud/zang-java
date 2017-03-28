@@ -2,6 +2,11 @@ package com.zang.api.params;
 
 import com.zang.api.domain.enums.HttpMethod;
 
+/**
+ * Utility class for communicating with the Applications endpoint.
+ * @see com.zang.api.connectors.ApplicationsConnector
+ * @see ApplicationParamsBuilder
+ */
 public class ApplicationParams {
     private String accountSid;
     private String friendlyName;
@@ -21,6 +26,10 @@ public class ApplicationParams {
     private String hangupCallback;
     private HttpMethod hangupCallbackMethod;
 
+    /**
+     * Utility class for creating ApplicationParams objects.
+     * @return ApplicationParamsBuilder
+     */
     public static ApplicationParamsBuilder builder() {
         return new ApplicationParamsBuilder();
     }

@@ -2,6 +2,11 @@ package com.zang.api.params;
 
 import com.zang.api.domain.enums.Product;
 
+/**
+ * Utility class for executing the List Usages request.
+ * @see com.zang.api.connectors.UsagesConnector
+ * @see ListUsagesParams
+ */
 public class ListUsagesParamsBuilder {
     private String accountSid;
     private Integer day;

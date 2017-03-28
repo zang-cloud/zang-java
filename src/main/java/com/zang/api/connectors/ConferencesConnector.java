@@ -13,6 +13,10 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 import java.util.Date;
 
 
+/**
+ * Used for all forms of communication with the Conferences endpoint of the Zang REST API.
+ * @see ZangConnectorFactory
+ */
 public class ConferencesConnector extends BaseConnector {
 
     private ConferencesProxy proxy;

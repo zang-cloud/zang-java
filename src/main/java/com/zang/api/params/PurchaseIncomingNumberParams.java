@@ -2,6 +2,11 @@ package com.zang.api.params;
 
 import com.zang.api.domain.enums.HttpMethod;
 
+/**
+ * Utility class for executing the Purchase Incoming Number request
+ * @see com.zang.api.connectors.IncomingPhoneNumbersConnector
+ * @see PurchaseIncomingNumberParamsBuilder
+ */
 public class PurchaseIncomingNumberParams {
     private String accountSid;
     private String friendlyName;

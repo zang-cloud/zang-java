@@ -12,7 +12,8 @@ import javax.ws.rs.core.Response;
 import java.util.Date;
 
 /**
- * The class used for all forms of communication with the Usage endpoint of the Zang REST API.
+ * Used for all forms of communication with the Sms endpoint of the Zang REST API.
+ * @see ZangConnectorFactory
  */
 public class SmsConnector extends BaseConnector {
 
