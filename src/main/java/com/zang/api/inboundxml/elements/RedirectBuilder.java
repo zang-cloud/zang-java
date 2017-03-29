@@ -9,6 +9,11 @@ public class RedirectBuilder {
     RedirectBuilder() {
     }
 
+    /**
+     * The URL of the InboundXML document you wish to redirect to.
+     * @param url
+     * @return
+     */
     public RedirectBuilder setUrl(String url) {
         this.url = url;
         return this;

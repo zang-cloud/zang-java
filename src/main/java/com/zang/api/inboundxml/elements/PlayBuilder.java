@@ -10,6 +10,11 @@ public class PlayBuilder {
     PlayBuilder() {
     }
 
+    /**
+     * URL of audio file you wish to play.
+     * @param url
+     * @return
+     */
     public PlayBuilder setUrl(String url) {
         this.url = url;
         return this;

@@ -22,6 +22,11 @@ public class SayBuilder {
         return this;
     }
 
+    /**
+     * Text to say.
+     * @param text
+     * @return
+     */
     public SayBuilder setText(String text) {
         this.text = text;
         return this;

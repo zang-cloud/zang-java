@@ -9,6 +9,11 @@ public class PingBuilder {
     PingBuilder() {
     }
 
+    /**
+     * Url you wish to ping (send default voice request parmeters to).
+     * @param url
+     * @return
+     */
     public PingBuilder setUrl(String url) {
         this.url = url;
         return this;

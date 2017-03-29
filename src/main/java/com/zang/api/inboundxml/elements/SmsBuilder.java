@@ -14,6 +14,11 @@ public class SmsBuilder {
     SmsBuilder() {
     }
 
+    /**
+     * Text to send in the SMS.
+     * @param text
+     * @return
+     */
     public SmsBuilder setText(String text) {
         this.text = text;
         return this;

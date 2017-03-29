@@ -17,31 +17,61 @@ public class GetSpeechBuilder {
         this.content = new ArrayList<GetSpeechElement>();
     }
 
+    /**
+     * Adds an element to the GetSpeech element.
+     * @param element
+     * @return
+     */
     public GetSpeechBuilder addElement(GetSpeechElement element) {
         this.content.add(element);
         return this;
     }
 
+    /**
+     * Adds a Say element to the GetSpeech element.
+     * @param say
+     * @return
+     */
     public GetSpeechBuilder say(Say say) {
         this.content.add(say);
         return this;
     }
 
+    /**
+     * Adds a Play element to the GetSpeech element.
+     * @param play
+     * @return
+     */
     public GetSpeechBuilder play(Play play) {
         this.content.add(play);
         return this;
     }
 
+    /**
+     * Adds a Pause element to the GetSpeech element.
+     * @param pause
+     * @return
+     */
     public GetSpeechBuilder pause(Pause pause) {
         this.content.add(pause);
         return this;
     }
 
+    /**
+     * Adds a PlayLastRecording element to the GetSpeech element.
+     * @param playLastRecording
+     * @return
+     */
     public GetSpeechBuilder playLastRecording(PlayLastRecording playLastRecording) {
         this.content.add(playLastRecording);
         return this;
     }
 
+    /**
+     * Replaces the whole content of the GetSpeech element.
+     * @param content
+     * @return
+     */
     public GetSpeechBuilder setContent(List<GetSpeechElement> content) {
         this.content = content;
         return this;

@@ -17,31 +17,61 @@ public class GatherBuilder {
         this.content = new ArrayList<GatherElement>();
     }
 
+    /**
+     * Adds an element to the Gather element.
+     * @param element
+     * @return
+     */
     public GatherBuilder addElement(GatherElement element) {
         this.content.add(element);
         return this;
     }
 
+    /**
+     * Adds a Say element to the Gather element.
+     * @param say
+     * @return
+     */
     public GatherBuilder say(Say say) {
         this.content.add(say);
         return this;
     }
 
+    /**
+     * Adds a Play element to the Gather element.
+     * @param play
+     * @return
+     */
     public GatherBuilder play(Play play) {
         this.content.add(play);
         return this;
     }
 
+    /**
+     * Adds a Pause element to the Gather element.
+     * @param pause
+     * @return
+     */
     public GatherBuilder pause(Pause pause) {
         this.content.add(pause);
         return this;
     }
 
+    /**
+     * Adds a PlayLastRecording element to the Gather element.
+     * @param playLastRecording
+     * @return
+     */
     public GatherBuilder playLastRecording(PlayLastRecording playLastRecording) {
         this.content.add(playLastRecording);
         return this;
     }
 
+    /**
+     * Replaces the whole content of the Gather element.
+     * @param content
+     * @return
+     */
     public GatherBuilder setContent(List<GatherElement> content) {
         this.content = content;
         return this;

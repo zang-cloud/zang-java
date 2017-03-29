@@ -41,26 +41,51 @@ public class DialBuilder {
         this.content = new ArrayList<DialElement>();
     }
 
+    /**
+     * Adds an element to the Dial element.
+     * @param element
+     * @return
+     */
     public DialBuilder addElement(DialElement element) {
         this.content.add(element);
         return this;
     }
 
+    /**
+     * Adds a Conference element to the Dial element.
+     * @param conference
+     * @return
+     */
     public DialBuilder conference(Conference conference) {
         this.content.add(conference);
         return this;
     }
 
+    /**
+     * Adds a Number element to the Dial element.
+     * @param number
+     * @return
+     */
     public DialBuilder number(Number number) {
         this.content.add(number);
         return this;
     }
 
+    /**
+     * Adds a Sip element to the Dial element.
+     * @param sip
+     * @return
+     */
     public DialBuilder sip(Sip sip) {
         this.content.add(sip);
         return this;
     }
 
+    /**
+     * Replaces the whole content of the Dial element.
+     * @param content
+     * @return
+     */
     public DialBuilder setContent(List<DialElement> content) {
         this.content = content;
         return this;

@@ -12,6 +12,11 @@ public class NumberBuilder {
     NumberBuilder() {
     }
 
+    /**
+     * The phone number.
+     * @param number
+     * @return
+     */
     public NumberBuilder setNumber(String number) {
         this.number = number;
         return this;

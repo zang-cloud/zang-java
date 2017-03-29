@@ -13,6 +13,11 @@ public class SipBuilder {
     SipBuilder() {
     }
 
+    /**
+     * Sip address to call.
+     * @param sipAddress
+     * @return
+     */
     public SipBuilder setSipAddress(String sipAddress) {
         this.sipAddress = sipAddress;
         return this;

@@ -29,6 +29,11 @@ public class ConferenceBuilder {
     ConferenceBuilder() {
     }
 
+    /**
+     * The conference room name.
+     * @param name
+     * @return
+     */
     public ConferenceBuilder setName(String name) {
         this.name = name;
         return this;

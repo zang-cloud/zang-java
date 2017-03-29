@@ -16,6 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * When Zang receives an InboundXML document, the "instructions" are contained within the <Response> </Response>
+ * elements. Zang begins reading at <Response> and behaves accordingly as it encounters each new instruction
+ * element until the end of the </Response>. All InboundXML elements are camelCased and are categorized as either
+ * Verbs or Nouns.
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
         "content"
