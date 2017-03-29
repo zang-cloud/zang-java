@@ -263,6 +263,12 @@ public class IncomingPhoneNumbersConnector extends BaseConnector {
         return returnThrows(proxy.deleteIncomingNumber(accountSid, incomingPhoneNumberSid), IncomingPhoneNumber.class);
     }
 
+    /**
+     * Deletes an Incoming Phone Number
+     * @param incomingPhoneNumberSid Incoming Phone Number SID
+     * @return The deleted Incoming Phone Number
+     * @throws ZangException
+     */
     public IncomingPhoneNumber deleteIncomingNumber(String incomingPhoneNumberSid) throws ZangException {
         return deleteIncomingNumber(conf.getSid(), incomingPhoneNumberSid);
     }

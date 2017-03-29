@@ -58,7 +58,7 @@ public class SipDomainsTest extends BaseUnitTest {
                 .setHeartbeatUrl("HeartbeatUrl")
                 .setHeartbeatMethod(HttpMethod.POST)
                 .setVoiceStatusCallback("VoiceStatusCallback")
-                .setVoiceStatusMethod(HttpMethod.GET)
+                .setVoiceStatusCallbackMethod(HttpMethod.GET)
         .build());
 
         checkDomain(domain);
@@ -79,7 +79,7 @@ public class SipDomainsTest extends BaseUnitTest {
                 .setHeartbeatUrl("HeartbeatUrl")
                 .setHeartbeatMethod(HttpMethod.POST)
                 .setVoiceStatusCallback("VoiceStatusCallback")
-                .setVoiceStatusMethod(HttpMethod.GET)
+                .setVoiceStatusCallbackMethod(HttpMethod.GET)
                 .build());
 
         checkDomain(domain);

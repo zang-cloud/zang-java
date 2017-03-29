@@ -19,36 +19,31 @@ public class SmsConnector extends BaseConnector {
 
     private SmsProxy proxy;
 
-    /**
-     * @see BaseConnector, PropertiesFileZangConfiguration,
-     * ZangConfiguration
-     */
     SmsConnector(ZangConfiguration conf, ClientHttpEngine executor) {
         super(conf, executor);
         proxy = createProxy(SmsProxy.class);
     }
 
+
     /**
-     * Used for specifying a different accountSid.
-     *
-     * @param sid The account sid (required).
-     * @return An Sms Message resource.
+     * Shows info on an SMS message.
+     * @param accountSid Account SID
+     * @param smsMessageSid SMS Message SID
+     * @return The requested SMS Message
      * @throws ZangException
-     * @see #viewSmsMessage(String)
      */
-    public SmsMessage viewSmsMessage(String sid, String smsMessageSid)
+    public SmsMessage viewSmsMessage(String accountSid, String smsMessageSid)
             throws ZangException {
-        Response response = proxy.getSmsMessage(sid,
+        Response response = proxy.getSmsMessage(accountSid,
                 smsMessageSid);
         return returnThrows(response, SmsMessage.class);
     }
 
+
     /**
-     * Text messages sent to and from Zang phone numbers are represented with
-     * the Sms resource.
-     *
-     * @param smsMessageSid The sms message sid (required).
-     * @return An Sms Message resource.
+     * Shows info on an SMS message.
+     * @param smsMessageSid SMS Message SID
+     * @return The requested SMS Message
      * @throws ZangException
      */
     public SmsMessage viewSmsMessage(String smsMessageSid)
@@ -56,11 +51,18 @@ public class SmsConnector extends BaseConnector {
         return viewSmsMessage(conf.getSid(), smsMessageSid);
     }
 
+
     /**
-     * @param accountSid The account sid (required).
-     * @return A list of SmsMessage resources.
+     * Shows info on all SMS messages associated with an account.
+     * @param accountSid Account SID
+     * @param to Filter by receiving number.
+     * @param from Filter by sending number.
+     * @param dateSentGte Filter by date sent greater or equal then.
+     * @param dateSentLt Filter by date sent less than.
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
+     * @return A list of SMS Messages
      * @throws ZangException
-     * @see #listSmsMessages(String, String, Date, Date, Integer, Integer)
      */
     public SmsMessageList listSmsMessages(String accountSid, String to,
                                           String from, Date dateSentGte, Date dateSentLt, Integer page,
@@ -72,17 +74,16 @@ public class SmsConnector extends BaseConnector {
         return returnThrows(response, SmsMessageList.class);
     }
 
+
     /**
-     * Just as with calls, a list of all messages sent to and from a given
-     * Zang account's phone numbers can be requested via our REST API.
-     *
-     * @param to          Lists all SMS messages sent to this number.
-     * @param from        Lists all SMS messages sent from this number.
-     * @param dateSentGte Lists all SMS messages beginning on or from a certain date.
-     * @param dateSentLt  Lists all SMS messages before a certain date.
-     * @param page        Used to return a particular page within the list.
-     * @param pageSize    Used to specify the amount of list items to return per page.
-     * @return A list of SmsMessage resources.
+     * Shows info on all SMS messages associated with an account.
+     * @param to Filter by receiving number.
+     * @param from Filter by sending number.
+     * @param dateSentGte Filter by date sent greater or equal then.
+     * @param dateSentLt Filter by date sent less than.
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
+     * @return A list of SMS Messages
      * @throws ZangException
      */
     public SmsMessageList listSmsMessages(String to, String from,
@@ -92,10 +93,10 @@ public class SmsConnector extends BaseConnector {
                 dateSentLt, page, pageSize);
     }
 
+
     /**
-     * Lists all Sms Messages for the configured account.
-     *
-     * @return A list of Sms Message.
+     * Returns info on up to 50 SMS messages associated with an account.
+     * @return A list of SMS Messages
      * @throws ZangException
      */
     public SmsMessageList listSmsMessages() throws ZangException {
@@ -103,6 +104,19 @@ public class SmsConnector extends BaseConnector {
                 null);
     }
 
+    /**
+     * Sends an SMS Message.
+     * @param accountSid Account SID
+     * @param to Must be an SMS capable number. The value does not have to be in any specific format.
+     * @param from Must be a Zang number associated with your account. The value does not have to be in any specific
+     *             format.
+     * @param body Text of the SMS to be sent.
+     * @param statusCallback The URL that will be sent information about the SMS. Url length is limited to 200 characters.
+     * @param statusCallbackMethod The HTTP method used to request the StatusCallback.
+     * @param allowMultiple If the Body length is greater than 160 characters, the SMS will be sent as a multi-part SMS.
+     * @return The sent SMS message.
+     * @throws ZangException
+     */
     public SmsMessage sendSmsMessage(String accountSid, String to, String from,
                                      String body, String statusCallback, HttpMethod statusCallbackMethod,
                                      Boolean allowMultiple) throws ZangException {
@@ -111,17 +125,17 @@ public class SmsConnector extends BaseConnector {
         return returnThrows(response, SmsMessage.class);
     }
 
+
     /**
-     * Sends an SMS message.
-     *
-     * @param to             The number you want to send the SMS to (required).
-     * @param from           The number you want to display as sending the SMS. A subcharge
-     *                       will apply when sending via a custom From number (required).
-     * @param body           Text of the SMS message to be sent. Plain text up to 160
-     *                       characters in length (required).
-     * @param statusCallback URL that a set of default parameters will be forwarded to once
-     *                       the SMS is complete.
-     * @return The SMS message which was sent.
+     * Sends an SMS Message.
+     * @param to Must be an SMS capable number. The value does not have to be in any specific format.
+     * @param from Must be a Zang number associated with your account. The value does not have to be in any specific
+     *             format.
+     * @param body Text of the SMS to be sent.
+     * @param statusCallback The URL that will be sent information about the SMS. Url length is limited to 200 characters.
+     * @param statusCallbackMethod The HTTP method used to request the StatusCallback.
+     * @param allowMultiple If the Body length is greater than 160 characters, the SMS will be sent as a multi-part SMS.
+     * @return The sent SMS message.
      * @throws ZangException
      */
     public SmsMessage sendSmsMessage(String to, String from, String body,
