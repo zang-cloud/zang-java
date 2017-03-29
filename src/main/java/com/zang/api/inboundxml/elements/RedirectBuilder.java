@@ -14,6 +14,11 @@ public class RedirectBuilder {
         return this;
     }
 
+    /**
+     * Method used to request the InboundXML document the call is being redirected to. Default Value: POST.
+     * @param method
+     * @return
+     */
     public RedirectBuilder setMethod(HttpMethod method) {
         this.method = method;
         return this;

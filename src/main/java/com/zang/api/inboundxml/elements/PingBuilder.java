@@ -14,6 +14,11 @@ public class PingBuilder {
         return this;
     }
 
+    /**
+     * Method used to request ping url. Default Value: POST.
+     * @param method
+     * @return
+     */
     public PingBuilder setMethod(HttpMethod method) {
         this.method = method;
         return this;

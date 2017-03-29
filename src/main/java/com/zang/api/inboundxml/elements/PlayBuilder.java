@@ -15,6 +15,11 @@ public class PlayBuilder {
         return this;
     }
 
+    /**
+     * The amount of times the <Play> should be repeated. 0 indicates an infinite loop. The default value is 1. Allowed values are integers greater than or equal to 0.
+     * @param loop
+     * @return
+     */
     public PlayBuilder setLoop(Integer loop) {
         this.loop = loop;
         return this;

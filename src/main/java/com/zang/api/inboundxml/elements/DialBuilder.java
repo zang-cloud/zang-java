@@ -66,11 +66,21 @@ public class DialBuilder {
         return this;
     }
 
+    /**
+     * URL where some parameters specific to <Dial> will be sent for further processing. The calling party can be redirected here upon the hangup of the B leg caller.
+     * @param action
+     * @return
+     */
     public DialBuilder setAction(String action) {
         this.action = action;
         return this;
     }
 
+    /**
+     * Method used to request the action URL. Default Value: POST.
+     * @param method
+     * @return
+     */
     public DialBuilder setMethod(HttpMethod method) {
         this.method = method;
         return this;
@@ -86,16 +96,31 @@ public class DialBuilder {
         return this;
     }
 
+    /**
+     * The duration in seconds a call made through <Dial> should occur for before ending. Default Value: 14400. Allowed Value: integer greater than or equal to 1.
+     * @param timeLimit
+     * @return
+     */
     public DialBuilder setTimeLimit(Integer timeLimit) {
         this.timeLimit = timeLimit;
         return this;
     }
 
+    /**
+     * Number to display as calling. Defaults to the ID of phone being used.
+     * @param callerId
+     * @return
+     */
     public DialBuilder setCallerId(String callerId) {
         this.callerId = callerId;
         return this;
     }
 
+    /**
+     * Boolean value specifying if the caller ID should be hidden or not. Default Value: false.
+     * @param hideCallerId
+     * @return
+     */
     public DialBuilder setHideCallerId(Boolean hideCallerId) {
         this.hideCallerId = hideCallerId;
         return this;
@@ -106,61 +131,121 @@ public class DialBuilder {
         return this;
     }
 
+    /**
+     * URL to an InboundXML document to be executed in place of the call ringtone (a <Say> or <Play> would be appropriate in this document).
+     * @param dialMusic
+     * @return
+     */
     public DialBuilder setDialMusic(String dialMusic) {
         this.dialMusic = dialMusic;
         return this;
     }
 
+    /**
+     * URL requested when the dialed call connects and ends. Note that this URL only receives parameters containing information about the call, the call does not execute XML given as a callbackUrl.
+     * @param callbackUrl
+     * @return
+     */
     public DialBuilder setCallbackUrl(String callbackUrl) {
         this.callbackUrl = callbackUrl;
         return this;
     }
 
+    /**
+     * Method used to request the callback URL. Default Value: POST.
+     * @param callbackMethod
+     * @return
+     */
     public DialBuilder setCallbackMethod(HttpMethod callbackMethod) {
         this.callbackMethod = callbackMethod;
         return this;
     }
 
+    /**
+     * The URL that Zang should reach out to when the called party answers. The URL should return InboundXML containing <Play>, <Pause>, and/or <Say> elements only. Any other elements will be ignored.
+     * @param confirmSound
+     * @return
+     */
     public DialBuilder setConfirmSound(String confirmSound) {
         this.confirmSound = confirmSound;
         return this;
     }
 
+    /**
+     * Specifies digits that Zang should listen for and send to the callbackUrl if a caller inputs them. Separate additional digits or digit patterns with a comma. Allowed Value: Pattern made up of the digits 0-9, #, or *.
+     * @param digitsMatch
+     * @return
+     */
     public DialBuilder setDigitsMatch(String digitsMatch) {
         this.digitsMatch = digitsMatch;
         return this;
     }
 
+    /**
+     * Boolean value specifying if call should be redirected to voicemail immediately. Note: only works if dialing TO a mobile number. Default Value: false.
+     * @param straightToVm
+     * @return
+     */
     public DialBuilder setStraightToVm(Boolean straightToVm) {
         this.straightToVm = straightToVm;
         return this;
     }
 
+    /**
+     * A URL Zang can request every 60 seconds during the call to notify of elapsed time and pass other general information.
+     * @param heartbeatUrl
+     * @return
+     */
     public DialBuilder setHeartbeatUrl(String heartbeatUrl) {
         this.heartbeatUrl = heartbeatUrl;
         return this;
     }
 
+    /**
+     * Method used to request the heartbeatUrl. Default Value: POST.
+     * @param heartbeatMethod
+     * @return
+     */
     public DialBuilder setHeartbeatMethod(HttpMethod heartbeatMethod) {
         this.heartbeatMethod = heartbeatMethod;
         return this;
     }
 
+    /**
+     * Specifies the number to list the call as forwarded from.
+     * @param forwardedFrom
+     * @return
+     */
     public DialBuilder setForwardedFrom(String forwardedFrom) {
         this.forwardedFrom = forwardedFrom;
         return this;
     }
 
+    /**
+     * Specifies if this call should be recorded.
+     * @param record
+     * @return
+     */
     public DialBuilder setRecord(Boolean record) {
         this.record = record;
         return this;
     }
 
+    /**
+     * Specifies which stream of call audio to record. “in” to record the incoming caller audio, “out” to record the outgoing caller audio, or “both” to record all audio on the call. “out” audio can only be captured if an outbound <Dial> is performed during the call. “in” blocks any subsequent InboundXML elements until the inbound audio recording is finished (via finishOnKey or timeout). Default Value: both.
+     * @param recordDirection
+     * @return
+     */
     public DialBuilder setRecordDirection(RecordingAudioDirection recordDirection) {
         this.recordDirection = recordDirection;
         return this;
     }
 
+    /**
+     * URL where some parameters specific to the recording will be sent for further processing.
+     * @param recordCallbackUrl
+     * @return
+     */
     public DialBuilder setRecordCallbackUrl(String recordCallbackUrl) {
         this.recordCallbackUrl = recordCallbackUrl;
         return this;
@@ -176,16 +261,31 @@ public class DialBuilder {
         return this;
     }
 
+    /**
+     * Specifies how Zang should handle this dial if the receiving phone number is unanswered and goes to voicemail. “continue” to proceed as normal, “redirect” to redirect the call to the ifMachineUrl, or “hangup” to hangup the call. Please note: ifMachine could detect an answering machine via the tone stream. Therefore, the accuracy is around 90% and may not work in all countries. Default Value: continue. Allowed Value: continue, redirect, hangup.
+     * @param ifMachine
+     * @return
+     */
     public DialBuilder setIfMachine(IfMachine ifMachine) {
         this.ifMachine = ifMachine;
         return this;
     }
 
+    /**
+     * The URL Zang will redirect to if a voicemail machine is detected while the ifMachine=“redirect” attribute is set.
+     * @param ifMachineUrl
+     * @return
+     */
     public DialBuilder setIfMachineUrl(String ifMachineUrl) {
         this.ifMachineUrl = ifMachineUrl;
         return this;
     }
 
+    /**
+     * The method used to request the ifMachineUrl. Default Value: POST.
+     * @param ifMachineMethod
+     * @return
+     */
     public DialBuilder setIfMachineMethod(HttpMethod ifMachineMethod) {
         this.ifMachineMethod = ifMachineMethod;
         return this;

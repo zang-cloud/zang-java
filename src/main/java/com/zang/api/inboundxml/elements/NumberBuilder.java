@@ -17,6 +17,11 @@ public class NumberBuilder {
         return this;
     }
 
+    /**
+     * Specifies which DTMF tones to play to the called party. w indicates a half second pause.
+     * @param sendDigits
+     * @return
+     */
     public NumberBuilder setSendDigits(String sendDigits) {
         this.sendDigits = sendDigits;
         return this;

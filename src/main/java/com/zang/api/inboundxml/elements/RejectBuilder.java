@@ -8,6 +8,11 @@ public class RejectBuilder {
     RejectBuilder() {
     }
 
+    /**
+     * The reason to list as why the call was rejected. Default Value: rejected.
+     * @param reason
+     * @return
+     */
     public RejectBuilder setReason(RejectReason reason) {
         this.reason = reason;
         return this;

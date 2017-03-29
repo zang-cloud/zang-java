@@ -47,26 +47,51 @@ public class GatherBuilder {
         return this;
     }
 
+    /**
+     * URL where the flow of the call and the gathered digits will be forwarded to (if digits are input).
+     * @param action
+     * @return
+     */
     public GatherBuilder setAction(String action) {
         this.action = action;
         return this;
     }
 
+    /**
+     * Method used to request the action URL. Default value is POST.
+     * @param method
+     * @return
+     */
     public GatherBuilder setMethod(HttpMethod method) {
         this.method = method;
         return this;
     }
 
+    /**
+     * The number of seconds <Gather> should wait for digits to be entered before requesting the action URL. Timeout resets with each new digit input. Default value is 5 seconds. Timeout accepts any integer greater than or equal to 0.
+     * @param timeout
+     * @return
+     */
     public GatherBuilder setTimeout(Integer timeout) {
         this.timeout = timeout;
         return this;
     }
 
+    /**
+     * The key a caller can press to end the <Gather>. Default value is #. Acceptable values are digits from 0 to 9, # or *
+     * @param finishOnKey
+     * @return
+     */
     public GatherBuilder setFinishOnKey(String finishOnKey) {
         this.finishOnKey = finishOnKey;
         return this;
     }
 
+    /**
+     * The maximum number of digits to <Gather>. Default value is set to no limit. Acceptable value is any integer greater than or equal to 0.
+     * @param numDigits
+     * @return
+     */
     public GatherBuilder setNumDigits(Integer numDigits) {
         this.numDigits = numDigits;
         return this;

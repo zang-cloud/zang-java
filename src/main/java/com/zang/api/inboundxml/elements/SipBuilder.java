@@ -28,11 +28,21 @@ public class SipBuilder {
         return this;
     }
 
+    /**
+     * If provided, will be passed along as sip authentication username.
+     * @param username
+     * @return
+     */
     public SipBuilder setUsername(String username) {
         this.username = username;
         return this;
     }
 
+    /**
+     * If provided, will be passed along as sip authentication password.
+     * @param password
+     * @return
+     */
     public SipBuilder setPassword(String password) {
         this.password = password;
         return this;
