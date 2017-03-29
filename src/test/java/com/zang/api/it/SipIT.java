@@ -131,6 +131,8 @@ public class SipIT extends BaseIntegrationTest {
                 .setFriendlyName("MyDomain")
                 .setHeartbeatUrl("http://heartbeat.com")
                 .setHeartbeatMethod(HttpMethod.GET)
+                .setVoiceStatusCallback("http://statuscallback.com")
+                .setVoiceStatusCallbackMethod(HttpMethod.POST)
                 .build());
 
         sleep();

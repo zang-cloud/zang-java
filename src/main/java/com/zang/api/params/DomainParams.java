@@ -19,7 +19,7 @@ public class DomainParams {
     private String heartbeatUrl;
     private HttpMethod heartbeatMethod;
     private String voiceStatusCallback;
-    private HttpMethod voiceStatusMethod;
+    private HttpMethod voiceStatusCallbackMethod;
 
     public static DomainParamsBuilder builder() {
         return new DomainParamsBuilder();
@@ -34,7 +34,7 @@ public class DomainParams {
     /**
      * @see DomainParamsBuilder
      */
-    public DomainParams(String accountSid, String domainSid, String domainName, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String voiceStatusCallback, HttpMethod voiceStatusMethod) {
+    public DomainParams(String accountSid, String domainSid, String domainName, String friendlyName, String voiceUrl, HttpMethod voiceMethod, String voiceFallbackUrl, HttpMethod voiceFallbackMethod, String heartbeatUrl, HttpMethod heartbeatMethod, String voiceStatusCallback, HttpMethod voiceStatusCallbackMethod) {
         this.accountSid = accountSid;
         this.domainSid = domainSid;
         this.domainName = domainName;
@@ -46,7 +46,7 @@ public class DomainParams {
         this.heartbeatUrl = heartbeatUrl;
         this.heartbeatMethod = heartbeatMethod;
         this.voiceStatusCallback = voiceStatusCallback;
-        this.voiceStatusMethod = voiceStatusMethod;
+        this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
     }
 
     public String getAccountSid() {
@@ -137,11 +137,11 @@ public class DomainParams {
         this.voiceStatusCallback = voiceStatusCallback;
     }
 
-    public HttpMethod getVoiceStatusMethod() {
-        return voiceStatusMethod;
+    public HttpMethod getVoiceStatusCallbackMethod() {
+        return voiceStatusCallbackMethod;
     }
 
-    public void setVoiceStatusMethod(HttpMethod voiceStatusMethod) {
-        this.voiceStatusMethod = voiceStatusMethod;
+    public void setVoiceStatusCallbackMethod(HttpMethod voiceStatusCallbackMethod) {
+        this.voiceStatusCallbackMethod = voiceStatusCallbackMethod;
     }
 }

@@ -1411,7 +1411,7 @@
           "value": "VoiceStatusCallback"
         },
         {
-          "name": "VoiceStatusMethod",
+          "name": "VoiceStatusCallbackMethod",
           "value": "GET"
         }
       ],
@@ -1455,7 +1455,7 @@
           "value": "VoiceStatusCallback"
         },
         {
-          "name": "VoiceStatusMethod",
+          "name": "VoiceStatusCallbackMethod",
           "value": "GET"
         }
       ],

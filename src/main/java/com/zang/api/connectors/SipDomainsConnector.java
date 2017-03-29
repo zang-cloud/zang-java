@@ -119,7 +119,7 @@ public class SipDomainsConnector extends BaseConnector {
      * @see DomainParams
      */
     public Domain createDomain(DomainParams params) throws ZangException {
-        return createDomain(params.getAccountSid() != null ? params.getAccountSid() : conf.getSid(), params.getDomainName(), params.getFriendlyName(), params.getVoiceUrl(), params.getVoiceMethod(), params.getVoiceFallbackUrl(), params.getVoiceFallbackMethod(), params.getHeartbeatUrl(), params.getHeartbeatMethod(), params.getVoiceStatusCallback(), params.getVoiceStatusMethod());
+        return createDomain(params.getAccountSid() != null ? params.getAccountSid() : conf.getSid(), params.getDomainName(), params.getFriendlyName(), params.getVoiceUrl(), params.getVoiceMethod(), params.getVoiceFallbackUrl(), params.getVoiceFallbackMethod(), params.getHeartbeatUrl(), params.getHeartbeatMethod(), params.getVoiceStatusCallback(), params.getVoiceStatusCallbackMethod());
     }
 
     /**
@@ -172,7 +172,7 @@ public class SipDomainsConnector extends BaseConnector {
      * @see DomainParams
      */
     public Domain updateDomain(DomainParams params) throws ZangException {
-        return updateDomain(params.getAccountSid() != null ? params.getAccountSid() : conf.getSid(), params.getDomainSid(), params.getFriendlyName(), params.getVoiceUrl(), params.getVoiceMethod(), params.getVoiceFallbackUrl(), params.getVoiceFallbackMethod(), params.getHeartbeatUrl(), params.getHeartbeatMethod(), params.getVoiceStatusCallback(), params.getVoiceStatusMethod());
+        return updateDomain(params.getAccountSid() != null ? params.getAccountSid() : conf.getSid(), params.getDomainSid(), params.getFriendlyName(), params.getVoiceUrl(), params.getVoiceMethod(), params.getVoiceFallbackUrl(), params.getVoiceFallbackMethod(), params.getHeartbeatUrl(), params.getHeartbeatMethod(), params.getVoiceStatusCallback(), params.getVoiceStatusCallbackMethod());
     }
 
     /**
