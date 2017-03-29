@@ -14,9 +14,18 @@ public class AccountsExample {
         conf.setAuthToken("{AuthToken}");
         AccountsConnector conn = new ZangConnectorFactory(conf).getAccountsConnector();
 
+        //view account
         try {
             Account account = conn.viewAccount("{AccountSid}");
             System.out.println(account.getSid());
+        } catch (ZangException e) {
+            e.printStackTrace();
+
+        }
+        //update account
+        try {
+            Account account = conn.updateAccount("friendlyname1");
+            System.out.println(account.getFriendlyName());
         } catch (ZangException e) {
             e.printStackTrace();
         }

@@ -15,18 +15,30 @@ public class SmsExample {
         conf.setAuthToken("{AuthToken}");
         SmsConnector conn = ZangConnectorFactory.getSmsConnector(conf);
 
+        //send sms message
         try {
             SmsMessage sentSmsMessage = conn
                     .sendSmsMessage(
                             "(XXX) XXX-XXXX",
                             "(XXX) XXX-XXXX",
                             "This is an SMS message sent from the Zang Java wrapper! Easy as 1, 2, 3!",
-                            null,
-                            null,
-                            null);
+                            null, null, null);
 
-            conn.viewSmsMessage(sentSmsMessage.getSid());
 
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+
+        //view sms message
+        try {
+            SmsMessage message = conn.viewSmsMessage("SmsMessageSID");
+            System.out.println(message.getStatus());
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+
+        //list sms messages
+        try {
             SmsMessageList smsMessageList = conn.listSmsMessages();
             for (SmsMessage smsMessage : smsMessageList) {
                 System.out.println(smsMessage.getSid());
@@ -34,5 +46,6 @@ public class SmsExample {
         } catch (ZangException e) {
             e.printStackTrace();
         }
+
     }
 }

@@ -15,12 +15,28 @@ public class ApplicationClientsExample {
         conf.setAuthToken("{AuthToken}");
         ApplicationClientsConnector conn = ZangConnectorFactory.getApplicationClientsConnector(conf);
 
+
+        // view application client
         try {
-            conn.createApplicationClient("{ApplicationSid}", "MyClient");
-            ApplicationClientsList applicationClients = conn.listApplicationClients("{ApplicationSid}");
-            String firstClientSid = applicationClients.iterator().next().getSid();
-            ApplicationClient firstClient = conn.viewApplicationClient("{ApplicationSid}", firstClientSid);
-            System.out.println(firstClient.getRemoteIp());
+            ApplicationClient applicationClient = conn.viewApplicationClient("TestApplicationSid",
+                    "TestApplicationClientSid");
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+
+
+        // list application clients
+        try {
+            ApplicationClientsList applicationClients = conn.listApplicationClients("TestAccountSid",
+                    "TestApplicationSid");
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+
+        // create application client
+        try {
+            ApplicationClient applicationClient = conn.createApplicationClient("TestApplicationSid",
+                    "MyApplicationClient");
         } catch (ZangException e) {
             e.printStackTrace();
         }

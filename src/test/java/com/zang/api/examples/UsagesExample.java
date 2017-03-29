@@ -8,11 +8,10 @@ import com.zang.api.domain.enums.Product;
 import com.zang.api.domain.list.UsagesList;
 import com.zang.api.exceptions.ZangException;
 import com.zang.api.params.ListUsagesParams;
-import com.zang.api.unit.BaseUnitTest;
 
 import java.math.BigDecimal;
 
-public class UsagesExample extends BaseUnitTest {
+public class UsagesExample {
 
     public static void main(String[] args) {
         BasicZangConfiguration conf = new BasicZangConfiguration();
@@ -20,20 +19,24 @@ public class UsagesExample extends BaseUnitTest {
         conf.setAuthToken("{AuthToken}");
         UsagesConnector conn = new ZangConnectorFactory(conf).getUsagesConnector();
 
+        //view usage
         try {
             //get a specific usage
-            conn.viewUsage("{UsageSid}");
+            Usage usage = conn.viewUsage("{UsageSid}");
+            System.out.println(usage.getTotalCost());
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
 
+        //list usages
+        try {
             ListUsagesParams usagesRequest = ListUsagesParams.builder()
                     .setProduct(Product.OUTBOUND_SMS)
                     .setYear(2017)
                     .setMonth(2)
                     .setPageSize(100)
                     .build();
-
-            //get a list of usages
             UsagesList usagesList = conn.listUsages(usagesRequest);
-
             BigDecimal total = BigDecimal.ZERO;
             for (Usage usage : usagesList) {
                 total = total.add(usage.getTotalCost());
@@ -42,6 +45,7 @@ public class UsagesExample extends BaseUnitTest {
         } catch (ZangException e) {
             e.printStackTrace();
         }
+
     }
 
 }
