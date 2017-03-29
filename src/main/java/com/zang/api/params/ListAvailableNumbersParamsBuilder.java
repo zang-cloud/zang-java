@@ -31,41 +31,81 @@ public class ListAvailableNumbersParamsBuilder {
         return this;
     }
 
+    /**
+     * Two letter country code
+     * @param country
+     * @return
+     */
     public ListAvailableNumbersParamsBuilder setCountry(String country) {
         this.country = country;
         return this;
     }
 
+    /**
+     * Type of phone number
+     * @param type
+     * @return
+     */
     public ListAvailableNumbersParamsBuilder setType(AvailableNumberType type) {
         this.type = type;
         return this;
     }
 
+    /**
+     * Filter by numbers
+     * @param contains
+     * @return
+     */
     public ListAvailableNumbersParamsBuilder setContains(String contains) {
         this.contains = contains;
         return this;
     }
 
+    /**
+     * Filter by area code (only available for NA numbers).
+     * @param areaCode
+     * @return
+     */
     public ListAvailableNumbersParamsBuilder setAreaCode(String areaCode) {
         this.areaCode = areaCode;
         return this;
     }
 
+    /**
+     * Filter by region
+     * @param inRegion
+     * @return
+     */
     public ListAvailableNumbersParamsBuilder setInRegion(String inRegion) {
         this.inRegion = inRegion;
         return this;
     }
 
+    /**
+     * Filter by postal code
+     * @param inPostalCode
+     * @return
+     */
     public ListAvailableNumbersParamsBuilder setInPostalCode(String inPostalCode) {
         this.inPostalCode = inPostalCode;
         return this;
     }
 
+    /**
+     * Page to return
+     * @param page
+     * @return
+     */
     public ListAvailableNumbersParamsBuilder setPage(Integer page) {
         this.page = page;
         return this;
     }
 
+    /**
+     * Number of items to return per page
+     * @param pageSize
+     * @return
+     */
     public ListAvailableNumbersParamsBuilder setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
         return this;
