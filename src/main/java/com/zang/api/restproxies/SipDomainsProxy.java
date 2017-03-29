@@ -35,7 +35,7 @@ public interface SipDomainsProxy {
             @FormParam("HeartbeatUrl") String heartbeatUrl,
             @FormParam("HeartbeatMethod") HttpMethod heartbeatMethod,
             @FormParam("VoiceStatusCallback") String voiceStatusCallback,
-            @FormParam("VoiceStatusMethod") HttpMethod voiceStatusMethod
+            @FormParam("VoiceStatusCallbackMethod") HttpMethod voiceStatusCallbackMethod
     );
 
     @POST
@@ -52,7 +52,7 @@ public interface SipDomainsProxy {
             @FormParam("HeartbeatUrl") String heartbeatUrl,
             @FormParam("HeartbeatMethod") HttpMethod heartbeatMethod,
             @FormParam("VoiceStatusCallback") String voiceStatusCallback,
-            @FormParam("VoiceStatusMethod") HttpMethod voiceStatusMethod
+            @FormParam("VoiceStatusCallbackMethod") HttpMethod voiceStatusCallbackMethod
     );
 
     @DELETE
