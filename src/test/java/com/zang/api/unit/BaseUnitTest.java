@@ -3,7 +3,6 @@ package com.zang.api.unit;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import com.zang.api.configuration.ZangConfiguration;
-import com.zang.api.configuration.ZangConstants;
 import com.zang.api.connectors.ZangConnectorFactory;
 import com.zang.api.testutil.MockConfiguration;
 import org.json.simple.JSONArray;
@@ -106,7 +105,7 @@ public abstract class BaseUnitTest {
         mockServer.when(HttpRequest
                 .request()
                 .withMethod(method)
-                .withPath("/" + ZangConstants.API_VERSION + "/" + path)
+                .withPath("/" + path)
                 .withQueryStringParameters(queryParams)
                 .withBody(
                         new ParameterBody(bodyParams)

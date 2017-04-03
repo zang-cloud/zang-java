@@ -81,7 +81,7 @@ public class BaseZangObject {
     }
 
     /**
-     * @return The path appended to the base Zang URL, https://api.zang.io,
+     * @return The path appended to the base Zang URL, https://api.zang.io/v2,
      * where the resource is located.
      */
     public String getUri() {

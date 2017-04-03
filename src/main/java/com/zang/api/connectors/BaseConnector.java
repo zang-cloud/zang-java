@@ -47,8 +47,7 @@ class BaseConnector {
             }
         }
 
-        URI baseUrl = UriBuilder.fromUri(conf.getBaseUrl())
-                .path(ZangConstants.API_VERSION).build();
+        URI baseUrl = UriBuilder.fromUri(conf.getBaseUrl()).build();
         this.fullBaseUrl = baseUrl.toString();
     }
 

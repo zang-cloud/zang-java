@@ -15,7 +15,7 @@ public interface ZangConfiguration {
     public String getAuthToken();
 
     /**
-     * @return The base URL. This should be "https://api.zang.io/" by default.
+     * @return The base URL. This should be "https://api.zang.io/v2" by default.
      */
     public String getBaseUrl();
 
