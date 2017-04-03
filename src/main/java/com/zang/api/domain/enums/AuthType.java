@@ -14,8 +14,8 @@ public enum AuthType {
 
     static {
         map = new HashMap<AuthType, String>();
-        map.put(IP_ACL, "LOCAL");
-        map.put(CREDENTIAL_LIST, "TOLLFREE");
+        map.put(IP_ACL, "IP_ACL");
+        map.put(CREDENTIAL_LIST, "CREDENTIAL_LIST");
     }
 
     @JsonCreator
