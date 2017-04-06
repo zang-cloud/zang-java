@@ -246,7 +246,7 @@ public class ConferencesConnector extends BaseConnector {
      * @param accountSid Account SID
      * @param conferenceSid Conference SID
      * @param participantSid Participant SID
-     * @param url A URL to the audio file that will be played to the participant.
+     * @param audioUrl A URL to the audio file that will be played to the participant.
      * @return Participant in question.
      * @throws ZangException
      */
