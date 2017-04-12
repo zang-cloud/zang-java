@@ -74,7 +74,7 @@ public interface SipDomainsProxy {
     @POST
     @Path("Accounts/{AccountSid}/SIP/Domains/{DomainSid}/CredentialListMappings.json")
     @Produces("application/json")
-    Response mapCredentialsLists(
+    Response mapCredentialsList(
             @PathParam("AccountSid") String accountSid,
             @PathParam("DomainSid") String domainSid,
             @FormParam("CredentialListSid") String credentialListSid

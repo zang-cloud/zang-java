@@ -93,7 +93,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
      * Updates information for an IP access control list.
      * @param accountSid Account SID
      * @param ipAccessControlListSid Access Control List SID
-     * @param friendlyName A human-readable name associated with this domain.
+     * @param friendlyName A human-readable name associated with this IP ACL.
      * @return The updated Access Control List
      * @throws ZangException
      */
@@ -104,7 +104,7 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
     /**
      * Updates information for an IP access control list.
      * @param ipAccessControlListSid Access Control List SID
-     * @param friendlyName A human-readable name associated with this domain.
+     * @param friendlyName A human-readable name associated with this IP ACL.
      * @return The updated Access Control List
      * @throws ZangException
      */

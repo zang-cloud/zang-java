@@ -91,7 +91,7 @@ public class SipDomainsExample {
 
         //map credentials list
         try {
-            CredentialsList credentialsList = connector.mapCredentialsLists("TestDomainSid", "TestCredentialsListSid");
+            CredentialsList credentialsList = connector.mapCredentialsList("TestDomainSid", "TestCredentialsListSid");
             System.out.println(credentialsList.getCredentialsCount());
         } catch (ZangException e) {
             e.printStackTrace();

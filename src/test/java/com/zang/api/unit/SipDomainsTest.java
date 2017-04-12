@@ -106,7 +106,7 @@ public class SipDomainsTest extends BaseUnitTest {
     public void mapCredentialsList() throws ZangException, IOException {
         createExpectation("SipDomainsTest", "mapCredentialsList");
 
-        CredentialsList credentialsList = connector.mapCredentialsLists("TestDomainSid", "TestCredentialsListSid");
+        CredentialsList credentialsList = connector.mapCredentialsList("TestDomainSid", "TestCredentialsListSid");
         checkCl(credentialsList);
     }
 

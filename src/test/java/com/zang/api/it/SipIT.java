@@ -149,7 +149,7 @@ public class SipIT extends BaseIntegrationTest {
         CredentialsList cl = scc.createCredentialsList("MyCredentialsList");
         Credential cr = scc.createCredential(cl.getSid(), "testuser123", "34AS3!#$asfe");
         sleep();
-        conn.mapCredentialsLists(domain.getSid(), cl.getSid());
+        conn.mapCredentialsList(domain.getSid(), cl.getSid());
 
         SipIpAccessControlListsConnector sipc = connectorFactory.getSipIpAccessControlListsConnector();
         AccessControlList acl = sipc.createIpAccessControlList("MyAclList");

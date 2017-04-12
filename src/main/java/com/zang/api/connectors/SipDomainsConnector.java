@@ -223,23 +223,23 @@ public class SipDomainsConnector extends BaseConnector {
      * Maps a Credentials List to a SIP Domain
      * @param accountSid Account SID
      * @param domainSid Domain SID
-     * @param credentialListSid Credentials List SID
+     * @param credentialsListSid Credentials List SID
      * @return The mapped Credentials List
      * @throws ZangException
      */
-    public CredentialsList mapCredentialsLists(String accountSid, String domainSid, String credentialListSid) throws ZangException {
-        return returnThrows(proxy.mapCredentialsLists(accountSid, domainSid, credentialListSid), CredentialsList.class);
+    public CredentialsList mapCredentialsList(String accountSid, String domainSid, String credentialsListSid) throws ZangException {
+        return returnThrows(proxy.mapCredentialsList(accountSid, domainSid, credentialsListSid), CredentialsList.class);
     }
 
     /**
      * Maps a Credentials List to a SIP Domain
      * @param domainSid Domain SID
-     * @param credentialListSid Credentials List SID
+     * @param credentialsListSid Credentials List SID
      * @return The mapped Credentials List
      * @throws ZangException
      */
-    public CredentialsList mapCredentialsLists(String domainSid, String credentialListSid) throws ZangException {
-        return mapCredentialsLists(conf.getSid(), domainSid, credentialListSid);
+    public CredentialsList mapCredentialsList(String domainSid, String credentialsListSid) throws ZangException {
+        return mapCredentialsList(conf.getSid(), domainSid, credentialsListSid);
     }
 
     /**
