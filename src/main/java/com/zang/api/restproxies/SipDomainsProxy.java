@@ -18,7 +18,9 @@ public interface SipDomainsProxy {
     @Path("Accounts/{AccountSid}/SIP/Domains.json")
     @Produces("application/json")
     Response listDomains(
-            @PathParam("AccountSid") String accountSid
+            @PathParam("AccountSid") String accountSid,
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
     );
 
     @POST
@@ -68,7 +70,9 @@ public interface SipDomainsProxy {
     @Produces("application/json")
     Response listMappedCredentialsLists(
             @PathParam("AccountSid") String accountSid,
-            @PathParam("DomainSid") String domainSid
+            @PathParam("DomainSid") String domainSid,
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
     );
 
     @POST
@@ -95,7 +99,9 @@ public interface SipDomainsProxy {
     @Produces("application/json")
     Response listMappedIpAccessControlLists(
             @PathParam("AccountSid") String accountSid,
-            @PathParam("DomainSid") String domainSid
+            @PathParam("DomainSid") String domainSid,
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
     );
 
     @POST

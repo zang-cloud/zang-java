@@ -48,21 +48,25 @@ public class ApplicationClientsConnector extends BaseConnector {
      * Lists available application clients.
      * @param accountSid Account SID
      * @param applicationSid Application SID of the client
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of available Application Clients
      * @throws ZangException
      */
-    public ApplicationClientsList listApplicationClients(String accountSid, String applicationSid) throws ZangException {
-        return returnThrows(proxy.listApplicationClients(accountSid, applicationSid), ApplicationClientsList.class);
+    public ApplicationClientsList listApplicationClients(String accountSid, String applicationSid, Integer page, Integer pageSize) throws ZangException {
+        return returnThrows(proxy.listApplicationClients(accountSid, applicationSid, page, pageSize), ApplicationClientsList.class);
     }
 
     /**
      * Lists available application clients.
      * @param applicationSid Application SID of the client
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of available Application Clients
      * @throws ZangException
      */
-    public ApplicationClientsList listApplicationClients(String applicationSid) throws ZangException {
-        return listApplicationClients(conf.getSid(), applicationSid);
+    public ApplicationClientsList listApplicationClients(String applicationSid, Integer page, Integer pageSize) throws ZangException {
+        return listApplicationClients(conf.getSid(), applicationSid, page, pageSize);
     }
 
     /**

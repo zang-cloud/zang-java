@@ -28,7 +28,7 @@ public class ApplicationClientsExample {
         // list application clients
         try {
             ApplicationClientsList applicationClients = conn.listApplicationClients("TestAccountSid",
-                    "TestApplicationSid");
+                    "TestApplicationSid", 0, 10);
         } catch (ZangException e) {
             e.printStackTrace();
         }

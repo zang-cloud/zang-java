@@ -23,7 +23,7 @@ public class SipIT extends BaseIntegrationTest {
     private void deleteCredentials() throws ZangException {
 
         SipCredentialsConnector scc = connectorFactory.getSipCredentialsConnector();
-        CredentialsListsList cls = scc.listCredentialsLists();
+        CredentialsListsList cls = scc.listCredentialsLists(0, 10);
         for(CredentialsList clist : cls) {
             if (clist.getFriendlyName().equals("MyCredentialsList") || clist.getFriendlyName().equals("MyCredentialsList2")) {
                 scc.deleteCredentialsList(clist.getSid());
@@ -53,7 +53,7 @@ public class SipIT extends BaseIntegrationTest {
         CredentialsList cl3 = scc.viewCredentialsList(cl.getSid());
         Assert.assertEquals("MyCredentialsList2", cl3.getFriendlyName());
 
-        com.zang.api.domain.list.CredentialsList credentials = scc.listCredentials(cl.getSid());
+        com.zang.api.domain.list.CredentialsList credentials = scc.listCredentials(cl.getSid(), 0, 10);
         Assert.assertEquals(1, (int)credentials.getTotal());
         for(Credential c : credentials) {
             Assert.assertEquals(c.getUsername(), "testuser123");
@@ -62,7 +62,7 @@ public class SipIT extends BaseIntegrationTest {
         scc.updateCredential(cl.getSid(), cr.getSid(), "34AS3!#$asfa");
 
         deleteCredentials();
-        CredentialsListsList cls = scc.listCredentialsLists();
+        CredentialsListsList cls = scc.listCredentialsLists(0, 10);
         for(CredentialsList clist : cls) {
             if (clist.getFriendlyName().equals("MyCredentialsList") || clist.getFriendlyName().equals("MyCredentialsList2")) {
                 Assert.fail();
@@ -90,7 +90,7 @@ public class SipIT extends BaseIntegrationTest {
         Assert.assertEquals("MyIpAddress2", ip.getFriendlyName());
         Assert.assertEquals("192.168.12.12", ip.getIpAddress());
 
-        IpAddressesList ipList = conn.listAccessControlListIps(acl.getSid());
+        IpAddressesList ipList = conn.listAccessControlListIps(acl.getSid(), 0, 10);
         Assert.assertEquals(1, (int)ipList.getTotal());
         Assert.assertEquals(ip.getSid(), ipList.iterator().next().getSid());
 
@@ -110,7 +110,7 @@ public class SipIT extends BaseIntegrationTest {
 
     private void deleteDomains() throws ZangException {
         SipDomainsConnector conn = connectorFactory.getSipDomainsConnector();
-        DomainsList domains = conn.listDomains();
+        DomainsList domains = conn.listDomains(0, 10);
         for(Domain domain : domains) {
             if (domain.getFriendlyName().startsWith("MyDomain")) {
                 conn.deleteDomain(domain.getSid());
@@ -157,9 +157,9 @@ public class SipIT extends BaseIntegrationTest {
         conn.mapIpAccessControlList(domain.getSid(), acl.getSid());
         sleep();
         domain = conn.viewDomain(domain.getSid());
-        CredentialsListsList mappedcls = conn.listMappedCredentialsLists(domain.getSid());
+        CredentialsListsList mappedcls = conn.listMappedCredentialsLists(domain.getSid(), 0, 10);
         Assert.assertEquals(1, (int)mappedcls.getTotal());
-        AccessControlListsList mappedacls = conn.listMappedIpAccessControlLists(domain.getSid());
+        AccessControlListsList mappedacls = conn.listMappedIpAccessControlLists(domain.getSid(),0, 10);
         Assert.assertEquals(1, (int)mappedacls.getTotal());
 
         Assert.assertEquals(1, (int)mappedacls.iterator().next().getIpAddressesCount());

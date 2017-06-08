@@ -161,21 +161,25 @@ public class SipIpAccessControlListsConnector extends BaseConnector {
      * Lists IP addresses attached to an IP access control list.
      * @param accountSid Account SID
      * @param ipAccessControlListSid Access Control List SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of IP Addresses
      * @throws ZangException
      */
-    public IpAddressesList listAccessControlListIps(String accountSid, String ipAccessControlListSid) throws ZangException {
-        return returnThrows(proxy.listAccessControlListIps(accountSid, ipAccessControlListSid), IpAddressesList.class);
+    public IpAddressesList listAccessControlListIps(String accountSid, String ipAccessControlListSid, Integer page, Integer pageSize) throws ZangException {
+        return returnThrows(proxy.listAccessControlListIps(accountSid, ipAccessControlListSid, page, pageSize), IpAddressesList.class);
     }
 
     /**
      * Lists IP addresses attached to an IP access control list.
      * @param ipAccessControlListSid Access Control List SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of IP Addresses
      * @throws ZangException
      */
-    public IpAddressesList listAccessControlListIps(String ipAccessControlListSid) throws ZangException {
-        return listAccessControlListIps(conf.getSid(), ipAccessControlListSid);
+    public IpAddressesList listAccessControlListIps(String ipAccessControlListSid, Integer page, Integer pageSize) throws ZangException {
+        return listAccessControlListIps(conf.getSid(), ipAccessControlListSid, page, pageSize);
     }
 
 

@@ -60,7 +60,9 @@ public interface SipIpAccessControlListsProxy {
     @Produces("application/json")
     Response listAccessControlListIps(
             @PathParam("AccountSid") String accountSid,
-            @PathParam("IpAccessControlListSid") String ipAccessControlListSid
+            @PathParam("IpAccessControlListSid") String ipAccessControlListSid,
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
     );
 
     @POST

@@ -51,20 +51,24 @@ public class SipDomainsConnector extends BaseConnector {
     /**
      * List your SIP domains.
      * @param accountSid Account SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of SIP Domains
      * @throws ZangException
      */
-    public DomainsList listDomains(String accountSid) throws ZangException {
-        return returnThrows(proxy.listDomains(accountSid), DomainsList.class);
+    public DomainsList listDomains(String accountSid, Integer page, Integer pageSize) throws ZangException {
+        return returnThrows(proxy.listDomains(accountSid, page, pageSize), DomainsList.class);
     }
 
     /**
      * List your SIP domains.
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of SIP Domains
      * @throws ZangException
      */
-    public DomainsList listDomains() throws ZangException {
-        return listDomains(conf.getSid());
+    public DomainsList listDomains(Integer page, Integer pageSize) throws ZangException {
+        return listDomains(conf.getSid(), page, pageSize);
     }
 
     /**
@@ -201,21 +205,25 @@ public class SipDomainsConnector extends BaseConnector {
      * Shows info on credential lists attached to a SIP domain
      * @param accountSid Account SID
      * @param domainSid Domain SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of Credential Lists
      * @throws ZangException
      */
-    public CredentialsListsList listMappedCredentialsLists(String accountSid, String domainSid) throws ZangException {
-        return returnThrows(proxy.listMappedCredentialsLists(accountSid, domainSid), CredentialsListsList.class);
+    public CredentialsListsList listMappedCredentialsLists(String accountSid, String domainSid, Integer page, Integer pageSize) throws ZangException {
+        return returnThrows(proxy.listMappedCredentialsLists(accountSid, domainSid, page, pageSize), CredentialsListsList.class);
     }
 
     /**
      * Shows info on credential lists attached to a SIP domain
      * @param domainSid Domain SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of Credential Lists
      * @throws ZangException
      */
-    public CredentialsListsList listMappedCredentialsLists(String domainSid) throws ZangException {
-        return returnThrows(proxy.listMappedCredentialsLists(conf.getSid(), domainSid), CredentialsListsList.class);
+    public CredentialsListsList listMappedCredentialsLists(String domainSid, Integer page, Integer pageSize) throws ZangException {
+        return listMappedCredentialsLists(conf.getSid(), domainSid, page, pageSize);
     }
 
 
@@ -269,21 +277,25 @@ public class SipDomainsConnector extends BaseConnector {
      * Shows info on IP access control lists attached to a SIP domain.
      * @param accountSid Account SID
      * @param domainSid Domain SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of Access Control Lists.
      * @throws ZangException
      */
-    public AccessControlListsList listMappedIpAccessControlLists(String accountSid, String domainSid) throws ZangException {
-        return returnThrows(proxy.listMappedIpAccessControlLists(accountSid, domainSid), AccessControlListsList.class);
+    public AccessControlListsList listMappedIpAccessControlLists(String accountSid, String domainSid, Integer page, Integer pageSize) throws ZangException {
+        return returnThrows(proxy.listMappedIpAccessControlLists(accountSid, domainSid, page, pageSize), AccessControlListsList.class);
     }
 
     /**
      * Shows info on IP access control lists attached to a SIP domain.
      * @param domainSid Domain SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of Access Control Lists.
      * @throws ZangException
      */
-    public AccessControlListsList listMappedIpAccessControlLists(String domainSid) throws ZangException {
-        return listMappedIpAccessControlLists(conf.getSid(), domainSid);
+    public AccessControlListsList listMappedIpAccessControlLists(String domainSid, Integer page, Integer pageSize) throws ZangException {
+        return listMappedIpAccessControlLists(conf.getSid(), domainSid, page, pageSize);
     }
 
     /**

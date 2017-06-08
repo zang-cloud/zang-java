@@ -64,7 +64,7 @@ public class SipAclTest extends BaseUnitTest {
     @Test
     public void listAclIps() throws ZangException, IOException {
         createExpectation("SipAclTest", "listAclIps");
-        connector.listAccessControlListIps("TestIpAccessControlListSid");
+        connector.listAccessControlListIps("TestIpAccessControlListSid", 0, 10);
     }
 
 

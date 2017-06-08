@@ -48,20 +48,24 @@ public class SipCredentialsConnector extends BaseConnector {
     /**
      * Show info on SIP domain credentials lists
      * @param accountSid Account SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of Credentials Lists
      * @throws ZangException
      */
-    public CredentialsListsList listCredentialsLists(String accountSid) throws ZangException {
-        return returnThrows(proxy.listCredentialsLists(accountSid), CredentialsListsList.class);
+    public CredentialsListsList listCredentialsLists(String accountSid, Integer page, Integer pageSize) throws ZangException {
+        return returnThrows(proxy.listCredentialsLists(accountSid, page, pageSize), CredentialsListsList.class);
     }
 
     /**
      * Show info on SIP domain credentials lists
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of Credentials Lists
      * @throws ZangException
      */
-    public CredentialsListsList listCredentialsLists() throws ZangException {
-        return listCredentialsLists(conf.getSid());
+    public CredentialsListsList listCredentialsLists(Integer page, Integer pageSize) throws ZangException {
+        return listCredentialsLists(conf.getSid(), page, pageSize);
     }
 
 
@@ -161,21 +165,25 @@ public class SipCredentialsConnector extends BaseConnector {
      * Lists Credentials attached to a particular Credentials List
      * @param accountSid Account SID
      * @param credentialsListSid Credentials List SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of Credentials
      * @throws ZangException
      */
-    public com.zang.api.domain.list.CredentialsList listCredentials(String accountSid, String credentialsListSid) throws ZangException {
-        return returnThrows(proxy.listCredentials(accountSid, credentialsListSid), com.zang.api.domain.list.CredentialsList.class);
+    public com.zang.api.domain.list.CredentialsList listCredentials(String accountSid, String credentialsListSid, Integer page, Integer pageSize) throws ZangException {
+        return returnThrows(proxy.listCredentials(accountSid, credentialsListSid, page, pageSize), com.zang.api.domain.list.CredentialsList.class);
     }
 
     /**
      * Lists Credentials attached to a particular Credentials List
      * @param credentialsListSid Credentials List SID
+     * @param page Page to return
+     * @param pageSize Number of items to return per page
      * @return List of Credentials
      * @throws ZangException
      */
-    public com.zang.api.domain.list.CredentialsList listCredentials(String credentialsListSid) throws ZangException {
-        return listCredentials(conf.getSid(), credentialsListSid);
+    public com.zang.api.domain.list.CredentialsList listCredentials(String credentialsListSid, Integer page, Integer pageSize) throws ZangException {
+        return listCredentials(conf.getSid(), credentialsListSid, page, pageSize);
     }
 
 

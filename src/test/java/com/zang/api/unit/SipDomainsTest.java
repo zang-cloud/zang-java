@@ -37,7 +37,7 @@ public class SipDomainsTest extends BaseUnitTest {
     public void listDomains() throws ZangException, IOException {
         createExpectation("SipDomainsTest", "listDomains");
 
-        DomainsList domains = connector.listDomains();
+        DomainsList domains = connector.listDomains(0, 10);
 
         Assert.assertEquals(2, (int) domains.getTotal());
         checkDomain(domains.iterator().next());
@@ -96,7 +96,7 @@ public class SipDomainsTest extends BaseUnitTest {
     public void listMappedCredentialsList() throws ZangException, IOException {
         createExpectation("SipDomainsTest", "listMappedCredentialsList");
 
-        CredentialsListsList credentialsListsList = connector.listMappedCredentialsLists("TestDomainSid");
+        CredentialsListsList credentialsListsList = connector.listMappedCredentialsLists("TestDomainSid", 0, 10);
 
         Assert.assertEquals(1, (int) credentialsListsList.getTotal());
         checkCl(credentialsListsList.iterator().next());
@@ -122,7 +122,7 @@ public class SipDomainsTest extends BaseUnitTest {
     public void listMappedIpAcls() throws ZangException, IOException {
         createExpectation("SipDomainsTest", "listMappedIpAcls");
 
-        AccessControlListsList aclListList = connector.listMappedIpAccessControlLists("TestDomainSid");
+        AccessControlListsList aclListList = connector.listMappedIpAccessControlLists("TestDomainSid", 0, 10);
 
         Assert.assertEquals(1, (int) aclListList.getTotal());
         checkIpAcl(aclListList.iterator().next());

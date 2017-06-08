@@ -28,7 +28,7 @@ public class SipCredentialsExample {
 
         //list credentials lists
         try {
-            CredentialsListsList credentialsLists = connector.listCredentialsLists();
+            CredentialsListsList credentialsLists = connector.listCredentialsLists(0, 10);
             System.out.println(credentialsLists.getTotal());
         } catch (ZangException e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class SipCredentialsExample {
 
         //list credentials
         try {
-            com.zang.api.domain.list.CredentialsList credentials = connector.listCredentials("TestCredentialsListSid");
+            com.zang.api.domain.list.CredentialsList credentials = connector.listCredentials("TestCredentialsListSid", 0, 10);
             for (Credential credential : credentials) {
                 System.out.println(credential.getUsername());
             }

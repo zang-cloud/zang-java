@@ -32,7 +32,7 @@ public class SipDomainsExample {
 
         //list domains
         try {
-            DomainsList domains = connector.listDomains();
+            DomainsList domains = connector.listDomains(0, 10);
             System.out.println(domains.getTotal());
         } catch (ZangException e) {
             e.printStackTrace();
@@ -82,7 +82,7 @@ public class SipDomainsExample {
 
         //list mapped credentials lists
         try {
-            CredentialsListsList credentialsListsList = connector.listMappedCredentialsLists("TestDomainSid");
+            CredentialsListsList credentialsListsList = connector.listMappedCredentialsLists("TestDomainSid", 0, 10);
             System.out.println(credentialsListsList.getTotal());
         } catch (ZangException e) {
             e.printStackTrace();
@@ -110,7 +110,7 @@ public class SipDomainsExample {
 
         //list mapped ip access control lists
         try {
-            AccessControlListsList aclListList = connector.listMappedIpAccessControlLists("TestDomainSid");
+            AccessControlListsList aclListList = connector.listMappedIpAccessControlLists("TestDomainSid", 0, 10);
             System.out.println(aclListList.getTotal());
         } catch (ZangException e) {
             e.printStackTrace();

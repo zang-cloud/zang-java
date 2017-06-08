@@ -74,7 +74,7 @@ public class SipAclExample {
         //list access control list ips
         try {
             IpAddressesList ipAddresses = connector.listAccessControlListIps(
-                    "TestIpAccessControlListSid");
+                    "TestIpAccessControlListSid", 0, 10);
             System.out.println(ipAddresses.getTotal());
         } catch (ZangException e) {
             e.printStackTrace();

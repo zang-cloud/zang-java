@@ -16,7 +16,9 @@ public interface SipCredentialsProxy {
     @Path("Accounts/{AccountSid}/SIP/CredentialLists.json")
     @Produces("application/json")
     Response listCredentialsLists(
-            @PathParam("AccountSid") String accountSid
+            @PathParam("AccountSid") String accountSid,
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
     );
 
     @POST
@@ -58,7 +60,9 @@ public interface SipCredentialsProxy {
     @Produces("application/json")
     Response listCredentials(
             @PathParam("AccountSid") String accountSid,
-            @PathParam("CredentialsListSid") String credentialsListSid
+            @PathParam("CredentialsListSid") String credentialsListSid,
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
     );
 
     @POST

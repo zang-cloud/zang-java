@@ -29,7 +29,7 @@ public class SipCredentialsTest extends BaseUnitTest {
     @Test
     public void listCredentialsLists() throws ZangException, IOException {
         createExpectation("SipCredentialsTest", "listCredentialsLists");
-        connector.listCredentialsLists();
+        connector.listCredentialsLists(0, 10);
     }
 
 
@@ -64,7 +64,7 @@ public class SipCredentialsTest extends BaseUnitTest {
     @Test
     public void listCredentials() throws ZangException, IOException {
         createExpectation("SipCredentialsTest", "listCredentials");
-        connector.listCredentials("TestCredentialsListSid");
+        connector.listCredentials("TestCredentialsListSid", 0, 10);
     }
 
 

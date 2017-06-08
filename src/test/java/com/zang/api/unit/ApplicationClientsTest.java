@@ -32,7 +32,7 @@ public class ApplicationClientsTest extends BaseUnitTest {
     public void listApplicationClients() throws ZangException, IOException {
         createExpectation("ApplicationClientsTest", "listApplicationClients");
 
-        ApplicationClientsList applicationClients = connector.listApplicationClients("TestAccountSid", "TestApplicationSid");
+        ApplicationClientsList applicationClients = connector.listApplicationClients("TestAccountSid", "TestApplicationSid", 0, 10);
 
         Assert.assertEquals(1, (int) applicationClients.getTotal());
         checkApplicationClient(applicationClients.iterator().next());
