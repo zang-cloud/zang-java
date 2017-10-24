@@ -59,6 +59,7 @@ public class Response {
 			@XmlElementRef(name = "Redirect", type = Redirect.class, required = false),
 			@XmlElementRef(name = "Ping", type = Ping.class, required = false),
 			@XmlElementRef(name = "Sms", type = Sms.class, required = false),
+			@XmlElementRef(name = "Mms", type = Mms.class, required = false),
 			@XmlElementRef(name = "GetSpeech", type = GetSpeech.class, required = false),
 			@XmlElementRef(name = "PlayLastRecording", type = JAXBElement.class, required = false),
 			@XmlElementRef(name = "Reject", type = Reject.class, required = false),
