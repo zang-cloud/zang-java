@@ -22,3 +22,8 @@ zang.properties
 zang.test.properties
 zang-java.zip
 coverage.ec
+/target/
+/bin/
+.classpath
+.project
+.settings
