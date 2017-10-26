@@ -154,6 +154,16 @@ public class ResponseBuilder {
     }
 
     /**
+     * Adds an MMS element to the response.
+     * @param mms
+     * @return
+     */
+    public ResponseBuilder mms(Mms mms) {
+        content.add(mms);
+        return this;
+    }
+
+    /**
      * Adds a PlayLastRecording element to the response.
      * @param playLastRecording
      * @return

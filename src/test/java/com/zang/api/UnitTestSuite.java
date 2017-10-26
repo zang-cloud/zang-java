@@ -9,6 +9,7 @@ import org.junit.runners.Suite;
         InboundXmlTest.class,
         CallsTest.class,
         SmsTest.class,
+        MmsTest.class,
         UsagesTest.class,
         AccountsTest.class,
         ConferencesTest.class,
