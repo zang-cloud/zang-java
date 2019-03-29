@@ -7,6 +7,8 @@ import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 public class Participant extends BaseZangObject{
 
+    @JsonProperty("call_sid")
+    private String callSid;
     @JsonProperty("conference_sid")
     private String conferenceSid;
     @JsonDeserialize(using = JsonBooleanParser.class)
@@ -20,6 +22,15 @@ public class Participant extends BaseZangObject{
     @JsonDeserialize(using = JsonDurationParser.class)
     private Integer duration;
 
+    /**
+	 * @return The sid of the call of the participant
+	 */
+	public String getCallSid() {
+		return callSid;
+	}
+	public void setCallSid(String callSid) {
+		this.callSid = callSid;
+	}
     /**
      * @return The sid of the conference the participant is a part of
      */

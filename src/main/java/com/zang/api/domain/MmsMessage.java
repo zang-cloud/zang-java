@@ -127,14 +127,12 @@ public class MmsMessage extends BaseZangObject {
 	 */
 	@Override
 	public String getApiVersion() {
-		// TODO Auto-generated method stub
-		return super.getApiVersion();
+		return apiVersion;
 	}
 
 	@Override
 	public void setApiVersion(String apiVersion) {
-		// TODO Auto-generated method stub
-		super.setApiVersion(apiVersion);
+		this.apiVersion = apiVersion;
 	}
 
 }

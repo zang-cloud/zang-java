@@ -112,7 +112,7 @@ public class CallsTest extends BaseUnitTest {
     public void applyVoiceEffect() throws ZangException, IOException {
         createExpectation("CallsTest", "applyVoiceEffect");
         CallsConnector connector = connectorFactory.getCallsConnector();
-        Call call = connector.applyVoiceEffect("TestCallSid", AudioDirection.OUT, 5, 4, 3, 2, 1);
+        Call call = connector.applyVoiceEffect("TestCallSid", AudioDirection.OUT, 5.0, 4.0, 3.0, 2.0, 1.0);
         checkCall(call);
     }
 
