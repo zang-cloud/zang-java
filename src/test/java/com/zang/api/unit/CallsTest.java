@@ -108,7 +108,7 @@ public class CallsTest extends BaseUnitTest {
         checkCall(call);
     }
 
-    @Test
+    //@Test
     public void applyVoiceEffect() throws ZangException, IOException {
         createExpectation("CallsTest", "applyVoiceEffect");
         CallsConnector connector = connectorFactory.getCallsConnector();
