@@ -26,7 +26,7 @@ To use this library, include the following dependency within pom.xml:
 <dependency>
   <groupId>com.zang.api</groupId>
   <artifactId>zang-java</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
