@@ -189,3 +189,121 @@ will render
 </Response>
 ```
 
+#### Calls Example
+
+```java
+package com.zang.api.examples;
+import com.zang.api.configuration.BasicZangConfiguration;
+import com.zang.api.connectors.SmsConnector;
+import com.zang.api.connectors.ZangConnectorFactory;
+import com.zang.api.domain.SmsMessage;
+import com.zang.api.domain.list.SmsMessageList;
+import com.zang.api.exceptions.ZangException;
+
+package com.zang.api.examples;
+
+import com.zang.api.configuration.BasicZangConfiguration;
+import com.zang.api.connectors.CallsConnector;
+import com.zang.api.connectors.ZangConnectorFactory;
+import com.zang.api.domain.Call;
+import com.zang.api.domain.enums.*;
+import com.zang.api.domain.list.CallsList;
+import com.zang.api.exceptions.ZangException;
+import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
+import com.zang.api.params.MakeCallParams;
+import com.zang.api.testutil.TestParameters;
+
+public class CallsExample {
+
+    public static void main(String[] args) {
+        BasicZangConfiguration conf = new BasicZangConfiguration();
+        conf.setSid("{AccountSid}");
+        conf.setAuthToken("{AuthToken}");
+        CallsConnector connector = ZangConnectorFactory.getCallsConnector(conf);
+
+        // list calls
+        try {
+            CallsList callsList = connector.listCalls(
+                    "+123456",
+                    "+654321",
+                    CallStatus.COMPLETED,
+                    TestParameters.getFromDate(),
+                    TestParameters.getToDate(),
+                    0,
+                    10);
+            System.out.println(callsList.getTotal());
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+
+        //make call
+        try {
+            MakeCallParams makeCallParams = MakeCallParams.builder()
+                    .setTo("+123456")
+                    .setFrom("+654321")
+                    .setUrl("TestUrl")
+                    .setMethod(HttpMethod.GET)
+                    .setFallbackUrl("FallbackUrl")
+                    .setFallbackMethod(HttpMethod.POST)
+                    .setStatusCallback("StatusCallback")
+                    .setStatusCallbackMethod(HttpMethod.GET)
+                    .setHeartbeatUrl("HeartbeatUrl")
+                    .setHeartbeatMethod(HttpMethod.GET)
+                    .setForwardedFrom("1234")
+                    .setPlayDtmf("123#")
+                    .setTimeout(122)
+                    .setHideCallerId(true)
+                    .setRecord(true)
+                    .setRecordCallback("RecordCallback")
+                    .setRecordCallbackMethod(HttpMethod.GET)
+                    .setTranscribe(true)
+                    .setTranscribeCallback("TranscribeCallback")
+                    .setStraightToVoicemail(true)
+                    .setIfMachine(IfMachine.REDIRECT)
+                    .setIfMachineUrl("IfMachineUrl")
+                    .setIfMachineMethod(HttpMethod.GET)
+                    .setSipAuthUsername("username")
+                    .setSipAuthPassword("password")
+                    .build();
+            Call call = connector.makeCall(makeCallParams);
+            System.out.println(call.getSid());
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+        //play audio to live call
+        try {
+            Call call = connector.playAudioToLiveCall("TestCallSid", "AudioUrl", RecordingAudioDirection.BOTH, true);
+            System.out.println(call.getStatus());
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+
+
+        //apply voice effects : specify the value of the effects to change.
+        // Use Doube.NaN for not changed effects.
+
+        // Set Pitch to 1.3
+        try {
+            Call call = connector.applyVoiceEffect("TestCallSid", AudioDirection.OUT, 1.3, Double.NaN, Double.NaN, Double.NaN, Double.NaN);
+            System.out.println(call.getStatus());
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+        // Set tempo to 10
+        try {
+            Call call = connector.applyVoiceEffect("TestCallSid", AudioDirection.OUT, Double.NaN, Double.NaN, Double.NaN, Double.NaN, 10.0);
+            System.out.println(call.getStatus());
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+        // Set all effects at once
+        try {
+            Call call = connector.applyVoiceEffect("TestCallSid", AudioDirection.OUT, 5.0, 4.2, -0.5, 2.0, 10.0);
+            System.out.println(call.getStatus());
+        } catch (ZangException e) {
+            e.printStackTrace();
+        }
+    }
+}
+        
+```
