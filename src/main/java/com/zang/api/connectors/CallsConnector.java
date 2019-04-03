@@ -327,18 +327,18 @@ public class CallsConnector extends BaseConnector {
      * @param direction Specifies which caller should have their voice modified. Allowed values are "in" for the
      *                  incoming caller and "out" for the outgoing caller. This value can be changed as often as you
      *                  like to control live call flow.
-     * @param pitch Sets the pitch. The lower the value, the lower the tone. Allowed values are integers greater than 0.
-     * @param pitchSemiTones Changes the pitch of audio in semitone intervals. Allowed values are integers between -14
+     * @param pitch Sets the pitch. The lower the value, the lower the tone. Allowed values are doubles greater than 0.
+     * @param pitchSemiTones Changes the pitch of audio in semitone intervals. Allowed values are doubles between -14
      *                       and 14.
-     * @param pitchOctaves Changes the pitch of the audio in octave intervals. Allowed values are integers between
+     * @param pitchOctaves Changes the pitch of the audio in octave intervals. Allowed values are doubles between
      *                     -1 and 1.
-     * @param rate Sets the rate. The lower the value, the lower the rate. Allowed values are integers greater than 0.
-     * @param tempo Sets the tempo. The lower the value, the slower the tempo. Allowed values are integers greater
+     * @param rate Sets the rate. The lower the value, the lower the rate. Allowed values are doubles greater than 0.
+     * @param tempo Sets the tempo. The lower the value, the slower the tempo. Allowed values are doubles greater
      *              than 0.
      * @return Call voice effects are applied to.
      * @throws ZangException
      */
-    public Call applyVoiceEffect(String accountSid, String callSid, AudioDirection direction, Integer pitch, Integer pitchSemiTones, Integer pitchOctaves, Integer rate, Integer tempo) throws ZangException {
+    public Call applyVoiceEffect(String accountSid, String callSid, AudioDirection direction, Double pitch, Double pitchSemiTones, Double pitchOctaves, Double rate, Double tempo) throws ZangException {
         Response response = proxy.applyVoiceEffect(accountSid, callSid, direction, pitch, pitchSemiTones, pitchOctaves, rate, tempo);
         return returnThrows(response, Call.class);
     }
@@ -349,18 +349,30 @@ public class CallsConnector extends BaseConnector {
      * @param direction Specifies which caller should have their voice modified. Allowed values are "in" for the
      *                  incoming caller and "out" for the outgoing caller. This value can be changed as often as you
      *                  like to control live call flow.
-     * @param pitch Sets the pitch. The lower the value, the lower the tone. Allowed values are integers greater than 0.
-     * @param pitchSemiTones Changes the pitch of audio in semitone intervals. Allowed values are integers between -14
+     * @param pitch Sets the pitch. The lower the value, the lower the tone. Allowed values are doubles greater than 0.
+     * @param pitchSemiTones Changes the pitch of audio in semitone intervals. Allowed values are doubles between -14
      *                       and 14.
-     * @param pitchOctaves Changes the pitch of the audio in octave intervals. Allowed values are integers between
+     * @param pitchOctaves Changes the pitch of the audio in octave intervals. Allowed values are doubles between
      *                     -1 and 1.
-     * @param rate Sets the rate. The lower the value, the lower the rate. Allowed values are integers greater than 0.
-     * @param tempo Sets the tempo. The lower the value, the slower the tempo. Allowed values are integers greater
+     * @param rate Sets the rate. The lower the value, the lower the rate. Allowed values are doubles greater than 0.
+     * @param tempo Sets the tempo. The lower the value, the slower the tempo. Allowed values are doubles greater
      *              than 0.
      * @return Call voice effects are applied to.
      * @throws ZangException
      */
-    public Call applyVoiceEffect(String callSid, AudioDirection direction, Integer pitch, Integer pitchSemiTones, Integer pitchOctaves, Integer rate, Integer tempo) throws ZangException {
+    public Call applyVoiceEffect(String callSid, AudioDirection direction, Double pitch, Double pitchSemiTones, Double pitchOctaves, Double rate, Double tempo) throws ZangException {
         return applyVoiceEffect(conf.getSid(), callSid, direction, pitch, pitchSemiTones, pitchOctaves, rate, tempo);
+    }
+
+     /**
+     * Applies voice effect to the call.
+     * @param callSid SID of Call for which voice effects will be applied to
+     * @param pitchSemiTones Changes the pitch of audio in semitone intervals. Allowed values are doubles between -14
+     *                       and 14.
+     * @return Call voice effects are applied to.
+     * @throws ZangException
+     */
+    public Call applyVoiceEffect(String callSid, Double pitchSemiTones) throws ZangException {
+        return applyVoiceEffect(conf.getSid(), callSid, AudioDirection.OUT, Double.NaN, pitchSemiTones, Double.NaN, Double.NaN, Double.NaN);
     }
 }

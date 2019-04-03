@@ -317,7 +317,7 @@
                 <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PlayLastRecording"/>
                 <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Pause"/>
             </xsd:choice>
-            <xsd:attribute name="input" type="gather_input" use="required"/>
+            <xsd:attribute name="input" type="gather_input" use="optional"/>
             <xsd:attribute name="hints" type="xsd:string" use="optional"/>
             <xsd:attribute name="language" type="bcp_languages" use="optional"/>
             <xsd:attribute name="action" type="xsd:anyURI" use="optional"/>

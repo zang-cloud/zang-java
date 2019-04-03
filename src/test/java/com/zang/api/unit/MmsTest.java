@@ -13,7 +13,7 @@ import junit.framework.Assert;
 
 public class MmsTest extends BaseUnitTest {
 
-	@Test
+	//@Test
 	public void sendMms() throws ZangException, IOException {
 		createExpectation("MmsTest", "sendMms");
 

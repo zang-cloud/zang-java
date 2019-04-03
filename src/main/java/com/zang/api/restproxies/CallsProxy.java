@@ -119,11 +119,11 @@ public interface CallsProxy {
             @PathParam("AccountSid") String accountSid,
             @PathParam("CallSid") String callSid,
             @FormParam("AudioDirection") AudioDirection direction,
-            @FormParam("Pitch") Integer pitch,
-            @FormParam("PitchSemiTones") Integer pitchSemiTones,
-            @FormParam("PitchOctaves") Integer pitchOctaves,
-            @FormParam("Rate") Integer rate,
-            @FormParam("Tempo") Integer tempo
+            @FormParam("Pitch") Double pitch,
+            @FormParam("PitchSemiTones") Double pitchSemiTones,
+            @FormParam("PitchOctaves") Double pitchOctaves,
+            @FormParam("Rate") Double rate,
+            @FormParam("Tempo") Double tempo
     );
 
 }
