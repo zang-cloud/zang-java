@@ -20,6 +20,25 @@ $ cd zang-java
 $ mvn install
 ```
 
+If you are using JDK 11, you might need to include below in the pom.xml:
+```
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.2.3</version>
+ </dependency>
+ <dependency>
+    <groupId>jakarta.xml.bind</groupId>
+    <artifactId>jakarta.xml.bind-api</artifactId>
+    <version>2.3.2</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+    <version>2.3.2</version>
+</dependency>
+```
+
 To use this library, include the following dependency within pom.xml:
 
 ```
