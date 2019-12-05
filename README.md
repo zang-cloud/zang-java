@@ -7,6 +7,8 @@ For more information about Zang, please visit: [Zang Cloud](https://www.zang.io/
 
 To read the official documentation, please visit: [Zang Docs](http://docs.zang.io/aspx/docs)
 
+Your zang account, will have AccountSid and AuthToken.
+
 ---
 
 
