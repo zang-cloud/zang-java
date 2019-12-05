@@ -57,6 +57,8 @@ Usage
 
 See the [Zang REST API documentation](http://docs.zang.io/aspx/rest) for more information.
 
+Some sample examples are given below. For more sample code, check the directory src/test/java/com/zang/api/examples
+
 #### Send SMS Example
 
 ```java
