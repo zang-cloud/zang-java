@@ -26,8 +26,8 @@ If you are using JDK 11, you might need to include below in the pom.xml:
     <groupId>javax.xml.bind</groupId>
     <artifactId>jaxb-api</artifactId>
     <version>2.2.3</version>
- </dependency>
- <dependency>
+</dependency>
+<dependency>
     <groupId>jakarta.xml.bind</groupId>
     <artifactId>jakarta.xml.bind-api</artifactId>
     <version>2.3.2</version>
