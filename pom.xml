@@ -216,7 +216,7 @@
                     <use>true</use>
                     <windowtitle>Zang Java API</windowtitle>
                     <doctitle><![CDATA[<h1>Zang Java API</h1>]]></doctitle>
-                    <bottom><![CDATA[<i>Copyright &#169; 2017 Zang, Inc. All Rights Reserved.</i>]]></bottom>
+                    <bottom><![CDATA[<i>Copyright &#169; 2017 Avaya Cloud Inc. All Rights Reserved.</i>]]></bottom>
                 </configuration>
             </plugin>
         </plugins>
