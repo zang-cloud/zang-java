@@ -1,11 +1,11 @@
 zang-java
 ==========
 
-This java library is an open source tool built to simplify interaction with the [Zang](http://www.zang.io) telephony platform. Zang makes adding voice and SMS to applications fun and easy.
+This java library is an open source tool built to simplify interaction with the [Avaya CPaaS](http://www.zang.io) telephony platform. Avaya CPaaS makes adding voice and SMS to applications fun and easy.
 
-For more information about Zang, please visit: [Avaya OneCloud™️ CPaaS ](https://www.zang.io/products/cloud)
+For more information about Avaya CPaaS, please visit: [Avaya OneCloud™️ CPaaS ](https://www.zang.io/products/cloud)
 
-To read the official documentation, please visit: [Zang Docs](http://docs.zang.io/aspx/docs)
+To read the official documentation, please visit: [Avaya CPaaS Docs](http://docs.zang.io/aspx/docs)
 
 ---
 
@@ -55,7 +55,7 @@ Usage
 
 ### REST
 
-See the [Zang REST API documentation](http://docs.zang.io/aspx/rest) for more information.
+See the [Avaya CPaaS REST API documentation](http://docs.zang.io/aspx/rest) for more information.
 
 #### Send SMS Example
 
@@ -82,7 +82,7 @@ public class SmsExample {
                     .sendSmsMessage(
                             "(XXX) XXX-XXXX",
                             "(XXX) XXX-XXXX",
-                            "This is an SMS message sent from the Zang Java helper! Easy as 1, 2, 3!",
+                            "This is an SMS message sent from the Avaya CPaaS Java helper! Easy as 1, 2, 3!",
                             null, null, null);
             System.out.println(sentSmsMessage.getStatus());
         } catch (ZangException e) {
@@ -97,7 +97,7 @@ public class SmsExample {
 
 First a configuration must be created by using one of the provided configuration classes (`BasicZangConfiguration`, `PropertiesFileZangConfiguration`) or by creating your own implementation with the `ZangConfiguration` interface.
 
-Normally you'll want to just enter your Zang Platform *AccountSid* and *AuthToken*, but you can also define a proxy server or change the base API URL.
+Normally you'll want to just enter your Avaya CPaaS Platform *AccountSid* and *AuthToken*, but you can also define a proxy server or change the base API URL.
 
 Next you'll have to create a connector by using `ZangConnectorFactory`. This can be done in multiple ways. The usual way is to instantiate `ZangConnectorFactory`, pass the configuration object to the factory and have it instantiate `ZangConnector` objects:
 ```java
@@ -162,7 +162,7 @@ for(Usage usage : list) {
 
 ### InboundXML
 
-InboundXML is an XML dialect which enables you to control phone call flow. For more information please visit the [Zang InboundXML documentation](http://docs.zang.io/aspx/inboundxml).
+InboundXML is an XML dialect which enables you to control phone call flow. For more information please visit the [Avaya CPaaS InboundXML documentation](http://docs.zang.io/aspx/inboundxml).
 
 ##### <Say> Example
 
