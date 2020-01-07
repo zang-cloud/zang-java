@@ -1,7 +1,7 @@
 package com.zang.api.configuration;
 
 /**
- * The basic interface which must return the Zang configuration parameters.
+ * The basic interface which must return the Avaya CPaaS configuration parameters.
  */
 public interface ZangConfiguration {
     /**

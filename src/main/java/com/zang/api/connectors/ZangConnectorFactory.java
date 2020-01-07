@@ -5,7 +5,7 @@ import com.zang.api.configuration.ZangConfiguration;
 import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 /**
- * The class used for all forms of communication with the Zang REST API. It can
+ * The class used for all forms of communication with the Avaya CPaaS REST API. It can
  * be used to create connectors based on a default configuration provided to
  * this factory, or to create connectors with explicit configurations.
  */

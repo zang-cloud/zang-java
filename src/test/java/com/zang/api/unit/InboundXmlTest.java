@@ -177,7 +177,7 @@ public class InboundXmlTest {
                                                 .build())
                                 .number(Number.builder().setNumber("+385981945644").build())
                                 .build())
-                        .say(Say.builder().setText("Welcome to Zang my friend!").build())
+                        .say(Say.builder().setText("Welcome to Avaya CPaaS my friend!").build())
                         .build()
                         .toXml();
 

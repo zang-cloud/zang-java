@@ -21,7 +21,7 @@ public class SmsExample {
                     .sendSmsMessage(
                             "(XXX) XXX-XXXX",
                             "(XXX) XXX-XXXX",
-                            "This is an SMS message sent from the Zang Java wrapper! Easy as 1, 2, 3!",
+                            "This is an SMS message sent from the Avaya CPaaS Java wrapper! Easy as 1, 2, 3!",
                             null, null, null);
 
 

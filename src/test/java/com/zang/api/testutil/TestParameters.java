@@ -33,7 +33,7 @@ public class TestParameters extends Properties {
         try {
             load(url.openStream());
         } catch (IOException e) {
-            logger.error("Cannot load or find Zang test properties file on classpath: "
+            logger.error("Cannot load or find Avaya CPaaS test properties file on classpath: "
                     + propFileName, e);
         }
     }

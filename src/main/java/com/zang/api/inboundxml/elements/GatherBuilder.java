@@ -149,7 +149,7 @@ public class GatherBuilder {
 	}
 
 	/**
-	 * A list of inputs that Zang should accept. Default value is "dtmf". Accepted
+	 * A list of inputs that Avaya CPaaS should accept. Default value is "dtmf". Accepted
 	 * values are "dtmf", "speech", or "speech dtmf"
 	 * 
 	 * @param input
@@ -161,7 +161,7 @@ public class GatherBuilder {
 	}
 
 	/**
-	 * A set of words or phrases that Zang should listen for. Commas should seperate
+	 * A set of words or phrases that Avaya CPaaS should listen for. Commas should seperate
 	 * words.
 	 * 
 	 * @param hints

@@ -12,7 +12,7 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 import javax.ws.rs.core.Response;
 
 /**
- * Used for all forms of communication with the Usages endpoint of the Zang REST API.
+ * Used for all forms of communication with the Usages endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class UsagesConnector extends BaseConnector {
@@ -53,7 +53,7 @@ public class UsagesConnector extends BaseConnector {
      *            values are integers between 1 and 31 depending on the month.
      * @param month Filters usage by month. Allowed values are integers between 1 and 12.
      * @param year Filters usage by year. Allowed values are valid years in integer form.
-     * @param product Filters usage by a specific Zang product.
+     * @param product Filters usage by a specific Avaya CPaaS product.
      * @param page Page to return
      * @param pageSize Number of items to return per page
      * @return A list of Usages
@@ -76,7 +76,7 @@ public class UsagesConnector extends BaseConnector {
      *            values are integers between 1 and 31 depending on the month.
      * @param month Filters usage by month. Allowed values are integers between 1 and 12.
      * @param year Filters usage by year. Allowed values are valid years in integer form.
-     * @param product Filters usage by a specific Zang product.
+     * @param product Filters usage by a specific Avaya CPaaS product.
      * @param page Page to return
      * @param pageSize Number of items to return per page
      * @return A list of Usages

@@ -17,7 +17,7 @@ import com.zang.api.exceptions.ZangException;
 import com.zang.api.http.DefaultExecutor;
 
 /**
- * The class used for all forms of communication with the Zang REST API.
+ * The class used for all forms of communication with the Avaya CPaaS REST API.
  */
 class BaseConnector {
 

@@ -10,7 +10,7 @@ import com.zang.api.domain.enums.MmsDirection;
 import com.zang.api.json.JsonDateParser;
 
 /**
- * Text messages sent to and from Zang phone numbers are represented with the
+ * Text messages sent to and from Avaya CPaaS phone numbers are represented with the
  * Mms resource.
  */
 // @JsonIgnoreProperties(ignoreUnknown = true)
@@ -87,7 +87,7 @@ public class MmsMessage extends BaseZangObject {
 
 	/**
 	 * @return Specifies the direction of the MMS: messages from REST API are
-	 *         "outbound-api", messages from incoming phone numbers to Zang are
+	 *         "outbound-api", messages from incoming phone numbers to Avaya CPaaS are
 	 *         "incoming", messages from InboundXML initiated during an outbound
 	 *         call are "outbound-call", and messages from InboundXML initiated via
 	 *         an mms reply are "outbound-reply".

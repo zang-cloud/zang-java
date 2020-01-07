@@ -14,7 +14,7 @@
     </parent>
 
     <name>zang-java</name>
-    <description>Java helper library for Zang REST services</description>
+    <description>Java helper library for Avaya CPaaS REST services</description>
     <url>http://www.zang.io</url>
 
     <licenses>
@@ -214,9 +214,9 @@
                     <author>true</author>
                     <version>true</version>
                     <use>true</use>
-                    <windowtitle>Zang Java API</windowtitle>
-                    <doctitle><![CDATA[<h1>Zang Java API</h1>]]></doctitle>
-                    <bottom><![CDATA[<i>Copyright &#169; 2017 Zang, Inc. All Rights Reserved.</i>]]></bottom>
+                    <windowtitle>Avaya CPaaS Java API</windowtitle>
+                    <doctitle><![CDATA[<h1>Avaya CPaaS Java API</h1>]]></doctitle>
+                    <bottom><![CDATA[<i>Copyright &#169; 2017 Avaya Cloud Inc. All Rights Reserved.</i>]]></bottom>
                 </configuration>
             </plugin>
         </plugins>

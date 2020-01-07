@@ -12,7 +12,7 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 
 /**
- * Used for all forms of communication with the Incoming Phone Numbers endpoint of the Zang REST API.
+ * Used for all forms of communication with the Incoming Phone Numbers endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class IncomingPhoneNumbersConnector extends BaseConnector {

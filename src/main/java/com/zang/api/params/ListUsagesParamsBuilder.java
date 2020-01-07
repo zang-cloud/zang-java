@@ -61,7 +61,7 @@ public class ListUsagesParamsBuilder {
     }
 
     /**
-     * Filters usage by a specific Zang product.
+     * Filters usage by a specific Avaya CPaaS product.
      * @param product
      * @return
      */

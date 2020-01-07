@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 
 /**
- * Used for all forms of communication with the Fraud Control endpoint of the Zang REST API.
+ * Used for all forms of communication with the Fraud Control endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class FraudControlConnector extends BaseConnector {
