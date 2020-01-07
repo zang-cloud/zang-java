@@ -11,7 +11,7 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 
 /**
- * Used for all forms of communication with the Sip IP Access Control Lists endpoint of the Zang REST API.
+ * Used for all forms of communication with the Sip IP Access Control Lists endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class SipIpAccessControlListsConnector extends BaseConnector {

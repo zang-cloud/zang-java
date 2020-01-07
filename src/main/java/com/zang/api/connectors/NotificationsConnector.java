@@ -10,7 +10,7 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 
 /**
- * Used for all forms of communication with the Notifications endpoint of the Zang REST API.
+ * Used for all forms of communication with the Notifications endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class NotificationsConnector extends BaseConnector {

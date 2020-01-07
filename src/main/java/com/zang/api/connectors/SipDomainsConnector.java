@@ -15,7 +15,7 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 
 
 /**
- * Used for all forms of communication with the Sip Domains endpoint of the Zang REST API.
+ * Used for all forms of communication with the Sip Domains endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class SipDomainsConnector extends BaseConnector {
@@ -74,7 +74,7 @@ public class SipDomainsConnector extends BaseConnector {
     /**
      * Create a new SIP domain.
      * @param accountSid Account SID
-     * @param domainName An address on Zang uniquely associated with your account and through which all your SIP
+     * @param domainName An address on Avaya CPaaS uniquely associated with your account and through which all your SIP
      *                   traffic is routed.
      * @param friendlyName A human-readable name associated with this domain.
      * @param voiceUrl The URL requested when a call is received by your domain.
@@ -84,7 +84,7 @@ public class SipDomainsConnector extends BaseConnector {
      * @param heartbeatUrl URL that can be requested every 60 seconds during the call to notify of elapsed time and
      *                     pass other general information.
      * @param heartbeatMethod 	Specifies the HTTP method used to request HeartbeatUrl.
-     * @param voiceStatusCallback The URL that Zang will use to send you status notifications regarding your SIP call.
+     * @param voiceStatusCallback The URL that Avaya CPaaS will use to send you status notifications regarding your SIP call.
      * @param voiceStatusCallbackMethod The HTTP method used when requesting the VoiceStatusCallback.
      * @return Created SIP domain.
      * @throws ZangException
@@ -95,7 +95,7 @@ public class SipDomainsConnector extends BaseConnector {
 
     /**
      * Create a new SIP domain.
-     * @param domainName An address on Zang uniquely associated with your account and through which all your SIP
+     * @param domainName An address on Avaya CPaaS uniquely associated with your account and through which all your SIP
      *                   traffic is routed.
      * @param friendlyName A human-readable name associated with this domain.
      * @param voiceUrl The URL requested when a call is received by your domain.
@@ -105,7 +105,7 @@ public class SipDomainsConnector extends BaseConnector {
      * @param heartbeatUrl URL that can be requested every 60 seconds during the call to notify of elapsed time and
      *                     pass other general information.
      * @param heartbeatMethod 	Specifies the HTTP method used to request HeartbeatUrl.
-     * @param voiceStatusCallback The URL that Zang will use to send you status notifications regarding your SIP call.
+     * @param voiceStatusCallback The URL that Avaya CPaaS will use to send you status notifications regarding your SIP call.
      * @param voiceStatusCallbackMethod The HTTP method used when requesting the VoiceStatusCallback.
      * @return Created SIP domain.
      * @throws ZangException
@@ -138,7 +138,7 @@ public class SipDomainsConnector extends BaseConnector {
      * @param heartbeatUrl URL that can be requested every 60 seconds during the call to notify of elapsed time and
      *                     pass other general information.
      * @param heartbeatMethod 	Specifies the HTTP method used to request HeartbeatUrl.
-     * @param voiceStatusCallback The URL that Zang will use to send you status notifications regarding your SIP call.
+     * @param voiceStatusCallback The URL that Avaya CPaaS will use to send you status notifications regarding your SIP call.
      * @param voiceStatusCallbackMethod The HTTP method used when requesting the VoiceStatusCallback.
      * @return The updated Domain.
      * @throws ZangException
@@ -158,7 +158,7 @@ public class SipDomainsConnector extends BaseConnector {
      * @param heartbeatUrl URL that can be requested every 60 seconds during the call to notify of elapsed time and
      *                     pass other general information.
      * @param heartbeatMethod 	Specifies the HTTP method used to request HeartbeatUrl.
-     * @param voiceStatusCallback The URL that Zang will use to send you status notifications regarding your SIP call.
+     * @param voiceStatusCallback The URL that Avaya CPaaS will use to send you status notifications regarding your SIP call.
      * @param voiceStatusCallbackMethod The HTTP method used when requesting the VoiceStatusCallback.
      * @return The updated Domain.
      * @throws ZangException

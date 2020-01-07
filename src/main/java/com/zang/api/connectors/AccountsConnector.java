@@ -9,7 +9,7 @@ import org.jboss.resteasy.client.jaxrs.ClientHttpEngine;
 import javax.ws.rs.core.Response;
 
 /**
- * Used for all forms of communication with the Accounts endpoint of the Zang REST API.
+ * Used for all forms of communication with the Accounts endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class AccountsConnector extends BaseConnector {

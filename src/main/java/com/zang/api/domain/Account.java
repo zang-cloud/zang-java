@@ -5,7 +5,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import java.math.BigDecimal;
 
 /**
- * An account resource provides information about a single Zang account.
+ * An account resource provides information about a single Avaya CPaaS account.
  */
 public class Account extends BaseZangObject {
 
@@ -30,7 +30,7 @@ public class Account extends BaseZangObject {
     private SubresourceUris subresourceUris;
 
     /**
-     * @return This is an alias that can be created for Zang accounts. By
+     * @return This is an alias that can be created for Avaya CPaaS accounts. By
      * default, it is the email used to create the account but a custom
      * name can be used as long as it is shorter than 64 characters.
      */
@@ -43,7 +43,7 @@ public class Account extends BaseZangObject {
     }
 
     /**
-     * @return This is the status of the Zang account being requested. The
+     * @return This is the status of the Avaya CPaaS account being requested. The
      * state of the status can be either active, suspended, or closed.
      */
     public String getStatus() {

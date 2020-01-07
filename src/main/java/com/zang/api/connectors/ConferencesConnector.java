@@ -14,7 +14,7 @@ import java.util.Date;
 
 
 /**
- * Used for all forms of communication with the Conferences endpoint of the Zang REST API.
+ * Used for all forms of communication with the Conferences endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class ConferencesConnector extends BaseConnector {

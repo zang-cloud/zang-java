@@ -15,7 +15,7 @@ import java.util.Date;
 
 
 /**
- * Used for all forms of communication with the Calls endpoint of the Zang REST API.
+ * Used for all forms of communication with the Calls endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class CallsConnector extends BaseConnector {
@@ -139,11 +139,11 @@ public class CallsConnector extends BaseConnector {
      *                           still be saved to the system and available either in your Transcriptions Logs or via
      *                           a REST List Transcriptions request. Url length is limited to 200 characters.
      * @param straightToVoicemail Specifies whether this call should be sent straight to the user's voicemail.
-     * @param ifMachine Specifies how Zang should handle this call if it goes to voicemail. Allowed values are
+     * @param ifMachine Specifies how Avaya CPaaS should handle this call if it goes to voicemail. Allowed values are
      *                  "continue" to proceed as normal, "redirect" to redirect the call to the ifMachineUrl, or
      *                  "hangup" to hang up the call. Hangup occurs when the tone is played. IfMachine accuracy is
      *                  around 90% and may not work in all countries.
-     * @param ifMachineUrl The URL Zang will redirect to for instructions if a voicemail machine is detected while the
+     * @param ifMachineUrl The URL Avaya CPaaS will redirect to for instructions if a voicemail machine is detected while the
      *                     IfMachine parameter is set to "redirect". Url length is limited to 200 characters.
      * @param ifMachineMethod The HTTP method used to request the IfMachineUrl.
      * @param sipAuthUsername Your authenticated SIP username, used only for SIP calls.

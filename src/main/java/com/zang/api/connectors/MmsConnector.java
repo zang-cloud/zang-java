@@ -35,7 +35,7 @@ public class MmsConnector extends BaseConnector {
 	 *            Must be an MMS capable number. The value does not have to be in
 	 *            any specific format.
 	 * @param from
-	 *            Must be a Zang number associated with your account. The value does
+	 *            Must be a Avaya CPaaS number associated with your account. The value does
 	 *            not have to be in any specific format.
 	 * @param body
 	 *            Text of the MMS to be sent.
@@ -60,7 +60,7 @@ public class MmsConnector extends BaseConnector {
 	 *            Must be an MMS capable number. The value does not have to be in
 	 *            any specific format.
 	 * @param from
-	 *            Must be a Zang number associated with your account. The value does
+	 *            Must be a Avaya CPaaS number associated with your account. The value does
 	 *            not have to be in any specific format.
 	 * @param body
 	 *            Text of the MMS to be sent.

@@ -13,7 +13,7 @@ import java.util.List;
 
 
 /**
- * Used for all forms of communication with the Carrier Services endpoint of the Zang REST API.
+ * Used for all forms of communication with the Carrier Services endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class CarrierServicesConnector extends BaseConnector {

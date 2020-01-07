@@ -15,7 +15,7 @@ import java.util.Date;
 
 
 /**
- * Used for all forms of communication with the Recordings endpoint of the Zang REST API.
+ * Used for all forms of communication with the Recordings endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class RecordingsConnector extends BaseConnector {

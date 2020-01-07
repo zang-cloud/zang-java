@@ -8,7 +8,7 @@ import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import java.math.BigDecimal;
 
 /**
- * If you want to add a new Zang number, you need to know what ones are
+ * If you want to add a new Avaya CPaaS number, you need to know what ones are
  * available. Our REST API provides a way to request a list of available numbers
  * along with all of their resource properties so you know the numbers you have
  * to choose from.

@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.util.Date;
 
 /**
- * Used for all forms of communication with the Sms endpoint of the Zang REST API.
+ * Used for all forms of communication with the Sms endpoint of the Avaya CPaaS REST API.
  * @see ZangConnectorFactory
  */
 public class SmsConnector extends BaseConnector {
@@ -108,7 +108,7 @@ public class SmsConnector extends BaseConnector {
      * Sends an SMS Message.
      * @param accountSid Account SID
      * @param to Must be an SMS capable number. The value does not have to be in any specific format.
-     * @param from Must be a Zang number associated with your account. The value does not have to be in any specific
+     * @param from Must be a Avaya CPaaS number associated with your account. The value does not have to be in any specific
      *             format.
      * @param body Text of the SMS to be sent.
      * @param statusCallback The URL that will be sent information about the SMS. Url length is limited to 200 characters.
@@ -129,7 +129,7 @@ public class SmsConnector extends BaseConnector {
     /**
      * Sends an SMS Message.
      * @param to Must be an SMS capable number. The value does not have to be in any specific format.
-     * @param from Must be a Zang number associated with your account. The value does not have to be in any specific
+     * @param from Must be a Avaya CPaaS number associated with your account. The value does not have to be in any specific
      *             format.
      * @param body Text of the SMS to be sent.
      * @param statusCallback The URL that will be sent information about the SMS. Url length is limited to 200 characters.
