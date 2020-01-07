@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * Text messages sent to and from Zang phone numbers are represented with the Sms resource.
+ * Text messages sent to and from Avaya CPaaS phone numbers are represented with the Sms resource.
  */
 //@JsonIgnoreProperties(ignoreUnknown = true)
 public class SmsMessage extends BaseZangObject {

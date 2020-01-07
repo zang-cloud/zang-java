@@ -19,7 +19,7 @@ public class MmsExample {
 		// send mms message
 		try {
 			MmsMessage sentMmsMessage = conn.sendMmsMessage("(XXX) XXX-XXXX", "(XXX) XXX-XXXX",
-					"This is an MMS message sent from the Zang Java wrapper! Easy as 1, 2, 3!", null,
+					"This is an MMS message sent from the Avaya CPaaS Java wrapper! Easy as 1, 2, 3!", null,
 					URI.create("https://media.giphy.com/media/zZJzLrxmx5ZFS/giphy.gif"));
 
 			System.out.println(sentMmsMessage.getMmsSid());

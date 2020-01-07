@@ -46,7 +46,7 @@ public class DomainParamsBuilder {
     }
 
     /**
-     * Used only for create domain requests. An address on Zang uniquely associated with your account and through which all your SIP traffic is routed.
+     * Used only for create domain requests. An address on Avaya CPaaS uniquely associated with your account and through which all your SIP traffic is routed.
      * @param domainName
      * @return
      */
@@ -127,7 +127,7 @@ public class DomainParamsBuilder {
     }
 
     /**
-     * The URL that Zang will use to send you status notifications regarding your SIP call.
+     * The URL that Avaya CPaaS will use to send you status notifications regarding your SIP call.
      * @param voiceStatusCallback
      * @return
      */

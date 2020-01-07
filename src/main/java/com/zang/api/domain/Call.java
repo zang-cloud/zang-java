@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * A call resource provides information about an individual call that has
  * occurred through Zang. Both inbound and outbound voice communication
- * through Zang are categorized as calls.
+ * through Avaya CPaaS are categorized as calls.
  *
  */
 public class Call extends BaseZangObject{
@@ -87,7 +87,7 @@ public class Call extends BaseZangObject{
 
     /**
      *
-     * @return The sid of the Zang number calling, or being called. If no Zang phone number is involved in the call, this property is empty.
+     * @return The sid of the Avaya CPaaS number calling, or being called. If no Avaya CPaaS phone number is involved in the call, this property is empty.
      */
     public String getPhoneNumberSid() {
         return phoneNumberSid;
@@ -154,7 +154,7 @@ public class Call extends BaseZangObject{
 
     /**
      *
-     * @return The direction of the call from the perspective of Zang. Inbound for calls to Zang, outbound-api for calls from the Zang via REST request or outbound-dial for calls from Zang via InboundXML.
+     * @return The direction of the call from the perspective of Zang. Inbound for calls to Zang, outbound-api for calls from the Avaya CPaaS via REST request or outbound-dial for calls from Avaya CPaaS via InboundXML.
      */
     public CallDirection getDirection() {
         return direction;

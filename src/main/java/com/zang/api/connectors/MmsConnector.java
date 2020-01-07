@@ -12,7 +12,7 @@ import com.zang.api.exceptions.ZangException;
 import com.zang.api.restproxies.MmsProxy;
 
 /**
- * Used for all forms of communication with the Mms endpoint of the Zang REST
+ * Used for all forms of communication with the Mms endpoint of the Avaya CPaaS REST
  * API.
  * 
  * @see ZangConnectorFactory

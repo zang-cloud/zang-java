@@ -272,7 +272,7 @@ public class MakeCallParamsBuilder {
     }
 
     /**
-     * Specifies how Zang should handle this call if it goes to voicemail. Allowed values are
+     * Specifies how Avaya CPaaS should handle this call if it goes to voicemail. Allowed values are
      *                  "continue" to proceed as normal, "redirect" to redirect the call to the ifMachineUrl, or
      *                  "hangup" to hang up the call. Hangup occurs when the tone is played. IfMachine accuracy is
      *                  around 90% and may not work in all countries.
@@ -285,7 +285,7 @@ public class MakeCallParamsBuilder {
     }
 
     /**
-     * The URL Zang will redirect to for instructions if a voicemail machine is detected while the
+     * The URL Avaya CPaaS will redirect to for instructions if a voicemail machine is detected while the
      *                     IfMachine parameter is set to "redirect". Url length is limited to 200 characters.
      * @param ifMachineUrl
      * @return

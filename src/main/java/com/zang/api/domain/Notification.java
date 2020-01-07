@@ -9,7 +9,7 @@ import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import java.util.Date;
 
 /**
- * Notifications that Zang sends to users regarding their account and Zang
+ * Notifications that Avaya CPaaS sends to users regarding their account and Zang
  * phone numbers activity.
  */
 public class Notification extends BaseZangObject {
@@ -93,7 +93,7 @@ public class Notification extends BaseZangObject {
     }
 
     /**
-     * @return The date the Zang account received the actual notification. May be a bit different from DateCreated due to buffering.
+     * @return The date the Avaya CPaaS account received the actual notification. May be a bit different from DateCreated due to buffering.
      */
     public Date getMessageDate() {
         return messageDate;
