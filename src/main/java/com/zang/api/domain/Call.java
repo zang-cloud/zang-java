@@ -8,6 +8,7 @@ import com.zang.api.json.JsonDateParser;
 import com.zang.api.json.JsonDurationParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -18,6 +19,7 @@ import java.util.Date;
  * through Zang are categorized as calls.
  *
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Call extends BaseZangObject{
 
 

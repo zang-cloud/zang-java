@@ -3,6 +3,7 @@ package com.zang.api.domain;
 import com.zang.api.json.JsonDurationParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
  * recordings are represented as the same type of resource, regardless of
  * whether initiated via InboundXML or the REST API.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Recording extends BaseZangObject {
     @JsonProperty("call_sid")
     private String callSid;

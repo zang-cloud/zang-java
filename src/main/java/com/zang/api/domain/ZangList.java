@@ -1,10 +1,12 @@
 package com.zang.api.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.Iterator;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class ZangList<T> implements Iterable<T> {
 
     Integer page;

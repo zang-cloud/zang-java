@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import com.zang.api.domain.enums.MmsDirection;
 import com.zang.api.json.JsonDateParser;
@@ -13,7 +14,7 @@ import com.zang.api.json.JsonDateParser;
  * Text messages sent to and from Zang phone numbers are represented with the
  * Mms resource.
  */
-// @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MmsMessage extends BaseZangObject {
 	@JsonDeserialize(using = JsonDateParser.class)
 	@JsonProperty(value = "date_created")

@@ -3,10 +3,12 @@ package com.zang.api.domain;
 import com.zang.api.json.JsonBooleanParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  * The features available with this incoming phone number. The voice and sms properties are either True or False depending on what the number is capable of.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PhoneNumberCapabilities {
 	@JsonDeserialize(using = JsonBooleanParser.class)
 	@JsonProperty("voice")

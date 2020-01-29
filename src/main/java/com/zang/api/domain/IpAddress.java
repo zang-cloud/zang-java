@@ -1,7 +1,9 @@
 package com.zang.api.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class IpAddress extends BaseZangObject {
 
 
