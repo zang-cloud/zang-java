@@ -4,6 +4,7 @@ import com.zang.api.domain.enums.AvailableNumberType;
 import com.zang.api.json.JsonBooleanParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
  * Requests only return a list of available resources based on the filtering
  * parameters sent with the request.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AvailablePhoneNumber {
     @JsonProperty("friendly_name")
     private String friendlyName;

@@ -1,12 +1,14 @@
 package com.zang.api.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 
 /**
  * An account resource provides information about a single Zang account.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Account extends BaseZangObject {
 
     @JsonProperty(value = "friendly_name")

@@ -6,9 +6,11 @@ import com.zang.api.json.JsonBooleanParser;
 import com.zang.api.json.JsonDateParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class IncomingPhoneNumber extends BaseZangObject{
 	@JsonProperty("friendly_name")
 	private String friendlyName;
