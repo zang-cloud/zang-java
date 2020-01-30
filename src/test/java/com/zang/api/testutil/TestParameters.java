@@ -1,7 +1,5 @@
 package com.zang.api.testutil;
 
-import org.apache.log4j.Logger;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
@@ -10,7 +8,6 @@ import java.util.Properties;
 
 public class TestParameters extends Properties {
     private static final long serialVersionUID = -7348144965758395514L;
-    Logger logger = Logger.getLogger(TestParameters.class);
 
     private static Date fromDate;
     private static Date toDate;
@@ -33,8 +30,7 @@ public class TestParameters extends Properties {
         try {
             load(url.openStream());
         } catch (IOException e) {
-            logger.error("Cannot load or find Zang test properties file on classpath: "
-                    + propFileName, e);
+            System.out.println("Error: Cannot load or find Zang test properties file on classpath: " + propFileName + e);
         }
     }
 
