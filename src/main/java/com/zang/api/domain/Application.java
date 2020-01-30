@@ -4,7 +4,9 @@ import com.zang.api.domain.enums.HttpMethod;
 import com.zang.api.json.JsonBooleanParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Application extends BaseZangObject {
 
     @JsonProperty("friendly_name")

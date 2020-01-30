@@ -6,12 +6,14 @@ import com.zang.api.domain.enums.TranscriptionStatus;
 import com.zang.api.json.JsonDurationParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 
 /**
  * This resource represents a transcription of a Recording or audio.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Transcription extends BaseZangObject {
     private TranscriptionStatus status;
     private TranscriptionQuality type;

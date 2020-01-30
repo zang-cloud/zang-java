@@ -2,12 +2,14 @@ package com.zang.api.domain;
 
 import com.zang.api.domain.enums.Product;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 
 /**
  * A usage resource provides information about the usage of an item returned by List Usages.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Usage extends BaseZangObject {
 
     private Product product;

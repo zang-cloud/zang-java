@@ -1,8 +1,10 @@
 package com.zang.api.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Credential extends BaseZangObject {
 
     private String username;

@@ -3,8 +3,9 @@ package com.zang.api.domain;
 import com.zang.api.domain.enums.AuthType;
 import com.zang.api.domain.enums.HttpMethod;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Domain extends BaseZangObject {
 
     @JsonProperty(value = "friendly_name")

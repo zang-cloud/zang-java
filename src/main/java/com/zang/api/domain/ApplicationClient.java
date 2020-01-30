@@ -2,7 +2,9 @@ package com.zang.api.domain;
 
 import com.zang.api.domain.enums.PresenceStatus;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ApplicationClient extends BaseZangObject {
 
     @JsonProperty("presence_status")

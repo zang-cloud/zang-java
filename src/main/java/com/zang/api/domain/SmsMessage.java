@@ -4,6 +4,7 @@ import com.zang.api.domain.enums.SmsDirection;
 import com.zang.api.json.JsonDateParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
 /**
  * Text messages sent to and from Zang phone numbers are represented with the Sms resource.
  */
-//@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SmsMessage extends BaseZangObject {
     @JsonDeserialize(using = JsonDateParser.class)
     @JsonProperty(value = "date_sent")

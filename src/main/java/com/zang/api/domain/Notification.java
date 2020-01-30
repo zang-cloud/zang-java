@@ -5,6 +5,7 @@ import com.zang.api.domain.enums.LogLevel;
 import com.zang.api.json.JsonDateParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.Date;
 
@@ -12,6 +13,7 @@ import java.util.Date;
  * Notifications that Zang sends to users regarding their account and Zang
  * phone numbers activity.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Notification extends BaseZangObject {
     @JsonProperty("call_sid")
     private String callSid;

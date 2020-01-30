@@ -2,12 +2,14 @@ package com.zang.api.domain;
 
 import com.zang.api.domain.enums.ConferenceStatus;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 /**
  * Resource properties about conference calls that occurred through a Zang
  * account can be requested using our REST API. To view a single conference
  * resource, simply request it by its ConferenceSid.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Conference extends BaseZangObject{
     @JsonProperty("friendly_name")
     private String friendlyName;

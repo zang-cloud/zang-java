@@ -4,9 +4,11 @@ import com.zang.api.domain.enums.FraudControlType;
 import com.zang.api.json.JsonDateParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.util.Date;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FraudControlRule extends BaseZangObject {
     private FraudControlType type;
     @JsonProperty("is_lock")

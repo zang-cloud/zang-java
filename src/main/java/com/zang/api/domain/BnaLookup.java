@@ -1,9 +1,11 @@
 package com.zang.api.domain;
 
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BnaLookup extends BaseZangObject {
 
     @JsonProperty(value = "phone_number")

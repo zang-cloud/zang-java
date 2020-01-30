@@ -4,7 +4,9 @@ import com.zang.api.json.JsonBooleanParser;
 import com.zang.api.json.JsonDurationParser;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Participant extends BaseZangObject{
 
     @JsonProperty("call_sid")
