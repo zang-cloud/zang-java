@@ -184,4 +184,20 @@ public class InboundXmlTest {
         System.out.println(result);
     }
 
+    @Test
+    public void createConnectXml() throws ZangException {
+        String result =
+                Response.builder()
+                        .connect(Connect.builder()
+                                .agent(Agent.builder()
+                                                .setAgentId("1234")
+                                                .build())
+                                .setAction("http://sample")
+                                .setMethod(HttpMethod.POST)
+                                .build())
+                        .build()
+                        .toXml();
+
+        System.out.println(result);
+    }
 }
