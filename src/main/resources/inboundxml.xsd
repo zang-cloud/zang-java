@@ -329,7 +329,7 @@
     </xsd:element>
     <xsd:element name="Connect">
         <xsd:complexType mixed="true">
-            <xsd:choice maxOccurs="unbounded" minOccurs="0">
+            <xsd:choice maxOccurs="1" minOccurs="1">
                 <xsd:element ref="Agent"/>
             </xsd:choice>
             <xsd:attribute name="action" type="xsd:anyURI" use="optional"/>

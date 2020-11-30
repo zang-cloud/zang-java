@@ -13,7 +13,7 @@ import java.util.List;
 public class Connect implements ResponseElement {
 
 	@XmlElementRefs({
-        @XmlElementRef(name = "Agent", type = Agent.class, required = false)
+        @XmlElementRef(name = "Agent", type = Agent.class, required = true)
 	})
 	@XmlMixed
 	protected List<ConnectElement> content;
