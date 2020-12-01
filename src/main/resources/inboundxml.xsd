@@ -327,6 +327,15 @@
             <xsd:attribute name="numDigits" type="xsd:integer" use="optional"/>
         </xsd:complexType>
     </xsd:element>
+    <xsd:element name="Connect">
+        <xsd:complexType mixed="true">
+            <xsd:choice maxOccurs="1" minOccurs="1">
+                <xsd:element ref="Agent"/>
+            </xsd:choice>
+            <xsd:attribute name="action" type="xsd:anyURI" use="optional"/>
+            <xsd:attribute name="method" type="http_methods" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
     <xsd:element name="GetSpeech">
         <xsd:complexType mixed="true">
             <xsd:choice maxOccurs="unbounded" minOccurs="0">
@@ -356,6 +365,7 @@
             <xsd:attribute name="sendOnPreanswer" type="booleans" use="optional"/>
         </xsd:complexType>
     </xsd:element>
+    <xsd:element name="Agent"/>
     <xsd:element name="User">
         <xsd:complexType mixed="true">
             <xsd:attribute name="sendDigits" type="xsd:string" use="optional"/>
@@ -422,6 +432,7 @@
                 <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Answer"/>
                 <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PlayLastRecording"/>
                 <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Gather"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Connect"/>
                 <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Record"/>
                 <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Dial"/>
                 <xsd:element maxOccurs="unbounded" minOccurs="0" ref="Hangup"/>

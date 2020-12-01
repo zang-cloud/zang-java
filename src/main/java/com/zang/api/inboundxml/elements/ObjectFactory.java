@@ -52,6 +52,16 @@ public class ObjectFactory {
     }
 
 
+    public Connect createConnect() {
+        return new Connect();
+    }
+
+
+    public Agent createAgent() {
+        return new Agent();
+    }
+
+
     public Play createPlay() {
         return new Play();
     }

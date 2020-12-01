@@ -67,7 +67,8 @@ public class Response {
 			@XmlElementRef(name = "Hangup", type = Hangup.class, required = false),
 			@XmlElementRef(name = "Say", type = Say.class, required = false),
 			@XmlElementRef(name = "Play", type = Play.class, required = false),
-			@XmlElementRef(name = "Gather", type = Gather.class, required = false) })
+			@XmlElementRef(name = "Gather", type = Gather.class, required = false),
+			@XmlElementRef(name = "Connect", type = Connect.class, required = false) })
 	@XmlMixed
 	protected List<ResponseElement> content;
 	@XmlAttribute(name = "statusCallback")
