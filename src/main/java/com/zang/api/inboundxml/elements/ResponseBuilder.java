@@ -54,6 +54,16 @@ public class ResponseBuilder {
     }
 
     /**
+     * Adds a Connect element to the response.
+     * @param connect
+     * @return
+     */
+    public ResponseBuilder connect(Connect connect) {
+        content.add(connect);
+        return this;
+    }
+
+    /**
      * Adds a GetSpeech element to the response.
      * @param getSpeech
      * @return

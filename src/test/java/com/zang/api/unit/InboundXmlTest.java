@@ -9,6 +9,9 @@ import com.zang.api.inboundxml.ZangInboundXml;
 import com.zang.api.inboundxml.elements.*;
 import com.zang.api.inboundxml.elements.Number;
 import com.zang.api.inboundxml.elements.enums.*;
+
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class InboundXmlTest {
@@ -184,4 +187,20 @@ public class InboundXmlTest {
         System.out.println(result);
     }
 
+    @Test
+    public void createConnectXml() throws ZangException {
+    	String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Response><Connect action=\"http://sample\" method=\"POST\"><Agent>1234</Agent></Connect></Response>";
+        String result =
+                Response.builder()
+                        .connect(Connect.builder()
+                                .agent(Agent.builder()
+                                                .setAgentId("1234")
+                                                .build())
+                                .setAction("http://sample")
+                                .setMethod(HttpMethod.POST)
+                                .build())
+                        .build()
+                        .toXml();
+        assertEquals(expected.replaceAll("[\\r\\n\\t\\s]+",""), result.replaceAll("[\\r\\n\\t\\s]+",""));
+    }
 }
