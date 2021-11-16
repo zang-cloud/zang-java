@@ -36,6 +36,27 @@ Usage
 
 [Zang REST API documenatation](http://www.zang.io/docs/api/rest/)
 
+Normally you'll want to just set your Avaya CPaaS Platform *AccountSid* and *AuthToken* in config object. But you can also change the base API URL. The default value is "https://api.zang.io/".
+
+The base API URL and api versions for US(new) and EU deployments are:
+US: https://api-us.cpaas.avayacloud.com/v2/
+EU: https://api-eu.cpaas.avayacloud.com/v2/
+
+##### Set Base URL and API Version Example
+
+To change base url to EU deployment
+
+```java
+BasicZangConfiguration conf = new BasicZangConfiguration();
+conf.setBaseUrl("https://api-eu.cpaas.avayacloud.com")
+```
+
+To change api version(ZangConstants.java)
+
+```java
+public static final String API_VERSION = "v2";
+```
+
 ##### Send SMS Example
 
 ```java
