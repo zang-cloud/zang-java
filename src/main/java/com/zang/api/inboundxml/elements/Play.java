@@ -1,28 +1,64 @@
 package com.zang.api.inboundxml.elements;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
+import com.zang.api.domain.enums.HttpMethod;
 
-@XStreamAlias("Play")
-@XStreamConverter(value=ToAttributedValueConverter.class, strings={"resource"})
-@SuppressWarnings("unused")
-public class Play implements ResponseElement, GatherElement{
-	
-	private String resource;
-	@XStreamAsAttribute
-	private Long loop;
-	
-	protected Play() {
-		
-	}
-	
-	static Play createPlay(Long loop, String resource) {
-		Play p = new Play();
-		p.loop = loop;
-		p.resource = resource;
-		return p;
-	}
+import javax.xml.bind.annotation.*;
+
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+        "url"
+})
+@XmlRootElement(name = "Play")
+public class Play implements ResponseElement, GatherElement, GetSpeechElement {
+
+    @XmlValue
+    protected String url;
+    @XmlAttribute(name = "loop")
+    protected Integer loop;
+    @XmlAttribute(name = "method")
+    protected HttpMethod method;
+
+    public static PlayBuilder builder() {
+        return new PlayBuilder();
+    }
+
+    public Play() {
+    }
+
+    public Play(String url, Integer loop, HttpMethod method) {
+        this.url = url;
+        this.loop = loop;
+        this.method = method;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+
+    public Integer getLoop() {
+        return loop;
+    }
+
+
+    public void setLoop(Integer value) {
+        this.loop = value;
+    }
+
+
+    public HttpMethod getMethod() {
+        return method;
+    }
+
+
+    public void setMethod(HttpMethod value) {
+        this.method = value;
+    }
 
 }

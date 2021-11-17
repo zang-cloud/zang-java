@@ -1,23 +1,20 @@
 package com.zang.api.restproxies;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-
-import org.jboss.resteasy.client.ClientResponse;
-
-import com.zang.api.domain.Account;
-import com.zang.api.domain.list.AccountsList;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 public interface AccountsProxy {
-	    @GET
-	    @Path("Accounts/{AccountSid}.json")
-	    @Produces("application/json")
-	    ClientResponse<Account> getAccount(@PathParam("AccountSid") String accountSid);
-	    
-	    @GET
-	    @Path("Accounts.json")
-	    @Produces("application/json")
-	    ClientResponse<AccountsList> getAccounts();
+    @GET
+    @Path("Accounts/{AccountSid}.json")
+    @Produces("application/json")
+    Response getAccount(@PathParam("AccountSid") String accountSid);
+
+
+    @POST
+    @Path("Accounts/{AccountSid}.json")
+    @Produces("application/json")
+    Response updateAccount(
+            @PathParam("AccountSid") String accountSid,
+            @FormParam("FriendlyName") String friendlyName);
+
 }

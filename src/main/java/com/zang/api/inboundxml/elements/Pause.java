@@ -1,25 +1,34 @@
 package com.zang.api.inboundxml.elements;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
+import javax.xml.bind.annotation.*;
 
-@XStreamAlias("Pause")
-@SuppressWarnings("unused")
-public class Pause implements ResponseElement, GatherElement {
-	
-	@XStreamAsAttribute
-	private Long length;
-	
-	protected Pause() {
-		
-	}
-	
-	static Pause createPause(Long length) {
-		Pause p = new Pause();
-		p.length = length;
-		return p;
-	}
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {})
+@XmlRootElement(name = "Pause")
+public class Pause implements ResponseElement, GatherElement, GetSpeechElement {
+
+    @XmlAttribute(name = "length")
+    protected Integer length;
+
+    public static PauseBuilder builder() {
+        return new PauseBuilder();
+    }
+
+    public Pause() {
+    }
+
+    public Pause(Integer length) {
+        this.length = length;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+
+    public void setLength(Integer value) {
+        this.length = value;
+    }
 
 }

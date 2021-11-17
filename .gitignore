@@ -16,3 +16,13 @@
 hs_err_pid*
 
 target/*
+.idea
+*.iml
+zang.test.properties
+zang-java.zip
+coverage.ec
+/target/
+/bin/
+.classpath
+.project
+.settings

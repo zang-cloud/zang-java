@@ -1,138 +1,116 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.domain.enums.HttpMethod;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.zang.api.domain.enums.HttpMethod;
-import com.zang.api.inboundxml.elements.enums.Voice;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
-@XStreamAlias("GetSpeech")
-@SuppressWarnings("unused")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+        "content"
+})
+@XmlRootElement(name = "GetSpeech")
 public class GetSpeech implements ResponseElement {
 
-	@XStreamImplicit
-	private List<GatherElement> elements;
+    @XmlElementRefs({
+            @XmlElementRef(name = "Pause", type = Pause.class, required = false),
+            @XmlElementRef(name = "Say", type = Say.class, required = false),
+            @XmlElementRef(name = "Play", type = Play.class, required = false),
+            @XmlElementRef(name = "PlayLastRecording", type = JAXBElement.class, required = false)
+    })
+    @XmlMixed
+    protected List<GetSpeechElement> content;
+    @XmlAttribute(name = "action")
+    @XmlSchemaType(name = "anyURI")
+    protected String action;
+    @XmlAttribute(name = "method")
+    protected HttpMethod method;
+    @XmlAttribute(name = "timeout")
+    protected Integer timeout;
+    @XmlAttribute(name = "playBeep")
+    protected Boolean playBeep;
+    @XmlAttribute(name = "grammar", required = true)
+    @XmlSchemaType(name = "anyURI")
+    protected String grammar;
 
-	@XStreamAsAttribute
-	private String grammar;
-	@XStreamAsAttribute
-	private String action;
-	@XStreamAsAttribute
-	private String method;
-	@XStreamAsAttribute
-	private Long timeout;
-	@XStreamAsAttribute
-	private Boolean playBeep;
+    public static GetSpeechBuilder builder() {
+        return new GetSpeechBuilder();
+    }
 
-	protected GetSpeech() {
-		elements = new ArrayList<GatherElement>();
-	}
+    public GetSpeech() {
+    }
 
-	/**
-	 * Creates a new GetSpeech element. The GetSpeech element is used to
-	 * translate a callers voice into text. That translated text is then
-	 * submitted to an action URL for further processing and use in your
-	 * application.
-	 * 
-	 * @param grammar
-	 *            The URL of an XML file defining acceptable words and phrases
-	 *            that a user might say during the call. For information on
-	 *            creating grammar files see this 
-	 *            <a href='http://www.w3.org/TR/speech-grammar/'>W3 reference</a>.
-	 * @param action
-	 *            A URL where the converted voice text will be forwarded.
-	 * @param method
-	 *            Method used to request the action URL. Defaults to POST.
-	 * @param timeout
-	 *            Amount of seconds GetSpeech should wait in silence before
-	 *            requesting the action URL. Defaults to 5.
-	 * @param playBeep
-	 *            Specifies if a beep should play back to the caller when
-	 *            GetSpeech begins. Defaults to false.
-	 * @return A new GetSpeech element.
-	 */
-	public static GetSpeech createGetSpeech(String grammar, String action,
-			HttpMethod method, Long timeout, Boolean playBeep) {
-		GetSpeech g = new GetSpeech();
-		g.grammar = grammar;
-		g.action = action;
-		g.method = method == null ? null : method.toString();
-		g.timeout = timeout;
-		g.playBeep = playBeep;
-		return g;
-	}
+    public GetSpeech(List<GetSpeechElement> content, String action, HttpMethod method, Integer timeout, Boolean playBeep, String grammar) {
+        this.content = content;
+        this.action = action;
+        this.method = method;
+        this.timeout = timeout;
+        this.playBeep = playBeep;
+        this.grammar = grammar;
+    }
 
-	/**
-	 * Convenience method for creating a new GetSpeech element.
-	 * @see #createGetSpeech(String, String, HttpMethod, Long, Boolean)
-	 * @param grammar
-	 *            The URL of an XML file defining acceptable words and phrases
-	 *            that a user might say during the call. For information on
-	 *            creating grammar files see this 
-	 *            <a href='http://www.w3.org/TR/speech-grammar/'>W3 reference</a>.
-	 * @param action A URL where the converted voice text will be forwarded.
-	 * @return A new GetSpeech element.
-	 */
-	public static GetSpeech createGetSpeech(String grammar, String action) {
-		GetSpeech g = new GetSpeech();
-		g.grammar = grammar;
-		g.action = action;
-		return g;
-	}
 
-	/**
-	 * @see Response#play(Long, String)
-	 * @param loop
-	 * @param resource
-	 * @return
-	 */
-	public GetSpeech play(Long loop, String resource) {
-		elements.add(Play.createPlay(loop, resource));
-		return this;
-	}
+    public List<GetSpeechElement> getContent() {
+        if (content == null) {
+            content = new ArrayList<GetSpeechElement>();
+        }
+        return this.content;
+    }
 
-	/**
-	 * @see Response#say(String, Voice, Long)
-	 * @param text
-	 * @param voice
-	 * @param loop
-	 * @return
-	 */
-	public GetSpeech say(String text, Voice voice, Long loop) {
-		elements.add(Say.createSay(text, voice, loop));
-		return this;
-	}
-	
-	/**
-	 * @see Response#say(String)
-	 * @param text
-	 * @return
-	 */
-	public GetSpeech say(String text) {
-		elements.add(Say.createSay(text, null, null));
-		return this;
-	}
+    public void setContent(List<GetSpeechElement> content) {
+        this.content = content;
+    }
 
-	/**
-	 * @see Response#pause(Long)
-	 * @param length
-	 * @return
-	 */
-	public GetSpeech pause(Long length) {
-		elements.add(Pause.createPause(length));
-		return this;
-	}
+    public String getAction() {
+        return action;
+    }
 
-	/**
-	 * @see Response#pause()
-	 * @return
-	 */
-	public GetSpeech pause() {
-		elements.add(Pause.createPause(null));
-		return this;
-	}
+
+    public void setAction(String value) {
+        this.action = value;
+    }
+
+
+    public HttpMethod getMethod() {
+        return method;
+    }
+
+
+    public void setMethod(HttpMethod value) {
+        this.method = value;
+    }
+
+
+    public Integer getTimeout() {
+        return timeout;
+    }
+
+
+    public void setTimeout(Integer value) {
+        this.timeout = value;
+    }
+
+
+    public Boolean getPlayBeep() {
+        return playBeep;
+    }
+
+
+    public void setPlayBeep(Boolean value) {
+        this.playBeep = value;
+    }
+
+
+    public String getGrammar() {
+        return grammar;
+    }
+
+
+    public void setGrammar(String value) {
+        this.grammar = value;
+    }
 
 }

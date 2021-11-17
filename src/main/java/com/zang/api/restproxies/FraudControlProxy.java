@@ -1,65 +1,57 @@
 package com.zang.api.restproxies;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
-
-import org.jboss.resteasy.client.ClientResponse;
-
-import com.zang.api.domain.list.FraudList;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 public interface FraudControlProxy {
-	
-	@GET
-	@Path("Accounts/{AccountSid}/Fraud.json")
-	ClientResponse<FraudList> listFraudControlResources(
-			@PathParam("AccountSid") String accountSid,
-			@QueryParam(value="Page") Long page,
-    		@QueryParam(value="PageSize") Long pageSize
-			);
+    @POST
+    @Path("Accounts/{AccountSid}/Fraud/Block/{CountryCode}.json")
+    @Produces("application/json")
+    Response blockDestination(
+            @PathParam("AccountSid") String accountSid,
+            @PathParam("CountryCode") String countryCode,
+            @FormParam("MobileEnabled") Boolean mobileEnabled,
+            @FormParam("LandlineEnabled") Boolean landlineEnabled,
+            @FormParam("SmsEnabled") Boolean smsEnabled
+    );
 
-	
-	@POST
-	@Path("Accounts/{AccountSid}/Fraud/Authorize/{CountryCode}.json")
-	ClientResponse<FraudList> authorizeDestination(
-			@PathParam("AccountSid") String accountSid,
-			@PathParam("CountryCode") String countryCode,
-			@QueryParam(value="MobileEnabled") Boolean mobileEnabled,
-    		@QueryParam(value="LandlineEnabled") Boolean landlineEnabled,
-    		@QueryParam(value="SmsEnabled") Boolean smsEnabled
-			);
-	
-	
-	
-	@POST
-	@Path("Accounts/{AccountSid}/Fraud/Block/{CountryCode}.json")
-	ClientResponse<FraudList> blockDestination(
-			@PathParam("AccountSid") String accountSid,
-			@PathParam("CountryCode") String countryCode,
-			@QueryParam(value="MobileEnabled") Boolean mobileEnabled,
-    		@QueryParam(value="LandlineEnabled") Boolean landlineEnabled,
-    		@QueryParam(value="SmsEnabled") Boolean smsEnabled
-			);
-	
-	@POST
-	@Path("Accounts/{AccountSid}/Fraud/Extend/{CountryCode}.json")
-	ClientResponse<FraudList> extendDestinationAuth(
-			@PathParam("AccountSid") String accountSid,
-			@PathParam("CountryCode") String countryCode,
-			@QueryParam(value="MobileEnabled") Boolean mobileEnabled,
-    		@QueryParam(value="LandlineEnabled") Boolean landlineEnabled,
-    		@QueryParam(value="SmsEnabled") Boolean smsEnabled
-			);
-	
-	@POST
-	@Path("Accounts/{AccountSid}/Fraud/Whitelist/{CountryCode}.json")
-	ClientResponse<FraudList> whitelistDestination(
-			@PathParam("AccountSid") String accountSid,
-			@PathParam("CountryCode") String countryCode,
-			@QueryParam(value="MobileEnabled") Boolean mobileEnabled,
-    		@QueryParam(value="LandlineEnabled") Boolean landlineEnabled,
-    		@QueryParam(value="SmsEnabled") Boolean smsEnabled
-			);
+    @POST
+    @Path("Accounts/{AccountSid}/Fraud/Authorize/{CountryCode}.json")
+    @Produces("application/json")
+    Response authorizeDestination(
+            @PathParam("AccountSid") String accountSid,
+            @PathParam("CountryCode") String countryCode,
+            @FormParam("MobileEnabled") Boolean mobileEnabled,
+            @FormParam("LandlineEnabled") Boolean landlineEnabled,
+            @FormParam("SmsEnabled") Boolean smsEnabled
+    );
+
+    @POST
+    @Path("Accounts/{AccountSid}/Fraud/Extend/{CountryCode}.json")
+    @Produces("application/json")
+    Response extendDestinationAuthorization(
+            @PathParam("AccountSid") String accountSid,
+            @PathParam("CountryCode") String countryCode
+    );
+
+    @POST
+    @Path("Accounts/{AccountSid}/Fraud/Whitelist/{CountryCode}.json")
+    @Produces("application/json")
+    Response whitelistDestination(
+            @PathParam("AccountSid") String accountSid,
+            @PathParam("CountryCode") String countryCode,
+            @FormParam("MobileEnabled") Boolean mobileEnabled,
+            @FormParam("LandlineEnabled") Boolean landlineEnabled,
+            @FormParam("SmsEnabled") Boolean smsEnabled
+    );
+
+    @GET
+    @Path("Accounts/{AccountSid}/Fraud.json")
+    @Produces("application/json")
+    Response listFraudControlResources(
+            @PathParam("AccountSid") String accountSid,
+            @QueryParam("Page") Integer page,
+            @QueryParam("PageSize") Integer pageSize
+    );
+
 }

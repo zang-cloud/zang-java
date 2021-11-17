@@ -1,21 +1,21 @@
 package com.zang.api.domain;
 
 /**
- * List of a calls various subresources and their URI path. Examples of conference
+ * List of a conference's various subresources and their URI path. Examples of conference
  * subresources are participants.
- * 
+ *
  */
 public class ConferenceSubresourceUris {
 
-	private String participants;
+    private String participants;
 
-	public String getParticipants() {
-		return participants;
-	}
+    public String getParticipants() {
+        return participants;
+    }
 
-	public void setParticipants(String participants) {
-		this.participants = participants;
-	}
-	
+    public void setParticipants(String participants) {
+        this.participants = participants;
+    }
+
 
 }

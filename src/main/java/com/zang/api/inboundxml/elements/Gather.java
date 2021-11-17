@@ -1,129 +1,136 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.domain.enums.HttpMethod;
+import com.zang.api.inboundxml.elements.enums.BCPLanguage;
+import com.zang.api.inboundxml.elements.enums.GatherInput;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.zang.api.domain.enums.HttpMethod;
-import com.zang.api.inboundxml.elements.enums.Voice;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
-
-@XStreamAlias("Gather")
-@SuppressWarnings("unused")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = { "content" })
+@XmlRootElement(name = "Gather")
 public class Gather implements ResponseElement {
 
-	@XStreamImplicit
-	private List<GatherElement> elements;
+	@XmlElementRefs({ @XmlElementRef(name = "Pause", type = Pause.class, required = false),
+			@XmlElementRef(name = "Say", type = Say.class, required = false),
+			@XmlElementRef(name = "Play", type = Play.class, required = false),
+			@XmlElementRef(name = "PlayLastRecording", type = JAXBElement.class, required = false) })
+	@XmlMixed
+	protected List<GatherElement> content;
+	@XmlAttribute(name = "action")
+	@XmlSchemaType(name = "anyURI")
+	protected String action;
+	@XmlAttribute(name = "method")
+	protected HttpMethod method;
+	@XmlAttribute(name = "timeout")
+	protected Integer timeout;
+	@XmlAttribute(name = "finishOnKey")
+	protected String finishOnKey;
+	@XmlAttribute(name = "numDigits")
+	protected Integer numDigits;
+	@XmlAttribute(name = "input")
+	protected GatherInput input;
+	@XmlAttribute(name = "hints")
+	protected String hints;
+	@XmlAttribute(name = "language")
+	protected BCPLanguage language;
 
-	@XStreamAsAttribute
-	private String action;
-	@XStreamAsAttribute
-	private String method;
-	@XStreamAsAttribute
-	private Long timeout;
-	@XStreamAsAttribute
-	private String finishOnKey;
-	@XStreamAsAttribute
-	private Long numDigits;
-
-	protected Gather() {
-		elements = new ArrayList<GatherElement>();
+	public static GatherBuilder builder() {
+		return new GatherBuilder();
 	}
 
-	/**
-	 * Creates a Gather element. The Gather element allows callers to input
-	 * digits to the call using their keypads which are then sent via POST or
-	 * GET to a URL for further processing. There are many ways to get creative
-	 * with Gather but its most common use case is in creating IVR menus. This
-	 * is accomplished by nesting prompts for input from the caller using the
-	 * Say or Play elements.
-	 * 
-	 * By default an unlimited number of digits can be gathered, the Gather will
-	 * timeout after 5 seconds pass without any new digits or once the '#' key
-	 * is pressed, and the gathered digits will be submitted to the current
-	 * InboundXML document. This default behavior of Gather can be altered using
-	 * its provided element attributes.
-	 * 
-	 * @param action URL where the gathered digits will be sent for further processing (required).
-	 * @param method Method used to request the action URL. Defaults to POST.
-	 * @param timeout The number of seconds Gather should wait for digits to be entered before requesting the action URL. Timeout resets with each new digit input. Defaults to 5.
-	 * @param finishOnKey The key a caller can press to end the Gather. Allowed values are digits, # and *. Defaults to #.
-	 * @param numDigits The maximum number of digits to Gather. A number greater than or equal to 0. Defaults to no limit.
-	 * @return The Gather element which is being created.
-	 */
-	public static Gather createGather(String action, HttpMethod method,
-			Long timeout, String finishOnKey, Long numDigits) {
-		Gather g = new Gather();
-		g.action = action;
-		g.method = method == null ? null : method.toString();
-		g.timeout = timeout;
-		g.finishOnKey = finishOnKey;
-		g.numDigits = numDigits;
-		return g;
+	public Gather() {
 	}
 
-	/**
-	 * Convenience method for creating a new Gather element.
-	 * @param action URL where the gathered digits will be sent for further processing (required).
-	 * @return The Gather element which is being created.
-	 */
-	public static Gather createGather(String action) {
-		Gather g = new Gather();
-		g.action = action;
-		return g;
+	public Gather(List<GatherElement> content, String action, HttpMethod method, Integer timeout, String finishOnKey,
+			Integer numDigits, GatherInput input, String hints, BCPLanguage language) {
+		this.content = content;
+		this.action = action;
+		this.method = method;
+		this.timeout = timeout;
+		this.finishOnKey = finishOnKey;
+		this.numDigits = numDigits;
+		this.input = input;
+		this.hints = hints;
+		this.language = language;
 	}
 
-	/**
-	 * @see Response#play(Long, String)
-	 * @param loop
-	 * @param resource
-	 * @return
-	 */
-	public Gather play(Long loop, String resource) {
-		elements.add(Play.createPlay(loop, resource));
-		return this;
+	public List<GatherElement> getContent() {
+		if (content == null) {
+			content = new ArrayList<GatherElement>();
+		}
+		return this.content;
 	}
 
-	/**
-	 * @see Response#say(String, Voice, Long)
-	 * @param text
-	 * @param voice
-	 * @param loop
-	 * @return
-	 */
-	public Gather say(String text, Voice voice, Long loop) {
-		elements.add(Say.createSay(text, voice, loop));
-		return this;
-	}
-	
-	/**
-	 * @see Response#say(String)
-	 * @param text
-	 * @return
-	 */
-	public Gather say(String text) {
-		elements.add(Say.createSay(text, null, null));
-		return this;
+	public void setContent(List<GatherElement> content) {
+		this.content = content;
 	}
 
-	/**
-	 * @see Response#pause(Long)
-	 * @param length
-	 * @return
-	 */
-	public Gather pause(Long length) {
-		elements.add(Pause.createPause(length));
-		return this;
+	public String getAction() {
+		return action;
 	}
 
-	/**
-	 * @see Response#pause()
-	 * @return
-	 */
-	public Gather pause() {
-		elements.add(Pause.createPause(null));
-		return this;
+	public void setAction(String value) {
+		this.action = value;
+	}
+
+	public HttpMethod getMethod() {
+		return method;
+	}
+
+	public void setMethod(HttpMethod value) {
+		this.method = value;
+	}
+
+	public Integer getTimeout() {
+		return timeout;
+	}
+
+	public void setTimeout(Integer value) {
+		this.timeout = value;
+	}
+
+	public String getFinishOnKey() {
+		return finishOnKey;
+	}
+
+	public void setFinishOnKey(String value) {
+		this.finishOnKey = value;
+	}
+
+	public Integer getNumDigits() {
+		return numDigits;
+	}
+
+	public void setNumDigits(Integer value) {
+		this.numDigits = value;
+	}
+
+	public String getHints() {
+		return hints;
+	}
+
+	public void setHints(String hints) {
+		this.hints = hints;
+	}
+
+	public GatherInput getInput() {
+		return input;
+	}
+
+	public void setInput(GatherInput input) {
+		this.input = input;
+	}
+
+	public BCPLanguage getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(BCPLanguage language) {
+		this.language = language;
 	}
 
 }

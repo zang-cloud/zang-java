@@ -1,188 +1,118 @@
 package com.zang.api.domain;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import com.zang.api.json.JsonDateParser;
+import java.math.BigDecimal;
 
 /**
  * An account resource provides information about a single Zang account.
- *
  */
-public class Account {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Account extends BaseZangObject {
 
-	private String sid;
+    @JsonProperty(value = "friendly_name")
+    private String friendlyName;
 
-	@JsonProperty(value = "friendly_name")
-	private String friendlyName;
+    private String status;
 
-	private String status;
+    @JsonProperty(value = "account_balance")
+    private BigDecimal accountBalance;
 
-	@JsonProperty(value = "account_balance")
-	private BigDecimal accountBalance;
 
-	@JsonProperty(value = "date_created")
-	@JsonDeserialize(using = JsonDateParser.class)
-	private Date dateCreated;
+    @JsonProperty(value = "max_outbound_limit")
+    private String maxOutboundLimit;
 
-	@JsonProperty(value = "date_updated")
-	@JsonDeserialize(using = JsonDateParser.class)
-	private Date dateUpdated;
+    private String type;
 
-	private String uri;
+    @JsonProperty(value = "time_zone")
+    private String timeZone;
 
-	private String maxOutboundLimit;
+    @JsonProperty(value = "subresource_uris")
+    private SubresourceUris subresourceUris;
 
-	private String type;
+    /**
+     * @return This is an alias that can be created for Zang accounts. By
+     * default, it is the email used to create the account but a custom
+     * name can be used as long as it is shorter than 64 characters.
+     */
+    public String getFriendlyName() {
+        return friendlyName;
+    }
 
-	@JsonProperty(value = "timezone")
-	private String timeZone;
+    public void setFriendlyName(String friendlyName) {
+        this.friendlyName = friendlyName;
+    }
 
-	@JsonProperty(value = "subresource_uris")
-	private SubresourceUris subresourceUris;
+    /**
+     * @return This is the status of the Zang account being requested. The
+     * state of the status can be either active, suspended, or closed.
+     */
+    public String getStatus() {
+        return status;
+    }
 
-	/**
-	 * 
-	 * @return An alphanumeric string identifying the account.
-	 */
-	public String getSid() {
-		return sid;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public void setSid(String sid) {
-		this.sid = sid;
-	}
+    /**
+     * @return The current balance of an account.
+     */
+    public BigDecimal getAccountBalance() {
+        return accountBalance;
+    }
 
-	/**
-	 * 
-	 * @return This is an alias that can be created for Zang accounts. By
-	 *         default, it is the email used to create the account but a custom
-	 *         name can be used as long as it is shorter than 64 characters.
-	 */
-	public String getFriendlyName() {
-		return friendlyName;
-	}
+    public void setAccountBalance(BigDecimal accountBalance) {
+        this.accountBalance = accountBalance;
+    }
 
-	public void setFriendlyName(String friendlyName) {
-		this.friendlyName = friendlyName;
-	}
+    /**
+     * @return
+     */
+    public String getMaxOutboundLimit() {
+        return maxOutboundLimit;
+    }
 
-	/**
-	 * 
-	 * @return This is the status of the Zang account being requested. The
-	 *         state of the status can be either active, suspended, or closed.
-	 */
-	public String getStatus() {
-		return status;
-	}
+    public void setMaxOutboundLimit(String maxOutboundLimit) {
+        this.maxOutboundLimit = maxOutboundLimit;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    /**
+     * @return The type of account being requested. If the account is not yet
+     * funded Type is Trial. Otherwise, Type for upgraded accounts is
+     * Full.
+     */
+    public String getType() {
+        return type;
+    }
 
-	/**
-	 * 
-	 * @return The current balance of an account.
-	 */
-	public BigDecimal getAccountBalance() {
-		return accountBalance;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public void setAccountBalance(BigDecimal accountBalance) {
-		this.accountBalance = accountBalance;
-	}
+    /**
+     * @return The name of an accounts timezone.
+     */
+    public String getTimeZone() {
+        return timeZone;
+    }
 
-	/**
-	 * 
-	 * @return Date of account creation. Dates are returned in UTC format.
-	 */
-	public Date getDateCreated() {
-		return dateCreated;
-	}
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
+    }
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
+    /**
+     * @return List of an accounts various subresources and their URI path.
+     * Examples of subresources are things like calls that occurred
+     * through the account, sms messages, purchased phone numbers, etc.
+     */
+    public SubresourceUris getSubresourceUris() {
+        return subresourceUris;
+    }
 
-	/**
-	 * 
-	 * @return Date of most recent account update. Dates are returned in UTC
-	 *         format.
-	 */
-	public Date getDateUpdated() {
-		return dateUpdated;
-	}
-
-	public void setDateUpdated(Date dateUpdated) {
-		this.dateUpdated = dateUpdated;
-	}
-
-	/**
-	 * 
-	 * @return The path appended to the base Zang URL, https://api.zang.io,
-	 *         where the resource is located.
-	 */
-	public String getUri() {
-		return uri;
-	}
-
-	public void setUri(String uri) {
-		this.uri = uri;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getMaxOutboundLimit() {
-		return maxOutboundLimit;
-	}
-
-	public void setMaxOutboundLimit(String maxOutboundLimit) {
-		this.maxOutboundLimit = maxOutboundLimit;
-	}
-
-	/**
-	 * 
-	 * @return The type of account being requested. If the account is not yet
-	 *         funded Type is Trial. Otherwise, Type for upgraded accounts is
-	 *         Full.
-	 */
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	/**
-	 * 
-	 * @return The name of an accounts timezone.
-	 */
-	public String getTimeZone() {
-		return timeZone;
-	}
-
-	public void setTimeZone(String timeZone) {
-		this.timeZone = timeZone;
-	}
-
-	/**
-	 * 
-	 * @return List of an accounts various subresources and their URI path.
-	 *         Examples of subresources are things like calls that occurred
-	 *         through the account, sms messages, purchased phone numbers, etc.
-	 */
-	public SubresourceUris getSubresourceUris() {
-		return subresourceUris;
-	}
-
-	public void setSubresourceUris(SubresourceUris subresourceUris) {
-		this.subresourceUris = subresourceUris;
-	}
+    public void setSubresourceUris(SubresourceUris subresourceUris) {
+        this.subresourceUris = subresourceUris;
+    }
 
 }

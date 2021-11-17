@@ -1,384 +1,395 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.domain.enums.HttpMethod;
+import com.zang.api.domain.enums.IfMachine;
+import com.zang.api.domain.enums.RecordingAudioDirection;
+import com.zang.api.inboundxml.elements.enums.RecordingFileFormat;
+
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.zang.api.domain.enums.HttpMethod;
-import com.zang.api.inboundxml.parameters.ConferenceParameters;
-import com.zang.api.inboundxml.parameters.DialParameters;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.annotations.XStreamImplicit;
-import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
 
-@XStreamAlias("Dial")
-@XStreamConverter(value=ToAttributedValueConverter.class, strings={"number"})
-@SuppressWarnings("unused")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+        "content"
+})
+@XmlRootElement(name = "Dial")
 public class Dial implements ResponseElement {
-	
-	@XStreamImplicit
-	private List<DialElement> elements;
-	
-	private String number;
-	
-	@XStreamAsAttribute
-	private String action;
-	@XStreamAsAttribute
-	private String method;
-	@XStreamAsAttribute
-	private Long timeout;
-	@XStreamAsAttribute
-	private Boolean hangupOnStar;
-	@XStreamAsAttribute
-	private Long timeLimit;
-	@XStreamAsAttribute
-	private String callerId;
-	@XStreamAsAttribute
-	private Boolean hideCallerId;
-	@XStreamAsAttribute
-	private String callerName;
-	@XStreamAsAttribute
-	private String dialMusic;
-	@XStreamAsAttribute
-	private String callbackUrl;
-	@XStreamAsAttribute
-	private String callbackMethod;
-	@XStreamAsAttribute
-	private Boolean confirmSound;
-	@XStreamAsAttribute
-	private String digitsMatch;
-	@XStreamAsAttribute
-	private Boolean straightToVm;
-	@XStreamAsAttribute
-	private String heartbeatUrl;
-	@XStreamAsAttribute
-	private String heartbeatMethod;
-	@XStreamAsAttribute
-	private String forwardedFrom;
-	
-	protected Dial() {
-		elements = new ArrayList<DialElement>();
-	}
-	
-	/**
-	 * Creates a new Dial element. The Dial element starts an outgoing dial from
-	 * the current call. Once the dial is complete, the next element in the
-	 * InboundXML document will be processed unless the action attribute is set.
-	 * In that case the result of the dial is submitted as a GET or POST
-	 * (depending on the method attribute) to the action URL, and the call
-	 * continues using the InboundXML of that URL.
-	 * 
-	 * By default the outgoing call will timeout if it is not answered after 30
-	 * seconds; however, the timeout attribute can be used to set a custom time.
-	 * The length of the call is limited by the timeLimit attribute, which is 4
-	 * hours (14400 seconds) by default.
-	 * 
-	 * Setting the hangupOnStar attribute to 'true' will allow the original call
-	 * to terminate the outgoing call without having to hang up by dialing '*'.
-	 * The original call then continues with the current InboundXML document, or
-	 * if a URL was passed, the response from the action attribute.
-	 * 
-	 * The callerId attribute can be set to any number, and will default to the
-	 * caller id of the original caller. The number to be dialed should be
-	 * nested within the Dial element. For more options, use the Number or
-	 * Conference elements instead of a simple phone number.
-	 * 
-	 * @param number
-	 *            The number which is to be dialed. If used, no other element
-	 *            can be appended to the Dial element.
-	 * @param action
-	 *            URL where some parameters specific to Dial will be sent for
-	 *            further processing. The calling party can be redirected here
-	 *            upon the hang up of the B leg caller.
-	 * @param method
-	 *            Method used to request the action URL. Defaults to POST.
-	 * @param timeout
-	 *            The number of seconds calls made with <Dial> are allowed
-	 *            silence before ending. Defaults to 30.
-	 * @param hangupOnStar
-	 *            Boolean value specifying if pressing * should end the dial.
-	 *            Defaults to false.
-	 * @param timeLimit
-	 *            The duration in seconds a call made through <Dial> should
-	 *            occur for before ending. Defaults to 14400.
-	 * @param callerId
-	 *            Number to display as calling. Defaults to the ID of phone
-	 *            being used. Defaults to the caller's caller ID.
-	 * @param hideCallerId
-	 *            Boolean value specifying if the caller ID should be hidden or
-	 *            not. Defaults to false.
-	 * @param dialMusic
-	 *            URL containing an audio file that can be played during the
-	 *            dial.
-	 * @param callbackUrl
-	 *            URL requested once the dialed call connects.
-	 * @param callbackMethod
-	 *            Method used to request the callback URL. Defaults to POST.
-	 * @param confirmSound
-	 *            Boolean value specifying if a sound should play when dial is
-	 *            successful. Defaults to false.
-	 * @param digitsMatch
-	 *            Specifies digits that Zang should listen for and send to the
-	 *            callbackUrl if a caller inputs them. Separate additional
-	 *            digits or digit patterns with a comma. Allowed values are
-	 *            digits, # and *.
-	 * @param straightToVm
-	 *            Boolean value specifying if call should be redirected to voice
-	 *            mail immediately. Defaults to false.
-	 * @param heartbeatUrl
-	 *            A URL Zang can request every 60 seconds during the call to
-	 *            notify of elapsed time and pass other general information.
-	 * @param heartbeatMethod
-	 *            Method used to request the heartbeat URL. Defaults to POST.
-	 * @param forwardedFrom
-	 *            Specifies the number to list the call as forwarded from.
-	 * @return A new Dial element.
-	 */
-	public static Dial createDial(String number, String action, HttpMethod method, Long timeout, Boolean hangupOnStar, Long timeLimit, String callerId, Boolean hideCallerId, String dialMusic, String callbackUrl, HttpMethod callbackMethod, Boolean confirmSound, String digitsMatch, Boolean straightToVm, String heartbeatUrl, HttpMethod heartbeatMethod, String forwardedFrom) {
-		Dial d = new Dial();
-		d.number = number;
-		d.action = action;
-		d.method = method == null ? null : method.toString();
-		d.timeout = timeout;
-		d.hangupOnStar = hangupOnStar;
-		d.timeLimit = timeLimit;
-		d.callerId = callerId;
-		d.hideCallerId = hideCallerId;
-		d.dialMusic = dialMusic;
-		d.callbackUrl = callbackUrl;
-		d.callbackMethod = callbackMethod == null ? null : callbackMethod.toString();
-		d.confirmSound = confirmSound;
-		d.digitsMatch = digitsMatch;
-		d.straightToVm = straightToVm;
-		d.heartbeatUrl = heartbeatUrl;
-		d.heartbeatMethod = heartbeatMethod == null ? null : heartbeatMethod.toString();
-		d.forwardedFrom = forwardedFrom;
-		return d;
-	}
-	
-	/**
-	 * Convenience method for creating a Dial element.
-	 * @see #createDial(String, String, HttpMethod, Long, Boolean, Long, String, Boolean, String, String, String, HttpMethod, Boolean, String, Boolean, String, HttpMethod, String)
-	 * @param params The parameters from which the Dial element is created.
-	 * @return A new Dial element.
-	 */
-	public static Dial createDial(DialParameters params) {
-		Dial d = createDial(params.getNumber(), params.getAction(),
-				params.getMethod(), params.getTimeout(),
-				params.getHangupOnStar(), params.getTimeLimit(),
-				params.getCallerId(), params.getHideCallerId(),
-				params.getDialMusic(), params.getCallbackUrl(),
-				params.getCallbackMethod(), params.getConfirmSound(),
-				params.getDigitsMatch(), params.getStraightToVm(),
-				params.getHeartbeatUrl(), params.getHeartbeatMethod(),
-				params.getForwardedFrom());
-		return d;
-	}
-	
-	/**
-	 * Convenience method for creating a Dial element.
-	 * @see #createDial(String, String, HttpMethod, Long, Boolean, Long, String, Boolean, String, String, String, HttpMethod, Boolean, String, Boolean, String, HttpMethod, String)
-	 * @param number The number to dial. 
-	 * @return A new Dial element.
-	 */
-	public static Dial createDial(String number) {
-		Dial d = new Dial();
-		d.number = number;
-		return d;
-	}
-	
-	/**
-	 * Convenience method for creating a Dial element.
-	 * @see #createDial(String, String, HttpMethod, Long, Boolean, Long, String, Boolean, String, String, String, HttpMethod, Boolean, String, Boolean, String, HttpMethod, String)
-	 * @return A new Dial element.
-	 */
-	public static Dial createDial() {
-		return new Dial();
-	}
-	
-	/**
-	 * Creates a Number element. The Number element must be nested within the
-	 * Dial element. It can be used to send DTFM tones or redirect to InboundXML
-	 * when called parties when they are answered. Number can also be used to
-	 * dial multiple phones simultaneously by using additional Number elements.
-	 * If multiple Number elements are used to specify additional calls, the
-	 * first call to answer is connected, and the rest of the outgoing calls are
-	 * canceled.
-	 * 
-	 * @param number
-	 *            The number to be called (required).
-	 * @param sendDigits
-	 *            Specifies which DTFM tones to play to the called party. w
-	 *            indicates a half second pause.
-	 * @param url
-	 *            URL that the called party can be directed to before the call
-	 *            beings.
-	 * @param callbackMethod
-	 *            Method used to request the url. Defaults to POST.
-	 * @return The Dial element to which the current Number element will be
-	 *         added.
-	 */
-	public Dial number(String number, String sendDigits, String url, HttpMethod callbackMethod) {
-		Number n = Number.createNumber(number, sendDigits, url, callbackMethod);
-		elements.add(n);
-		return this;
-	}
-	
-	/**
-	 * Appends a conference element to the dial element. Like the Number
-	 * element, the Conference element is only nested within the Dial element.
-	 * Instead of dialing a number, the Conference element allows the ongoing
-	 * call to connect to a conference room.
-	 * 
-	 * The conference room name is nested within the Conference element, and all
-	 * calls connected to the same conference room name will be in the room
-	 * together.
-	 * 
-	 * By default all callers will hear hold music until two callers are in the
-	 * room. To change this behavior, startConferenceOnEnter may be set to
-	 * 'true' or 'false'. The waitUrl attribute may be used to set a custom MP3,
-	 * or for greater customization, the URL of a InboundXML document to use
-	 * while callers are waiting. If a InboundXML document is used, the Gather ,
-	 * Record and Dial elements are not allowed.
-	 * 
-	 * When callers enter or exit the room, a beep is heard if the beep
-	 * attribute is set to the default value of 'true'. A participant can be
-	 * initially muted by setting the muted attribute to 'true'.
-	 * 
-	 * The conference room can be limited to a certain number of participants by
-	 * setting the maxParticipants attribute. The endConferenceOnExit attribute
-	 * is used to end a conference when an specific user (or any one of many
-	 * users) exits.
-	 * 
-	 * @param conferenceName
-	 *            The conference name (required).
-	 * @param muted
-	 *            Boolean value specifying if the conference should be muted.
-	 *            Defaults to false.
-	 * @param beep
-	 *            Boolean value specifying if a beep should play upon entrance
-	 *            to conference. Defaults to false.
-	 * @param startConferenceOnEnter
-	 *            Boolean value specifying if conference should begin upon
-	 *            entrance. Defaults to true.
-	 * @param endConferenceOnExit
-	 *            Boolean value specifying if conference should begin upon exit.
-	 *            Defaults to true.
-	 * @param maxParticipants
-	 *            The maximum number of participants allowed in the conference
-	 *            call. Defaults to 40.
-	 * @param waitUrl
-	 *            URL conference participants can be sent to while they wait for
-	 *            entrance into the conference.
-	 * @param waitMethod
-	 *            Method used to request waitUrl. Defaults to POST.
-	 * @param hangupOnStar
-	 *            Boolean value specifying if pressing * should end the
-	 *            conference. Defaults to false.
-	 * @param callbackUrl
-	 *            URL where some parameters specific to Conference will be sent
-	 *            once it is completed.
-	 * @param callbackMethod
-	 *            Method used to request the callback URL. Defaults to POST.
-	 * @param waitSound
-	 *            URL to sound that can be played while waiting to enter the
-	 *            conference.
-	 * @param waitSoundMethod
-	 *            Method used to request the waitsound URL. Defaults to POST.
-	 * @param digitsMatch
-	 *            Specifies digits that Zang should listen for and send to the
-	 *            callbackUrl if a caller inputs them. Seperate additional
-	 *            digits or digit patterns with a comma. Can be a digit, # or *.
-	 * @param stayAlone
-	 *            Boolean value specifying if the caller should stay alone in
-	 *            the conference call. Defaults to true.
-	 * @return The Dial element to which the current Conference element will be
-	 *         added.
-	 */
-	public Dial conference(String conferenceName, Boolean muted, Boolean beep, Boolean startConferenceOnEnter, Boolean endConferenceOnExit, Long maxParticipants, String waitUrl, HttpMethod waitMethod, Boolean hangupOnStar, String callbackUrl, HttpMethod callbackMethod, String waitSound, HttpMethod waitSoundMethod, String digitsMatch, Boolean stayAlone) {
-		Conference c = Conference.createConference(conferenceName, muted, beep, startConferenceOnEnter, endConferenceOnExit, maxParticipants, waitUrl, waitMethod, hangupOnStar, callbackUrl, callbackMethod, waitSound, waitSoundMethod, digitsMatch, stayAlone);
-		elements.add(c);
-		return this;
-	}
-	
-	/**
-	 * Convenience method for creating a Conference element.
-	 * @see #conference(String, Boolean, Boolean, Boolean, Boolean, Long, String, HttpMethod, Boolean, String, HttpMethod, String, HttpMethod, String, Boolean)
-	 * @param conferenceName The name of the created Conference.
-	 * @return The Dial element to which the current Conference element will be
-	 *         added.
-	 */
-	public Dial conference(String conferenceName) {
-		Conference c = Conference.createConference(conferenceName);
-		elements.add(c);
-		return this;
-	}
-	
-	/**
-	 * Convenience method for creating a Conference element.
-	 * @see #conference(String, Boolean, Boolean, Boolean, Boolean, Long, String, HttpMethod, Boolean, String, HttpMethod, String, HttpMethod, String, Boolean)
-	 * @param params The parameters from which the Conference element is created.
-	 * @return The Dial element to which the current Conference element will be
-	 *         added.
-	 */
-	public Dial conference(ConferenceParameters params) {
-		Conference c = Conference.createConference(params.getConferenceName(),
-				params.getMuted(), params.getBeep(),
-				params.getStartConferenceOnEnter(),
-				params.getEndConferenceOnExit(), params.getMaxParticipants(),
-				params.getWaitUrl(), params.getWaitMethod(),
-				params.getHangupOnStar(), params.getCallbackUrl(),
-				params.getCallbackMethod(), params.getWaitSound(),
-				params.getWaitSoundMethod(), params.getDigitsMatch(),
-				params.getStayAlone());
-		elements.add(c);
-		return this;
-	}
-	
-	
-	/**
-	 * The Sip element is nested within the Dial element, and is used to call to
-	 * sip addresses. The desired sip address to call is nested within the
-	 * opening and closing Sip elements, just as with a number when using the
-	 * Number element. The opening and closing sip tags may be omitted
-	 * completely by simply prefixing the desired sip address with "sip:" when
-	 * using it within the Dial element like so:
-	 * Dialsip:username@domain.comDial.
-	 * 
-	 * If multiple Sip elements are used, the first call to answer is connected,
-	 * and the rest of the outgoing calls are canceled.
-	 * 
-	 * @param sipAddress
-	 *            The sip address (required).
-	 * @param sendDigits
-	 *            Specifies which DTFM tones to play to the called party. w
-	 *            indicates a half second pause. Allowed values are numbers, and
-	 *            w.
-	 * @param url
-	 *            URL that the called party can be directed to before the call
-	 *            beings.
-	 * @param method
-	 *            Method used to request the url. Defaults to POST.
-	 * @return The Dial element to which the current Sip element will be added.
-	 */
-	public Dial sip(String sipAddress, String sendDigits, String url, HttpMethod method) {
-		Sip s = Sip.createSip(sipAddress, sendDigits, url, method);
-		elements.add(s);
-		return this;
-	}
-	
-	/**
-	 * Convenience method for creating a new Sip element.
-	 * @see #sip(String, String, String, HttpMethod)
-	 * @param sipAddress
-	 *            The sip address (required).
-	 * @return The Dial element to which the current Sip element will be added.
-	 */
-	public Dial sip(String sipAddress) {
-		Sip s = Sip.createSip(sipAddress, null, null, null);
-		elements.add(s);
-		return this;
-	}
-	
+
+    @XmlElementRefs({
+            @XmlElementRef(name = "User", type = User.class, required = false),
+            @XmlElementRef(name = "Sip", type = Sip.class, required = false),
+            @XmlElementRef(name = "Conference", type = Conference.class, required = false),
+            @XmlElementRef(name = "Number", type = Number.class, required = false)
+    })
+    @XmlMixed
+    protected List<DialElement> content;
+    @XmlAttribute(name = "action")
+    @XmlSchemaType(name = "anyURI")
+    protected String action;
+    @XmlAttribute(name = "method")
+    protected HttpMethod method;
+    @XmlAttribute(name = "timeout")
+    protected Integer timeout;
+    @XmlAttribute(name = "hangupOnStar")
+    protected Boolean hangupOnStar;
+    @XmlAttribute(name = "timeLimit")
+    protected Integer timeLimit;
+    @XmlAttribute(name = "callerId")
+    protected String callerId;
+    @XmlAttribute(name = "hideCallerId")
+    protected Boolean hideCallerId;
+    @XmlAttribute(name = "callerName")
+    protected String callerName;
+    @XmlAttribute(name = "dialMusic")
+    @XmlSchemaType(name = "anyURI")
+    protected String dialMusic;
+    @XmlAttribute(name = "callbackUrl")
+    @XmlSchemaType(name = "anyURI")
+    protected String callbackUrl;
+    @XmlAttribute(name = "callbackMethod")
+    protected HttpMethod callbackMethod;
+    @XmlAttribute(name = "confirmSound")
+    protected String confirmSound;
+    @XmlAttribute(name = "digitsMatch")
+    protected String digitsMatch;
+    @XmlAttribute(name = "straightToVm")
+    protected Boolean straightToVm;
+    @XmlAttribute(name = "heartbeatUrl")
+    @XmlSchemaType(name = "anyURI")
+    protected String heartbeatUrl;
+    @XmlAttribute(name = "heartbeatMethod")
+    protected HttpMethod heartbeatMethod;
+    @XmlAttribute(name = "forwardedFrom")
+    protected String forwardedFrom;
+    @XmlAttribute(name = "record")
+    protected Boolean record;
+    @XmlAttribute(name = "recordDirection")
+    protected RecordingAudioDirection recordDirection;
+    @XmlAttribute(name = "recordCallbackUrl")
+    @XmlSchemaType(name = "anyURI")
+    protected String recordCallbackUrl;
+    @XmlAttribute(name = "recordLifetime")
+    protected Integer recordLifetime;
+    @XmlAttribute(name = "recordFormat")
+    protected RecordingFileFormat recordFormat;
+    @XmlAttribute(name = "ifMachine")
+    protected IfMachine ifMachine;
+    @XmlAttribute(name = "ifMachineUrl")
+    @XmlSchemaType(name = "anyURI")
+    protected String ifMachineUrl;
+    @XmlAttribute(name = "ifMachineMethod")
+    protected HttpMethod ifMachineMethod;
+    @XmlAttribute(name = "outboundAction")
+    protected Boolean outboundAction;
+
+    public static DialBuilder builder() {
+        return new DialBuilder();
+    }
+
+    public Dial() {
+    }
+
+    public Dial(List<DialElement> content, String action, HttpMethod method, Integer timeout, Boolean hangupOnStar, Integer timeLimit, String callerId, Boolean hideCallerId, String callerName, String dialMusic, String callbackUrl, HttpMethod callbackMethod, String confirmSound, String digitsMatch, Boolean straightToVm, String heartbeatUrl, HttpMethod heartbeatMethod, String forwardedFrom, Boolean record, RecordingAudioDirection recordDirection, String recordCallbackUrl, Integer recordLifetime, RecordingFileFormat recordFormat, IfMachine ifMachine, String ifMachineUrl, HttpMethod ifMachineMethod, Boolean outboundAction) {
+        this.content = content;
+        this.action = action;
+        this.method = method;
+        this.timeout = timeout;
+        this.hangupOnStar = hangupOnStar;
+        this.timeLimit = timeLimit;
+        this.callerId = callerId;
+        this.hideCallerId = hideCallerId;
+        this.callerName = callerName;
+        this.dialMusic = dialMusic;
+        this.callbackUrl = callbackUrl;
+        this.callbackMethod = callbackMethod;
+        this.confirmSound = confirmSound;
+        this.digitsMatch = digitsMatch;
+        this.straightToVm = straightToVm;
+        this.heartbeatUrl = heartbeatUrl;
+        this.heartbeatMethod = heartbeatMethod;
+        this.forwardedFrom = forwardedFrom;
+        this.record = record;
+        this.recordDirection = recordDirection;
+        this.recordCallbackUrl = recordCallbackUrl;
+        this.recordLifetime = recordLifetime;
+        this.recordFormat = recordFormat;
+        this.ifMachine = ifMachine;
+        this.ifMachineUrl = ifMachineUrl;
+        this.ifMachineMethod = ifMachineMethod;
+        this.outboundAction = outboundAction;
+    }
+
+
+    public List<DialElement> getContent() {
+        if (content == null) {
+            content = new ArrayList<DialElement>();
+        }
+        return this.content;
+    }
+
+    public void setContent(List<DialElement> content) {
+        this.content = content;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+
+    public void setAction(String value) {
+        this.action = value;
+    }
+
+
+    public HttpMethod getMethod() {
+        return method;
+    }
+
+
+    public void setMethod(HttpMethod value) {
+        this.method = value;
+    }
+
+
+    public Integer getTimeout() {
+        return timeout;
+    }
+
+
+    public void setTimeout(Integer value) {
+        this.timeout = value;
+    }
+
+
+    public Boolean getHangupOnStar() {
+        return hangupOnStar;
+    }
+
+
+    public void setHangupOnStar(Boolean value) {
+        this.hangupOnStar = value;
+    }
+
+
+    public Integer getTimeLimit() {
+        return timeLimit;
+    }
+
+
+    public void setTimeLimit(Integer value) {
+        this.timeLimit = value;
+    }
+
+
+    public String getCallerId() {
+        return callerId;
+    }
+
+
+    public void setCallerId(String value) {
+        this.callerId = value;
+    }
+
+
+    public Boolean getHideCallerId() {
+        return hideCallerId;
+    }
+
+
+    public void setHideCallerId(Boolean value) {
+        this.hideCallerId = value;
+    }
+
+
+    public String getCallerName() {
+        return callerName;
+    }
+
+
+    public void setCallerName(String value) {
+        this.callerName = value;
+    }
+
+
+    public String getDialMusic() {
+        return dialMusic;
+    }
+
+
+    public void setDialMusic(String value) {
+        this.dialMusic = value;
+    }
+
+
+    public String getCallbackUrl() {
+        return callbackUrl;
+    }
+
+
+    public void setCallbackUrl(String value) {
+        this.callbackUrl = value;
+    }
+
+
+    public HttpMethod getCallbackMethod() {
+        return callbackMethod;
+    }
+
+
+    public void setCallbackMethod(HttpMethod value) {
+        this.callbackMethod = value;
+    }
+
+
+    public String getConfirmSound() {
+        return confirmSound;
+    }
+
+
+    public void setConfirmSound(String value) {
+        this.confirmSound = value;
+    }
+
+
+    public String getDigitsMatch() {
+        return digitsMatch;
+    }
+
+
+    public void setDigitsMatch(String value) {
+        this.digitsMatch = value;
+    }
+
+
+    public Boolean getStraightToVm() {
+        return straightToVm;
+    }
+
+
+    public void setStraightToVm(Boolean value) {
+        this.straightToVm = value;
+    }
+
+
+    public String getHeartbeatUrl() {
+        return heartbeatUrl;
+    }
+
+
+    public void setHeartbeatUrl(String value) {
+        this.heartbeatUrl = value;
+    }
+
+
+    public HttpMethod getHeartbeatMethod() {
+        return heartbeatMethod;
+    }
+
+
+    public void setHeartbeatMethod(HttpMethod value) {
+        this.heartbeatMethod = value;
+    }
+
+
+    public String getForwardedFrom() {
+        return forwardedFrom;
+    }
+
+
+    public void setForwardedFrom(String value) {
+        this.forwardedFrom = value;
+    }
+
+
+    public Boolean getRecord() {
+        return record;
+    }
+
+
+    public void setRecord(Boolean value) {
+        this.record = value;
+    }
+
+
+    public RecordingAudioDirection getRecordDirection() {
+        return recordDirection;
+    }
+
+
+    public void setRecordDirection(RecordingAudioDirection value) {
+        this.recordDirection = value;
+    }
+
+
+    public String getRecordCallbackUrl() {
+        return recordCallbackUrl;
+    }
+
+
+    public void setRecordCallbackUrl(String value) {
+        this.recordCallbackUrl = value;
+    }
+
+
+    public Integer getRecordLifetime() {
+        return recordLifetime;
+    }
+
+
+    public void setRecordLifetime(Integer value) {
+        this.recordLifetime = value;
+    }
+
+
+    public RecordingFileFormat getRecordFormat() {
+        return recordFormat;
+    }
+
+
+    public void setRecordFormat(RecordingFileFormat value) {
+        this.recordFormat = value;
+    }
+
+
+    public IfMachine getIfMachine() {
+        return ifMachine;
+    }
+
+
+    public void setIfMachine(IfMachine value) {
+        this.ifMachine = value;
+    }
+
+
+    public String getIfMachineUrl() {
+        return ifMachineUrl;
+    }
+
+
+    public void setIfMachineUrl(String value) {
+        this.ifMachineUrl = value;
+    }
+
+
+    public HttpMethod getIfMachineMethod() {
+        return ifMachineMethod;
+    }
+
+
+    public void setIfMachineMethod(HttpMethod value) {
+        this.ifMachineMethod = value;
+    }
+
+
+    public Boolean getOutboundAction() {
+        return outboundAction;
+    }
+
+
+    public void setOutboundAction(Boolean value) {
+        this.outboundAction = value;
+    }
+
 }

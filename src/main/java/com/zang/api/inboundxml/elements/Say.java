@@ -1,34 +1,78 @@
 package com.zang.api.inboundxml.elements;
 
+import com.zang.api.inboundxml.elements.enums.Language;
 import com.zang.api.inboundxml.elements.enums.Voice;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
-import com.thoughtworks.xstream.annotations.XStreamConverter;
-import com.thoughtworks.xstream.converters.extended.ToAttributedValueConverter;
 
-@XStreamAlias("Say")
-@XStreamConverter(value=ToAttributedValueConverter.class, strings={"text"})
-@SuppressWarnings("unused")
-public class Say implements ResponseElement, GatherElement {
+import javax.xml.bind.annotation.*;
 
-	@XStreamAsAttribute
-	private Long loop;
 
-	@XStreamAsAttribute
-	private String voice;
-	
-	private String text;
-	
-	protected Say() {
-		
-	}
-	
-	static Say createSay(String text, Voice voice, Long loop) {
-		Say p = new Say();
-		p.loop = loop;
-		p.text = text;
-		p.voice = voice == null ? null : voice.toString();
-		return p;
-	}
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+        "text"
+})
+@XmlRootElement(name = "Say")
+public class Say implements ResponseElement, GatherElement, GetSpeechElement {
+
+    @XmlValue
+    protected String text;
+    @XmlAttribute(name = "loop")
+    protected Integer loop;
+    @XmlAttribute(name = "voice")
+    protected Voice voice;
+    @XmlAttribute(name = "language")
+    protected Language language;
+
+    public static SayBuilder builder() {
+        return new SayBuilder();
+    }
+
+    public Say() {
+    }
+
+    public Say(String text, Integer loop, Voice voice, Language language) {
+        this.text = text;
+        this.loop = loop;
+        this.voice = voice;
+        this.language = language;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+
+    public Integer getLoop() {
+        return loop;
+    }
+
+
+    public void setLoop(Integer value) {
+        this.loop = value;
+    }
+
+
+    public Voice getVoice() {
+        return voice;
+    }
+
+
+    public void setVoice(Voice value) {
+        this.voice = value;
+    }
+
+
+    public Language getLanguage() {
+        return language;
+    }
+
+
+    public void setLanguage(Language value) {
+        this.language = value;
+    }
 
 }

@@ -1,11 +1,10 @@
 package com.zang.api.domain.enums;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.zang.api.domain.enums.util.EnumUtil;
 import org.codehaus.jackson.annotate.JsonCreator;
 
-import com.zang.api.domain.enums.util.EnumUtil;
+import java.util.HashMap;
+import java.util.Map;
 
 public enum LogLevel {
 	ERROR, WARNING, INFO;
