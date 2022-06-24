@@ -52,7 +52,7 @@
         <skipITs>true</skipITs>
         <github.global.server>github</github.global.server>
 
-        <jboss.version>3.1.1.Final</jboss.version>
+        <jboss.version>3.14.0.Final</jboss.version>
 
     </properties>
 
