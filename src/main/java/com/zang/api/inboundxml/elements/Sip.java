@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.*;
         "sipAddress"
 })
 @XmlRootElement(name = "Sip")
-public class Sip implements DialElement {
+public class Sip implements DialElement, ReferElement {
 
     @XmlValue
     protected String sipAddress;
