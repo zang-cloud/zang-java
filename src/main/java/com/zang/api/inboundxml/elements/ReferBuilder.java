@@ -58,7 +58,7 @@ public class ReferBuilder {
     }
 
     /**
-     * Method used to request the action URL. Default Value: POST.
+     * Method used to request the action URL. Default Value: POST. Allowed Value: POST or GET.
      * @param method
      * @return
      */
@@ -67,13 +67,18 @@ public class ReferBuilder {
         return this;
     }
 
+    /**
+     * The number of seconds cpaas should wait for <Refer> verb to conclude.
+     * @param timeout
+     * @return
+     */
     public ReferBuilder setTimeout(Integer timeout) {
         this.timeout = timeout;
         return this;
     }
 
     /**
-     * URL requested when the transfered call connects and ends. Note that this URL only receives parameters containing information about the call, the call does not execute XML given as a callbackUrl.
+     * URL where the status of the Refer can be sent. Note that this URL only receives parameters containing information about the call, the call does not execute XML given as a callbackUrl.
      * @param callbackUrl
      * @return
      */
@@ -83,7 +88,7 @@ public class ReferBuilder {
     }
 
     /**
-     * Method used to request the callback URL. Default Value: POST.
+     * Method used to request the callback URL. Default Value: POST. Allowed Value: POST or GET.
      * @param callbackMethod
      * @return
      */
