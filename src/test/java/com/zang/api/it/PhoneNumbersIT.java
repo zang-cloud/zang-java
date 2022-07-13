@@ -28,7 +28,7 @@ public class PhoneNumbersIT extends BaseIntegrationTest {
     public void availablePhoneNumbers() throws ZangException {
         AvailablePhoneNumbersConnector conn = connectorFactory.getAvailablePhoneNumbersConnector();
         AvailablePhoneNumbersList list = conn.listAvailableNumbers(ListAvailableNumbersParams.builder()
-                .setCountry("HR")
+                .setCountry("US")
                 .setType(AvailableNumberType.LOCAL)
                 .build());
         System.out.println(list.getTotal());

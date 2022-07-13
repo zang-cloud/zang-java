@@ -13,20 +13,20 @@ import junit.framework.Assert;
 
 public class MmsTest extends BaseUnitTest {
 
-	//@Test
+	@Test
 	public void sendMms() throws ZangException, IOException {
 		createExpectation("MmsTest", "sendMms");
 
 		MmsConnector connector = connectorFactory.getMmsConnector();
-		MmsMessage mmsMessage = connector.sendMmsMessage("+123456", "+654321", "test from java", "callback.url",
+		MmsMessage mmsMessage = connector.sendMmsMessage("+123456", "+654321", "This is MMS sent from Zang", "callback.url",
 				URI.create("https://media.giphy.com/media/zZJzLrxmx5ZFS/giphy.gif"));
 		checkMessage(mmsMessage);
 
 	}
 
 	private void checkMessage(MmsMessage msg) {
-		Assert.assertEquals("test from java", msg.getBody());
-		Assert.assertEquals("https://media.giphy.com/media/zZJzLrxmx5ZFS/giphy.gif", msg.getMediaUrl());
+		Assert.assertEquals("This is MMS sent from Zang", msg.getBody());
+		Assert.assertEquals(URI.create("https://media.giphy.com/media/zZJzLrxmx5ZFS/giphy.gif"), msg.getMediaUrl());
 	}
 
 }
