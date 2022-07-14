@@ -221,7 +221,7 @@ public class InboundXmlTest {
 
     @Test
     public void createReferXml() throws ZangException {
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Response><Refer action=\"https://example.com/actionURL\" method=\"POST\" timeout=\"180\" callbackUrl=\"https://example.com/callbackURL\" callbackMethod=\"POST\"><Sip username=\"username\" password=\"pass\">sip:username@domain.com</Sip></Refer></Response>";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Response><Refer action=\"https://example.com/actionURL\" method=\"POST\" timeout=\"180\" callbackUrl=\"https://example.com/callbackURL\" callbackMethod=\"POST\"><Sip username=\"username\" password=\"pass\">username@example.com</Sip></Refer></Response>";
         String result =
                 Response.builder()
                         .refer(Refer.builder()
