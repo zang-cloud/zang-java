@@ -48,7 +48,7 @@ public class ReferBuilder {
     }
 
     /**
-     * URL where some parameters specific to <Refer> will be sent for further processing.
+     * URL to fetch the set of instructions for further processing. It is executed when the transfer fails with a failure response or when the <Refer> verb is timed out.
      * @param action
      * @return
      */
@@ -58,7 +58,7 @@ public class ReferBuilder {
     }
 
     /**
-     * Method used to request the action URL. Default Value: POST. Allowed Value: POST or GET.
+     * Method used to request the action URL.
      * @param method
      * @return
      */
@@ -68,7 +68,7 @@ public class ReferBuilder {
     }
 
     /**
-     * The number of seconds cpaas should wait for <Refer> verb to conclude.
+     * The number of seconds CPaaS should wait for <Refer> verb to conclude.
      * @param timeout
      * @return
      */
