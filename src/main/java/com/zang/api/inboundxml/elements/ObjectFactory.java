@@ -71,6 +71,9 @@ public class ObjectFactory {
         return new Dial();
     }
 
+    public Refer createRefer() {
+        return new Refer();
+    }
 
     public Number createNumber() {
         return new Number();

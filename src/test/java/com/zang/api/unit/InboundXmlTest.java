@@ -160,6 +160,21 @@ public class InboundXmlTest {
                                 .setTrimSilence(true)
                                 .setLifetime(33)
                                 .build())
+                        .refer(Refer.builder()
+                                .setAction("action")
+                                .setMethod(HttpMethod.POST)
+                                .setTimeout( 180)
+                                .setCallbackUrl("callbackURL")
+                                .setCallbackMethod(HttpMethod.POST)
+                                .sip(Sip.builder()
+                                        .setAction("action")
+                                        .setMethod(HttpMethod.GET)
+                                        .setPassword("pass")
+                                        .setSendDigits("123")
+                                        .setSipAddress("username@example.com")
+                                        .setUsername("username")
+                                        .build())
+                                .build())
                         .build()
                         .toXml();
 
@@ -198,6 +213,28 @@ public class InboundXmlTest {
                                                 .build())
                                 .setAction("http://sample")
                                 .setMethod(HttpMethod.POST)
+                                .build())
+                        .build()
+                        .toXml();
+        assertEquals(expected.replaceAll("[\\r\\n\\t\\s]+",""), result.replaceAll("[\\r\\n\\t\\s]+",""));
+    }
+
+    @Test
+    public void createReferXml() throws ZangException {
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><Response><Refer action=\"https://example.com/actionURL\" method=\"POST\" timeout=\"180\" callbackUrl=\"https://example.com/callbackURL\" callbackMethod=\"POST\"><Sip username=\"username\" password=\"pass\">username@example.com</Sip></Refer></Response>";
+        String result =
+                Response.builder()
+                        .refer(Refer.builder()
+                                .setAction("https://example.com/actionURL")
+                                .setMethod(HttpMethod.POST)
+                                .setTimeout( 180)
+                                .setCallbackUrl("https://example.com/callbackURL")
+                                .setCallbackMethod(HttpMethod.POST)
+                                .sip(Sip.builder()
+                                        .setPassword("pass")
+                                        .setSipAddress("username@example.com")
+                                        .setUsername("username")
+                                        .build())
                                 .build())
                         .build()
                         .toXml();

@@ -45,7 +45,6 @@ public class ApplicationClientsTest extends BaseUnitTest {
         checkApplicationClient(applicationClient);
     }
 
-
     private void checkApplicationClient(ApplicationClient applicationClient) {
         Assert.assertEquals("TestApplicationClientSid", applicationClient.getSid());
         Assert.assertEquals("MyApplicationClient", applicationClient.getNickname());

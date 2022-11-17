@@ -44,6 +44,16 @@ public class ResponseBuilder {
     }
 
     /**
+     * Adds a Refer element to the response.
+     * @param refer
+     * @return
+     */
+    public ResponseBuilder refer(Refer refer) {
+        content.add(refer);
+        return this;
+    }
+
+    /**
      * Adds a Gather element to the response.
      * @param gather
      * @return

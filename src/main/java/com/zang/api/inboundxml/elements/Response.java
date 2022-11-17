@@ -64,6 +64,7 @@ public class Response {
 			@XmlElementRef(name = "PlayLastRecording", type = JAXBElement.class, required = false),
 			@XmlElementRef(name = "Reject", type = Reject.class, required = false),
 			@XmlElementRef(name = "Dial", type = Dial.class, required = false),
+			@XmlElementRef(name = "Refer", type = Refer.class, required = false),
 			@XmlElementRef(name = "Hangup", type = Hangup.class, required = false),
 			@XmlElementRef(name = "Say", type = Say.class, required = false),
 			@XmlElementRef(name = "Play", type = Play.class, required = false),
